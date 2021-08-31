@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using SERV;
 
 namespace DAL
 {
@@ -70,6 +71,28 @@ namespace DAL
                 if (mCon.State != ConnectionState.Closed)
                     mCon.Close();
             }
+        }
+
+        static public string DesecriptarStringDeConexion()
+        {
+            string pName = "RecolectAR";
+            Seguridad.Cifrado mCifrado = new Seguridad.Cifrado();
+            //Obtenemos los datos del App.Config
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[pName];
+            string mConnectionString = settings.ConnectionString;
+            //Parseamos el resultado
+            string[] parts = mConnectionString.Split(';');
+            var mServer = Regex.Match(parts[0], @"server=(.+)").Groups[1].Value;
+            var mDB = Regex.Match(parts[1], @"database=(.+)").Groups[1].Value;
+            var mUser = Regex.Match(parts[2], @"uid=(.+)").Groups[1].Value;
+            var mPass = Regex.Match(parts[3], @"password=(.+)").Groups[1].Value;
+
+            string mConexion =
+                "server=" + mServer +
+                ";database=" + mDB +
+                ";uid=" + SERV.Seguridad.Cifrado.Descifrar(mUser) +
+                ";password=" + SERV.Seguridad.Cifrado.Descifrar(mPass) + "";
+            return mConexion;
         }
     }
 }

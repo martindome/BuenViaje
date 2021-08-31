@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Net.Mail;
 
 namespace SERV
 {
     public class Seguridad
     {
-
         public class Cifrado
         {
-            public static string GetMD5(string input)
+            public string ObtenerHashMD5(string input)
             {
                 // Use input string to calculate MD5 hash
                 using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
@@ -56,6 +57,30 @@ namespace SERV
             }
         }
 
+        public class Notificacion
+        {
+            public static void EnviarEmail(string pMensaje, string pAsunto, string pToAddress, string pFrom = "buenviaje@notifications.ar")
+            {
+                try
+                {
+                    MailMessage message = new MailMessage();
+                    SmtpClient smtp = new SmtpClient();
+                    message.From = new MailAddress(pFrom);
+                    message.To.Add(new MailAddress(pToAddress));
+                    message.Subject = pAsunto;
+                    message.IsBodyHtml = true;
+                    message.Body = pMensaje;
+                    smtp.Port = 587;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("buen.viaje.traveling@gmail.com", "3ncr1pt4d0");
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.Send(message);
+                }
+                catch (Exception ex) { throw (ex); }
+            }
+        }
 
         public class Contrasenia
         {
@@ -63,13 +88,22 @@ namespace SERV
             static char[] stringCaracteres = new char[16];
             static Random random = new Random();
 
+            public class ContraseniaException : Exception
+            {
+                public ContraseniaException() { }
+
+                public ContraseniaException(string mensaje) : base(mensaje) { }
+
+                public ContraseniaException(string mensaje, Exception inner) : base (mensaje, inner) { } 
+
+            }
+
             public static void ValidarContrasenia(string pString)
             {
                 Regex mContraseniaRegex = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{11,}$");
                 if (!mContraseniaRegex.IsMatch(pString))
                 {
-                    PasswordException mPWDExcept = new PasswordException("La contrasena no cumple con los requisitos minimos");
-                    throw (mPWDExcept);
+                    throw new ContraseniaException("Contrasenia No Valida");
                 }
             }
             public static string CrearRandomContrasenia(string pTo)
@@ -89,21 +123,17 @@ namespace SERV
                     throw (ex);
                 }
             }
-            private static void EnviarPWDByMail(string pPWD, string pTo)
+            private static void EnviarNuevaContrasenia(string pPWD, string pTo)
             {
                 try
                 {
                     string mAsunto = "Acceso a RecolectAR";
                     string mMensaje = "La clave para que accedas al sistema es:\t" + pPWD;
-                    Notificador.email.Send(mMensaje, mAsunto, pTo);
+                    Notificacion.EnviarEmail(mMensaje, mAsunto, pTo);
                 }
-                catch (Exception) { }
-            }
-            private class PasswordException : Exception
-            {
-                public PasswordException(string pString) :
-                    base("Se produjo un error al validar la contrasenia: " + pString)
-                { }
+                catch (Exception ex) {
+                    throw (ex);
+                }
             }
         }
 

@@ -1,0 +1,9 @@
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BuenViaje.exe.config
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BuenViaje.exe
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BuenViaje.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.csprojAssemblyReference.cache
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Properties.Resources.resources
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.csproj.GenerateResource.cache
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.csproj.CoreCompileInputs.cache
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.exe
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.pdb
