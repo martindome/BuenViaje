@@ -42,9 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO.cs" />
+    <Compile Include="IniciadorDAL.cs" />
+    <Compile Include="LoginDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServDAL.cs" />
+    <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{d073928f-9179-423f-8538-94c8fdb17b9a}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SERV\SERV.csproj">
       <Project>{8372aab5-8189-425a-9788-c7d986d01916}</Project>
       <Name>SERV</Name>

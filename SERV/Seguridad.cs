@@ -12,7 +12,7 @@ namespace SERV
     {
         public class Cifrado
         {
-            public string ObtenerHashMD5(string input)
+            public string CalcularHashMD5(string input)
             {
                 // Use input string to calculate MD5 hash
                 using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
@@ -29,7 +29,6 @@ namespace SERV
                     return sb.ToString();
                 }
             }
-
             public static string Cifrar(string input)
             {
                 if (string.IsNullOrEmpty(input)) 
@@ -38,14 +37,12 @@ namespace SERV
                 }
                 return Convert.ToBase64String(Encoding.UTF8.GetBytes(input));
             }
-
             public static bool IsBase64String(string base64String)
             {
                 base64String = base64String.Trim();
                 return (base64String.Length % 4 == 0) &&
                        Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
             }
-
             public static string Descifrar(string input)
             {
                 if (string.IsNullOrEmpty(input))
@@ -97,7 +94,6 @@ namespace SERV
                 public ContraseniaException(string mensaje, Exception inner) : base (mensaje, inner) { } 
 
             }
-
             public static void ValidarContrasenia(string pString)
             {
                 Regex mContraseniaRegex = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{11,}$");

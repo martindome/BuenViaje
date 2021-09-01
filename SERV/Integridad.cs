@@ -10,22 +10,26 @@ namespace SERV
     {
         static Seguridad.Cifrado mCifra = new Seguridad.Cifrado();
 
-        public string ObtenerDVH(string pString)
+        public string CalcularDVH(string pString)
         {
-            return mCifra.ObtenerHashMD5(pString);
+            int acum = 0;
+            byte[] asciiBytes = Encoding.ASCII.GetBytes(pString);
+            for (int i = 0; i < asciiBytes.Length; i++)
+            {
+                acum += asciiBytes[i] * i;
+            }
+            //return mCifra.CalcularHashMD5(pString);
+            return acum.ToString();
         }
-
-        public string ObtenerDVV(List<string> pRows)
+        public string CalcularDVV(List<string> pRows)
         {
-            string valores = "";
+            int acum = 0;
             foreach(string Registro in pRows)
             {
-                valores += ToBinary(ConvertToByteArray(Registro, Encoding.ASCII));
+                acum += int.Parse(Registro);
             }
-
-            return mCifra.ObtenerHashMD5(valores.ToString());
+            return acum.ToString();
         }
-
         private static byte[] ConvertToByteArray(string str, Encoding encoding)
         {
             return encoding.GetBytes(str);

@@ -13,7 +13,9 @@ namespace DAL
 {
     public class DAO
     {
-        SqlConnection mCon = new SqlConnection(ConfigurationManager.ConnectionStrings["StringConexion"].ConnectionString);
+        private static DAO _instancia;
+
+        static SqlConnection mCon = new SqlConnection(ConfigurationManager.ConnectionStrings["StringConexion"].ConnectionString);
 
         public DataSet ExecuteDataSet(string pCommandText)
         {
@@ -51,6 +53,24 @@ namespace DAL
             {
                 if (mCon.State != ConnectionState.Closed)
                     mCon.Close();
+            }
+        }
+
+        public object ExecuteScalar(string pCommandText)
+        {
+            try
+            {
+                mCon.Open();
+                SqlCommand mCom = new SqlCommand(pCommandText, mCon);
+                return mCom.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                mCon.Close();
             }
         }
 
@@ -93,6 +113,32 @@ namespace DAL
                 ";uid=" + SERV.Seguridad.Cifrado.Descifrar(mUser) +
                 ";password=" + SERV.Seguridad.Cifrado.Descifrar(mPass) + "";
             return mConexion;
+        }
+
+        public static DAO GetInstance()
+        {
+            if (_instancia == null)
+            {
+                _instancia = new DAO();
+            }
+            return _instancia;
+        }
+
+        public void ProbarConexion()
+        {
+            try
+            {
+                mCon.Open();
+            }
+
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                mCon.Close();
+            }
         }
     }
 }
