@@ -23,7 +23,7 @@ namespace DAL
             else
             {
                 ModificarDigitoVerificador(pTabla, DigitoVerificador);
-                string mQuery = "UPDATE DIGITOSVERTICALES SET DigitoVerificador='" + DigitoVerificador + "' WHERE Tabla='" + pTabla + "'";
+                string mQuery = "UPDATE Digito_Verificador SET DVV='" + DigitoVerificador + "' WHERE Tabla='" + pTabla + "'";
                 DAO.GetInstance().ExecuteNonQuery(mQuery);
             }
             if (pRegistros.Count == 0)

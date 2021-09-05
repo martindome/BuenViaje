@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitacoraBL.cs" />
     <Compile Include="IdiomaBL.cs" />
     <Compile Include="IniciadorBL.cs" />
     <Compile Include="LoginBL.cs" />

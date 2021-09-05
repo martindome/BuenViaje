@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitacoraDAL.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="IdiomaDAL.cs" />
     <Compile Include="IniciadorDAL.cs" />
