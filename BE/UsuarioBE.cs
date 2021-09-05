@@ -14,6 +14,8 @@ namespace BE
         public string Contrasenia { get; set; }
         public string DVH { get; set; }
         public int Intentos_Login { get; set; }
+        public int ID_Idioma { get; set; }
+        public string Idioma_Descripcion { get; set; }
 
 
 

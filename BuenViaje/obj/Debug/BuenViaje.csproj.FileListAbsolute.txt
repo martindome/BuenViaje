@@ -7,3 +7,14 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\Bue
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.csproj.CoreCompileInputs.cache
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.exe
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Inicio.resources
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BE.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BL.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\DAL.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\SERV.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BE.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BL.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\DAL.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\SERV.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.csproj.CopyComplete
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Login.resources

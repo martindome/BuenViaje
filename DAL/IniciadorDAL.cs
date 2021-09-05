@@ -15,7 +15,7 @@ namespace DAL
         {
             try
             {
-                DAO.GetInstance().ProbarConexion()
+                DAO.GetInstance().ProbarConexion();
             }
             catch (Exception ex)
             {

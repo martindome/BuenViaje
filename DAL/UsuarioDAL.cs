@@ -19,7 +19,7 @@ namespace DAL
         {
             List<UsuarioBE> ListaUsuarios = new List<UsuarioBE>();
 
-            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contraseña, u.Intentos_Login FROM Usuarios u";
+            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contraseña, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuarios u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma";
 
             DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommandText);
 
@@ -45,7 +45,8 @@ namespace DAL
         }
         public static UsuarioBE Obtener(string pNombreUsuario)
         {
-            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contraseña, u.Intentos_Login FROM Usuarios u WHERE u.Nombre_Usuario = " + pNombreUsuario;
+            string nombre_usuario = SERV.Seguridad.Cifrado.Cifrar(pNombreUsuario);
+            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contraseña, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuarios u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma WHERE u.Nombre_Usuario = " + nombre_usuario;
             DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommandText);
 
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -98,9 +99,11 @@ namespace DAL
             pUsuario.ID_Usuario = int.Parse(pDataRow["ID_Usuario"].ToString());
             pUsuario.Nombre = pDataRow["Nombre"].ToString();
             pUsuario.Apellido = pDataRow["Apellido"].ToString();
-            pUsuario.Nombre_Usuario = (pDataRow["Nombre_Usuario"].ToString());
+            pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Descifrar((pDataRow["Nombre_Usuario"].ToString()));
             pUsuario.Contrasenia = (pDataRow["Contraseña"].ToString());
             pUsuario.Intentos_Login = int.Parse((pDataRow["Intentos_Login"].ToString()));
+            pUsuario.ID_Idioma = int.Parse(pDataRow["ID_Idioma"].ToString());
+            pUsuario.Idioma_Descripcion = pDataRow["Descripcion"].ToString();
         }
         #endregion
     }

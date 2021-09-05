@@ -1,0 +1,6 @@
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\obj\Debug\SERV.csprojAssemblyReference.cache
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\obj\Debug\SERV.csproj.CoreCompileInputs.cache
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\SERV.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\SERV.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\obj\Debug\SERV.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\obj\Debug\SERV.pdb

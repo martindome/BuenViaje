@@ -6,6 +6,28 @@ Create Table Backups(
     PRIMARY KEY CLUSTERED(ID_Backup)
 );
 
+Create Table Idioma (
+    ID_Idioma bigint not null,
+    Descripcion varchar(max),
+    PRIMARY KEY CLUSTERED (ID_Idioma)
+);
+
+Create Table Texto(
+    ID_Texto varchar(50),
+    ID_Idioma bigint not null,
+    Mensaje varchar(max),
+    FOREIGN KEY (ID_Idioma) REFERENCES Idioma (ID_Idioma) on delete cascade,
+    PRIMARY KEY CLUSTERED (ID_Texto, ID_Idioma)
+);
+
+Create Table Controles(
+    ID_Control varchar(50),
+    ID_Idioma bigint not null,
+    Mensaje varchar(max),
+    FOREIGN KEY (ID_Idioma) REFERENCES Idioma (ID_Idioma) on delete cascade,
+    PRIMARY KEY CLUSTERED (ID_Control, ID_Idioma)
+);
+
 Create Table Cliente(
     ID_Cliente BIGINT Not null,
     Nombre varchar (50),
@@ -31,6 +53,8 @@ Create Table Usuario(
     Contrasenia varchar (50) not null,
     DVH varchar (50) not null,
     Intentos_Login bigint not null,
+    ID_Idioma bigint not null,
+    FOREIGN KEY (ID_Idioma) references Idioma (ID_Idioma) on delete no action,
     PRIMARY KEY CLUSTERED (ID_Usuario)
 );
 
@@ -92,7 +116,8 @@ Create Table Localidad (
     ID_Localidad bigint not null,
     Nombre varchar(50) not null,
     Provinica varchar(50) not null,
-    Pais varchar(50) not null
+    Pais varchar(50) not null,
+	Primary Key Clustered (ID_Localidad)
 )
 
 Create table Ruta(
@@ -140,26 +165,4 @@ Create Table Digito_Verificador(
     Tabla varchar (50) not null,
     DVV bigint not null,
     Primary key clustered (ID_DVV)
-);
-
-Create Table Idioma (
-    ID_Idioma bigint not null,
-    Descripcion varchar(max),
-    PRIMARY KEY CLUSTERED (ID_Idioma)
-);
-
-Create Table Texto(
-    ID_Texto bigint (50),
-    Mensaje varchar(max),
-    PRIMARY KEY CLUSTERED (ID_Texto)
-);
-
-Create Table Traduccion (
-    ID_Traduccion bigint not null,
-    Traduccion varchar(max) not null,
-    ID_Idioma bigint not null,
-    ID_Texto bigint not null,
-    PRIMARY KEY CLUSTERED (ID_Idioma, ID_Texto),
-    FOREIGN KEY (ID_Idioma) REFERENCES Idioma (ID_Idioma) on delete no action,
-    FOREIGN KEY (ID_Texto) REFERENCES Texto (ID_Texto) on delete no action
 );

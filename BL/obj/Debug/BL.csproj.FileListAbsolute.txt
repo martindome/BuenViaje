@@ -1,0 +1,13 @@
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\BL.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\BL.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\BE.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\DAL.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\SERV.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\BE.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\DAL.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\bin\Debug\SERV.pdb
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\obj\Debug\BL.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BL\obj\Debug\BL.pdb

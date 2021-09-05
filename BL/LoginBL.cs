@@ -16,7 +16,8 @@ namespace BL
             //Bitacora mB = mRegistro.Clone() as Bitacora;
             //mUsuario.user = pUser;
             //Usuario mUsu = new Usuario();
-            UsuarioBE mUsu = mUsuario.Obtener(pUser);
+            UsuarioBL User = new UsuarioBL();
+            UsuarioBE mUsu = User.Obtener(pUser);
             if (mUsu != null)
             {
                 //if (mUsu.Intentos_Login >= 3)

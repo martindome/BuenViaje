@@ -8,9 +8,8 @@ using System.IO;
 
 namespace BL
 {
-    class IniciadorBL
+    public class IniciadorBL
     {
-
         public void ConectarBD ()
         {
             try

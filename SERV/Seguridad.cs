@@ -111,7 +111,7 @@ namespace SERV
                         stringCaracteres[i] = caracteres[random.Next(caracteres.Length)];
                     } 
                     String finalString = new String(stringCaracteres);
-                    EnviarPWDByMail(finalString, pTo);
+                    //EnviarPWDByMail(finalString, pTo);
                     return finalString;
                 }
                 catch (Exception ex)
