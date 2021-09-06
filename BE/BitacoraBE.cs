@@ -14,6 +14,8 @@ namespace BE
         public string DVH { get; set; }
         public int ID_Usuario { get; set; }
 
+        public string Nombre_Usuario { get; set; }
+
         public BitacoraBE() { }
         public BitacoraBE(int pId) { this.ID_Bitacora = pId; }
     }

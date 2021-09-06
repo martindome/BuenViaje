@@ -78,7 +78,7 @@ namespace DAL
         {
             try
             {
-                SqlCommand mCom = new SqlCommand("SELECT ISNULL(MAX(" + pTabla + "_Id),0) FROM " + pTabla, mCon);
+                SqlCommand mCom = new SqlCommand("SELECT ISNULL(MAX(ID_" + pTabla + "),0) FROM " + pTabla, mCon);
                 mCon.Open();
                 return int.Parse(mCom.ExecuteScalar().ToString());
             }

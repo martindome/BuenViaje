@@ -32,7 +32,7 @@
             this.LoginLabel2 = new System.Windows.Forms.Label();
             this.LoginButton1 = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
             this.LoginBotton2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -75,13 +75,14 @@
             this.txtUser.Size = new System.Drawing.Size(185, 20);
             this.txtUser.TabIndex = 3;
             // 
-            // textBox1
+            // txtPass
             // 
-            this.textBox1.Location = new System.Drawing.Point(60, 39);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtPass.Location = new System.Drawing.Point(60, 39);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(185, 20);
+            this.txtPass.TabIndex = 4;
             // 
             // LoginBotton2
             // 
@@ -100,16 +101,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 106);
             this.Controls.Add(this.LoginBotton2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.LoginButton1);
             this.Controls.Add(this.LoginLabel2);
             this.Controls.Add(this.LoginLabel1);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Load += new System.EventHandler(this.Login_Load);
 
         }
 
@@ -119,7 +120,7 @@
         private System.Windows.Forms.Label LoginLabel2;
         private System.Windows.Forms.Button LoginButton1;
         private System.Windows.Forms.TextBox txtUser;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button LoginBotton2;
     }
 }

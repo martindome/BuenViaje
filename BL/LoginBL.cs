@@ -9,104 +9,83 @@ namespace BL
 {
     public class LoginBL
     {
-        private UsuarioBE mBE = new UsuarioBE();
-        public void ValidarLogin(string pUser, string pPass)
+        public static UsuarioBE SingleUsuario = new UsuarioBE();
+        public void ValidarLogin(string pNombre_Usuario, string pPassword)
         {
-            //Por defecto instanacia de bitacora inicia con Nivel=INFO
-            //Bitacora mB = mRegistro.Clone() as Bitacora;
-            //mUsuario.user = pUser;
-            //Usuario mUsu = new Usuario();
-            UsuarioBL User = new UsuarioBL();
-            UsuarioBE mUsu = User.Obtener(pUser);
-            if (mUsu != null)
+            BitacoraBE mBitacora = new BitacoraBE();
+            BitacoraBL Bitacorabl = new BitacoraBL();
+            UsuarioBL Usuariobl = new UsuarioBL();
+            UsuarioBE mUsuario = Usuariobl.Obtener(pNombre_Usuario);
+            if (mUsuario != null)
             {
-                //if (mUsu.Intentos_Login >= 3)
-                //{
-                //    if (mUsu.BadLogins >= 3)
-                //    {
-                //        //Crear Registro en bitacora
-                //        mB.Detalle = "Oper. no autorizada: intento de inicio de sesio con usuario bloqueado";
-                //        mB.Fecha = DateTime.Now;
-                //        mB.idUsuario = mUsu.id;
-                //        mB.Nivel = "CRIT";
-                //        BL.Bitacora.GrabarBitacora(mB);
-                //        throw new LoginException("Usuario esta bloqueado");
-                //    }
-                //    else
-                //    {
-                        ValidarPWD(mUsu, pPass);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        //Crear Registro en bitacora
-            //        mB.Detalle = "Oper. no autorizada: intento de inicio de sesion con usuario no activo";
-            //        mB.Fecha = DateTime.Now;
-            //        mB.idUsuario = mUsu.id;
-            //        mB.Nivel = "CRIT";
-            //        BL.Bitacora.GrabarBitacora(mB);
-            //        throw new LoginException("Usuario no puede iniciar sesion, contactese con el administrador.");
-            //    }
-            //}
-            //else
-            //{
-            //    //Crear Registro en bitacora
-            //    mB.Detalle = "Oper. no autorizada: intento de inicio de sesio con usuario inexistente";
-            //    mB.Fecha = DateTime.Now;
-            //    mB.idUsuario = mUsu.id;
-            //    mB.Nivel = "INFO";
-            //    BL.Bitacora.GrabarBitacora(mB);
-            //    throw new LoginException("Usuario no esta registrado");
+                if (mUsuario.Intentos_Login >= 3)
+                {
+                    
+                    //Crear Registro en bitacora
+                    mBitacora.Descripcion = "Oper. no autorizada: intento de inicio de sesio con usuario bloqueado";
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = mUsuario.ID_Usuario;
+                    mBitacora.Tipo_Evento = "HIGH";
+                    Bitacorabl.Guardar(mBitacora);
+                    throw new Exception("Usuario esta bloqueado");
+                }
+                else
+                {
+                    ValidarContraseña(mUsuario, pPassword);
+                } 
+            }
+            else
+            {
+                //Crear Registro en bitacora
+                mBitacora.Descripcion = "Oper. no autorizada: intento de inicio de sesio con usuario inexistente";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = 0;
+                mBitacora.Tipo_Evento = "LOW";
+                Bitacorabl.Guardar(mBitacora);
+                throw new Exception("Usuario no esta registrado");
             }
         }
 
-        public bool ValidarPWD(UsuarioBE pUser, string pPwd)
+        public bool ValidarContraseña(UsuarioBE pUsuario, string pPassword)
         {
-            //Bitacora mB = mRegistro.Clone() as Bitacora;
-            string mPass = DAL.LoginDAL.CalcularHashMD5(pPwd);
-            if (pUser.Contrasenia == mPass)
+            BitacoraBE mBitacora = new BitacoraBE();
+            BitacoraBL Bitacorabl = new BitacoraBL();
+            UsuarioBL Usuariobl = new UsuarioBL();
+            string mPassMD5 = DAL.LoginDAL.CalcularHashMD5(pPassword);
+            if (pUsuario.Contrasenia == mPassMD5)
             {
-                //pUser.LastLogin = DateTime.Now.Date;
-                //ResetearBadPWD(pUser);
-                ////Crear Registro en bitacora
-                //mB.Detalle = "Inicio de sesion satisfactorio";
-                //mB.Fecha = DateTime.UtcNow;
-                //mB.idUsuario = pUser.id;
-                //BL.Bitacora.GrabarBitacora(mB);
-                //UsuarioLogeado = pUser;
+                pUsuario.Intentos_Login = 0;
+                mBitacora.Descripcion = "Inicio de sesion satisfactorio";
+                mBitacora.Fecha = DateTime.UtcNow;
+                mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "LOW";
+                Bitacorabl.Guardar(mBitacora);
+                SingleUsuario = pUsuario;
                 return true;
             }
             else
             {
-                IncrementBadPwd(pUser);
+                pUsuario.Intentos_Login++;
+                if (pUsuario.Intentos_Login < 3)
+                {
+                    mBitacora.Descripcion = "Ingreso de clave incorrecta en el inicio de sesion";
+                    mBitacora.Tipo_Evento = "MEDIUM";
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                    Bitacorabl.Guardar(mBitacora);
+                }
+                else
+                {
+                    mBitacora.Descripcion = "Usuario bloqueado por maximo de ingresos incorrectos";
+                    mBitacora.Tipo_Evento = "HIGH";
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                    Bitacorabl.Guardar(mBitacora);
+                }
+                Usuariobl.Actualizar(pUsuario);
                 throw new Exception("Usuario o clave incorrectos");
             }
 
-        }
-
-        private void IncrementBadPwd(UsuarioBE pUser)
-        {
-            //Bitacora mB = mRegistro.Clone() as Bitacora;
-            //pUser.BadLogins++;
-            ////Crear Registro en bitacora
-            //mB.Detalle = "Inicio de sesion erroneo: se incrementa contador de ingreso erroneo";
-            //mB.Nivel = "WARN";
-            //mB.Fecha = DateTime.Now;
-            //mB.idUsuario = pUser.id;
-            //BL.Bitacora.GrabarBitacora(mB);
-
-            //if (pUser.BadLogins == 3)
-            //{
-            //    //Bloquear usuario
-            //    pUser.Bloqueado = true;
-            //    mB.Detalle = "Accion sobre usuario: se bloqueo el usuario.";
-            //    mB.Nivel = "CRIT";
-            //    mB.Fecha = DateTime.Now;
-            //    mB.idUsuario = pUser.id;
-            //    DAL.BitacoraDAL.CrearRegistro(mB);
-            //    mUsuario.Actualizar(pUser);
-            //}
-            //mUsuario.Actualizar(pUser);
         }
     }
 }

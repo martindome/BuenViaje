@@ -19,7 +19,7 @@ namespace DAL
         {
             List<UsuarioBE> ListaUsuarios = new List<UsuarioBE>();
 
-            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contraseña, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuarios u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma";
+            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contrasenia, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuarios u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma";
 
             DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommandText);
 
@@ -46,7 +46,7 @@ namespace DAL
         public static UsuarioBE Obtener(string pNombreUsuario)
         {
             string nombre_usuario = SERV.Seguridad.Cifrado.Cifrar(pNombreUsuario);
-            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contraseña, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuarios u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma WHERE u.Nombre_Usuario = " + nombre_usuario;
+            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contrasenia, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuario u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma WHERE u.Nombre_Usuario = '" + nombre_usuario + "'";
             DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommandText);
 
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -65,19 +65,22 @@ namespace DAL
             if (pUsuario.ID_Usuario == 0)
             {
                 pUsuario.ID_Usuario = ProximoId();
+                pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
                 string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
-                string mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contraseña, Intentos_Login, DVH) VALUES (" +pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " +pUsuario.Intentos_Login +", '" + DVH + "')";
+                string mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, DVH) VALUES (" +pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " +pUsuario.Intentos_Login +", '" + DVH + "')";
                 int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
                 ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
                 return value;
             }
             else
-            {
+            { 
+
+                pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
                 string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
                 string mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
                     + "', Apellido = '" + pUsuario.Apellido
                     + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
-                    + "', Contraseña = '" + pUsuario.Contrasenia
+                    + "', Contrasenia = '" + pUsuario.Contrasenia
                     + "', Intentos_Login = " + pUsuario.Intentos_Login
                     + ", DVH = '" + DVH + "', WHERE ID_Usuario =" + pUsuario.ID_Usuario;
                 int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
@@ -85,12 +88,32 @@ namespace DAL
                 return value;
             }
         }
+        public static void Actualizar(UsuarioBE pUsuario)
+        {
+            pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
+            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
+            string mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
+                + "', Apellido = '" + pUsuario.Apellido
+                + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
+                + "', Contrasenia = '" + pUsuario.Contrasenia
+                + "', Intentos_Login = " + pUsuario.Intentos_Login
+                + ", DVH = '" + DVH + "', WHERE ID_Usuario =" + pUsuario.ID_Usuario;
+            int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
+        }
+
         public static int Eliminar (UsuarioBE pUsuario)
         {
             string mCommandText = "DELETE Usuario WHERE ID_Usuario = " + pUsuario.ID_Usuario;
             int value = DAO.GetInstance().ExecuteNonQuery(mCommandText);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
             return value;
+        }
+
+        public static string ObtenerIdiomaUsuario(UsuarioBE pUsuario)
+        {
+            string mCommand = "SELECT i.Descripcion FROM Usuario u INNER JOIN Idioma i on u.ID_Idioma = i.ID_Idioma WHERE u.ID_Idioma = '" + pUsuario.ID_Idioma + "' AND u.ID_Usuario = " + pUsuario.ID_Usuario;
+            return DAO.GetInstance().ExecuteScalar(mCommand).ToString();
         }
 
         #region private functions
@@ -100,7 +123,7 @@ namespace DAL
             pUsuario.Nombre = pDataRow["Nombre"].ToString();
             pUsuario.Apellido = pDataRow["Apellido"].ToString();
             pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Descifrar((pDataRow["Nombre_Usuario"].ToString()));
-            pUsuario.Contrasenia = (pDataRow["Contraseña"].ToString());
+            pUsuario.Contrasenia = (pDataRow["Contrasenia"].ToString());
             pUsuario.Intentos_Login = int.Parse((pDataRow["Intentos_Login"].ToString()));
             pUsuario.ID_Idioma = int.Parse(pDataRow["ID_Idioma"].ToString());
             pUsuario.Idioma_Descripcion = pDataRow["Descripcion"].ToString();

@@ -27,7 +27,11 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'LoginLabel1', 'Usuario'), 
 (2, 'LoginLabel2', 'Clave'), 
-(1, 'LoginBotton1', 'Login'), 
-(1, 'LoginBotton2', 'Salir')
+(2, 'LoginBotton1', 'Login'), 
+(2, 'LoginBotton2', 'Salir')
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Usuario
+INSERT INTO dbo.Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, DVH, Intentos_Login, ID_Idioma) VALUES
+(1, 'Martin', 'Dome', 'bWFydGluZG9tZTk2QGdtYWlsLmNvbQ==', 'CB1338CD67E63B81FC59F8107E76811C','141756', 0, 2) 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

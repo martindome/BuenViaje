@@ -94,11 +94,11 @@ Create Table Usuario_Familia(
 
 Create Table Bitacora(
     ID_Bitacora bigint not null,
-    Fecha datetime not null,
+    Fecha varchar(100) not null,
     Tipo_Evento varchar (50),
     Descripcion varchar (MAX),
     DVH varchar (50),
-    ID_Usuario bigint not null,
+    ID_Usuario bigint null,
     PRIMARY KEY CLUSTERED (ID_Bitacora),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) ON DELETE No action
 );

@@ -7,7 +7,7 @@ using DAL;
 
 namespace BL
 {
-    class UsuarioBL
+    public class UsuarioBL
     {
         private UsuarioBE mBE = new UsuarioBE();
         public int ID_Usuario { get {return mBE.ID_Usuario; } set { mBE.ID_Usuario = value; } }
@@ -22,6 +22,21 @@ namespace BL
         {
             //this.user = pUsuario.user;
             return (UsuarioBE)UsuarioDAL.Obtener(pNombreUsuario);
+        }
+
+        public void Guardar(UsuarioBE pUsuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Actualizar(UsuarioBE pUsuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ObtenerIdiomaUsuario(UsuarioBE pUsuario)
+        {
+            return UsuarioDAL.ObtenerIdiomaUsuario(pUsuario);
         }
 
     }

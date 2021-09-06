@@ -11,6 +11,7 @@ namespace DAL
     {
         static string mQuery;
         static private SERV.Seguridad.Cifrado mCifra = new SERV.Seguridad.Cifrado();
+        static private SERV.Integridad mIntegridad = new SERV.Integridad();
         static public void ProbarConexionDB()
         {
             try
@@ -32,7 +33,7 @@ namespace DAL
                 foreach (string mReg in ObtenerDatosRegistros(mDigitoVerificador.Tabla))//Traer los registros
                 {
                     mRegistroSplit = mReg.Split(char.Parse(";"));//split DVH almacenado
-                    mHashCalculado = mCifra.CalcularHashMD5(mRegistroSplit[0]);//Calculamos hash con la primer parte
+                    mHashCalculado = mIntegridad.CalcularDVH(mRegistroSplit[0]);//Calculamos hash con la primer parte
                     if (mHashCalculado != mRegistroSplit[1]) //Si el hash calculado no coincide con el obtenido...
                     {
                         //DigitoVerificadorVerticalBE mDigitoVerificadorVerticalBE = new DigitoVerificadorVerticalBE(mDigitoVerificador.ID_DVV);
@@ -60,7 +61,7 @@ namespace DAL
         private static void ValorizarEntidad(DigitoVerificadorVerticalBE pDigito, DataRow pDataRow)
         {
             pDigito.Tabla = pDataRow["Tabla"].ToString();
-            pDigito.DVV = pDataRow["Apellido"].ToString();
+            pDigito.DVV = pDataRow["DVV"].ToString();
         }
         static private List<DigitoVerificadorVerticalBE> ObtenerTablasDigitoVerificador()
         {
@@ -82,6 +83,7 @@ namespace DAL
 
             List<string> Registros = new List<string>();
             string Registro = "";
+            string DVH = "";
 
             mQuery = "SELECT * FROM " + Tabla;
             DataSet mDataset = new DataSet();
@@ -96,8 +98,10 @@ namespace DAL
                         if (mCol != "DVH") //Primero cargamos el registro concatenado
                             Registro += mROW[mCol].ToString();
                         if (mCol == "DVH") //Agregamos el DVH con ; para parsear a posterior
-                            Registro += ";" + mROW[mCol].ToString();
+                            DVH = mROW[mCol].ToString();
+                        
                     }
+                    Registro += ";" + DVH;
                     Registros.Add(Registro);
                     Registro = "";
                 }

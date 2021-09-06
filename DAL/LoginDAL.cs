@@ -7,7 +7,7 @@ namespace DAL
 {
     public class LoginDAL
     {
-        static SERV.Seguridad.Cifrado mCifra = new SERV.Seguridad.Cifrado();
+        static SERV.Seguridad.Cifrado mCifrado = new SERV.Seguridad.Cifrado();
         static public void ResetBadPWD(int pUsuarioId)
         {
             //mquery
@@ -21,7 +21,7 @@ namespace DAL
         }
         static public string CalcularHashMD5(string pPwd)
         {
-            return mCifra.CalcularHashMD5(pPwd);
+            return mCifrado.CalcularHashMD5(pPwd);
         }
     }
 }

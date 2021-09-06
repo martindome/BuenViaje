@@ -14,6 +14,9 @@ namespace BuenViaje
 {
     public partial class Login : Form
     {
+        LoginBL Loginbl = new LoginBL();
+        UsuarioBL Usuariobl = new UsuarioBL();
+
         public Login()
         {
             InitializeComponent();
@@ -26,7 +29,24 @@ namespace BuenViaje
 
         private void LoginButton1_Click(object sender, EventArgs e)
         {
-
+            UsuarioBE pUsuario = new UsuarioBE();
+            pUsuario.Nombre_Usuario = txtUser.Text;
+            try
+            {
+                Loginbl.ValidarLogin(txtUser.Text, txtPass.Text);
+                Principal mPrincipal = new Principal();
+                mPrincipal.MinimizeBox = false;
+                mPrincipal.MaximizeBox = false;
+                mPrincipal.StartPosition = FormStartPosition.CenterParent;
+                LoginBL.SingleUsuario = Usuariobl.Obtener(pUsuario.Nombre_Usuario);
+                this.Hide();
+                mPrincipal.ShowDialog(this);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoginBotton2_Click(object sender, EventArgs e)
