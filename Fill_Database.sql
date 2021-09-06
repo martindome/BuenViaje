@@ -16,11 +16,17 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Principal-Info-CerrarSesion', 'LogOut')
 ----Idioma
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'Idioma-Form', 'ChangeLanguaje'),
+(1, 'Idioma-Form', 'Change Languaje'),
 (1, 'Idioma-Info-cambio', 'Languaje has been changed')
-
-
-
+----Bitacora
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'Bitacora-Form', 'Logs'),
+(1, 'Bitacora-Columna-BitacoraID', 'ID'),
+(1, 'Bitacora-Columna-BitacoraFecha', 'Date'),
+(1, 'Bitacora-Columna-BitacoraUsuario', 'User'),
+(1, 'Bitacora-Columna-BitacoraCriticidad', 'Level'),
+(1, 'Bitacora-Columna-BitacoraMovimiento', 'Description'),
+(1, 'Bitacora-pdf-Title', 'Logs')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -36,7 +42,15 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Idioma-Form', 'Cambiar Lenguaje'),
 (2, 'Idioma-Info-cambio', 'El lenguaje ha sido cambiado')
-
+----Bitacora
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'Bitacora-Form', 'Bitacora'),
+(2, 'Bitacora-Columna-BitacoraID', 'ID'),
+(2, 'Bitacora-Columna-BitacoraFecha', 'Fecha'),
+(2, 'Bitacora-Columna-BitacoraUsuario', 'Usuario'),
+(2, 'Bitacora-Columna-BitacoraCriticidad', 'Nivel'),
+(2, 'Bitacora-Columna-BitacoraMovimiento', 'Descripcion'),
+(2, 'Bitacora-pdf-Title', 'Bitacora')
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -49,8 +63,8 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'LoginBotton2', 'Exit')
 ----Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
-(1, 'sesionToolStripMenuItem', 'Sesion'),
-(1,'iniciarSesionToolStripMenuItem','Login'),
+(1, 'sesionToolStripMenuItem', 'Session'),
+(1,'cambiarContraseñaToolStripMenuItem','Change Password'),
 (1,'cerrarSesionToolStripMenuItem', 'Logout'),
 (1,'cambiarIdiomaToolStripMenuItem', 'Change Languaje'),
 (1,'administracionToolStripMenuItem', 'Security'),
@@ -61,12 +75,23 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1,'restauracionToolStripMenuItem', 'Restore'),
 (1,'pasajesStripMenuItem', 'Tickets'),
 (1,'rutasToolStripMenuItem', 'Routes')
-
 ----Idioma
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'IdiomaLabel1', 'Choose languaje'),
 (1, 'IdiomaBotton1', 'Accept')
-
+----Bitacora
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+-- (1, 'BitacoraDatePickerDesde', 'Since'),
+-- (1, 'BitacoraDatePickerHasta', 'To'),
+(1, 'BitacoraLabelDesde', 'Since'),
+(1, 'BitacoraLabelHasta', 'Until'),
+(1, 'BitacoraLabelUsuario', 'User'),
+(1, 'BitacoraComboUsuario', 'User'),
+(1, 'BitacoraLabelCriticidad', 'Level'),
+(1, 'BitacoraComboCriticidad', 'Level'),
+(1, 'BitacoraBotonConsultar', 'Search'),
+(1, 'BitacoraBottonExportToPDF', 'Export'),
+(1, 'BitacoraDataGrid1', 'Data')
 
 
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -78,7 +103,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 ----Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'sesionToolStripMenuItem', 'Sesion'),
-(2,'iniciarSesionToolStripMenuItem','Iniciar Sesion'),
+(2,'cambiarContraseñaToolStripMenuItem','Cambiar contraseña'),
 (2,'cerrarSesionToolStripMenuItem', 'Cerrar Sesion'),
 (2,'cambiarIdiomaToolStripMenuItem', 'Cambiar Idioma'),
 (2,'administracionToolStripMenuItem', 'Admnistracion'),
@@ -89,11 +114,23 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2,'restauracionToolStripMenuItem', 'Restauracion'),
 (2,'pasajesStripMenuItem', 'Pasajes'),
 (2,'rutasToolStripMenuItem', 'Rutas')
-
 ----Idioma
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'IdiomaLabel1', 'Elegir idioma'),
 (2, 'IdiomaBotton1', 'Aceptar')
+----Bitacora
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+-- (2, 'BitacoraDatePickerDesde', 'Desde'),
+-- (2, 'BitacoraDatePickerHasta', 'Hasta'),
+(2, 'BitacoraLabelDesde', 'Desde'),
+(2, 'BitacoraLabelHasta', 'Hasta'),
+(2, 'BitacoraLabelUsuario', 'Usuario'),
+(2, 'BitacoraComboUsuario', 'Usuario'),
+(2, 'BitacoraLabelCriticidad', 'Nivel'),
+(2, 'BitacoraComboCriticidad', 'Nivel'),
+(2, 'BitacoraBotonConsultar', 'Buscar'),
+(2, 'BitacoraBottonExportToPDF', 'Exportar'),
+(2, 'BitacoraDataGrid1', 'Datos')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario

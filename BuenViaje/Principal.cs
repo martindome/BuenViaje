@@ -10,6 +10,7 @@ using BE;
 using BL;
 using System.Configuration;
 using BuenViaje.Sesion;
+using BuenViaje.Administracion;
 
 namespace BuenViaje
 {
@@ -65,6 +66,9 @@ namespace BuenViaje
             {
                 LoginBL loginbl = new LoginBL();
                 loginbl.Logout(LoginBL.SingleUsuario);
+                this.Hide();
+                Login mLogin = new Login();
+                mLogin.ShowDialog();
                 this.Close();
             }
         }
@@ -75,7 +79,16 @@ namespace BuenViaje
             //mForm.MdiParent = this;
             mForm.MinimizeBox = false;
             mForm.MaximizeBox = false;
-            mForm.Show();
+            mForm.ShowDialog();
+        }
+
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitacora mForm = new Bitacora(this);
+            //mForm.MdiParent = this;
+            mForm.MinimizeBox = false;
+            mForm.MaximizeBox = false;
+            mForm.ShowDialog();
         }
     }
 }

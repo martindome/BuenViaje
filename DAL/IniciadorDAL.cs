@@ -36,9 +36,6 @@ namespace DAL
                     mHashCalculado = mIntegridad.CalcularDVH(mRegistroSplit[0]);//Calculamos hash con la primer parte
                     if (mHashCalculado != mRegistroSplit[1]) //Si el hash calculado no coincide con el obtenido...
                     {
-                        //DigitoVerificadorVerticalBE mDigitoVerificadorVerticalBE = new DigitoVerificadorVerticalBE(mDigitoVerificador.ID_DVV);
-                        //mDigitoVerificadorVerticalBE.Tabla = mRegistroSplit[0];
-                        //mDigitoVerificadorVerticalBE.DVV = mDigitoVerificador.Tabla;
                         Tablas.Add(mDigitoVerificador);
                     }
                 }

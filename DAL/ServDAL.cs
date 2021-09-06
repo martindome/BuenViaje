@@ -8,8 +8,6 @@ namespace DAL
 {
     public class ServDAL
     {
-        static int mId;
-
         static SERV.Seguridad.Cifrado mCifra = new SERV.Seguridad.Cifrado();
         static SERV.Integridad mIntegridad = new SERV.Integridad();
 

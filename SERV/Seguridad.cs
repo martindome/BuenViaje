@@ -123,7 +123,7 @@ namespace SERV
             {
                 try
                 {
-                    string mAsunto = "Acceso a RecolectAR";
+                    string mAsunto = "Buen Viaje - Reestablecer contraseña";
                     string mMensaje = "La clave para que accedas al sistema es:\t" + pPWD;
                     Notificacion.EnviarEmail(mMensaje, mAsunto, pTo);
                 }

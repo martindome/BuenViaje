@@ -42,6 +42,14 @@ namespace BuenViaje
                 {
                     if (!ChequearConexionBD())
                     {
+                        BitacoraBE mBitacora = new BitacoraBE();
+                        BitacoraBL bitacoraBL = new BitacoraBL();
+
+                        mBitacora.Descripcion = "Error conexion base de datos";
+                        mBitacora.Tipo_Evento = "HIGH";
+                        mBitacora.Fecha = DateTime.Now;
+                        mBitacora.ID_Usuario = 0;
+                        bitacoraBL.Guardar(mBitacora);
                         MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                     }
@@ -56,6 +64,14 @@ namespace BuenViaje
                 }
                 catch (Exception ex)
                 {
+                    BitacoraBE mBitacora = new BitacoraBE();
+                    BitacoraBL bitacoraBL = new BitacoraBL();
+
+                    mBitacora.Descripcion = "Error Integridad base de datos";
+                    mBitacora.Tipo_Evento = "HIGH";
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = 0;
+                    bitacoraBL.Guardar(mBitacora);
                     MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-IntegridadBaseDatos", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -66,6 +82,14 @@ namespace BuenViaje
             }
             catch (Exception ex)
             {
+                BitacoraBE mBitacora = new BitacoraBE();
+                BitacoraBL bitacoraBL = new BitacoraBL();
+
+                mBitacora.Descripcion = "Error Carga del programa";
+                mBitacora.Tipo_Evento = "HIGH";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = 0;
+                bitacoraBL.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-CargaIncorrecta", mIdioma) + "\n" + ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
