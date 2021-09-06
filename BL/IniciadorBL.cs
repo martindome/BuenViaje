@@ -56,13 +56,6 @@ namespace BL
                 foreach (DigitoVerificadorVerticalBE mDVV in Tabla)
                 {
                     //Crear Registro en bitacora
-                    //Bitacora mB = mRegistro.Clone() as Bitacora;
-                    //mB.Detalle = "Fallo comprobacion de DVH en " + mDVV.Tabla + " registro: " + mDVV.Registro;
-                    //mB.Nivel = "CRIT";
-                    //mB.Fecha = DateTime.Now;
-                    //mB.idUsuario = 0;
-                    //mDetalle = mB.Detalle;
-                    //DAL.BitacoraDAL.CrearRegistro(mB);
                     throw new Exception(mDetalle);
                 }
             }
@@ -78,13 +71,6 @@ namespace BL
                 foreach (DigitoVerificadorVerticalBE mDVV in Tabla)
                 {
                     //Crear Registro en bitacora
-                    //Bitacora mB = mRegistro.Clone() as Bitacora;
-                    //mB.Detalle = "Fallo comprobacion de DVV en " + mDVV.Tabla;
-                    //mB.Nivel = "CRIT";
-                    //mB.Fecha = DateTime.Now;
-                    //mB.idUsuario = 0;
-                    //mDetalle = mB.Detalle;
-                    //DAL.BitacoraDAL.CrearRegistro(mB);
                     throw new Exception(mDetalle);
                 }
             }

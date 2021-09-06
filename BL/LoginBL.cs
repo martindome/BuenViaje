@@ -60,6 +60,7 @@ namespace BL
                 mBitacora.ID_Usuario = pUsuario.ID_Usuario;
                 mBitacora.Tipo_Evento = "LOW";
                 Bitacorabl.Guardar(mBitacora);
+                Usuariobl.Actualizar(pUsuario);
                 SingleUsuario = pUsuario;
                 return true;
             }
@@ -86,6 +87,19 @@ namespace BL
                 throw new Exception("Usuario o clave incorrectos");
             }
 
+        }
+
+        public void Logout(UsuarioBE pUsuario)
+        {
+            //Crear Registro en bitacora
+            BitacoraBE mBitacora = new BitacoraBE();
+            BitacoraBL bitacoraBL = new BitacoraBL();
+
+            mBitacora.Descripcion = "Usuario cerro sesion";
+            mBitacora.Tipo_Evento = "LOW";
+            mBitacora.Fecha = DateTime.Now;
+            mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+            bitacoraBL.Guardar(mBitacora);
         }
     }
 }

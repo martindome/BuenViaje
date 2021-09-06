@@ -72,7 +72,7 @@ namespace DAL
 
             foreach (DataRow mDataRow in mDataset.Tables[0].Rows)
             {
-                DigitoVerificadorVerticalBE mDigitoVerificador = new DigitoVerificadorVerticalBE(int.Parse(mDataRow["ID_DVV"].ToString()));
+                DigitoVerificadorVerticalBE mDigitoVerificador = new DigitoVerificadorVerticalBE(int.Parse(mDataRow["ID_Digito_Verificador"].ToString()));
                 ValorizarEntidad(mDigitoVerificador, mDataRow);
                 mTablas.Add(mDigitoVerificador);
             }

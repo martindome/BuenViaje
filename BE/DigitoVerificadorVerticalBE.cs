@@ -7,13 +7,13 @@ namespace BE
 {
     public class DigitoVerificadorVerticalBE
     {
-        public int ID_DVV { get; set; }
+        public int ID_Digito_Verificador { get; set; }
         public string Tabla { get; set; }
         public string DVV { get; set; }
         public DigitoVerificadorVerticalBE() {}
         public DigitoVerificadorVerticalBE(int pId)
         {
-            this.ID_DVV = pId;
+            this.ID_Digito_Verificador = pId;
         }
     } 
 }

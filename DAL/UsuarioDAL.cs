@@ -67,7 +67,7 @@ namespace DAL
                 pUsuario.ID_Usuario = ProximoId();
                 pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
                 string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
-                string mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, DVH) VALUES (" +pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " +pUsuario.Intentos_Login +", '" + DVH + "')";
+                string mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, ID_Idioma, DVH) VALUES (" + pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " + pUsuario.ID_Idioma +", '" + DVH + "')";
                 int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
                 ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
                 return value;
@@ -82,6 +82,7 @@ namespace DAL
                     + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
                     + "', Contrasenia = '" + pUsuario.Contrasenia
                     + "', Intentos_Login = " + pUsuario.Intentos_Login
+                    + ", ID_Idioma = " + pUsuario.ID_Idioma
                     + ", DVH = '" + DVH + "', WHERE ID_Usuario =" + pUsuario.ID_Usuario;
                 int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
                 ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
@@ -91,13 +92,14 @@ namespace DAL
         public static void Actualizar(UsuarioBE pUsuario)
         {
             pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
-            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
+            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
             string mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
                 + "', Apellido = '" + pUsuario.Apellido
                 + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
                 + "', Contrasenia = '" + pUsuario.Contrasenia
                 + "', Intentos_Login = " + pUsuario.Intentos_Login
-                + ", DVH = '" + DVH + "', WHERE ID_Usuario =" + pUsuario.ID_Usuario;
+                + ", ID_Idioma = " + pUsuario.ID_Idioma
+                + ", DVH = '" + DVH + "' WHERE ID_Usuario =" + pUsuario.ID_Usuario;
             int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
         }

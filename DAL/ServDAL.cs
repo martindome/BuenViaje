@@ -57,8 +57,8 @@ namespace DAL
 
         static private void GuardarNuevoDigitoVerificador(string pTabla, string DigitoVerificador)
         {
-            int Id = DAO.GetInstance().ObtenerUltimoId(pTabla);
-            string mQuery = "INSERT INTO Digito_Verificador (ID_DVV, Tabla, DVV) VALUES (" + Id + ", '" + pTabla + "', '" + DigitoVerificador + "')";
+            int Id = DAO.GetInstance().ObtenerUltimoId("Digito_Verificador") + 1;
+            string mQuery = "INSERT INTO Digito_Verificador (ID_Digito_Verificador, Tabla, DVV) VALUES (" + Id + ", '" + pTabla + "', '" + DigitoVerificador + "')";
             DAO.GetInstance().ExecuteNonQuery(mQuery);
         }
 

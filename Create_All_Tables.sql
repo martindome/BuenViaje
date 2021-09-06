@@ -13,7 +13,7 @@ Create Table Idioma (
 );
 
 Create Table Texto(
-    ID_Texto varchar(50),
+    ID_Texto varchar(100),
     ID_Idioma bigint not null,
     Mensaje varchar(max),
     FOREIGN KEY (ID_Idioma) REFERENCES Idioma (ID_Idioma) on delete cascade,
@@ -30,10 +30,10 @@ Create Table Controles(
 
 Create Table Cliente(
     ID_Cliente BIGINT Not null,
-    Nombre varchar (50),
-    Apellido varchar (50),
+    Nombre varchar (100),
+    Apellido varchar (100),
     DNI varchar (50),
-    Email varchar (50),
+    Email varchar (100),
     PRIMARY KEY CLUSTERED (ID_Cliente)
 );
 
@@ -47,11 +47,11 @@ Create Table Telefono (
 
 Create Table Usuario(
     ID_Usuario bigint not null,
-    Nombre varchar (50) not null,
-    Apellido varchar (50) not null,
-    Nombre_Usuario varchar (50) not null,
-    Contrasenia varchar (50) not null,
-    DVH varchar (50) not null,
+    Nombre varchar (100) not null,
+    Apellido varchar (100) not null,
+    Nombre_Usuario varchar (100) not null,
+    Contrasenia varchar (MAX) not null,
+    DVH varchar (MAX) not null,
     Intentos_Login bigint not null,
     ID_Idioma bigint not null,
     FOREIGN KEY (ID_Idioma) references Idioma (ID_Idioma) on delete no action,
@@ -76,7 +76,7 @@ Create Table Usuario_Permiso(
     ID_Usuario bigint not null,
     ID_Permiso bigint not null,
     Descripcion varchar(max) not null,
-    DVH varchar(50) not null,
+    DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Permiso),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete no action,
     FOREIGN KEY (ID_Permiso) REFERENCES Permiso (ID_Permiso) on delete no action 
@@ -86,7 +86,7 @@ Create Table Usuario_Familia(
     ID_Usuario bigint not null,
     ID_Familia bigint not null,
     Descripcion varchar(max) not null,
-    DVH varchar(50) not null,
+    DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Familia),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete no action,
     FOREIGN KEY (ID_Familia) REFERENCES Familia (ID_Familia) on delete no action 
@@ -97,7 +97,7 @@ Create Table Bitacora(
     Fecha varchar(100) not null,
     Tipo_Evento varchar (50),
     Descripcion varchar (MAX),
-    DVH varchar (50),
+    DVH varchar (MAX),
     ID_Usuario bigint null,
     PRIMARY KEY CLUSTERED (ID_Bitacora),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) ON DELETE No action
@@ -108,15 +108,15 @@ Create Table Bus(
     Patente varchar(50) not null,
     Marca varchar(50) not null,
     Asientos int not null,
-    DVH varchar(50) not null,
+    DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED(ID_Bus)
 );
 
 Create Table Localidad (
     ID_Localidad bigint not null,
-    Nombre varchar(50) not null,
-    Provinica varchar(50) not null,
-    Pais varchar(50) not null,
+    Nombre varchar(100) not null,
+    Provincia varchar(100) not null,
+    Pais varchar(100) not null,
 	Primary Key Clustered (ID_Localidad)
 )
 
@@ -126,8 +126,8 @@ Create table Ruta(
     Destino bigint not null,
     Descripcion varchar(max) not null,
     Duracion int not null,
-    DVH varchar(50) not null,
-    Nombre varchar(100) not null,
+    DVH varchar (MAX) not null,
+    Nombre varchar(200) not null,
     PRIMARY KEY CLUSTERED(ID_Ruta),
     FOREIGN KEY (Destino) REFERENCES Localidad (ID_Localidad) on delete no action,
     FOREIGN KEY (Origen) REFERENCES Localidad (ID_Localidad) on delete no action
@@ -137,7 +137,7 @@ Create Table Viaje(
     ID_Viaje bigint not null,
     ID_Ruta bigint not null,
     ID_Bus bigint not null,
-    Fecha datetime not null,
+    Fecha varchar(100) not null,
     Cancelado bit not null,
     PRIMARY KEY CLUSTERED(ID_Viaje),
     FOREIGN KEY (ID_Ruta) REFERENCES Ruta (ID_Ruta) on delete no action,
@@ -147,7 +147,7 @@ Create Table Viaje(
 Create Table Pasaje(
     ID_Pasaje bigint not null,
     ID_Usuario bigint not null,
-    DVH varchar(50) not null,
+    DVH varchar (MAX) not null,
     Fecha datetime not null,
     Descripcion varchar(max) not null,
     Aclaraciones varchar(50) not null,
@@ -161,8 +161,8 @@ Create Table Pasaje(
 );
 
 Create Table Digito_Verificador(
-    ID_DVV bigint not null,
+    ID_Digito_Verificador bigint not null,
     Tabla varchar (50) not null,
     DVV bigint not null,
-    Primary key clustered (ID_DVV)
+    Primary key clustered (ID_Digito_Verificador)
 );
