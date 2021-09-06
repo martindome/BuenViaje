@@ -19,7 +19,7 @@ namespace BL
             UsuarioBL pUsuario = new UsuarioBL();
             if (pBitacora.Nombre_Usuario != "ALL")
             {
-                pUsuario.Nombre_Usuario = pBitacora.Nombre_Usuario;
+                //pUsuario.Nombre_Usuario = pBitacora.Nombre_Usuario;
                 pBitacora.ID_Usuario = pUsuario.Obtener(pBitacora.Nombre_Usuario).ID_Usuario;
             }
             if (pBitacora.Tipo_Evento == "ALL")

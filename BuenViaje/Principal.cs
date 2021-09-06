@@ -58,12 +58,6 @@ namespace BuenViaje
             }
         }
 
-        private void iniciarSesionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Login mLogin = new Login();
-            mLogin.Show();
-        }
-
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult Resultado = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Confirmar-CerrarSesion", LoginBL.SingleUsuario.Idioma_Descripcion), IdiomaBL.ObtenerMensajeTextos("Principal-Info-CerrarSesion", LoginBL.SingleUsuario.Idioma_Descripcion), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -82,7 +76,6 @@ namespace BuenViaje
             mForm.MinimizeBox = false;
             mForm.MaximizeBox = false;
             mForm.Show();
-
         }
     }
 }

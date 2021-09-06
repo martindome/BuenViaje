@@ -62,40 +62,36 @@ namespace DAL
         }
         public static int Guardar(UsuarioBE pUsuario)
         {
+            string mCommand = "";
+            string Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
+            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
             if (pUsuario.ID_Usuario == 0)
             {
-                pUsuario.ID_Usuario = ProximoId();
-                pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
-                string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
-                string mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, ID_Idioma, DVH) VALUES (" + pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " + pUsuario.ID_Idioma +", '" + DVH + "')";
-                int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
-                ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
-                return value;
+                pUsuario.ID_Usuario = ProximoId(); 
+                mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, ID_Idioma, DVH) VALUES (" + pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " + pUsuario.ID_Idioma +", '" + DVH + "')";
+                
             }
             else
             { 
-
-                pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
-                string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
-                string mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
+                mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
                     + "', Apellido = '" + pUsuario.Apellido
                     + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
                     + "', Contrasenia = '" + pUsuario.Contrasenia
                     + "', Intentos_Login = " + pUsuario.Intentos_Login
                     + ", ID_Idioma = " + pUsuario.ID_Idioma
                     + ", DVH = '" + DVH + "', WHERE ID_Usuario =" + pUsuario.ID_Usuario;
-                int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
-                ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
-                return value;
             }
+            int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
+            return value;
         }
         public static void Actualizar(UsuarioBE pUsuario)
         {
-            pUsuario.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
-            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
+            string Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
+            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
             string mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
                 + "', Apellido = '" + pUsuario.Apellido
-                + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
+                + "', Nombre_Usuario = '" + Nombre_Usuario
                 + "', Contrasenia = '" + pUsuario.Contrasenia
                 + "', Intentos_Login = " + pUsuario.Intentos_Login
                 + ", ID_Idioma = " + pUsuario.ID_Idioma
