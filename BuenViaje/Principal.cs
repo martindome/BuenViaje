@@ -23,6 +23,11 @@ namespace BuenViaje
 
         private void Principal_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
+            this.MinimizeBox = true;
+            this.MaximizeBox = true;
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Bounds = Screen.PrimaryScreen.Bounds;
             string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(LoginBL.SingleUsuario.Idioma_Descripcion));
         }
@@ -85,6 +90,15 @@ namespace BuenViaje
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bitacora mForm = new Bitacora(this);
+            //mForm.MdiParent = this;
+            mForm.MinimizeBox = false;
+            mForm.MaximizeBox = false;
+            mForm.ShowDialog();
+        }
+
+        private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CambiarContraseña mForm = new CambiarContraseña(this);
             //mForm.MdiParent = this;
             mForm.MinimizeBox = false;
             mForm.MaximizeBox = false;

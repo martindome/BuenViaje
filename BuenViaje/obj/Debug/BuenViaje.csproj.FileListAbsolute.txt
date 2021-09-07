@@ -38,3 +38,4 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\Mig
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\de\MigraDoc.Rendering.resources.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Sesion.CambiarContraseña.resources

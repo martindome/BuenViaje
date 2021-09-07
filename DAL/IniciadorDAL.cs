@@ -28,13 +28,13 @@ namespace DAL
             List<DigitoVerificadorVerticalBE> Tablas = new List<DigitoVerificadorVerticalBE>();
             string mHashCalculado;
             String[] mRegistroSplit;
-            foreach (DigitoVerificadorVerticalBE mDigitoVerificador in ObtenerTablasDigitoVerificador())//Por cada tabla protegida
+            foreach (DigitoVerificadorVerticalBE mDigitoVerificador in ObtenerTablasDigitoVerificador())
             {
-                foreach (string mReg in ObtenerDatosRegistros(mDigitoVerificador.Tabla))//Traer los registros
+                foreach (string mReg in ObtenerDatosRegistros(mDigitoVerificador.Tabla))
                 {
-                    mRegistroSplit = mReg.Split(char.Parse(";"));//split DVH almacenado
-                    mHashCalculado = mIntegridad.CalcularDVH(mRegistroSplit[0]);//Calculamos hash con la primer parte
-                    if (mHashCalculado != mRegistroSplit[1]) //Si el hash calculado no coincide con el obtenido...
+                    mRegistroSplit = mReg.Split(char.Parse(";"));
+                    mHashCalculado = mIntegridad.CalcularDVH(mRegistroSplit[0]);
+                    if (mHashCalculado != mRegistroSplit[1]) 
                     {
                         Tablas.Add(mDigitoVerificador);
                     }
@@ -45,10 +45,10 @@ namespace DAL
         static public List<DigitoVerificadorVerticalBE> ChequearDigitoVerificadorVertical()
         {
             List<DigitoVerificadorVerticalBE> Tablas = new List<DigitoVerificadorVerticalBE>();
-            foreach (DigitoVerificadorVerticalBE mDigitoVerificador in ObtenerTablasDigitoVerificador())//Por cada tabla protegida
+            foreach (DigitoVerificadorVerticalBE mDigitoVerificador in ObtenerTablasDigitoVerificador())
             {
-                string DigitoVerificador = ServDAL.CalcularDVV(mDigitoVerificador.Tabla); // Calcular el digito vertical
-                if (DigitoVerificador != mDigitoVerificador.DVV) // y compararlo con el almacenado en la DB.
+                string DigitoVerificador = ServDAL.CalcularDVV(mDigitoVerificador.Tabla);
+                if (DigitoVerificador != mDigitoVerificador.DVV)
                     Tablas.Add(mDigitoVerificador);
             }
             return Tablas;
@@ -92,9 +92,9 @@ namespace DAL
                     for (int i = 0; i < mDataset.Tables[0].Columns.Count; i++)
                     {
                         string mCol = mDataset.Tables[0].Columns[i].ColumnName.ToString();
-                        if (mCol != "DVH") //Primero cargamos el registro concatenado
+                        if (mCol != "DVH") 
                             Registro += mROW[mCol].ToString();
-                        if (mCol == "DVH") //Agregamos el DVH con ; para parsear a posterior
+                        if (mCol == "DVH") 
                             DVH = mROW[mCol].ToString();
                         
                     }

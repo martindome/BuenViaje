@@ -57,11 +57,17 @@ namespace BuenViaje.Administracion
             BitacoraDataGrid1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             #endregion
 
-            BitacoraDatePickerDesde.CustomFormat = "dd-MM-yyyy hh:mm:ss";
+            BitacoraDatePickerDesde.CustomFormat = "MM-dd-yyyy";
             BitacoraDatePickerDesde.Format = DateTimePickerFormat.Custom;
 
-            BitacoraDatePickerHasta.CustomFormat = "dd-MM-yyyy hh:mm:ss";
+            BitacoraDatePickerDesdeHora.Format = DateTimePickerFormat.Time;
+            BitacoraDatePickerDesdeHora.ShowUpDown = true;
+
+            BitacoraDatePickerHasta.CustomFormat = "MM-dd-yyyy";
             BitacoraDatePickerHasta.Format = DateTimePickerFormat.Custom;
+
+            BitacoraDatePickerHastaHora.Format = DateTimePickerFormat.Time;
+            BitacoraDatePickerHastaHora.ShowUpDown = true;
 
             //ComboBox
             BitacoraComboUsuario.Items.Add("*");
@@ -103,8 +109,8 @@ namespace BuenViaje.Administracion
         private void BitacoraBotonConsultar_Click(object sender, EventArgs e)
         {
             BitacoraBE mBitacora = new BitacoraBE();
-            DateTime Desde = BitacoraDatePickerDesde.Value.Date;
-            DateTime Hasta = BitacoraDatePickerHasta.Value.Date;
+            DateTime Desde = BitacoraDatePickerDesde.Value.Date + BitacoraDatePickerDesdeHora.Value.TimeOfDay;
+            DateTime Hasta = BitacoraDatePickerHasta.Value.Date + BitacoraDatePickerHastaHora.Value.TimeOfDay;
             mBitacora.Nombre_Usuario = BitacoraComboUsuario.SelectedItem.ToString();
             mBitacora.Tipo_Evento = BitacoraComboCriticidad.SelectedItem.ToString();
             BitacoraBL pBitacora = new BitacoraBL();
@@ -198,7 +204,8 @@ namespace BuenViaje.Administracion
             cell = row.Cells[3];
             cell.AddParagraph(ObtenerMensajeColumna("Bitacora-Columna-BitacoraMovimiento"));
 
-            foreach(DataGridViewRow GridRow in BitacoraDataGrid1.Rows)
+            //BitacoraDataGrid1.Sort(BitacoraDataGrid1.Columns[1], ListSortDirection.Ascending);
+            foreach (DataGridViewRow GridRow in BitacoraDataGrid1.Rows)
             {
                 row = table.AddRow();
                 cell = row.Cells[0];

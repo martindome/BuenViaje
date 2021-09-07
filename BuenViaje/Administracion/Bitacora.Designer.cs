@@ -39,11 +39,15 @@
             this.BitacoraBotonConsultar = new System.Windows.Forms.Button();
             this.BitacoraBottonExportToPDF = new System.Windows.Forms.Button();
             this.BitacoraDataGrid1 = new System.Windows.Forms.DataGridView();
+            this.BitacoraDatePickerDesdeHora = new System.Windows.Forms.DateTimePicker();
+            this.BitacoraDatePickerHastaHora = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BitacoraDataGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // BitacoraDatePickerDesde
             // 
+            this.BitacoraDatePickerDesde.CustomFormat = "MM-dd-yy";
             this.BitacoraDatePickerDesde.Location = new System.Drawing.Point(24, 28);
             this.BitacoraDatePickerDesde.Name = "BitacoraDatePickerDesde";
             this.BitacoraDatePickerDesde.Size = new System.Drawing.Size(200, 20);
@@ -51,6 +55,7 @@
             // 
             // BitacoraDatePickerHasta
             // 
+            this.BitacoraDatePickerHasta.CustomFormat = "MM-dd-yy";
             this.BitacoraDatePickerHasta.Location = new System.Drawing.Point(24, 82);
             this.BitacoraDatePickerHasta.Name = "BitacoraDatePickerHasta";
             this.BitacoraDatePickerHasta.Size = new System.Drawing.Size(200, 20);
@@ -79,7 +84,7 @@
             // BitacoraLabelUsuario
             // 
             this.BitacoraLabelUsuario.AutoSize = true;
-            this.BitacoraLabelUsuario.Location = new System.Drawing.Point(254, 12);
+            this.BitacoraLabelUsuario.Location = new System.Drawing.Point(330, 12);
             this.BitacoraLabelUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BitacoraLabelUsuario.Name = "BitacoraLabelUsuario";
             this.BitacoraLabelUsuario.Size = new System.Drawing.Size(43, 13);
@@ -89,7 +94,7 @@
             // BitacoraComboUsuario
             // 
             this.BitacoraComboUsuario.FormattingEnabled = true;
-            this.BitacoraComboUsuario.Location = new System.Drawing.Point(257, 28);
+            this.BitacoraComboUsuario.Location = new System.Drawing.Point(333, 27);
             this.BitacoraComboUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.BitacoraComboUsuario.Name = "BitacoraComboUsuario";
             this.BitacoraComboUsuario.Size = new System.Drawing.Size(116, 21);
@@ -98,7 +103,7 @@
             // BitacoraLabelCriticidad
             // 
             this.BitacoraLabelCriticidad.AutoSize = true;
-            this.BitacoraLabelCriticidad.Location = new System.Drawing.Point(254, 66);
+            this.BitacoraLabelCriticidad.Location = new System.Drawing.Point(330, 66);
             this.BitacoraLabelCriticidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BitacoraLabelCriticidad.Name = "BitacoraLabelCriticidad";
             this.BitacoraLabelCriticidad.Size = new System.Drawing.Size(50, 13);
@@ -108,7 +113,7 @@
             // BitacoraComboCriticidad
             // 
             this.BitacoraComboCriticidad.FormattingEnabled = true;
-            this.BitacoraComboCriticidad.Location = new System.Drawing.Point(257, 82);
+            this.BitacoraComboCriticidad.Location = new System.Drawing.Point(333, 82);
             this.BitacoraComboCriticidad.Margin = new System.Windows.Forms.Padding(2);
             this.BitacoraComboCriticidad.Name = "BitacoraComboCriticidad";
             this.BitacoraComboCriticidad.Size = new System.Drawing.Size(116, 21);
@@ -116,7 +121,7 @@
             // 
             // BitacoraBotonConsultar
             // 
-            this.BitacoraBotonConsultar.Location = new System.Drawing.Point(415, 82);
+            this.BitacoraBotonConsultar.Location = new System.Drawing.Point(464, 80);
             this.BitacoraBotonConsultar.Margin = new System.Windows.Forms.Padding(2);
             this.BitacoraBotonConsultar.Name = "BitacoraBotonConsultar";
             this.BitacoraBotonConsultar.Size = new System.Drawing.Size(96, 22);
@@ -127,7 +132,7 @@
             // 
             // BitacoraBottonExportToPDF
             // 
-            this.BitacoraBottonExportToPDF.Location = new System.Drawing.Point(415, 28);
+            this.BitacoraBottonExportToPDF.Location = new System.Drawing.Point(564, 80);
             this.BitacoraBottonExportToPDF.Margin = new System.Windows.Forms.Padding(2);
             this.BitacoraBottonExportToPDF.Name = "BitacoraBottonExportToPDF";
             this.BitacoraBottonExportToPDF.Size = new System.Drawing.Size(96, 22);
@@ -147,11 +152,40 @@
             this.BitacoraDataGrid1.Size = new System.Drawing.Size(778, 282);
             this.BitacoraDataGrid1.TabIndex = 23;
             // 
+            // BitacoraDatePickerDesdeHora
+            // 
+            this.BitacoraDatePickerDesdeHora.CustomFormat = "H:mm:ss";
+            this.BitacoraDatePickerDesdeHora.Location = new System.Drawing.Point(230, 28);
+            this.BitacoraDatePickerDesdeHora.Name = "BitacoraDatePickerDesdeHora";
+            this.BitacoraDatePickerDesdeHora.Size = new System.Drawing.Size(72, 20);
+            this.BitacoraDatePickerDesdeHora.TabIndex = 24;
+            // 
+            // BitacoraDatePickerHastaHora
+            // 
+            this.BitacoraDatePickerHastaHora.CustomFormat = "H:mm:ss";
+            this.BitacoraDatePickerHastaHora.Location = new System.Drawing.Point(230, 82);
+            this.BitacoraDatePickerHastaHora.Name = "BitacoraDatePickerHastaHora";
+            this.BitacoraDatePickerHastaHora.Size = new System.Drawing.Size(72, 20);
+            this.BitacoraDatePickerHastaHora.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(664, 80);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 22);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Imprimir";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Bitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BitacoraDatePickerHastaHora);
+            this.Controls.Add(this.BitacoraDatePickerDesdeHora);
             this.Controls.Add(this.BitacoraDataGrid1);
             this.Controls.Add(this.BitacoraBottonExportToPDF);
             this.Controls.Add(this.BitacoraBotonConsultar);
@@ -185,5 +219,8 @@
         private System.Windows.Forms.Button BitacoraBotonConsultar;
         private System.Windows.Forms.Button BitacoraBottonExportToPDF;
         private System.Windows.Forms.DataGridView BitacoraDataGrid1;
+        private System.Windows.Forms.DateTimePicker BitacoraDatePickerDesdeHora;
+        private System.Windows.Forms.DateTimePicker BitacoraDatePickerHastaHora;
+        private System.Windows.Forms.Button button1;
     }
 }

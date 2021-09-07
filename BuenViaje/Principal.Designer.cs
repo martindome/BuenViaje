@@ -60,9 +60,9 @@
             // sesionToolStripMenuItem
             // 
             this.sesionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cerrarSesionToolStripMenuItem,
             this.cambiarIdiomaToolStripMenuItem,
-            this.cambiarContraseñaToolStripMenuItem});
+            this.cambiarContraseñaToolStripMenuItem,
+            this.cerrarSesionToolStripMenuItem});
             this.sesionToolStripMenuItem.Name = "sesionToolStripMenuItem";
             this.sesionToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.sesionToolStripMenuItem.Text = "Sesion";
@@ -141,6 +141,7 @@
             this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
             this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
+            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
             // 
             // Principal
             // 

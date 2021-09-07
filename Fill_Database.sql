@@ -27,6 +27,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Bitacora-Columna-BitacoraCriticidad', 'Level'),
 (1, 'Bitacora-Columna-BitacoraMovimiento', 'Description'),
 (1, 'Bitacora-pdf-Title', 'Logs')
+----Cambiar Contrasenia
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'CambiarContrasenia-Form', 'Change Password')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -51,6 +54,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Bitacora-Columna-BitacoraCriticidad', 'Nivel'),
 (2, 'Bitacora-Columna-BitacoraMovimiento', 'Descripcion'),
 (2, 'Bitacora-pdf-Title', 'Bitacora')
+----Cambiar Contrasenia
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'CambiarContrasenia-Form', 'Cambiar Contraseña')
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,6 +98,17 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'BitacoraBotonConsultar', 'Search'),
 (1, 'BitacoraBottonExportToPDF', 'Export'),
 (1, 'BitacoraDataGrid1', 'Data')
+----Cmabiar Contrasnia
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'CambiarContraseniaLabel1', 'Current Password: '),
+(1, 'CambiarContraseniaLabel2', 'New Password: '),
+(1, 'CambiarContraseniaLabel3', 'Repeat Password: '),
+(1, 'CambiarContraseniaLabel4', 'Passwords are not the same'),
+(1, 'CambiarContraseniaLabel5', 'Passwords does not meet requirements'),
+(1, 'CambiarContraseniaLabel6', 'Password must have 8+ chars, 1 number, 1 upper case, 1 lower case at least'),
+(1, 'CambiarContraseniaLabel7', 'Passwords does not meet requirements'),
+(1, 'CambiarContraseniaButton1', 'Accept'),
+(1, 'CambiarContraseniaButton2', 'Cancel')
 
 
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -131,6 +148,17 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'BitacoraBotonConsultar', 'Buscar'),
 (2, 'BitacoraBottonExportToPDF', 'Exportar'),
 (2, 'BitacoraDataGrid1', 'Datos')
+----Cmabiar Contrasnia
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'CambiarContraseniaLabel1', 'Contraseña Actual: '),
+(2, 'CambiarContraseniaLabel2', 'Nueva Contraseña: '),
+(2, 'CambiarContraseniaLabel3', 'Confirmar Contraseña: '),
+(2, 'CambiarContraseniaLabel4', 'Las claves no coinciden'),
+(2, 'CambiarContraseniaLabel5', 'Clave no cumple los requisitos'),
+(2, 'CambiarContraseniaLabel6', 'Clave debe tener 8+ caracteres, 1 numero, 1 mayuscula, 1 minuscula'),
+(2, 'CambiarContraseniaLabel7', 'Clave no cumple los requisitos'),
+(2, 'CambiarContraseniaButton1', 'Aceptar'),
+(2, 'CambiarContraseniaButton2', 'Cancelar')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario
