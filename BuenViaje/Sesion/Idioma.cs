@@ -27,13 +27,13 @@ namespace BuenViaje.Sesion
 
         private void Idioma_Load(object sender, EventArgs e)
         {
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(LoginBL.SingleUsuario.Idioma_Descripcion));
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             IdiomaComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
             {
                 IdiomaComboBox1.Items.Add(mIdioma.Descripcion);
             }
-            this.Text = IdiomaBL.ObtenerMensajeTextos("Idioma-Form", LoginBL.SingleUsuario.Idioma_Descripcion);
+            this.Text = IdiomaBL.ObtenerMensajeTextos("Idioma-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -54,11 +54,11 @@ namespace BuenViaje.Sesion
             {
                 UsuarioBE mU = new UsuarioBE();
                 UsuarioBL mUsuariobl = new UsuarioBL();
-                mU = LoginBL.SingleUsuario;
+                mU = SingletonSesion.Instancia.Usuario;
                 mU.ID_Idioma = IdiomaComboBox1.SelectedIndex + 1;
                 mU.Idioma_Descripcion = IdiomaComboBox1.SelectedItem.ToString();
                 mUsuariobl.Actualizar(mU);
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Idioma-Info-cambio", LoginBL.SingleUsuario.Idioma_Descripcion));
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Idioma-Info-cambio", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
                 this.parent.CargarIdioma(IdiomaBL.ObtenerMensajeControladores(IdiomaComboBox1.SelectedItem.ToString()));
             }
             

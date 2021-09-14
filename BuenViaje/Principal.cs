@@ -29,7 +29,13 @@ namespace BuenViaje
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Bounds = Screen.PrimaryScreen.Bounds;
             string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(LoginBL.SingleUsuario.Idioma_Descripcion));
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            //Permisos Main Menu
+            this.sesionToolStripMenuItem.Enabled = true;
+            this.administracionToolStripMenuItem.Enabled = true;
+            this.pasajesStripMenuItem.Enabled = true;
+            this.rutasToolStripMenuItem.Enabled = true;
+
         }
 
         public void CargarIdioma(List<ControlBE> Lista)
@@ -66,11 +72,12 @@ namespace BuenViaje
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult Resultado = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Confirmar-CerrarSesion", LoginBL.SingleUsuario.Idioma_Descripcion), IdiomaBL.ObtenerMensajeTextos("Principal-Info-CerrarSesion", LoginBL.SingleUsuario.Idioma_Descripcion), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult Resultado = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Confirmar-CerrarSesion", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), IdiomaBL.ObtenerMensajeTextos("Principal-Info-CerrarSesion", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (Resultado == DialogResult.Yes)
             {
-                LoginBL loginbl = new LoginBL();
-                loginbl.Logout(LoginBL.SingleUsuario);
+                SingletonSesion.Instancia.Logout();
+                //LoginBL loginbl = new LoginBL();
+                //loginbl.Logout(LoginBL.SingleUsuario);
                 this.Hide();
                 Login mLogin = new Login();
                 mLogin.ShowDialog();
@@ -90,10 +97,17 @@ namespace BuenViaje
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bitacora mForm = new Bitacora(this);
-            //mForm.MdiParent = this;
-            mForm.MinimizeBox = false;
-            mForm.MaximizeBox = false;
-            mForm.ShowDialog();
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminBitacora))
+            {
+                //mForm.MdiParent = this;
+                mForm.MinimizeBox = false;
+                mForm.MaximizeBox = false;
+                mForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Permiso-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)

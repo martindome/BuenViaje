@@ -82,8 +82,8 @@ namespace BuenViaje.Administracion
             BitacoraComboCriticidad.SelectedIndex = 0;
             BitacoraComboUsuario.SelectedIndex = 0;
 
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(LoginBL.SingleUsuario.Idioma_Descripcion));
-            this.Text = IdiomaBL.ObtenerMensajeTextos("Bitacora-Form", LoginBL.SingleUsuario.Idioma_Descripcion);
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            this.Text = IdiomaBL.ObtenerMensajeTextos("Bitacora-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -103,7 +103,7 @@ namespace BuenViaje.Administracion
 
         private string ObtenerMensajeColumna(string pstring)
         {
-            return IdiomaBL.ObtenerMensajeTextos(pstring, LoginBL.SingleUsuario.Idioma_Descripcion);
+            return IdiomaBL.ObtenerMensajeTextos(pstring, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
         }
 
         private void BitacoraBotonConsultar_Click(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace BuenViaje.Administracion
                 document.DefaultPageSetup.PageFormat = PageFormat.A4;
                 Section section = document.AddSection();
 
-                Paragraph paragraph = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Title", LoginBL.SingleUsuario.Idioma_Descripcion), "Heading1");
+                Paragraph paragraph = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "Heading1");
                 paragraph.AddBookmark("Tables");
 
                 this.DemonstrateSimpleTable(document, savefile.FileName);

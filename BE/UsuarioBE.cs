@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BE.Composite;
 
 namespace BE
 {
@@ -16,16 +17,18 @@ namespace BE
         public int Intentos_Login { get; set; }
         public int ID_Idioma { get; set; }
         public string Idioma_Descripcion { get; set; }
+        public List<CompuestoBE> Permisos {get; set;}
 
 
 
         public UsuarioBE()
         {
-
+            Permisos = new List<CompuestoBE>();
         }
         public UsuarioBE(int pId)
         {
             ID_Usuario = pId;
+            Permisos = new List<CompuestoBE>();
         }
 
     }

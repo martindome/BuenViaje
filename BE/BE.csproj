@@ -51,6 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitacoraBE.cs" />
+    <Compile Include="Composite\TipoPermiso.cs" />
+    <Compile Include="Composite\CompuestoBE.cs" />
+    <Compile Include="Composite\FamiliaBE.cs" />
+    <Compile Include="Composite\PatenteBE.cs" />
     <Compile Include="IdiomaBE.cs" />
     <Compile Include="DigitoVerificadorVerticalBE.cs" />
     <Compile Include="ControlBE.cs" />

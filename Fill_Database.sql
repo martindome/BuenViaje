@@ -1,3 +1,5 @@
+
+--https://www.guru99.com/sql-server-create-user.html
 --Idioma
 INSERT INTO dbo.Idioma(ID_Idioma, Descripcion) VALUES
 (1, 'English'),  
@@ -13,7 +15,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Principal-Confirmar-CerrarSesion', 'Are you sure you want to close the session?'),
-(1, 'Principal-Info-CerrarSesion', 'LogOut')
+(1, 'Principal-Info-CerrarSesion', 'LogOut'),
+(1, 'Principal-Permiso-Denegado', 'Higher access required to perform the operation')
 ----Idioma
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Idioma-Form', 'Change Languaje'),
@@ -29,7 +32,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Bitacora-pdf-Title', 'Logs')
 ----Cambiar Contrasenia
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'CambiarContrasenia-Form', 'Change Password')
+(1, 'CambiarContrasenia-Form', 'Change Password'),
+(1, 'CambiarContrasenia-Info-CambioCorrecto', 'Password changed successfully')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -40,7 +44,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Principal-Confirmar-CerrarSesion', 'Esta seguro de cerrar la sesion?'),
-(2, 'Principal-Info-CerrarSesion', 'Cerrar Sesion')
+(2, 'Principal-Info-CerrarSesion', 'Cerrar Sesion'),
+(2, 'Principal-Permiso-Denegado', 'Mayores permisos son necesarios para realizar la accion')
 ----Idioma
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Idioma-Form', 'Cambiar Lenguaje'),
@@ -56,7 +61,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Bitacora-pdf-Title', 'Bitacora')
 ----Cambiar Contrasenia
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'CambiarContrasenia-Form', 'Cambiar Contraseña')
+(2, 'CambiarContrasenia-Form', 'Cambiar Contraseña'),
+(2, 'CambiarContrasenia-Info-CambioCorrecto', 'Clave cambiada satisfactoriamente')
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -165,5 +172,44 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 INSERT INTO dbo.Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, DVH, Intentos_Login, ID_Idioma) VALUES
 (1, 'Martin', 'Dome', 'bWFydGluZG9tZTk2QGdtYWlsLmNvbQ==', 'CB1338CD67E63B81FC59F8107E76811C','196993', 0, 2) 
 
-Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values (1, 'Usuario', '196993')
+--Permisos
+INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES 
+(1, 'Administrador de Usuarios', 'Permite administrar usuarios', 'AdminUsuarios'),
+(2, 'Administrador de Permisos', 'Permite administrar permisos de usuario', 'AdminPermisos'),
+(3, 'AdministradorBitacora', 'Permite administrar la bitacora', 'AdminBitacora'),
+(4, 'Administrador de Copias de seguridad', 'Permite administrar Copias de seguridad', 'AdminBackup'),
+(5, 'Administrador de Restore', 'Permite administrar la restauracion del sistema', 'AdminRestore'),
+(6, 'Vender Pasajes', 'Permite manejar la venta de pasajes', 'VendedorPasajes'),
+(7, 'Administrador Rutas', 'Permite administrar la creacion de nuevas rutas', 'AdminRutas'),
+(8, 'Administrador Localidad', 'Permite administrar las localidades', 'AdminLocalidades'),
+(9, 'Administrador Cliente', 'Permite administrar el manejo de clientes', 'AdminClientes'),
+(10, 'Consultar Usuarios', 'Permite consultar usuarios', 'ReadUsuarios'),
+(11, 'Consultar Permisos', 'Permite consultar permisos', 'ReadPermisos'),
+(12, 'Consultar Bitacora', 'Permite consultar la bitacora', 'ReadBitacora'),
+(13, 'Consultar Pasajes', 'Permite consultar los pasajes vendidos', 'ReadVentas'),
+(14, 'Consultar Rutas', 'Permite consultar las rutas', 'ReadRutas'),
+(15, 'Consultar Localidades', 'Permite consultar las localidades', 'ReadLocalidades'),
+(16, 'Consultar Clientes', 'Permite consultar las localidades', 'ReadClientes')
+
+--Familias
+INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
+(1, 'Administrador Sistema', 'Permite administrar la seguridad del sistema'),
+(2, 'Administrador Usuarios', 'Permite manejar los usuarios del sistema'),
+(3, 'Auditor Sistema', 'Permite acceder a los logs del sistema')
+
+--Usuario_Familia
+INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES
+(1,1,49)
+
+--Permiso_Familia
+INSERT INTO Permiso_Familia(ID_Permiso, ID_Familia, DVH) VALUES
+(1,1,49),
+(2,1,49),
+(3,1,49)
+
+
+Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values 
+(1, 'Usuario', '196993'),
+(2, 'Permiso_Familia', '147'),
+(3, 'Usuario_Familia', '49')
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

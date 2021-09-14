@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BE;
 using DAL;
+using BE.Composite;
 
 namespace BL
 {
@@ -37,6 +38,35 @@ namespace BL
         public string ObtenerIdiomaUsuario(UsuarioBE pUsuario)
         {
             return UsuarioDAL.ObtenerIdiomaUsuario(pUsuario);
+        }
+
+        public void CambiarContrasenia(UsuarioBE pUsuario, string contraseniaActual, string NuevaContrasenia)
+        {
+            contraseniaActual = DAL.LoginDAL.CalcularHashMD5(contraseniaActual);
+            NuevaContrasenia = DAL.LoginDAL.CalcularHashMD5(NuevaContrasenia);
+            if (pUsuario.Contrasenia != contraseniaActual)
+            {
+                throw new Exception("Clave actual incorrecta");
+            }
+            if (pUsuario.Contrasenia == NuevaContrasenia)
+            {
+                throw new Exception("La clave anterior y nueva son iguales");
+            }
+            BitacoraBE mBitacora = new BitacoraBE();
+            BitacoraBL Bitacorabl = new BitacoraBL();
+            UsuarioBL Usuariobl = new UsuarioBL();
+            pUsuario.Contrasenia = DAL.LoginDAL.CalcularHashMD5(NuevaContrasenia);
+            mBitacora.Descripcion = "Cambio de clave satisfactorio";
+            mBitacora.Fecha = DateTime.Now;
+            mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+            mBitacora.Tipo_Evento = "HIGH";
+            Bitacorabl.Guardar(mBitacora);
+            Usuariobl.Actualizar(pUsuario);
+        }
+
+        public List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)
+        {
+            return UsuarioDAL.ObtenerPermisos(pUsuario);
         }
 
     }

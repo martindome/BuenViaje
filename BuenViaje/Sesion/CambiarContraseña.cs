@@ -29,12 +29,13 @@ namespace BuenViaje.Sesion
 
         private void CambiarContraseña_Load(object sender, EventArgs e)
         {
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(LoginBL.SingleUsuario.Idioma_Descripcion));
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.CambiarContraseniaButton1.Enabled = false;
             this.CambiarContraseniaLabel4.Visible = false;
-            this.CambiarContraseniaLabel5.Visible = false;
+            CambiarContraseniaLabel6.Enabled = false;
+            CambiarContraseniaLabel6.WordWrap = true;
             this.CambiarContraseniaLabel7.Visible = false;
-            this.Text = IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Form", LoginBL.SingleUsuario.Idioma_Descripcion);
+            this.Text = IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
         }
 
         private void CambiarContraseniaTextBox3_TextChanged(object sender, EventArgs e)
@@ -162,9 +163,19 @@ namespace BuenViaje.Sesion
 
         private void CambiarContraseniaButton1_Click(object sender, EventArgs e)
         {
-            UsuarioBE pUsuario = new UsuarioBE();
-            pUsuario.Nombre_Usuario = LoginBL.SingleUsuario.Nombre_Usuario;
-            string nuevaContrasenia = this.CambiarContraseniaTextBox2.Text;
+            UsuarioBE pUsuario = SingletonSesion.Instancia.Usuario;
+            UsuarioBL Usuariobl = new UsuarioBL();
+            try
+            {
+                Usuariobl.CambiarContrasenia(pUsuario, this.CambiarContraseniaTextBox1.Text, this.CambiarContraseniaTextBox2.Text);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Info-CambioCorrecto", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void CambiarContraseniaButton2_Click(object sender, EventArgs e)

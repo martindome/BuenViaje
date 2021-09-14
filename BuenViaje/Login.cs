@@ -38,7 +38,7 @@ namespace BuenViaje
                 mPrincipal.MinimizeBox = false;
                 mPrincipal.MaximizeBox = false;
                 mPrincipal.StartPosition = FormStartPosition.CenterParent;
-                LoginBL.SingleUsuario = Usuariobl.Obtener(pUsuario.Nombre_Usuario);
+                //SingletonSesion.Instancia = Usuariobl.Obtener(pUsuario.Nombre_Usuario);
                 this.Hide();
                 mPrincipal.ShowDialog(this);
                 this.Close();

@@ -62,6 +62,7 @@ Create Table Permiso(
     ID_Permiso bigint not null,
     Nombre varchar(50) not null,
     Descripcion varchar(max) not null,
+    Tipo_Permiso varchar(200) not null,
     PRIMARY KEY CLUSTERED(ID_Permiso)
 );
 
@@ -75,7 +76,7 @@ Create Table Familia (
 Create Table Usuario_Permiso(
     ID_Usuario bigint not null,
     ID_Permiso bigint not null,
-    Descripcion varchar(max) not null,
+    --Descripcion varchar(max) not null,
     DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Permiso),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete no action,
@@ -85,10 +86,20 @@ Create Table Usuario_Permiso(
 Create Table Usuario_Familia(
     ID_Usuario bigint not null,
     ID_Familia bigint not null,
-    Descripcion varchar(max) not null,
+    --Descripcion varchar(max) not null,
     DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Familia),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete no action,
+    FOREIGN KEY (ID_Familia) REFERENCES Familia (ID_Familia) on delete no action 
+);
+
+Create Table Permiso_Familia(
+    ID_Permiso bigint not null,
+    ID_Familia bigint not null,
+    --Descripcion varchar(max) not null,
+    DVH varchar(MAX) not null,
+    PRIMARY KEY CLUSTERED (ID_Permiso, ID_Familia),
+    FOREIGN KEY (ID_Permiso) REFERENCES Permiso (ID_Permiso) on delete no action,
     FOREIGN KEY (ID_Familia) REFERENCES Familia (ID_Familia) on delete no action 
 );
 

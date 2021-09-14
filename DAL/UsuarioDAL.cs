@@ -6,6 +6,7 @@ using BE;
 using SERV;
 using System.Data;
 using System.Data.SqlClient;
+using BE.Composite;
 
 namespace DAL
 {
@@ -99,7 +100,21 @@ namespace DAL
             int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
         }
+        public static List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)
+        {
+            List<CompuestoBE> familias = UsuarioDAL.ListarFamilias(pUsuario);
+            
+            foreach (FamiliaBE familia in familias)
+            {
+                List<PatenteBE> patentes= FamiliaDAL.ListarPatentes(familia);
+                foreach (PatenteBE patente in patentes)
+                {
+                    familia.AgregarPermiso(patente);
+                }
+            }
 
+            return familias;
+        }
         public static int Eliminar (UsuarioBE pUsuario)
         {
             string mCommandText = "DELETE Usuario WHERE ID_Usuario = " + pUsuario.ID_Usuario;
@@ -107,13 +122,57 @@ namespace DAL
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
             return value;
         }
-
         public static string ObtenerIdiomaUsuario(UsuarioBE pUsuario)
         {
             string mCommand = "SELECT i.Descripcion FROM Usuario u INNER JOIN Idioma i on u.ID_Idioma = i.ID_Idioma WHERE u.ID_Idioma = '" + pUsuario.ID_Idioma + "' AND u.ID_Usuario = " + pUsuario.ID_Usuario;
             return DAO.GetInstance().ExecuteScalar(mCommand).ToString();
         }
+        public static List<CompuestoBE> ListarFamilias(UsuarioBE pUsuario)
+        {
+            List<CompuestoBE> familias = new List<CompuestoBE>();
+            string mCommand = "SELECT f.ID_Familia, f.Nombre, f.Descripcion, u.ID_Usuario " +
+                "FROM Familia AS f " + 
+                "INNER JOIN Usuario_Familia AS uf ON uf.ID_Familia = f.ID_Familia " +
+                "INNER JOIN Usuario AS u ON uf.ID_Usuario = u.ID_Usuario " + 
+                "WHERE u.ID_Usuario = " + pUsuario.ID_Usuario;
 
+            DataSet mDataSet = new DataSet();
+            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow mDataRow in mDataSet.Tables[0].Rows)
+                {
+                    FamiliaBE pFamilia = new FamiliaBE();
+                    FamiliaDAL.ValorizarEntidad(pFamilia, mDataRow);
+                    familias.Add(pFamilia);
+                }
+            }
+
+            return familias;
+        }
+        public static List<PatenteBE> ListarPatentes(UsuarioBE pUsuario)
+        {
+            List<PatenteBE> patentes = new List<PatenteBE>();
+            string mCommand = "SELECT p.ID_Permiso, p.Nombre, p.Descripcion, p.Tipo_Permiso, u.ID_Usuario " +
+                "FROM Permiso AS p " +
+                "INNER JOIN Usuario_Permiso AS up ON up.ID_Permiso = f.ID_Permiso " +
+                "INNER JOIN Usuario AS u ON up.ID_Usuario = u.ID_Usuario " +
+                "WHERE u.ID_Usuario = " + pUsuario.ID_Usuario;
+
+            DataSet mDataSet = new DataSet();
+            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow mDataRow in mDataSet.Tables[0].Rows)
+                {
+                    PatenteBE pPatente = new PatenteBE();
+                    PatenteDAL.ValorizarEntidad(pPatente, mDataRow);
+                    patentes.Add(pPatente);
+                }
+            }
+
+            return patentes;
+        }
         #region private functions
         private static void ValorizarEntidad(UsuarioBE pUsuario, DataRow pDataRow)
         {

@@ -4,14 +4,21 @@ using System.Linq;
 using System.Text;
 using DAL;
 using BE;
+using BE.Composite;
 
 namespace BL
 {
     public class LoginBL
     {
         public static UsuarioBE SingleUsuario = new UsuarioBE();
+
         public void ValidarLogin(string pNombre_Usuario, string pPassword)
         {
+            if (SingletonSesion.Instancia.EstaLogueado())
+            {
+                throw new Exception("Existe una sesion iniciada");
+            }
+
             BitacoraBE mBitacora = new BitacoraBE();
             BitacoraBL Bitacorabl = new BitacoraBL();
             UsuarioBL Usuariobl = new UsuarioBL();
@@ -31,7 +38,10 @@ namespace BL
                 }
                 else
                 {
-                    ValidarContraseña(mUsuario, pPassword);
+                    if (ValidarContraseña(mUsuario, pPassword))
+                    {
+                        SingletonSesion.Instancia.Login(mUsuario);
+                    }
                 } 
             }
             else
@@ -56,12 +66,12 @@ namespace BL
             {
                 pUsuario.Intentos_Login = 0;
                 mBitacora.Descripcion = "Inicio de sesion satisfactorio";
-                mBitacora.Fecha = DateTime.UtcNow;
+                mBitacora.Fecha = DateTime.Now;
                 mBitacora.ID_Usuario = pUsuario.ID_Usuario;
                 mBitacora.Tipo_Evento = "LOW";
                 Bitacorabl.Guardar(mBitacora);
                 Usuariobl.Actualizar(pUsuario);
-                SingleUsuario = pUsuario;
+                //SingleUsuario = pUsuario;
                 return true;
             }
             else
@@ -89,17 +99,62 @@ namespace BL
 
         }
 
-        public void Logout(UsuarioBE pUsuario)
-        {
-            //Crear Registro en bitacora
-            BitacoraBE mBitacora = new BitacoraBE();
-            BitacoraBL bitacoraBL = new BitacoraBL();
+        //public void Logout(UsuarioBE pUsuario)
+        //{
+        //    if (!SingletonSesion.Instancia.EstaLogueado())
+        //    {
+        //        throw new Exception("No existe una sesion iniciada");
+        //    }
 
-            mBitacora.Descripcion = "Usuario cerro sesion";
-            mBitacora.Tipo_Evento = "LOW";
-            mBitacora.Fecha = DateTime.Now;
-            mBitacora.ID_Usuario = pUsuario.ID_Usuario;
-            bitacoraBL.Guardar(mBitacora);
-        }
+        //    //Crear Registro en bitacora
+        //    BitacoraBE mBitacora = new BitacoraBE();
+        //    BitacoraBL bitacoraBL = new BitacoraBL();
+        //    mBitacora.Descripcion = "Usuario cerro sesion";
+        //    mBitacora.Tipo_Evento = "LOW";
+        //    mBitacora.Fecha = DateTime.Now;
+        //    mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+        //    bitacoraBL.Guardar(mBitacora);
+
+        //    //Desasigno Usuario
+        //    SingletonSesion.Instancia.Logout();
+        //}
+
+        //public bool VerificarPermiso(TipoPermiso permiso)
+        //{
+        //    if (SingleUsuario == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    bool valido = false;
+        //    foreach (var p in SingleUsuario.Permisos)
+        //    {
+        //        if (p is PatenteBE && ((PatenteBE)p).Tipo.Equals(permiso))
+        //        {
+        //            valido = true;
+        //        }
+        //        else
+        //        {
+        //            valido = VerificarPermiso(p, permiso, valido);
+        //        }
+        //    }
+        //    return valido;
+        //}
+
+        //public bool VerificarPermiso(CompuestoBE p, TipoPermiso permiso, bool valido)
+        //{
+        //    foreach (var item in p.ObtenerHijos())
+        //    {
+        //        if (item is PatenteBE && ((PatenteBE)item).Tipo.Equals(permiso))
+        //        {
+        //            valido = true;
+        //        }
+        //        else
+        //        {
+        //            valido = VerificarPermiso(item, permiso, valido);
+        //        }
+        //    }
+        //    return valido;
+        //}
     }
 }
