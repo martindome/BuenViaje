@@ -20,7 +20,7 @@ namespace DAL
         {
             List<UsuarioBE> ListaUsuarios = new List<UsuarioBE>();
 
-            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contrasenia, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuarios u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma";
+            string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contrasenia, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuario u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma";
 
             DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommandText);
 

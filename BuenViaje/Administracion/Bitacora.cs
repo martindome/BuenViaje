@@ -38,7 +38,6 @@ namespace BuenViaje.Administracion
 
         private void Bitacora_Load(object sender, EventArgs e)
         {
-            #region Formato Grilla
             BitacoraDataGrid1.Columns.Add(ObtenerMensajeColumna("Bitacora-Columna-BitacoraID"), ObtenerMensajeColumna("Bitacora-Columna-BitacoraID"));
             BitacoraDataGrid1.Columns.Add(ObtenerMensajeColumna("Bitacora-Columna-BitacoraFecha"), ObtenerMensajeColumna("Bitacora-Columna-BitacoraFecha"));
             BitacoraDataGrid1.Columns.Add(ObtenerMensajeColumna("Bitacora-Columna-BitacoraUsuario"), ObtenerMensajeColumna("Bitacora-Columna-BitacoraUsuario"));
@@ -55,7 +54,6 @@ namespace BuenViaje.Administracion
             BitacoraDataGrid1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             BitacoraDataGrid1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             BitacoraDataGrid1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            #endregion
 
             BitacoraDatePickerDesde.CustomFormat = "MM-dd-yyyy";
             BitacoraDatePickerDesde.Format = DateTimePickerFormat.Custom;

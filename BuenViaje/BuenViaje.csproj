@@ -63,6 +63,12 @@
     <Compile Include="Administracion\Bitacora.Designer.cs">
       <DependentUpon>Bitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Usuarios\UsuariosPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Usuarios\UsuariosPrincipal.Designer.cs">
+      <DependentUpon>UsuariosPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
     <EmbeddedResource Include="Administracion\Bitacora.resx">
       <DependentUpon>Bitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Usuarios\UsuariosPrincipal.resx">
+      <DependentUpon>UsuariosPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
@@ -145,6 +154,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Administracion\Bitacora\" />
     <Folder Include="Pasajes\" />
     <Folder Include="Rutas\" />
   </ItemGroup>

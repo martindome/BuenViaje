@@ -34,6 +34,15 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'CambiarContrasenia-Form', 'Change Password'),
 (1, 'CambiarContrasenia-Info-CambioCorrecto', 'Password changed successfully')
+----Usuario principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'UsuarioPrincipal-Form', 'Users'),
+(1, 'UsuarioPrincipal-Columna-UsuarioID','ID'),
+(1, 'UsuarioPrincipal-Columna-Nombre','Name'),
+(1, 'UsuarioPrincipal-Columna-Apellido','Surname'),
+(1, 'UsuarioPrincipal-Columna-Usuario','Username'),
+(1, 'UsuarioPrincipal-Columna-Logins','Login Attempts'),
+(1, 'UsuarioPrincipal-Columna-Languaje','Language')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -63,7 +72,15 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'CambiarContrasenia-Form', 'Cambiar Contraseña'),
 (2, 'CambiarContrasenia-Info-CambioCorrecto', 'Clave cambiada satisfactoriamente')
-
+----Usuario principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'UsuarioPrincipal-Form', 'Usuarios'),
+(2, 'UsuarioPrincipal-Columna-UsuarioID','ID'),
+(2, 'UsuarioPrincipal-Columna-Nombre','Nombre'),
+(2, 'UsuarioPrincipal-Columna-Apellido','Apellido'),
+(2, 'UsuarioPrincipal-Columna-Usuario','Nombre Usuario'),
+(2, 'UsuarioPrincipal-Columna-Logins','Intentos Login'),
+(2, 'UsuarioPrincipal-Columna-Languaje','Idioma')
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -82,8 +99,8 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1,'cambiarIdiomaToolStripMenuItem', 'Change Languaje'),
 (1,'administracionToolStripMenuItem', 'Security'),
 (1,'bitacoraToolStripMenuItem', 'Logs'),
-(1,'gestionarUsuariosToolStripMenuItem', 'Manage Users'),
-(1,'gestionarPermisosToolStripMenuItem', 'Manage Access'),
+(1,'gestionarUsuariosToolStripMenuItem', 'Users'),
+(1,'gestionarPermisosToolStripMenuItem', 'Access'),
 (1,'copiaDeSeguridadToolStripMenuItem', 'Backup'),
 (1,'restauracionToolStripMenuItem', 'Restore'),
 (1,'pasajesStripMenuItem', 'Tickets'),
@@ -116,6 +133,20 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'CambiarContraseniaLabel7', 'Passwords does not meet requirements'),
 (1, 'CambiarContraseniaButton1', 'Accept'),
 (1, 'CambiarContraseniaButton2', 'Cancel')
+----UsuarioPrincipal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'UsuarioPrincipalBotton1', 'Read'),
+(1, 'UsuarioPrincipalBotton2', 'Create'),
+(1, 'UsuarioPrincipalBotton3', 'Update'),
+(1, 'UsuarioPrincipalBotton4', 'Delete'),
+(1, 'UsuarioPrincipalBotton5', 'Apply'),
+(1, 'UsuarioPrincipalBotton6', 'Clean'),
+(1, 'UsuarioPrincipalLabel1', 'Name'),
+(1, 'UsuarioPrincipalLabel2', 'Surname'),
+(1, 'UsuarioPrincipalLabel3', 'Username'),
+(1, 'UsuarioPrincipalLabel4', 'Failed login attempts'),
+(1, 'UsuarioPrincipalLabel5', 'Lenguaje'),
+(1, 'UsuarioPrincipalGroupBox', 'Filters')
 
 
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -132,8 +163,8 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2,'cambiarIdiomaToolStripMenuItem', 'Cambiar Idioma'),
 (2,'administracionToolStripMenuItem', 'Admnistracion'),
 (2,'bitacoraToolStripMenuItem', 'Bitacora'),
-(2,'gestionarUsuariosToolStripMenuItem', 'Manejar Usuarios'),
-(2,'gestionarPermisosToolStripMenuItem', 'Manejar Permisos'),
+(2,'gestionarUsuariosToolStripMenuItem', 'Usuarios'),
+(2,'gestionarPermisosToolStripMenuItem', 'Permisos'),
 (2,'copiaDeSeguridadToolStripMenuItem', 'Copia de Seguridad'),
 (2,'restauracionToolStripMenuItem', 'Restauracion'),
 (2,'pasajesStripMenuItem', 'Pasajes'),
@@ -166,6 +197,20 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'CambiarContraseniaLabel7', 'Clave no cumple los requisitos'),
 (2, 'CambiarContraseniaButton1', 'Aceptar'),
 (2, 'CambiarContraseniaButton2', 'Cancelar')
+--- Usuario Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'UsuarioPrincipalBotton1', 'Ver'),
+(2, 'UsuarioPrincipalBotton2', 'Crear'),
+(2, 'UsuarioPrincipalBotton3', 'Modificar'),
+(2, 'UsuarioPrincipalBotton4', 'Borrar'),
+(2, 'UsuarioPrincipalBotton5', 'Aplicar'),
+(2, 'UsuarioPrincipalBotton6', 'Limpiar'),
+(2, 'UsuarioPrincipalLabel1', 'Nombre'),
+(2, 'UsuarioPrincipalLabel2', 'Apellido'),
+(2, 'UsuarioPrincipalLabel3', 'Usuario'),
+(2, 'UsuarioPrincipalLabel4', 'Logings Fallidos'),
+(2, 'UsuarioPrincipalLabel5', 'Idioma'),
+(2, 'UsuarioPrincipalGroupBox', 'Filtros')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario
@@ -176,7 +221,7 @@ INSERT INTO dbo.Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contraseni
 INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES 
 (1, 'Administrador de Usuarios', 'Permite administrar usuarios', 'AdminUsuarios'),
 (2, 'Administrador de Permisos', 'Permite administrar permisos de usuario', 'AdminPermisos'),
-(3, 'AdministradorBitacora', 'Permite administrar la bitacora', 'AdminBitacora'),
+(3, 'Consultar Bitacora', 'Permite consultar la bitacora', 'ReadBitacora'),
 (4, 'Administrador de Copias de seguridad', 'Permite administrar Copias de seguridad', 'AdminBackup'),
 (5, 'Administrador de Restore', 'Permite administrar la restauracion del sistema', 'AdminRestore'),
 (6, 'Vender Pasajes', 'Permite manejar la venta de pasajes', 'VendedorPasajes'),
@@ -185,11 +230,10 @@ INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES
 (9, 'Administrador Cliente', 'Permite administrar el manejo de clientes', 'AdminClientes'),
 (10, 'Consultar Usuarios', 'Permite consultar usuarios', 'ReadUsuarios'),
 (11, 'Consultar Permisos', 'Permite consultar permisos', 'ReadPermisos'),
-(12, 'Consultar Bitacora', 'Permite consultar la bitacora', 'ReadBitacora'),
-(13, 'Consultar Pasajes', 'Permite consultar los pasajes vendidos', 'ReadVentas'),
-(14, 'Consultar Rutas', 'Permite consultar las rutas', 'ReadRutas'),
-(15, 'Consultar Localidades', 'Permite consultar las localidades', 'ReadLocalidades'),
-(16, 'Consultar Clientes', 'Permite consultar las localidades', 'ReadClientes')
+(12, 'Consultar Pasajes', 'Permite consultar los pasajes vendidos', 'ReadVentas'),
+(13, 'Consultar Rutas', 'Permite consultar las rutas', 'ReadRutas'),
+(14, 'Consultar Localidades', 'Permite consultar las localidades', 'ReadLocalidades'),
+(15, 'Consultar Clientes', 'Permite consultar las localidades', 'ReadClientes')
 
 --Familias
 INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES

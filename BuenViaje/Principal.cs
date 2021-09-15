@@ -11,6 +11,7 @@ using BL;
 using System.Configuration;
 using BuenViaje.Sesion;
 using BuenViaje.Administracion;
+using BuenViaje.Administracion.Usuarios;
 
 namespace BuenViaje
 {
@@ -97,7 +98,7 @@ namespace BuenViaje
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bitacora mForm = new Bitacora(this);
-            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminBitacora))
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadBitacora))
             {
                 //mForm.MdiParent = this;
                 mForm.MinimizeBox = false;
@@ -117,6 +118,14 @@ namespace BuenViaje
             mForm.MinimizeBox = false;
             mForm.MaximizeBox = false;
             mForm.ShowDialog();
+        }
+
+        private void gestionarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsuariosPrincipal form = new UsuariosPrincipal();
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.ShowDialog();
         }
     }
 }

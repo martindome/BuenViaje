@@ -9,7 +9,7 @@ namespace BE.Composite
     {
         AdminUsuarios,
         AdminPermisos,
-        AdminBitacora,
+        //AdminBitacora,
         AdminBackup,
         AdminRestore,
         VendedorPasajes,

@@ -35,6 +35,11 @@ namespace BL
             UsuarioDAL.Actualizar(pUsuario);
         }
 
+        public List<UsuarioBE> Listar()
+        {
+            return UsuarioDAL.Listar();
+        }
+
         public string ObtenerIdiomaUsuario(UsuarioBE pUsuario)
         {
             return UsuarioDAL.ObtenerIdiomaUsuario(pUsuario);
