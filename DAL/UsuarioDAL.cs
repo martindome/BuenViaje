@@ -102,17 +102,21 @@ namespace DAL
         }
         public static List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)
         {
+            List<CompuestoBE> permisos = new List<CompuestoBE>();
+
             List<CompuestoBE> familias = UsuarioDAL.ListarFamilias(pUsuario);
+            List<CompuestoBE> patentes = UsuarioDAL.ListarPatentes(pUsuario);
             
             foreach (FamiliaBE familia in familias)
             {
-                List<PatenteBE> patentes= FamiliaDAL.ListarPatentes(familia);
-                foreach (PatenteBE patente in patentes)
+                List<PatenteBE> InnerPatentes= FamiliaDAL.ListarPatentes(familia);
+                foreach (PatenteBE patente in InnerPatentes)
                 {
                     familia.AgregarPermiso(patente);
                 }
             }
-
+            permisos.AddRange(familias);
+            permisos.AddRange(patentes);
             return familias;
         }
         public static int Eliminar (UsuarioBE pUsuario)
@@ -150,9 +154,9 @@ namespace DAL
 
             return familias;
         }
-        public static List<PatenteBE> ListarPatentes(UsuarioBE pUsuario)
+        public static List<CompuestoBE> ListarPatentes(UsuarioBE pUsuario)
         {
-            List<PatenteBE> patentes = new List<PatenteBE>();
+            List<CompuestoBE> patentes = new List<CompuestoBE>();
             string mCommand = "SELECT p.ID_Permiso, p.Nombre, p.Descripcion, p.Tipo_Permiso, u.ID_Usuario " +
                 "FROM Permiso AS p " +
                 "INNER JOIN Usuario_Permiso AS up ON up.ID_Permiso = f.ID_Permiso " +

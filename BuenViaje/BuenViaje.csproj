@@ -57,11 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administracion\Bitacora.cs">
+    <Compile Include="Administracion\Bitacora\Bitacora.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\Bitacora.Designer.cs">
+    <Compile Include="Administracion\Bitacora\Bitacora.Designer.cs">
       <DependentUpon>Bitacora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Usuarios\ABMUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Usuarios\ABMUsuarios.Designer.cs">
+      <DependentUpon>ABMUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Usuarios\UsuariosPrincipal.cs">
       <SubType>Form</SubType>
@@ -101,8 +107,12 @@
     <Compile Include="Sesion\Idioma.Designer.cs">
       <DependentUpon>Idioma.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Administracion\Bitacora.resx">
+    <Compile Include="Operacion.cs" />
+    <EmbeddedResource Include="Administracion\Bitacora\Bitacora.resx">
       <DependentUpon>Bitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Usuarios\ABMUsuarios.resx">
+      <DependentUpon>ABMUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Usuarios\UsuariosPrincipal.resx">
       <DependentUpon>UsuariosPrincipal.cs</DependentUpon>
@@ -154,7 +164,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administracion\Bitacora\" />
     <Folder Include="Pasajes\" />
     <Folder Include="Rutas\" />
   </ItemGroup>

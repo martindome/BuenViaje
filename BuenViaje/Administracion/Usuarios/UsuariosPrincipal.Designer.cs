@@ -36,6 +36,8 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.UsuarioPrinciplaText1 = new System.Windows.Forms.TextBox();
             this.UsuarioPrincipalGroupBox = new System.Windows.Forms.GroupBox();
+            this.UsuarioPrincipalBotton6 = new System.Windows.Forms.Button();
+            this.UsuarioPrincipalBotton5 = new System.Windows.Forms.Button();
             this.UsuarioPrincipalLabel5 = new System.Windows.Forms.Label();
             this.UsuarioPrinciplaText5 = new System.Windows.Forms.TextBox();
             this.UsuarioPrincipalLabel4 = new System.Windows.Forms.Label();
@@ -45,8 +47,7 @@
             this.UsuarioPrincipalLabel2 = new System.Windows.Forms.Label();
             this.UsuarioPrinciplaText2 = new System.Windows.Forms.TextBox();
             this.UsuarioPrincipalLabel1 = new System.Windows.Forms.Label();
-            this.UsuarioPrincipalBotton5 = new System.Windows.Forms.Button();
-            this.UsuarioPrincipalBotton6 = new System.Windows.Forms.Button();
+            this.UsuarioPrincipalBotton7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grillaUsuarios)).BeginInit();
             this.UsuarioPrincipalGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +82,7 @@
             this.UsuarioPrincipalBotton2.TabIndex = 3;
             this.UsuarioPrincipalBotton2.Text = "Alta";
             this.UsuarioPrincipalBotton2.UseVisualStyleBackColor = true;
+            this.UsuarioPrincipalBotton2.Click += new System.EventHandler(this.UsuarioPrincipalBotton2_Click);
             // 
             // UsuarioPrincipalBotton3
             // 
@@ -137,6 +139,28 @@
             this.UsuarioPrincipalGroupBox.TabIndex = 10;
             this.UsuarioPrincipalGroupBox.TabStop = false;
             this.UsuarioPrincipalGroupBox.Text = "Filtros";
+            // 
+            // UsuarioPrincipalBotton6
+            // 
+            this.UsuarioPrincipalBotton6.Location = new System.Drawing.Point(129, 289);
+            this.UsuarioPrincipalBotton6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UsuarioPrincipalBotton6.Name = "UsuarioPrincipalBotton6";
+            this.UsuarioPrincipalBotton6.Size = new System.Drawing.Size(71, 27);
+            this.UsuarioPrincipalBotton6.TabIndex = 19;
+            this.UsuarioPrincipalBotton6.Text = "Limpiar";
+            this.UsuarioPrincipalBotton6.UseVisualStyleBackColor = true;
+            this.UsuarioPrincipalBotton6.Click += new System.EventHandler(this.UsuarioPrincipalBotton6_Click);
+            // 
+            // UsuarioPrincipalBotton5
+            // 
+            this.UsuarioPrincipalBotton5.Location = new System.Drawing.Point(30, 289);
+            this.UsuarioPrincipalBotton5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UsuarioPrincipalBotton5.Name = "UsuarioPrincipalBotton5";
+            this.UsuarioPrincipalBotton5.Size = new System.Drawing.Size(71, 27);
+            this.UsuarioPrincipalBotton5.TabIndex = 18;
+            this.UsuarioPrincipalBotton5.Text = "Aplicar";
+            this.UsuarioPrincipalBotton5.UseVisualStyleBackColor = true;
+            this.UsuarioPrincipalBotton5.Click += new System.EventHandler(this.UsuarioPrincipalBotton5_Click);
             // 
             // UsuarioPrincipalLabel5
             // 
@@ -211,33 +235,22 @@
             this.UsuarioPrincipalLabel1.TabIndex = 9;
             this.UsuarioPrincipalLabel1.Text = "Nombre";
             // 
-            // UsuarioPrincipalBotton5
+            // UsuarioPrincipalBotton7
             // 
-            this.UsuarioPrincipalBotton5.Location = new System.Drawing.Point(30, 289);
-            this.UsuarioPrincipalBotton5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UsuarioPrincipalBotton5.Name = "UsuarioPrincipalBotton5";
-            this.UsuarioPrincipalBotton5.Size = new System.Drawing.Size(71, 27);
-            this.UsuarioPrincipalBotton5.TabIndex = 18;
-            this.UsuarioPrincipalBotton5.Text = "Aplicar";
-            this.UsuarioPrincipalBotton5.UseVisualStyleBackColor = true;
-            this.UsuarioPrincipalBotton5.Click += new System.EventHandler(this.UsuarioPrincipalBotton5_Click);
-            // 
-            // UsuarioPrincipalBotton6
-            // 
-            this.UsuarioPrincipalBotton6.Location = new System.Drawing.Point(129, 289);
-            this.UsuarioPrincipalBotton6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UsuarioPrincipalBotton6.Name = "UsuarioPrincipalBotton6";
-            this.UsuarioPrincipalBotton6.Size = new System.Drawing.Size(71, 27);
-            this.UsuarioPrincipalBotton6.TabIndex = 19;
-            this.UsuarioPrincipalBotton6.Text = "Limpiar";
-            this.UsuarioPrincipalBotton6.UseVisualStyleBackColor = true;
-            this.UsuarioPrincipalBotton6.Click += new System.EventHandler(this.UsuarioPrincipalBotton6_Click);
+            this.UsuarioPrincipalBotton7.Location = new System.Drawing.Point(308, 307);
+            this.UsuarioPrincipalBotton7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UsuarioPrincipalBotton7.Name = "UsuarioPrincipalBotton7";
+            this.UsuarioPrincipalBotton7.Size = new System.Drawing.Size(124, 27);
+            this.UsuarioPrincipalBotton7.TabIndex = 11;
+            this.UsuarioPrincipalBotton7.Text = "Resetear Clave";
+            this.UsuarioPrincipalBotton7.UseVisualStyleBackColor = true;
             // 
             // UsuariosPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 346);
+            this.Controls.Add(this.UsuarioPrincipalBotton7);
             this.Controls.Add(this.UsuarioPrincipalGroupBox);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.UsuarioPrincipalBotton4);
@@ -276,5 +289,6 @@
         private System.Windows.Forms.Label UsuarioPrincipalLabel1;
         private System.Windows.Forms.Button UsuarioPrincipalBotton6;
         private System.Windows.Forms.Button UsuarioPrincipalBotton5;
+        private System.Windows.Forms.Button UsuarioPrincipalBotton7;
     }
 }

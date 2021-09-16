@@ -81,6 +81,28 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'UsuarioPrincipal-Columna-Usuario','Nombre Usuario'),
 (2, 'UsuarioPrincipal-Columna-Logins','Intentos Login'),
 (2, 'UsuarioPrincipal-Columna-Languaje','Idioma')
+----ABM USUARIO
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMUsuarios-Form', 'Usuario'),
+(2, 'ABMUsuariosLabel1', 'Nombre'),
+(2, 'ABMUsuariosLabel2', 'Apellido'),
+(2, 'ABMUsuariosLabel3', 'Usuario'),
+(2, 'ABMUsuariosLabel4', 'Clave'),
+(2, 'ABMUsuariosLabel5', 'Idioma'),
+(2, 'ABMUsuariosLabel6', 'Familia'),
+(2, 'ABMUsuariosLabel7', 'Patente'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuarios'),
+(2, 'ABMUsuarioGroupboxPermisos', 'Permisos'),
+(2, 'ABMUsuarioGroupboxFamilia', 'Familias'),
+(2, 'ABMUsuarioGroupboxPatentes', 'Patentes'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -141,6 +163,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'UsuarioPrincipalBotton4', 'Delete'),
 (1, 'UsuarioPrincipalBotton5', 'Apply'),
 (1, 'UsuarioPrincipalBotton6', 'Clean'),
+(1, 'UsuarioPrincipalBotton7', 'Reset Password'),
 (1, 'UsuarioPrincipalLabel1', 'Name'),
 (1, 'UsuarioPrincipalLabel2', 'Surname'),
 (1, 'UsuarioPrincipalLabel3', 'Username'),
@@ -205,6 +228,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'UsuarioPrincipalBotton4', 'Borrar'),
 (2, 'UsuarioPrincipalBotton5', 'Aplicar'),
 (2, 'UsuarioPrincipalBotton6', 'Limpiar'),
+(2, 'UsuarioPrincipalBotton7', 'Resetear Clave'),
 (2, 'UsuarioPrincipalLabel1', 'Nombre'),
 (2, 'UsuarioPrincipalLabel2', 'Apellido'),
 (2, 'UsuarioPrincipalLabel3', 'Usuario'),

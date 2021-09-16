@@ -29,6 +29,7 @@ namespace BuenViaje.Administracion.Usuarios
             grillaUsuarios.Columns.Add(ObtenerMensajeColumna("UsuarioPrincipal-Columna-Languaje"), ObtenerMensajeColumna("UsuarioPrincipal-Columna-Languaje"));
             grillaUsuarios.Columns[ObtenerMensajeColumna("UsuarioPrincipal-Columna-UsuarioID")].Visible = false;
 
+            grillaUsuarios.MultiSelect = false;
             grillaUsuarios.EditMode = DataGridViewEditMode.EditProgrammatically;
             grillaUsuarios.AllowUserToAddRows = false;
             grillaUsuarios.AllowUserToDeleteRows = false;
@@ -127,6 +128,16 @@ namespace BuenViaje.Administracion.Usuarios
             this.UsuarioPrinciplaText3.Text = "";
             this.UsuarioPrinciplaText4.Text = "";
             this.UsuarioPrinciplaText5.Text = "";
+            ActualizarGrilla();
+        }
+
+        private void UsuarioPrincipalBotton2_Click(object sender, EventArgs e)
+        {
+            UsuarioBL usuariobl = new UsuarioBL();
+            ABMUsuarios abmusuarios = new ABMUsuarios();
+            abmusuarios.operacion = Operacion.Alta;
+            abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+            abmusuarios.ShowDialog();
             ActualizarGrilla();
         }
     }
