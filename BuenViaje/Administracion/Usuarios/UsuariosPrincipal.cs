@@ -82,25 +82,29 @@ namespace BuenViaje.Administracion.Usuarios
 
         }
 
-        public void CargarIdioma(List<ControlBE> Lista)
+        private void CargarIdioma(List<ControlBE> pControles)
         {
-            foreach (Control Control in this.Controls)
+            foreach (Control C in this.Controls)
             {
-                foreach (ControlBE c in Lista)
+                foreach (ControlBE pControl in pControles)
                 {
-                    if (c.ID_Control == Control.Name)
+                    if (pControl.ID_Control == C.Name)
                     {
-                        Control.Text = c.Mensaje;
+                        C.Text = pControl.Mensaje;
+                        break;
                     }
-                }
-            }
-            foreach (Control InnerControl in UsuarioPrincipalGroupBox.Controls)
-            {
-                foreach (ControlBE c in Lista)
-                {
-                    if (c.ID_Control == InnerControl.Name)
+                    if (C is GroupBox)
                     {
-                        InnerControl.Text = c.Mensaje;
+                        foreach (Control InnerControl in C.Controls)
+                        {
+                            foreach (ControlBE c in pControles)
+                            {
+                                if (c.ID_Control == InnerControl.Name)
+                                {
+                                    InnerControl.Text = c.Mensaje;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -136,7 +140,8 @@ namespace BuenViaje.Administracion.Usuarios
             UsuarioBL usuariobl = new UsuarioBL();
             ABMUsuarios abmusuarios = new ABMUsuarios();
             abmusuarios.operacion = Operacion.Alta;
-            abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+            //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+            abmusuarios.usuariobe = new UsuarioBE();
             abmusuarios.ShowDialog();
             ActualizarGrilla();
         }

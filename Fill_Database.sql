@@ -43,6 +43,13 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'UsuarioPrincipal-Columna-Usuario','Username'),
 (1, 'UsuarioPrincipal-Columna-Logins','Login Attempts'),
 (1, 'UsuarioPrincipal-Columna-Languaje','Language')
+----ABM USUARIO
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMUsuarios-Form', 'Usuario'),
+(1, 'ABMUSuarios-Columna-FamiliaID', 'ID'),
+(1, 'ABMUSuarios-Columna-FamiliaNombre', 'Name'),
+(1, 'ABMUSuarios-Columna-PatenteID', 'ID'),
+(1, 'ABMUSuarios-Columna-PatenteNombre', 'Name')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -84,26 +91,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----ABM USUARIO
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMUsuarios-Form', 'Usuario'),
-(2, 'ABMUsuariosLabel1', 'Nombre'),
-(2, 'ABMUsuariosLabel2', 'Apellido'),
-(2, 'ABMUsuariosLabel3', 'Usuario'),
-(2, 'ABMUsuariosLabel4', 'Clave'),
-(2, 'ABMUsuariosLabel5', 'Idioma'),
-(2, 'ABMUsuariosLabel6', 'Familia'),
-(2, 'ABMUsuariosLabel7', 'Patente'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuarios'),
-(2, 'ABMUsuarioGroupboxPermisos', 'Permisos'),
-(2, 'ABMUsuarioGroupboxFamilia', 'Familias'),
-(2, 'ABMUsuarioGroupboxPatentes', 'Patentes'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
-(2, 'ABMUsuarioGroupboxUsuario', 'Usuario'),
-
-
+(2, 'ABMUSuarios-Columna-FamiliaID', 'ID'),
+(2, 'ABMUSuarios-Columna-FamiliaNombre', 'Nombre'),
+(2, 'ABMUSuarios-Columna-PatenteID', 'ID'),
+(2, 'ABMUSuarios-Columna-PatenteNombre', 'Nombre')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -170,7 +161,23 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'UsuarioPrincipalLabel4', 'Failed login attempts'),
 (1, 'UsuarioPrincipalLabel5', 'Lenguaje'),
 (1, 'UsuarioPrincipalGroupBox', 'Filters')
-
+--- ABMUsuarios
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ABMUsuariosLabel1', 'Name'),
+(1, 'ABMUsuariosLabel2', 'Surname'),
+(1, 'ABMUsuariosLabel3', 'Usuer'),
+(1, 'ABMUsuariosLabel4', 'Password'),
+(1, 'ABMUsuariosLabel5', 'Language'),
+(1, 'ABMUsuariosLabel6', 'Available'),
+(1, 'ABMUsuariosLabel7', 'Assigned'),
+(1, 'ABMUsuariosLabel8', 'Available'),
+(1, 'ABMUsuariosLabel9', 'Assigned'),
+(1, 'ABMUsuarioGroupboxUsuario', 'User'),
+(1, 'ABMUsuarioGroupboxPermisos', 'Accesses'),
+(1, 'ABMUsuarioGroupboxFamilia', 'Groups'),
+(1, 'ABMUsuarioGroupboxPatentes', 'Permitions'),
+(1, 'ABMUsuariosBotton1', 'Apply'),
+(1, 'ABMUsuariosBotton2', 'Cancel')
 
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 ----Inicio
@@ -236,6 +243,24 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'UsuarioPrincipalLabel5', 'Idioma'),
 (2, 'UsuarioPrincipalGroupBox', 'Filtros')
 
+--- ABMUsuarios
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ABMUsuariosLabel1', 'Nombre'),
+(2, 'ABMUsuariosLabel2', 'Apellido'),
+(2, 'ABMUsuariosLabel3', 'Usuario'),
+(2, 'ABMUsuariosLabel4', 'Clave'),
+(2, 'ABMUsuariosLabel5', 'Idioma'),
+(2, 'ABMUsuariosLabel6', 'Disponibles'),
+(2, 'ABMUsuariosLabel7', 'Actuales'),
+(2, 'ABMUsuariosLabel8', 'Disponibles'),
+(2, 'ABMUsuariosLabel9', 'Actuales'),
+(2, 'ABMUsuarioGroupboxUsuario', 'Usuarios'),
+(2, 'ABMUsuarioGroupboxPermisos', 'Permisos'),
+(2, 'ABMUsuarioGroupboxFamilia', 'Familias'),
+(2, 'ABMUsuarioGroupboxPatentes', 'Patentes'),
+(2, 'ABMUsuariosBotton1', 'Aplicar'),
+(2, 'ABMUsuariosBotton2', 'Cancelar')
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario
 INSERT INTO dbo.Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, DVH, Intentos_Login, ID_Idioma) VALUES
@@ -261,9 +286,10 @@ INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES
 
 --Familias
 INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
-(1, 'Administrador Sistema', 'Permite administrar la seguridad del sistema'),
-(2, 'Administrador Usuarios', 'Permite manejar los usuarios del sistema'),
-(3, 'Auditor Sistema', 'Permite acceder a los logs del sistema')
+(1, 'Administradores Sistema', 'Permite administrar la seguridad del sistema'),
+(2, 'Administradores Usuarios', 'Permite manejar los usuarios del sistema'),
+(3, 'Administradores Permisos', 'Permite manejar los usuarios del sistema'),
+(4, 'Auditores Seguridad', 'Permite acceder a los logs del sistema')
 
 --Usuario_Familia
 INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES

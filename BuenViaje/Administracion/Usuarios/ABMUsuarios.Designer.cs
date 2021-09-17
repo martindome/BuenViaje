@@ -29,49 +29,53 @@
         private void InitializeComponent()
         {
             this.ABMUsuarioGroupboxUsuario = new System.Windows.Forms.GroupBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.ABMUsuariosTextoUsuario = new System.Windows.Forms.TextBox();
             this.ABMUsuariosLabel3 = new System.Windows.Forms.Label();
-            this.cmbIdioma = new System.Windows.Forms.ComboBox();
+            this.ABMUsuariosComboIdioma = new System.Windows.Forms.ComboBox();
             this.ABMUsuariosLabel5 = new System.Windows.Forms.Label();
             this.ABMUsuariosLabel4 = new System.Windows.Forms.Label();
-            this.txtContrasena = new System.Windows.Forms.TextBox();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.ABMUsuariosTextoClave = new System.Windows.Forms.TextBox();
+            this.ABMUsuariosTextoApellido = new System.Windows.Forms.TextBox();
+            this.ABMUsuariosTextoNombre = new System.Windows.Forms.TextBox();
             this.ABMUsuariosLabel2 = new System.Windows.Forms.Label();
             this.ABMUsuariosLabel1 = new System.Windows.Forms.Label();
             this.ABMUsuarioGroupboxPermisos = new System.Windows.Forms.GroupBox();
             this.ABMUsuarioGroupboxPatentes = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ABMUsuariosLabel9 = new System.Windows.Forms.Label();
+            this.ABMUsuariosLabel8 = new System.Windows.Forms.Label();
+            this.ABMUsuariosGrillaPatente2 = new System.Windows.Forms.DataGridView();
             this.ABMUsuariosBotton6 = new System.Windows.Forms.Button();
             this.ABMUsuariosBotton5 = new System.Windows.Forms.Button();
-            this.dgvPat = new System.Windows.Forms.DataGridView();
+            this.ABMUsuariosGrillaPatente1 = new System.Windows.Forms.DataGridView();
             this.ABMUsuarioGroupboxFamilia = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ABMUsuariosLabel7 = new System.Windows.Forms.Label();
+            this.ABMUsuariosLabel6 = new System.Windows.Forms.Label();
+            this.ABMUsuariosGrillaFamilia2 = new System.Windows.Forms.DataGridView();
             this.ABMUsuariosBotton4 = new System.Windows.Forms.Button();
             this.ABMUsuariosBotton3 = new System.Windows.Forms.Button();
-            this.dgvFam = new System.Windows.Forms.DataGridView();
+            this.ABMUsuariosGrillaFamilia1 = new System.Windows.Forms.DataGridView();
             this.ABMUsuariosBotton1 = new System.Windows.Forms.Button();
             this.ABMUsuariosBotton2 = new System.Windows.Forms.Button();
             this.ABMUsuarioGroupboxUsuario.SuspendLayout();
             this.ABMUsuarioGroupboxPermisos.SuspendLayout();
             this.ABMUsuarioGroupboxPatentes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaPatente2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaPatente1)).BeginInit();
             this.ABMUsuarioGroupboxFamilia.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaFamilia2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaFamilia1)).BeginInit();
             this.SuspendLayout();
             // 
             // ABMUsuarioGroupboxUsuario
             // 
-            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.txtEmail);
+            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosTextoUsuario);
             this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosLabel3);
-            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.cmbIdioma);
+            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosComboIdioma);
             this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosLabel5);
             this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosLabel4);
-            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.txtContrasena);
-            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.txtApellido);
-            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.txtNombre);
+            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosTextoClave);
+            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosTextoApellido);
+            this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosTextoNombre);
             this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosLabel2);
             this.ABMUsuarioGroupboxUsuario.Controls.Add(this.ABMUsuariosLabel1);
             this.ABMUsuarioGroupboxUsuario.Location = new System.Drawing.Point(11, 12);
@@ -83,13 +87,13 @@
             this.ABMUsuarioGroupboxUsuario.TabStop = false;
             this.ABMUsuarioGroupboxUsuario.Text = "Usuario";
             // 
-            // txtEmail
+            // ABMUsuariosTextoUsuario
             // 
-            this.txtEmail.Location = new System.Drawing.Point(12, 110);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(212, 20);
-            this.txtEmail.TabIndex = 13;
+            this.ABMUsuariosTextoUsuario.Location = new System.Drawing.Point(12, 110);
+            this.ABMUsuariosTextoUsuario.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ABMUsuariosTextoUsuario.Name = "ABMUsuariosTextoUsuario";
+            this.ABMUsuariosTextoUsuario.Size = new System.Drawing.Size(212, 20);
+            this.ABMUsuariosTextoUsuario.TabIndex = 13;
             // 
             // ABMUsuariosLabel3
             // 
@@ -101,14 +105,14 @@
             this.ABMUsuariosLabel3.TabIndex = 12;
             this.ABMUsuariosLabel3.Text = "Usuario";
             // 
-            // cmbIdioma
+            // ABMUsuariosComboIdioma
             // 
-            this.cmbIdioma.FormattingEnabled = true;
-            this.cmbIdioma.Location = new System.Drawing.Point(12, 187);
-            this.cmbIdioma.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbIdioma.Name = "cmbIdioma";
-            this.cmbIdioma.Size = new System.Drawing.Size(212, 21);
-            this.cmbIdioma.TabIndex = 11;
+            this.ABMUsuariosComboIdioma.FormattingEnabled = true;
+            this.ABMUsuariosComboIdioma.Location = new System.Drawing.Point(12, 187);
+            this.ABMUsuariosComboIdioma.Margin = new System.Windows.Forms.Padding(2);
+            this.ABMUsuariosComboIdioma.Name = "ABMUsuariosComboIdioma";
+            this.ABMUsuariosComboIdioma.Size = new System.Drawing.Size(212, 21);
+            this.ABMUsuariosComboIdioma.TabIndex = 11;
             // 
             // ABMUsuariosLabel5
             // 
@@ -130,30 +134,30 @@
             this.ABMUsuariosLabel4.TabIndex = 8;
             this.ABMUsuariosLabel4.Text = "Contraseña";
             // 
-            // txtContrasena
+            // ABMUsuariosTextoClave
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(12, 149);
-            this.txtContrasena.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.PasswordChar = '*';
-            this.txtContrasena.Size = new System.Drawing.Size(212, 20);
-            this.txtContrasena.TabIndex = 7;
+            this.ABMUsuariosTextoClave.Location = new System.Drawing.Point(12, 149);
+            this.ABMUsuariosTextoClave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ABMUsuariosTextoClave.Name = "ABMUsuariosTextoClave";
+            this.ABMUsuariosTextoClave.PasswordChar = '*';
+            this.ABMUsuariosTextoClave.Size = new System.Drawing.Size(212, 20);
+            this.ABMUsuariosTextoClave.TabIndex = 7;
             // 
-            // txtApellido
+            // ABMUsuariosTextoApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(12, 71);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(212, 20);
-            this.txtApellido.TabIndex = 5;
+            this.ABMUsuariosTextoApellido.Location = new System.Drawing.Point(12, 71);
+            this.ABMUsuariosTextoApellido.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ABMUsuariosTextoApellido.Name = "ABMUsuariosTextoApellido";
+            this.ABMUsuariosTextoApellido.Size = new System.Drawing.Size(212, 20);
+            this.ABMUsuariosTextoApellido.TabIndex = 5;
             // 
-            // txtNombre
+            // ABMUsuariosTextoNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(12, 32);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(212, 20);
-            this.txtNombre.TabIndex = 4;
+            this.ABMUsuariosTextoNombre.Location = new System.Drawing.Point(12, 32);
+            this.ABMUsuariosTextoNombre.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ABMUsuariosTextoNombre.Name = "ABMUsuariosTextoNombre";
+            this.ABMUsuariosTextoNombre.Size = new System.Drawing.Size(212, 20);
+            this.ABMUsuariosTextoNombre.TabIndex = 4;
             // 
             // ABMUsuariosLabel2
             // 
@@ -188,10 +192,12 @@
             // 
             // ABMUsuarioGroupboxPatentes
             // 
-            this.ABMUsuarioGroupboxPatentes.Controls.Add(this.dataGridView2);
+            this.ABMUsuarioGroupboxPatentes.Controls.Add(this.ABMUsuariosLabel9);
+            this.ABMUsuarioGroupboxPatentes.Controls.Add(this.ABMUsuariosLabel8);
+            this.ABMUsuarioGroupboxPatentes.Controls.Add(this.ABMUsuariosGrillaPatente2);
             this.ABMUsuarioGroupboxPatentes.Controls.Add(this.ABMUsuariosBotton6);
             this.ABMUsuarioGroupboxPatentes.Controls.Add(this.ABMUsuariosBotton5);
-            this.ABMUsuarioGroupboxPatentes.Controls.Add(this.dgvPat);
+            this.ABMUsuarioGroupboxPatentes.Controls.Add(this.ABMUsuariosGrillaPatente1);
             this.ABMUsuarioGroupboxPatentes.Location = new System.Drawing.Point(392, 18);
             this.ABMUsuarioGroupboxPatentes.Margin = new System.Windows.Forms.Padding(2);
             this.ABMUsuarioGroupboxPatentes.Name = "ABMUsuarioGroupboxPatentes";
@@ -201,20 +207,40 @@
             this.ABMUsuarioGroupboxPatentes.TabStop = false;
             this.ABMUsuarioGroupboxPatentes.Text = "Patente";
             // 
-            // dataGridView2
+            // ABMUsuariosLabel9
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(192, 23);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 82;
-            this.dataGridView2.RowTemplate.Height = 33;
-            this.dataGridView2.Size = new System.Drawing.Size(184, 153);
-            this.dataGridView2.TabIndex = 14;
+            this.ABMUsuariosLabel9.AutoSize = true;
+            this.ABMUsuariosLabel9.Location = new System.Drawing.Point(192, 22);
+            this.ABMUsuariosLabel9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ABMUsuariosLabel9.Name = "ABMUsuariosLabel9";
+            this.ABMUsuariosLabel9.Size = new System.Drawing.Size(44, 13);
+            this.ABMUsuariosLabel9.TabIndex = 17;
+            this.ABMUsuariosLabel9.Text = "Nombre";
+            // 
+            // ABMUsuariosLabel8
+            // 
+            this.ABMUsuariosLabel8.AutoSize = true;
+            this.ABMUsuariosLabel8.Location = new System.Drawing.Point(4, 22);
+            this.ABMUsuariosLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ABMUsuariosLabel8.Name = "ABMUsuariosLabel8";
+            this.ABMUsuariosLabel8.Size = new System.Drawing.Size(44, 13);
+            this.ABMUsuariosLabel8.TabIndex = 16;
+            this.ABMUsuariosLabel8.Text = "Nombre";
+            // 
+            // ABMUsuariosGrillaPatente2
+            // 
+            this.ABMUsuariosGrillaPatente2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ABMUsuariosGrillaPatente2.Location = new System.Drawing.Point(192, 37);
+            this.ABMUsuariosGrillaPatente2.Margin = new System.Windows.Forms.Padding(2);
+            this.ABMUsuariosGrillaPatente2.Name = "ABMUsuariosGrillaPatente2";
+            this.ABMUsuariosGrillaPatente2.RowHeadersWidth = 82;
+            this.ABMUsuariosGrillaPatente2.RowTemplate.Height = 33;
+            this.ABMUsuariosGrillaPatente2.Size = new System.Drawing.Size(184, 139);
+            this.ABMUsuariosGrillaPatente2.TabIndex = 14;
             // 
             // ABMUsuariosBotton6
             // 
-            this.ABMUsuariosBotton6.Location = new System.Drawing.Point(192, 181);
+            this.ABMUsuariosBotton6.Location = new System.Drawing.Point(310, 181);
             this.ABMUsuariosBotton6.Margin = new System.Windows.Forms.Padding(2);
             this.ABMUsuariosBotton6.Name = "ABMUsuariosBotton6";
             this.ABMUsuariosBotton6.Size = new System.Drawing.Size(66, 21);
@@ -224,7 +250,7 @@
             // 
             // ABMUsuariosBotton5
             // 
-            this.ABMUsuariosBotton5.Location = new System.Drawing.Point(122, 181);
+            this.ABMUsuariosBotton5.Location = new System.Drawing.Point(4, 180);
             this.ABMUsuariosBotton5.Margin = new System.Windows.Forms.Padding(2);
             this.ABMUsuariosBotton5.Name = "ABMUsuariosBotton5";
             this.ABMUsuariosBotton5.Size = new System.Drawing.Size(66, 21);
@@ -232,23 +258,25 @@
             this.ABMUsuariosBotton5.Text = "Agregar";
             this.ABMUsuariosBotton5.UseVisualStyleBackColor = true;
             // 
-            // dgvPat
+            // ABMUsuariosGrillaPatente1
             // 
-            this.dgvPat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPat.Location = new System.Drawing.Point(4, 23);
-            this.dgvPat.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvPat.Name = "dgvPat";
-            this.dgvPat.RowHeadersWidth = 82;
-            this.dgvPat.RowTemplate.Height = 33;
-            this.dgvPat.Size = new System.Drawing.Size(184, 153);
-            this.dgvPat.TabIndex = 0;
+            this.ABMUsuariosGrillaPatente1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ABMUsuariosGrillaPatente1.Location = new System.Drawing.Point(4, 37);
+            this.ABMUsuariosGrillaPatente1.Margin = new System.Windows.Forms.Padding(2);
+            this.ABMUsuariosGrillaPatente1.Name = "ABMUsuariosGrillaPatente1";
+            this.ABMUsuariosGrillaPatente1.RowHeadersWidth = 82;
+            this.ABMUsuariosGrillaPatente1.RowTemplate.Height = 33;
+            this.ABMUsuariosGrillaPatente1.Size = new System.Drawing.Size(184, 139);
+            this.ABMUsuariosGrillaPatente1.TabIndex = 0;
             // 
             // ABMUsuarioGroupboxFamilia
             // 
-            this.ABMUsuarioGroupboxFamilia.Controls.Add(this.dataGridView1);
+            this.ABMUsuarioGroupboxFamilia.Controls.Add(this.ABMUsuariosLabel7);
+            this.ABMUsuarioGroupboxFamilia.Controls.Add(this.ABMUsuariosLabel6);
+            this.ABMUsuarioGroupboxFamilia.Controls.Add(this.ABMUsuariosGrillaFamilia2);
             this.ABMUsuarioGroupboxFamilia.Controls.Add(this.ABMUsuariosBotton4);
             this.ABMUsuarioGroupboxFamilia.Controls.Add(this.ABMUsuariosBotton3);
-            this.ABMUsuarioGroupboxFamilia.Controls.Add(this.dgvFam);
+            this.ABMUsuarioGroupboxFamilia.Controls.Add(this.ABMUsuariosGrillaFamilia1);
             this.ABMUsuarioGroupboxFamilia.Location = new System.Drawing.Point(5, 18);
             this.ABMUsuarioGroupboxFamilia.Margin = new System.Windows.Forms.Padding(2);
             this.ABMUsuarioGroupboxFamilia.Name = "ABMUsuarioGroupboxFamilia";
@@ -258,20 +286,40 @@
             this.ABMUsuarioGroupboxFamilia.TabStop = false;
             this.ABMUsuarioGroupboxFamilia.Text = "Familias";
             // 
-            // dataGridView1
+            // ABMUsuariosLabel7
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(192, 23);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 82;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(184, 153);
-            this.dataGridView1.TabIndex = 13;
+            this.ABMUsuariosLabel7.AutoSize = true;
+            this.ABMUsuariosLabel7.Location = new System.Drawing.Point(189, 22);
+            this.ABMUsuariosLabel7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ABMUsuariosLabel7.Name = "ABMUsuariosLabel7";
+            this.ABMUsuariosLabel7.Size = new System.Drawing.Size(44, 13);
+            this.ABMUsuariosLabel7.TabIndex = 15;
+            this.ABMUsuariosLabel7.Text = "Nombre";
+            // 
+            // ABMUsuariosLabel6
+            // 
+            this.ABMUsuariosLabel6.AutoSize = true;
+            this.ABMUsuariosLabel6.Location = new System.Drawing.Point(4, 22);
+            this.ABMUsuariosLabel6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ABMUsuariosLabel6.Name = "ABMUsuariosLabel6";
+            this.ABMUsuariosLabel6.Size = new System.Drawing.Size(44, 13);
+            this.ABMUsuariosLabel6.TabIndex = 14;
+            this.ABMUsuariosLabel6.Text = "Nombre";
+            // 
+            // ABMUsuariosGrillaFamilia2
+            // 
+            this.ABMUsuariosGrillaFamilia2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ABMUsuariosGrillaFamilia2.Location = new System.Drawing.Point(192, 37);
+            this.ABMUsuariosGrillaFamilia2.Margin = new System.Windows.Forms.Padding(2);
+            this.ABMUsuariosGrillaFamilia2.Name = "ABMUsuariosGrillaFamilia2";
+            this.ABMUsuariosGrillaFamilia2.RowHeadersWidth = 82;
+            this.ABMUsuariosGrillaFamilia2.RowTemplate.Height = 33;
+            this.ABMUsuariosGrillaFamilia2.Size = new System.Drawing.Size(184, 139);
+            this.ABMUsuariosGrillaFamilia2.TabIndex = 13;
             // 
             // ABMUsuariosBotton4
             // 
-            this.ABMUsuariosBotton4.Location = new System.Drawing.Point(192, 181);
+            this.ABMUsuariosBotton4.Location = new System.Drawing.Point(310, 181);
             this.ABMUsuariosBotton4.Margin = new System.Windows.Forms.Padding(2);
             this.ABMUsuariosBotton4.Name = "ABMUsuariosBotton4";
             this.ABMUsuariosBotton4.Size = new System.Drawing.Size(66, 21);
@@ -281,7 +329,7 @@
             // 
             // ABMUsuariosBotton3
             // 
-            this.ABMUsuariosBotton3.Location = new System.Drawing.Point(122, 181);
+            this.ABMUsuariosBotton3.Location = new System.Drawing.Point(4, 180);
             this.ABMUsuariosBotton3.Margin = new System.Windows.Forms.Padding(2);
             this.ABMUsuariosBotton3.Name = "ABMUsuariosBotton3";
             this.ABMUsuariosBotton3.Size = new System.Drawing.Size(66, 21);
@@ -289,16 +337,16 @@
             this.ABMUsuariosBotton3.Text = "Agregar";
             this.ABMUsuariosBotton3.UseVisualStyleBackColor = true;
             // 
-            // dgvFam
+            // ABMUsuariosGrillaFamilia1
             // 
-            this.dgvFam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFam.Location = new System.Drawing.Point(4, 23);
-            this.dgvFam.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvFam.Name = "dgvFam";
-            this.dgvFam.RowHeadersWidth = 82;
-            this.dgvFam.RowTemplate.Height = 33;
-            this.dgvFam.Size = new System.Drawing.Size(184, 153);
-            this.dgvFam.TabIndex = 0;
+            this.ABMUsuariosGrillaFamilia1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ABMUsuariosGrillaFamilia1.Location = new System.Drawing.Point(4, 37);
+            this.ABMUsuariosGrillaFamilia1.Margin = new System.Windows.Forms.Padding(2);
+            this.ABMUsuariosGrillaFamilia1.Name = "ABMUsuariosGrillaFamilia1";
+            this.ABMUsuariosGrillaFamilia1.RowHeadersWidth = 82;
+            this.ABMUsuariosGrillaFamilia1.RowTemplate.Height = 33;
+            this.ABMUsuariosGrillaFamilia1.Size = new System.Drawing.Size(184, 139);
+            this.ABMUsuariosGrillaFamilia1.TabIndex = 0;
             // 
             // ABMUsuariosBotton1
             // 
@@ -338,11 +386,13 @@
             this.ABMUsuarioGroupboxUsuario.PerformLayout();
             this.ABMUsuarioGroupboxPermisos.ResumeLayout(false);
             this.ABMUsuarioGroupboxPatentes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPat)).EndInit();
+            this.ABMUsuarioGroupboxPatentes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaPatente2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaPatente1)).EndInit();
             this.ABMUsuarioGroupboxFamilia.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFam)).EndInit();
+            this.ABMUsuarioGroupboxFamilia.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaFamilia2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABMUsuariosGrillaFamilia1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -350,28 +400,32 @@
         #endregion
 
         private System.Windows.Forms.GroupBox ABMUsuarioGroupboxUsuario;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox ABMUsuariosTextoUsuario;
         private System.Windows.Forms.Label ABMUsuariosLabel3;
-        private System.Windows.Forms.ComboBox cmbIdioma;
+        private System.Windows.Forms.ComboBox ABMUsuariosComboIdioma;
         private System.Windows.Forms.Label ABMUsuariosLabel5;
         private System.Windows.Forms.Label ABMUsuariosLabel4;
-        private System.Windows.Forms.TextBox txtContrasena;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox ABMUsuariosTextoClave;
+        private System.Windows.Forms.TextBox ABMUsuariosTextoApellido;
+        private System.Windows.Forms.TextBox ABMUsuariosTextoNombre;
         private System.Windows.Forms.Label ABMUsuariosLabel2;
         private System.Windows.Forms.Label ABMUsuariosLabel1;
         private System.Windows.Forms.GroupBox ABMUsuarioGroupboxPermisos;
         private System.Windows.Forms.GroupBox ABMUsuarioGroupboxPatentes;
         private System.Windows.Forms.Button ABMUsuariosBotton6;
         private System.Windows.Forms.Button ABMUsuariosBotton5;
-        private System.Windows.Forms.DataGridView dgvPat;
+        private System.Windows.Forms.DataGridView ABMUsuariosGrillaPatente1;
         private System.Windows.Forms.GroupBox ABMUsuarioGroupboxFamilia;
         private System.Windows.Forms.Button ABMUsuariosBotton4;
         private System.Windows.Forms.Button ABMUsuariosBotton3;
-        private System.Windows.Forms.DataGridView dgvFam;
+        private System.Windows.Forms.DataGridView ABMUsuariosGrillaFamilia1;
         private System.Windows.Forms.Button ABMUsuariosBotton1;
         private System.Windows.Forms.Button ABMUsuariosBotton2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ABMUsuariosGrillaPatente2;
+        private System.Windows.Forms.DataGridView ABMUsuariosGrillaFamilia2;
+        private System.Windows.Forms.Label ABMUsuariosLabel9;
+        private System.Windows.Forms.Label ABMUsuariosLabel8;
+        private System.Windows.Forms.Label ABMUsuariosLabel7;
+        private System.Windows.Forms.Label ABMUsuariosLabel6;
     }
 }

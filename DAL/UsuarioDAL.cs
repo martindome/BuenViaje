@@ -159,7 +159,7 @@ namespace DAL
             List<CompuestoBE> patentes = new List<CompuestoBE>();
             string mCommand = "SELECT p.ID_Permiso, p.Nombre, p.Descripcion, p.Tipo_Permiso, u.ID_Usuario " +
                 "FROM Permiso AS p " +
-                "INNER JOIN Usuario_Permiso AS up ON up.ID_Permiso = f.ID_Permiso " +
+                "INNER JOIN Usuario_Permiso AS up ON up.ID_Permiso = p.ID_Permiso " +
                 "INNER JOIN Usuario AS u ON up.ID_Usuario = u.ID_Usuario " +
                 "WHERE u.ID_Usuario = " + pUsuario.ID_Usuario;
 
