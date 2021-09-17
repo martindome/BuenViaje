@@ -24,7 +24,7 @@ namespace DAL
 
         public static PatenteBE Obtener(int id)
         {
-            string mCommand = "Select p.ID_Permiso, p.Nombre, p.Descripcion, Tipo_Permiso from Permiso WHERE p.ID_Permiso = " + id;
+            string mCommand = "Select p.ID_Permiso, p.Nombre, p.Descripcion, Tipo_Permiso from Permiso p WHERE p.ID_Permiso = " + id;
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -42,7 +42,7 @@ namespace DAL
         public static List<PatenteBE> Listar()
         {
             List<PatenteBE> patentes = new List<PatenteBE>();
-            string mCommand = "Select p.ID_Permiso, p.Nombre, p.Descripcion, Tipo_Permiso from Permiso";
+            string mCommand = "Select p.ID_Permiso, p.Nombre, p.Descripcion, Tipo_Permiso from Permiso p";
             DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
 
 

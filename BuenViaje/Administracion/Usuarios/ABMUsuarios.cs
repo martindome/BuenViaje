@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using BuenViaje;
 using BuenViaje.Administracion;
 using BE;
+using BE.Composite;
 using BL;
 
 namespace BuenViaje.Administracion.Usuarios
@@ -17,6 +18,12 @@ namespace BuenViaje.Administracion.Usuarios
     {
         internal Operacion operacion;
         internal UsuarioBE usuariobe;
+        List<PatenteBE> patentesUsuario = new List<PatenteBE>();
+        List<FamiliaBE> familiasUsuario = new List<FamiliaBE>();
+        UsuarioBL usuarioBl = new UsuarioBL();
+        PatenteBL patenteBl = new PatenteBL();
+        FamiliaBL familiaBl = new FamiliaBL();
+
         public ABMUsuarios()
         {
             InitializeComponent();
@@ -89,12 +96,18 @@ namespace BuenViaje.Administracion.Usuarios
                 ABMUsuariosComboIdioma.Items.Add(mIdioma.Descripcion);
             }
 
+            #region Obtener permisos
+            List<CompuestoBE> patentesUsuario = new List<CompuestoBE>();
+            if (this.usuariobe.ID_Usuario != 0)
+            {
+                patentesUsuario = usuarioBl.ObtenerPatentes(this.usuariobe);
+            }
+            #endregion
+
             CargarGrillas();
 
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
-
-
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -112,11 +125,24 @@ namespace BuenViaje.Administracion.Usuarios
                     {
                         foreach (Control InnerControl in C.Controls)
                         {
-                            foreach (ControlBE c in pControles)
+                            foreach (ControlBE InnerC in pControles)
                             {
-                                if (c.ID_Control == InnerControl.Name)
+                                if (InnerC.ID_Control == InnerControl.Name)
                                 {
-                                    InnerControl.Text = c.Mensaje;
+                                    InnerControl.Text = InnerC.Mensaje;
+                                }
+                                if (InnerControl is GroupBox)
+                                {
+                                    foreach (Control DoubleInnerControl in InnerControl.Controls)
+                                    {
+                                        foreach (ControlBE DoubleInnerC in pControles)
+                                        {
+                                            if (DoubleInnerC.ID_Control == DoubleInnerControl.Name)
+                                            {
+                                                DoubleInnerControl.Text = DoubleInnerC.Mensaje;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -132,7 +158,70 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void CargarGrillas()
         {
+            switch (this.operacion)
+            {
+                case Operacion.Alta:
+                    //Limpiar();
+                    ListarPatentes();
+                    //ListarFamilias();
+                    ABMUsuariosComboIdioma.SelectedItem = 1;
+                    break;
+            }
+        }
+
+        private void ListarPatentes()
+        {
+            ABMUsuariosGrillaPatente1.Rows.Clear();
+            ABMUsuariosGrillaPatente2.Rows.Clear();
+            List<PatenteBE> patentes = patenteBl.Listar();
             
+            foreach (PatenteBE patente in patentes)
+            {
+                bool flag = false;
+                foreach (PatenteBE patenteUsuario in patentesUsuario)
+                {
+                    if (patente.ID_Compuesto == patenteUsuario.ID_Compuesto)
+                    {
+                        flag = true;
+                    }
+                }
+                if (!flag)
+                {
+                    ABMUsuariosGrillaPatente1.Rows.Add(patente.ID_Compuesto, patente.Nombre);
+                }
+            }
+            foreach (PatenteBE patenteUsuario in patentesUsuario)
+            {
+                ABMUsuariosGrillaPatente2.Rows.Add(patenteUsuario.ID_Compuesto, patenteUsuario.Nombre);
+            }
+
+            if (ABMUsuariosGrillaPatente1.Rows.Count == 0)
+            {
+                ABMUsuariosBotton5.Enabled = false;
+            }
+            else
+            {
+                ABMUsuariosBotton5.Enabled = true;
+            }
+            if (ABMUsuariosGrillaPatente2.Rows.Count == 0)
+            {
+                ABMUsuariosBotton6.Enabled = false;
+            }
+            else
+            {
+                ABMUsuariosBotton6.Enabled = true;
+            }
+        }
+
+        private void ListarFamilias()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        private void Limpiar()
+        {
+            throw new NotImplementedException();
         }
 
         private void ABMUsuariosBotton2_Click(object sender, EventArgs e)
@@ -143,6 +232,29 @@ namespace BuenViaje.Administracion.Usuarios
         private void ABMUsuariosBotton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ABMUsuariosBotton5_Click(object sender, EventArgs e)
+        {
+            PatenteBE patente = patenteBl.Obtener(int.Parse(ABMUsuariosGrillaPatente1.SelectedRows[0].Cells[0].Value.ToString()));
+            patentesUsuario.Add(patente);
+            ListarPatentes();
+        }
+
+        private void ABMUsuariosBotton6_Click(object sender, EventArgs e)
+        {
+            PatenteBE patente = patenteBl.Obtener(int.Parse(ABMUsuariosGrillaPatente2.SelectedRows[0].Cells[0].Value.ToString()));
+            List<PatenteBE> aux = new List<PatenteBE>();
+            foreach (PatenteBE p in patentesUsuario)
+            {
+                if (p.ID_Compuesto != patente.ID_Compuesto)
+                {
+                    aux.Add(p);
+                }
+            }
+            this.patentesUsuario = aux;
+            //patentesUsuario.Remove(patente);
+            ListarPatentes();
         }
     }
 }

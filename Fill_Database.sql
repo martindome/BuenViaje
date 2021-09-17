@@ -37,6 +37,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Usuario principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'UsuarioPrincipal-Form', 'Users'),
+(1, 'UsuarioPrincipal-Permiso-Usuario-Denegado', 'Not enough privilages ta manage users'),
 (1, 'UsuarioPrincipal-Columna-UsuarioID','ID'),
 (1, 'UsuarioPrincipal-Columna-Nombre','Name'),
 (1, 'UsuarioPrincipal-Columna-Apellido','Surname'),
@@ -82,6 +83,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Usuario principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'UsuarioPrincipal-Form', 'Usuarios'),
+(2, 'UsuarioPrincipal-Permiso-Usuario-Denegado', 'Permisos insuficientes para manejo de usuarios'),
 (2, 'UsuarioPrincipal-Columna-UsuarioID','ID'),
 (2, 'UsuarioPrincipal-Columna-Nombre','Nombre'),
 (2, 'UsuarioPrincipal-Columna-Apellido','Apellido'),

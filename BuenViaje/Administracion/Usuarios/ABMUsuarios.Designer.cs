@@ -247,6 +247,7 @@
             this.ABMUsuariosBotton6.TabIndex = 4;
             this.ABMUsuariosBotton6.Text = "Quitar";
             this.ABMUsuariosBotton6.UseVisualStyleBackColor = true;
+            this.ABMUsuariosBotton6.Click += new System.EventHandler(this.ABMUsuariosBotton6_Click);
             // 
             // ABMUsuariosBotton5
             // 
@@ -257,6 +258,7 @@
             this.ABMUsuariosBotton5.TabIndex = 3;
             this.ABMUsuariosBotton5.Text = "Agregar";
             this.ABMUsuariosBotton5.UseVisualStyleBackColor = true;
+            this.ABMUsuariosBotton5.Click += new System.EventHandler(this.ABMUsuariosBotton5_Click);
             // 
             // ABMUsuariosGrillaPatente1
             // 

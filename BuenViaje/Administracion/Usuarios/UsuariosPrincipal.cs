@@ -137,13 +137,20 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void UsuarioPrincipalBotton2_Click(object sender, EventArgs e)
         {
-            UsuarioBL usuariobl = new UsuarioBL();
-            ABMUsuarios abmusuarios = new ABMUsuarios();
-            abmusuarios.operacion = Operacion.Alta;
-            //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
-            abmusuarios.usuariobe = new UsuarioBE();
-            abmusuarios.ShowDialog();
-            ActualizarGrilla();
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminUsuarios))
+            {
+                UsuarioBL usuariobl = new UsuarioBL();
+                ABMUsuarios abmusuarios = new ABMUsuarios();
+                abmusuarios.operacion = Operacion.Alta;
+                //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+                abmusuarios.usuariobe = new UsuarioBE();
+                abmusuarios.ShowDialog();
+                ActualizarGrilla();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Permiso-Usuario-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -11,7 +11,9 @@ namespace DAL
 {
     public class FamiliaDAL
     {
-
+        static private int mId;
+        static private SERV.Seguridad.Cifrado mCifra = new SERV.Seguridad.Cifrado();
+        static private SERV.Integridad mIntegridad = new SERV.Integridad();
         public static List<PatenteBE> ListarPatentes(FamiliaBE pFamilia)
         {
             List<PatenteBE> patentes = new List<PatenteBE>();
@@ -35,38 +37,100 @@ namespace DAL
             return patentes;
         }
 
-        public static void Guardar(FamiliaBE pFamilia)
+        public static List<FamiliaBE> Listar()
         {
-            string mCommand = "";
-            
+            List<FamiliaBE> familias = new List<FamiliaBE>();
+            string mCommand = "Select p.ID_Familia, p.Nombre, p.Descripcion from Familia p";
+            DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+
+
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow mDataRow in mDataSet.Tables[0].Rows)
+                {
+                    FamiliaBE mFamilia = new FamiliaBE();
+                    ValorizarEntidad(mFamilia, mDataRow);
+                    familias.Add(mFamilia);
+                }
+            }
+            return familias;
         }
 
-        public static int Guardar(UsuarioBE pUsuario)
+        public static FamiliaBE Obtener(int id)
         {
-            string mCommand = "";
-            string Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
-            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
-            if (pUsuario.ID_Usuario == 0)
+            string mCommand = "Select p.ID_Familia, p.Nombre, p.Descripcion from Familia p WHERE p.ID_Familia = " + id;
+            DataSet mDataSet = new DataSet();
+            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
-                pUsuario.ID_Usuario = ProximoId();
-                mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, ID_Idioma, DVH) VALUES (" + pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " + pUsuario.ID_Idioma + ", '" + DVH + "')";
-
+                FamiliaBE mFamilia = new FamiliaBE();
+                ValorizarEntidad(mFamilia, mDataSet.Tables[0].Rows[0]);
+                return mFamilia;
             }
             else
             {
-                mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
-                    + "', Apellido = '" + pUsuario.Apellido
-                    + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
-                    + "', Contrasenia = '" + pUsuario.Contrasenia
-                    + "', Intentos_Login = " + pUsuario.Intentos_Login
-                    + ", ID_Idioma = " + pUsuario.ID_Idioma
-                    + ", DVH = '" + DVH + "', WHERE ID_Usuario =" + pUsuario.ID_Usuario;
+                return null;
             }
-            int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
-            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
-            return value;
+        }
+        public static void Guardar(FamiliaBE pFamilia)
+        {
+            string mCommand = "";
+            string Nombre_Familia = SERV.Seguridad.Cifrado.Cifrar(pFamilia.Nombre);
+            if (pFamilia.ID_Compuesto == 0)
+            {
+                pFamilia.ID_Compuesto = ProximoId();
+                mCommand = "INSERT INTO Familia (ID_Familia, Nombre, Descripcion) VALUES ("+pFamilia.ID_Compuesto + ", '" + pFamilia.Nombre + "', '" + pFamilia.Descripcion + "')";
+            }
+            else
+            {
+                mCommand = "UPDATE Familia SET Nombre = '" + pFamilia.Nombre + "', Descipcion = '" + pFamilia.Descripcion + "' WHERE ID_Familia = " + pFamilia.ID_Compuesto;
+            }
+            DAO.GetInstance().ExecuteNonQuery(mCommand);
         }
 
+        public static void Eliminar(FamiliaBE pFamilia)
+        {
+            string mCommand = "DELETE Familia WHERE ID_Familia = " + pFamilia.ID_Compuesto;
+            DAO.GetInstance().ExecuteNonQuery(mCommand);
+        }
+
+        public static void GuardarFamiliaUsuario(FamiliaBE familia, UsuarioBE usuario)
+        {
+            string DVH = mIntegridad.CalcularDVH(familia.ID_Compuesto.ToString() + usuario.ID_Usuario.ToString());
+            string mCommand = "INSERT INTO Usuario_Familia (ID_Familia, ID_Usuario, DVH) VALUES (" + familia.ID_Compuesto + ", " + usuario.ID_Usuario + ", '" + DVH + "')";
+            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Familia"), "Usuario_Familia");
+        }
+
+        public static void BorrarFamiliaUsuario(FamiliaBE familia, UsuarioBE usuario)
+        {
+            string mCommand = "DELETE FROM Usuario_Familia WHERE ID_Familia = " + familia.ID_Compuesto + " AND ID_Usuario = " + usuario.ID_Usuario;
+            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Familia"), "Usuario_Familia");
+        }
+
+        public static void GuardarFamiliaPatente(FamiliaBE familia, PatenteBE patente)
+        {
+            string DVH = mIntegridad.CalcularDVH(familia.ID_Compuesto.ToString() + patente.ID_Compuesto.ToString());
+            string mCommand = "INSERT INTO Permiso_Familia (ID_Familia, ID_Permiso, DVH) VALUES (" + familia.ID_Compuesto + ", " + patente.ID_Compuesto + ", '" + DVH + "')";
+            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Permiso_Familia"), "Permiso_Familia");
+        }
+
+        public static void BorrarFamiliaPatente(FamiliaBE familia, PatenteBE patente)
+        {
+            string mCommand = "DELETE FROM Permiso_Familia WHERE ID_Familia = " + familia.ID_Compuesto + " AND ID_Permiso = " + patente.ID_Compuesto;
+            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Permiso_Familia"), "Permiso_Familia");
+        }
+
+        private static int ProximoId()
+        {
+            if (mId == 0)
+                mId = (DAO.GetInstance()).ObtenerUltimoId("Familia");
+            mId += 1;
+            return mId;
+        }
 
         internal static void ValorizarEntidad(FamiliaBE pFamilia, DataRow mDataRow)
         {
@@ -74,8 +138,5 @@ namespace DAL
             pFamilia.Nombre = mDataRow["Nombre"].ToString();
             pFamilia.Descripcion = mDataRow["Descripcion"].ToString();
         }
-
-
-
     }
 }

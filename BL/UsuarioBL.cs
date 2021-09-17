@@ -74,5 +74,14 @@ namespace BL
             return UsuarioDAL.ObtenerPermisos(pUsuario);
         }
 
+        public List<CompuestoBE> ObtenerPatentes(UsuarioBE usuario)
+        {
+            return UsuarioDAL.ListarPatentes(usuario);
+        }
+
+        public List<CompuestoBE> ObtenerFamilias(UsuarioBE usuario)
+        {
+            return UsuarioDAL.ListarFamilias(usuario);
+        }
     }
 }
