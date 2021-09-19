@@ -25,6 +25,7 @@ namespace BuenViaje.Administracion.Usuarios
         UsuarioBL usuarioBl = new UsuarioBL();
         PatenteBL patenteBl = new PatenteBL();
         FamiliaBL familiaBl = new FamiliaBL();
+        BitacoraBL Bitacorabl = new BitacoraBL();
 
         public ABMUsuarios()
         {
@@ -91,6 +92,8 @@ namespace BuenViaje.Administracion.Usuarios
             ABMUsuariosGrillaPatente2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ABMUsuariosGrillaPatente2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             #endregion
+
+            
 
             ABMUsuariosComboIdioma.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
@@ -208,6 +211,7 @@ namespace BuenViaje.Administracion.Usuarios
         {
             bool flag = false;
             int idiomaId = 0;
+            BitacoraBE mBitacora = new BitacoraBE();
             //Boton Aplicar
             switch (this.operacion)
             {
@@ -251,6 +255,12 @@ namespace BuenViaje.Administracion.Usuarios
                     this.usuariobe.Permisos.AddRange(this.familiasUsuario);
                     this.usuariobe.Permisos.AddRange(this.patentesUsuario);
                     this.usuarioBl.Guardar(usuariobe);
+                    //Bitacora
+                    mBitacora.Descripcion = "Se dio de alta al usuario: " + this.usuariobe.Nombre_Usuario;
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                    mBitacora.Tipo_Evento = "MEDIUM";
+                    Bitacorabl.Guardar(mBitacora);
                     flag = true;
                     break;
                 case Operacion.Modificacion:
@@ -261,6 +271,7 @@ namespace BuenViaje.Administracion.Usuarios
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
+                        this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
                     }
                     if (!ValidarUsuarioUnico())
                     {
@@ -281,7 +292,6 @@ namespace BuenViaje.Administracion.Usuarios
                     this.usuariobe.Nombre = this.ABMUsuariosTextoNombre.Text;
                     this.usuariobe.Apellido = this.ABMUsuariosTextoApellido.Text;
                     this.usuariobe.Nombre_Usuario = this.ABMUsuariosTextoUsuario.Text;
-                    this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
                     this.usuariobe.Idioma_Descripcion = this.ABMUsuariosComboIdioma.SelectedItem.ToString();
                     idiomaId = 0;
                     foreach (IdiomaBE idioma in IdiomaBL.ListarIdiomas())
@@ -296,15 +306,27 @@ namespace BuenViaje.Administracion.Usuarios
                     this.usuariobe.Permisos.AddRange(this.familiasUsuario);
                     this.usuariobe.Permisos.AddRange(this.patentesUsuario);
                     this.usuarioBl.Guardar(usuariobe);
+                    //Bitacora
+                    mBitacora.Descripcion = "Se modifico al usuario: " + this.usuariobe.Nombre_Usuario;
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                    mBitacora.Tipo_Evento = "MEDIUM";
+                    Bitacorabl.Guardar(mBitacora);
                     flag = true;
                     break;
                 case Operacion.Baja:
-                    DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         this.usuarioBl.Eliminar(this.usuariobe);
                         
                     }
+                    //Bitacora
+                    mBitacora.Descripcion = "Se elimino al usuario: " + this.usuariobe.Nombre_Usuario;
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                    mBitacora.Tipo_Evento = "HIGH";
+                    Bitacorabl.Guardar(mBitacora);
                     flag = true;
                     break;
                 case Operacion.Ver:

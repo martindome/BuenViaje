@@ -74,5 +74,11 @@ namespace BuenViaje
                 }
             }
         }
+
+        private void LoginButton3_Click(object sender, EventArgs e)
+        {
+            CambiarPassword mCambiarPassword = new CambiarPassword();
+            mCambiarPassword.ShowDialog(this);
+        }
     }
 }

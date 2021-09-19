@@ -53,6 +53,14 @@ namespace DAL
                     familias.Add(mFamilia);
                 }
             }
+            foreach (FamiliaBE familia in familias)
+            {
+                List<PatenteBE> InnerPatentes = FamiliaDAL.ListarPatentes(familia);
+                foreach (PatenteBE patente in InnerPatentes)
+                {
+                    familia.AgregarPermiso(patente);
+                }
+            }
             return familias;
         }
 

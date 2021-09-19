@@ -55,7 +55,16 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMUsuarios-Validacion-UsuarioUnico', 'Username already taken'),
 (1, 'ABMUsuarios-Validacion-UsuarioMail', 'Username does not match an email address'),
 (1, 'ABMUsuarios-Validacion-Nombre', 'Name and surname must be 50 characters or less'),
-(2, 'ABMUsuarios-Confirmacion-Baja', 'Are you sure to delete the user?')
+(1, 'ABMUsuarios-Confirmacion-Baja', 'Are you sure to delete the user?'),
+(1, 'ABMUsuarios-Validacion-Resetear', 'Are you sure top reset the password?')
+
+----Permisos principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'PermisosPrincipal-Form', 'Accesses'),
+(1, 'PermisosPrincipal-Permiso-Usuario-Denegado', 'Not enough privilages ta manage accesses'),
+(1, 'PermisosPrincipal-Columna-FamiliaID','ID'),
+(1, 'PermisosPrincipal-Columna-FamiliaNombre','Name'),
+(1, 'PermisosPrincipal-Columna-FamiliaDescripcion','Description')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -106,7 +115,16 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMUsuarios-Validacion-UsuarioUnico', 'Nombre ya en uso'),
 (2, 'ABMUsuarios-Validacion-UsuarioMail', 'El nombre de usuario no es una casilla de mail'),
 (2, 'ABMUsuarios-Validacion-Nombre', 'Nombre y apellido deben tener menos de 50 caracteres'),
-(2, 'ABMUsuarios-Confirmacion-Baja', 'Esta seguro de borrar el usuario?')
+(2, 'ABMUsuarios-Confirmacion-Baja', 'Esta seguro de borrar el usuario?'),
+(2, 'ABMUsuarios-Validacion-Resetear', 'Esta seguro de resetear clave?')
+
+----Permisos principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'PermisosPrincipal-Form', 'Permisos'),
+(2, 'PermisosPrincipal-Permiso-Usuario-Denegado', 'Permisos insuficientes para manejo de permisos'),
+(2, 'PermisosPrincipal-Columna-FamiliaID','ID'),
+(2, 'PermisosPrincipal-Columna-FamiliaNombre','Nombre'),
+(2, 'PermisosPrincipal-Columna-FamiliaDescripcion','Descripcion')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -115,7 +133,11 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'LoginLabel1', 'User'),  
 (1, 'LoginLabel2', 'Pass'), 
 (1, 'LoginBotton1', 'Login'), 
-(1, 'LoginBotton2', 'Exit')
+(1, 'LoginBotton2', 'Exit'),
+(1, 'LoginButton3', 'Change Password')
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'CambiarPasswordLabel1', 'Username'),
+(1, 'CambiarPasswordButton1', 'Reset Password')
 ----Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'sesionToolStripMenuItem', 'Session'),
@@ -191,12 +213,29 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'ABMUsuariosBotton1', 'Apply'),
 (1, 'ABMUsuariosBotton2', 'Cancel')
 
+--- Permisos Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'PermisosPrincipalBotton1', 'Read'),
+(1, 'PermisosPrincipalBotton2', 'Create'),
+(1, 'PermisosPrincipalBotton3', 'Modify'),
+(1, 'PermisosPrincipalBotton4', 'Delete'),
+(1, 'PermisosPrincipalBotton5', 'Apply'),
+(1, 'PermisosPrincipalBotton6', 'Clean'),
+(1, 'PermisosPrincipalLabel1', 'Name'),
+(1, 'PermisosPrincipalLabel2', 'Description'),
+(1, 'PermisosPrincipalGroupBox', 'Filters')
+
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 ----Inicio
 (2, 'LoginLabel1', 'Usuario'), 
 (2, 'LoginLabel2', 'Clave'), 
 (2, 'LoginBotton1', 'Login'), 
-(2, 'LoginBotton2', 'Salir')
+(2, 'LoginBotton2', 'Salir'),
+(2, 'LoginButton3', 'Cambiar Clave')
+----ResetPasswrd
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'CambiarPasswordLabel1', 'Nombre de usuario'),
+(2, 'CambiarPasswordButton1', 'Cambiar Clave')
 ----Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'sesionToolStripMenuItem', 'Sesion'),
@@ -273,6 +312,19 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'ABMUsuariosBotton1', 'Aplicar'),
 (2, 'ABMUsuariosBotton2', 'Cancelar')
 
+
+--- Permisos Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'PermisosPrincipalBotton1', 'Ver'),
+(2, 'PermisosPrincipalBotton2', 'Crear'),
+(2, 'PermisosPrincipalBotton3', 'Modificar'),
+(2, 'PermisosPrincipalBotton4', 'Borrar'),
+(2, 'PermisosPrincipalBotton5', 'Aplicar'),
+(2, 'PermisosPrincipalBotton6', 'Limpiar'),
+(2, 'PermisosPrincipalLabel1', 'Nombre'),
+(2, 'PermisosPrincipalLabel2', 'Descripcion'),
+(2, 'PermisosPrincipalGroupBox', 'Filtros')
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario
 INSERT INTO dbo.Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, DVH, Intentos_Login, ID_Idioma) VALUES
@@ -294,30 +346,71 @@ INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES
 (12, 'Consultar Pasajes', 'Permite consultar los pasajes vendidos', 'ReadVentas'),
 (13, 'Consultar Rutas', 'Permite consultar las rutas', 'ReadRutas'),
 (14, 'Consultar Localidades', 'Permite consultar las localidades', 'ReadLocalidades'),
-(15, 'Consultar Clientes', 'Permite consultar las localidades', 'ReadClientes')
+(15, 'Consultar Clientes', 'Permite consultar las localidades', 'ReadClientes'),
+(16, 'Administrador Viajes', 'Permite crear y administrar los viajes', 'AdminViajes'),
+(17, 'Consultar Viajes', 'Permite consultar los viajes', 'ReadViajes')
 
 --Familias
 INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
 (1, 'Administradores Sistema', 'Permite administrar la seguridad del sistema'),
 (2, 'Administradores Usuarios', 'Permite manejar los usuarios del sistema'),
 (3, 'Administradores Permisos', 'Permite manejar los usuarios del sistema'),
-(4, 'Auditores Seguridad', 'Permite acceder a los logs del sistema')
+(4, 'Auditores Seguridad', 'Permite acceder a los logs del sistema'),
+(5, 'Vendedores', 'Permite realizar ventas de pasajes y dar alta clientes'),
+(6, 'Auditor ventas', 'Permite acceder a las registros de ventas y clientes'),
+(7, 'Administrativos', 'Permite administrar rutas, viajes y localidades')
 
 --Usuario_Familia
 INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES
 (1,1,49),
-(1,2,50)
+(1,2,50),
+(1,3,51),
+(1,4,52),
+(1,5,53),
+(1,6,54),
+(1,7,55)
 
 --Permiso_Familia
 INSERT INTO Permiso_Familia(ID_Permiso, ID_Familia, DVH) VALUES
-(1,2,49), --usuarios admin
+--FAMILIA SISTEMA ADMIN
+(3,1,49),
+(4,1,49),
+(5,1,49),
+--FAMILIA ADMIN USUARIOS
+(1,2,50), --usuarios admin
 (10,2,148), --usuarios read
-(2,1,49),
-(3,1,49)
-
+--FAMILIA ADMIN PERMISOS
+(2,3,51), --permisos admin
+(11,3,151), --permisos read
+--FAMILIA Auditores Seguridad
+(3,4,52),
+--FAMILIA VENDEDORES
+(6,5,53), --Vender pasajes
+(9,5,53), --Administar clientes
+(15,5,159), --Consultar clientes
+(17,5,161), --Consultar Viajes
+(13,5,157), --Consultar Rutas
+(12,5,156), --Consultar pasajes
+--FAMILIA AUDITOR VENTAS
+(12,6,158), --Consultar pasajess
+(13,6,159), --Consultar Rutas
+(14,6,160), --Consultar Localidades
+(15,6,161), --Consultar Clientes
+(17,6,163), --Consultar Viajes
+--Familia Administrativo
+(6,7,55), --admin pasajes
+(7,7,55), --admin rutas
+(8,7,55), -- admin localidad
+(9,7,55), -- admin cliente
+(12,7,160), --read pasajes
+(13,7,161), --read rutas
+(14,7,162), --read localidad
+(15,7,163), --read clientes
+(16,7,164), --admin viajes
+(17,7,165) --admin clientes
 
 Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values 
 (1, 'Usuario', '196993'),
-(2, 'Permiso_Familia', '295'),
-(3, 'Usuario_Familia', '99')
+(2, 'Permiso_Familia', '3334'),
+(3, 'Usuario_Familia', '364')
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

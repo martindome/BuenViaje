@@ -102,6 +102,26 @@ namespace DAL
             int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
         }
+        public static string ResetearConstrasenia(UsuarioBE pUsuario)
+        {
+            string newPassword = Seguridad.Contrasenia.CrearRandomContrasenia();
+            pUsuario.Contrasenia = DAL.LoginDAL.CalcularHashMD5(newPassword);
+            string Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
+            pUsuario.Intentos_Login = 0;
+            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
+            string mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
+                + "', Apellido = '" + pUsuario.Apellido
+                + "', Nombre_Usuario = '" + Nombre_Usuario
+                + "', Contrasenia = '" + pUsuario.Contrasenia
+                + "', Intentos_Login = " + pUsuario.Intentos_Login
+                + ", ID_Idioma = " + pUsuario.ID_Idioma
+                + ", DVH = '" + DVH + "' WHERE ID_Usuario =" + pUsuario.ID_Usuario;
+            int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
+            Seguridad.Contrasenia.EnviarNuevaContrasenia(newPassword, pUsuario.Nombre_Usuario);
+            return newPassword;
+        }
+
         public static List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)
         {
             List<CompuestoBE> permisos = new List<CompuestoBE>();

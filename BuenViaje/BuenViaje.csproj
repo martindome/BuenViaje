@@ -63,6 +63,12 @@
     <Compile Include="Administracion\Bitacora\Bitacora.Designer.cs">
       <DependentUpon>Bitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Permisos\PermisosPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Permisos\PermisosPrincipal.Designer.cs">
+      <DependentUpon>PermisosPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Usuarios\ABMUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,12 @@
     </Compile>
     <Compile Include="Administracion\Usuarios\UsuariosPrincipal.Designer.cs">
       <DependentUpon>UsuariosPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CambiarPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambiarPassword.Designer.cs">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -111,11 +123,17 @@
     <EmbeddedResource Include="Administracion\Bitacora\Bitacora.resx">
       <DependentUpon>Bitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Permisos\PermisosPrincipal.resx">
+      <DependentUpon>PermisosPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Usuarios\ABMUsuarios.resx">
       <DependentUpon>ABMUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Usuarios\UsuariosPrincipal.resx">
       <DependentUpon>UsuariosPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CambiarPassword.resx">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

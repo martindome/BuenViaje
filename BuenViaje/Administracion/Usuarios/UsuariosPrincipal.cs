@@ -40,6 +40,21 @@ namespace BuenViaje.Administracion.Usuarios
             grillaUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grillaUsuarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminUsuarios))
+            {
+                UsuarioPrincipalBotton2.Enabled = true;
+                UsuarioPrincipalBotton3.Enabled = true;
+                UsuarioPrincipalBotton4.Enabled = true;
+                UsuarioPrincipalBotton7.Enabled = true;
+            }
+            else
+            {
+                UsuarioPrincipalBotton2.Enabled = false;
+                UsuarioPrincipalBotton3.Enabled = false;
+                UsuarioPrincipalBotton4.Enabled = false;
+                UsuarioPrincipalBotton7.Enabled = false;
+            }
+
             ActualizarGrilla();
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
@@ -182,6 +197,26 @@ namespace BuenViaje.Administracion.Usuarios
             abmusuarios.usuariobe.Permisos = usuariobl.ObtenerPermisos(abmusuarios.usuariobe);
             abmusuarios.ShowDialog();
             ActualizarGrilla();
+        }
+
+        private void UsuarioPrincipalBotton7_Click(object sender, EventArgs e)
+        {
+            UsuarioBL usuarioBl = new UsuarioBL();
+            BitacoraBE mBitacora = new BitacoraBE();
+            BitacoraBL Bitacorabl = new BitacoraBL();
+            UsuarioBE usuariobe= usuarioBl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].Value.ToString());
+            usuariobe.Permisos = usuarioBl.ObtenerPermisos(usuariobe);
+            DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Resetear", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (result == DialogResult.Yes)
+            {
+                usuarioBl.ResetarConstrasenia(usuariobe);
+            }
+            //Bitacora
+            mBitacora.Descripcion = "Se cambio la clave al usuario: " + usuariobe.Nombre_Usuario;
+            mBitacora.Fecha = DateTime.Now;
+            mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+            mBitacora.Tipo_Evento = "HIGH";
+            Bitacorabl.Guardar(mBitacora);
         }
     }
 }

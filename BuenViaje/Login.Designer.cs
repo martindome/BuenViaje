@@ -34,6 +34,7 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.LoginBotton2 = new System.Windows.Forms.Button();
+            this.LoginButton3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LoginLabel1
@@ -72,7 +73,7 @@
             this.txtUser.Location = new System.Drawing.Point(11, 24);
             this.txtUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(185, 20);
+            this.txtUser.Size = new System.Drawing.Size(237, 20);
             this.txtUser.TabIndex = 3;
             // 
             // txtPass
@@ -81,12 +82,12 @@
             this.txtPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(185, 20);
+            this.txtPass.Size = new System.Drawing.Size(237, 20);
             this.txtPass.TabIndex = 4;
             // 
             // LoginBotton2
             // 
-            this.LoginBotton2.Location = new System.Drawing.Point(121, 85);
+            this.LoginBotton2.Location = new System.Drawing.Point(173, 85);
             this.LoginBotton2.Margin = new System.Windows.Forms.Padding(2);
             this.LoginBotton2.Name = "LoginBotton2";
             this.LoginBotton2.Size = new System.Drawing.Size(75, 24);
@@ -95,11 +96,22 @@
             this.LoginBotton2.UseVisualStyleBackColor = true;
             this.LoginBotton2.Click += new System.EventHandler(this.LoginBotton2_Click);
             // 
+            // LoginButton3
+            // 
+            this.LoginButton3.Location = new System.Drawing.Point(57, 115);
+            this.LoginButton3.Name = "LoginButton3";
+            this.LoginButton3.Size = new System.Drawing.Size(155, 23);
+            this.LoginButton3.TabIndex = 7;
+            this.LoginButton3.Text = "Login";
+            this.LoginButton3.UseVisualStyleBackColor = true;
+            this.LoginButton3.Click += new System.EventHandler(this.LoginButton3_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(215, 136);
+            this.ClientSize = new System.Drawing.Size(257, 149);
+            this.Controls.Add(this.LoginButton3);
             this.Controls.Add(this.LoginBotton2);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
@@ -122,6 +134,7 @@
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button LoginBotton2;
+        private System.Windows.Forms.Button LoginButton3;
     }
 }
 

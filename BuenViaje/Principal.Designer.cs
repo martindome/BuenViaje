@@ -119,6 +119,7 @@
             this.gestionarPermisosToolStripMenuItem.Name = "gestionarPermisosToolStripMenuItem";
             this.gestionarPermisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestionarPermisosToolStripMenuItem.Text = "Gestionar Permisos";
+            this.gestionarPermisosToolStripMenuItem.Click += new System.EventHandler(this.gestionarPermisosToolStripMenuItem_Click);
             // 
             // copiaDeSeguridadToolStripMenuItem
             // 

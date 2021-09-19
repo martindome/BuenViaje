@@ -247,6 +247,7 @@
             this.UsuarioPrincipalBotton7.TabIndex = 11;
             this.UsuarioPrincipalBotton7.Text = "Resetear Clave";
             this.UsuarioPrincipalBotton7.UseVisualStyleBackColor = true;
+            this.UsuarioPrincipalBotton7.Click += new System.EventHandler(this.UsuarioPrincipalBotton7_Click);
             // 
             // UsuariosPrincipal
             // 

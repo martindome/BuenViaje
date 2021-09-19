@@ -12,6 +12,7 @@ using BL;
 using BuenViaje.Sesion;
 using BuenViaje.Administracion;
 using BuenViaje.Administracion.Usuarios;
+using BuenViaje.Administracion.Permisos;
 
 namespace BuenViaje
 {
@@ -128,6 +129,25 @@ namespace BuenViaje
                 form.MinimizeBox = false;
                 form.MaximizeBox = false;
                 form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Permiso-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gestionarPermisosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadPermisos))
+            {
+                PermisosPrincipal form = new PermisosPrincipal();
+                form.MinimizeBox = false;
+                form.MaximizeBox = false;
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Permiso-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

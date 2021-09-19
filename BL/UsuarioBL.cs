@@ -6,6 +6,7 @@ using BE;
 using BE.Composite;
 using DAL;
 using BE.Composite;
+using SERV;
 
 namespace BL
 {
@@ -139,6 +140,10 @@ namespace BL
             Usuariobl.Actualizar(pUsuario);
         }
 
+        public void ResetarConstrasenia(UsuarioBE pUsuario)
+        {
+            string newPassword = UsuarioDAL.ResetearConstrasenia(pUsuario);
+        }
         public List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)
         {
             return UsuarioDAL.ObtenerPermisos(pUsuario);

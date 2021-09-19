@@ -22,6 +22,8 @@ namespace BE.Composite
         ReadVentas,
         ReadRutas,
         ReadLocalidades,
-        ReadClientes
+        ReadClientes,
+        AdminViajes,
+        ReadViajes
     }
 }

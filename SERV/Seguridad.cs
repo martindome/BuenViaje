@@ -74,6 +74,19 @@ namespace SERV
                     smtp.Credentials = new NetworkCredential("buen.viaje.traveling@gmail.com", "3ncr1pt4d0");
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Send(message);
+
+                    //string Host = "smtp.gmail.com";
+                    //int port = 587;
+                    //SmtpClient smtp = new SmtpClient(Host, port);
+                    //smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    //smtp.UseDefaultCredentials = false;
+                    //smtp.Credentials = new System.Net.NetworkCredential("buen.viaje.traveling@gmail.com", "3ncr1pt4d0");
+                    //smtp.Host = Host;
+                    //smtp.Port = port;
+                    //smtp.EnableSsl = true;
+                    //smtp.Send(message);
+
+
                 }
                 catch (Exception ex) { throw (ex); }
             }
@@ -102,7 +115,7 @@ namespace SERV
                     throw new ContraseniaException("Contrasenia No Valida");
                 }
             }
-            public static string CrearRandomContrasenia(string pTo)
+            public static string CrearRandomContrasenia()
             {
                 try
                 {
@@ -111,7 +124,6 @@ namespace SERV
                         stringCaracteres[i] = caracteres[random.Next(caracteres.Length)];
                     } 
                     String finalString = new String(stringCaracteres);
-                    //EnviarPWDByMail(finalString, pTo);
                     return finalString;
                 }
                 catch (Exception ex)
@@ -119,7 +131,7 @@ namespace SERV
                     throw (ex);
                 }
             }
-            private static void EnviarNuevaContrasenia(string pPWD, string pTo)
+            public static void EnviarNuevaContrasenia(string pPWD, string pTo)
             {
                 try
                 {
