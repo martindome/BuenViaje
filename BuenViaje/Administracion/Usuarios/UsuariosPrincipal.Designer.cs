@@ -72,6 +72,7 @@
             this.UsuarioPrincipalBotton1.TabIndex = 2;
             this.UsuarioPrincipalBotton1.Text = "Ver";
             this.UsuarioPrincipalBotton1.UseVisualStyleBackColor = true;
+            this.UsuarioPrincipalBotton1.Click += new System.EventHandler(this.UsuarioPrincipalBotton1_Click);
             // 
             // UsuarioPrincipalBotton2
             // 
@@ -93,6 +94,7 @@
             this.UsuarioPrincipalBotton3.TabIndex = 4;
             this.UsuarioPrincipalBotton3.Text = "Modificar";
             this.UsuarioPrincipalBotton3.UseVisualStyleBackColor = true;
+            this.UsuarioPrincipalBotton3.Click += new System.EventHandler(this.UsuarioPrincipalBotton3_Click);
             // 
             // UsuarioPrincipalBotton4
             // 
@@ -103,6 +105,7 @@
             this.UsuarioPrincipalBotton4.TabIndex = 5;
             this.UsuarioPrincipalBotton4.Text = "Baja";
             this.UsuarioPrincipalBotton4.UseVisualStyleBackColor = true;
+            this.UsuarioPrincipalBotton4.Click += new System.EventHandler(this.UsuarioPrincipalBotton4_Click);
             // 
             // splitter1
             // 

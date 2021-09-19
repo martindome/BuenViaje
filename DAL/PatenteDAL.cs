@@ -60,7 +60,7 @@ namespace DAL
 
         public static void GuardarPatenteUsuario(PatenteBE patente, UsuarioBE usuario)
         {
-            string DVH = mIntegridad.CalcularDVH(patente.ID_Compuesto.ToString() + usuario.ID_Usuario.ToString());
+            string DVH = mIntegridad.CalcularDVH(usuario.ID_Usuario.ToString() + patente.ID_Compuesto.ToString());
             string mCommand = "INSERT INTO Usuario_Permiso (ID_Permiso, ID_Usuario, DVH) VALUES (" +patente.ID_Compuesto + ", " + usuario.ID_Usuario  + ", '" + DVH +"')";
             DAO.GetInstance().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Permiso"), "Usuario_Permiso");

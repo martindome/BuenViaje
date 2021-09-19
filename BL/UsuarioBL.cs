@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BE;
+using BE.Composite;
 using DAL;
 using BE.Composite;
 
@@ -27,7 +28,76 @@ namespace BL
 
         public void Guardar(UsuarioBE pUsuario)
         {
-            throw new NotImplementedException();
+            List<CompuestoBE> permisosViejos = this.ObtenerPermisos(pUsuario);
+            UsuarioDAL.Guardar(pUsuario);
+            foreach (CompuestoBE permiso in pUsuario.Permisos)
+            {
+                bool flag = false;
+                foreach (CompuestoBE permisoViejo in permisosViejos)
+                {
+                    if (permiso is PatenteBE && permisoViejo is PatenteBE && permisoViejo.ID_Compuesto == permiso.ID_Compuesto)
+                    {
+                        flag = true;  
+                    }
+                    else if (permiso is FamiliaBE && permisoViejo is FamiliaBE && permisoViejo.ID_Compuesto == permiso.ID_Compuesto)
+                    {
+                        flag = true;
+                    }
+                }
+                if (!flag)
+                {
+                    if (permiso is PatenteBE)
+                    {
+                        PatenteDAL.GuardarPatenteUsuario((PatenteBE)permiso, pUsuario);
+                    }
+                    else if (permiso is FamiliaBE)
+                    {
+                        FamiliaDAL.GuardarFamiliaUsuario((FamiliaBE)permiso, pUsuario);
+                    }
+                }
+            }
+            foreach (CompuestoBE permisoViejo in permisosViejos)
+            {
+                bool flag = false;
+                foreach (CompuestoBE permiso in pUsuario.Permisos)
+                {
+                    if (permiso is PatenteBE && permisoViejo is PatenteBE && permisoViejo.ID_Compuesto == permiso.ID_Compuesto)
+                    {
+                        flag = true;
+                    }
+                    else if (permiso is FamiliaBE && permisoViejo is FamiliaBE && permisoViejo.ID_Compuesto == permiso.ID_Compuesto)
+                    {
+                        flag = true;
+                    }
+                }
+                if (!flag)
+                {
+                    if (permisoViejo is PatenteBE)
+                    {
+                        PatenteDAL.BorrarPatenteUsuario((PatenteBE)permisoViejo, pUsuario);
+                    }
+                    else if (permisoViejo is FamiliaBE)
+                    {
+                        FamiliaDAL.BorrarFamiliaUsuario((FamiliaBE)permisoViejo, pUsuario);
+                    }
+                }
+            }
+        }
+
+        public void Eliminar(UsuarioBE pUsuario)
+        {
+            foreach (CompuestoBE permiso in pUsuario.Permisos)
+            {
+                if (permiso is PatenteBE)
+                {
+                    PatenteDAL.BorrarPatenteUsuario((PatenteBE)permiso, pUsuario);
+                }
+                else if (permiso is FamiliaBE)
+                {
+                    FamiliaDAL.BorrarFamiliaUsuario((FamiliaBE)permiso, pUsuario);
+                }
+            }
+            UsuarioDAL.Eliminar(pUsuario);
         }
 
         public void Actualizar(UsuarioBE pUsuario)

@@ -16,16 +16,18 @@ namespace DAL
             string DigitoVerificador = "";
             if (pRegistros.Count > 0)
                 DigitoVerificador = mIntegridad.CalcularDVV(pRegistros);
+            else
+            {
+                BorrarDigitoVerificador(pTabla);
+                return;
+            }
             if (ObtenerCantidadRegistrosDigitos(pTabla) == 0)
                 GuardarNuevoDigitoVerificador(pTabla, DigitoVerificador);
             else
             {
                 ModificarDigitoVerificador(pTabla, DigitoVerificador);
-                string mQuery = "UPDATE Digito_Verificador SET DVV='" + DigitoVerificador + "' WHERE Tabla='" + pTabla + "'";
-                DAO.GetInstance().ExecuteNonQuery(mQuery);
             }
-            if (pRegistros.Count == 0)
-                BorrarDigitoVerificador(pTabla);
+            
         }
 
         static public List<string> ObtenerDVHs(string pTabla)

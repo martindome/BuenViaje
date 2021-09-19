@@ -96,7 +96,7 @@ namespace DAL
 
         public static void GuardarFamiliaUsuario(FamiliaBE familia, UsuarioBE usuario)
         {
-            string DVH = mIntegridad.CalcularDVH(familia.ID_Compuesto.ToString() + usuario.ID_Usuario.ToString());
+            string DVH = mIntegridad.CalcularDVH(usuario.ID_Usuario.ToString() + familia.ID_Compuesto.ToString());
             string mCommand = "INSERT INTO Usuario_Familia (ID_Familia, ID_Usuario, DVH) VALUES (" + familia.ID_Compuesto + ", " + usuario.ID_Usuario + ", '" + DVH + "')";
             DAO.GetInstance().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Familia"), "Usuario_Familia");
@@ -111,7 +111,7 @@ namespace DAL
 
         public static void GuardarFamiliaPatente(FamiliaBE familia, PatenteBE patente)
         {
-            string DVH = mIntegridad.CalcularDVH(familia.ID_Compuesto.ToString() + patente.ID_Compuesto.ToString());
+            string DVH = mIntegridad.CalcularDVH(patente.ID_Compuesto.ToString() + familia.ID_Compuesto.ToString());
             string mCommand = "INSERT INTO Permiso_Familia (ID_Familia, ID_Permiso, DVH) VALUES (" + familia.ID_Compuesto + ", " + patente.ID_Compuesto + ", '" + DVH + "')";
             DAO.GetInstance().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Permiso_Familia"), "Permiso_Familia");

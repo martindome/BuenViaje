@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 using BuenViaje;
 using BuenViaje.Administracion;
 using BE;
@@ -18,8 +20,8 @@ namespace BuenViaje.Administracion.Usuarios
     {
         internal Operacion operacion;
         internal UsuarioBE usuariobe;
-        List<PatenteBE> patentesUsuario = new List<PatenteBE>();
-        List<FamiliaBE> familiasUsuario = new List<FamiliaBE>();
+        List<CompuestoBE> patentesUsuario = new List<CompuestoBE>();
+        List<CompuestoBE> familiasUsuario = new List<CompuestoBE>();
         UsuarioBL usuarioBl = new UsuarioBL();
         PatenteBL patenteBl = new PatenteBL();
         FamiliaBL familiaBl = new FamiliaBL();
@@ -158,15 +160,185 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void CargarGrillas()
         {
+            this.patentesUsuario = this.usuarioBl.ObtenerPatentes(this.usuariobe);
+            this.familiasUsuario = this.usuarioBl.ObtenerFamilias(this.usuariobe);
             switch (this.operacion)
             {
                 case Operacion.Alta:
-                    //Limpiar();
+                    Limpiar();
                     ListarPatentes();
-                    //ListarFamilias();
+                    ListarFamilias();
                     ABMUsuariosComboIdioma.SelectedItem = 1;
+                    ABMUsuariosComboIdioma.SelectedIndex = 1;
+                    break;
+                case Operacion.Ver:
+                    Limpiar();
+                    ListarPatentes();
+                    ListarFamilias();
+                    this.ABMUsuariosComboIdioma.SelectedIndex = usuariobe.ID_Idioma -1;
+                    this.ABMUsuariosTextoNombre.Text = this.usuariobe.Nombre;
+                    this.ABMUsuariosTextoApellido.Text = this.usuariobe.Apellido;
+                    this.ABMUsuariosTextoUsuario.Text = this.usuariobe.Nombre_Usuario;
+                    DeshabilitarBotones();
+                    this.ABMUsuariosBotton1.Enabled = false;
+                    break;
+                case Operacion.Modificacion:
+                    Limpiar();
+                    ListarPatentes();
+                    ListarFamilias();
+                    this.ABMUsuariosComboIdioma.SelectedIndex = usuariobe.ID_Idioma - 1;
+                    this.ABMUsuariosTextoNombre.Text = this.usuariobe.Nombre;
+                    this.ABMUsuariosTextoApellido.Text = this.usuariobe.Apellido;
+                    this.ABMUsuariosTextoUsuario.Text = this.usuariobe.Nombre_Usuario;
+                    break;
+                case Operacion.Baja:
+                    Limpiar();
+                    ListarPatentes();
+                    ListarFamilias();
+                    this.ABMUsuariosComboIdioma.SelectedIndex = usuariobe.ID_Idioma - 1;
+                    this.ABMUsuariosTextoNombre.Text = this.usuariobe.Nombre;
+                    this.ABMUsuariosTextoApellido.Text = this.usuariobe.Apellido;
+                    this.ABMUsuariosTextoUsuario.Text = this.usuariobe.Nombre_Usuario;
+                    DeshabilitarBotones();
                     break;
             }
+        }
+
+        private void ABMUsuariosBotton1_Click(object sender, EventArgs e)
+        {
+            bool flag = false;
+            int idiomaId = 0;
+            //Boton Aplicar
+            switch (this.operacion)
+            {
+                case Operacion.Alta:
+                    if (!ValidarClave())
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    if (!ValidarUsuarioUnico())
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioUnico", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    if (!ValidarUsuarioMail())
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioMail", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    if (!ValidarNombre())
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    //Valorizamos entidad
+                    this.usuariobe.Nombre = this.ABMUsuariosTextoNombre.Text;
+                    this.usuariobe.Apellido = this.ABMUsuariosTextoApellido.Text;
+                    this.usuariobe.Nombre_Usuario = this.ABMUsuariosTextoUsuario.Text;
+                    this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
+                    this.usuariobe.Idioma_Descripcion = this.ABMUsuariosComboIdioma.SelectedItem.ToString();
+                    idiomaId = 0;
+                    foreach (IdiomaBE idioma in IdiomaBL.ListarIdiomas())
+                    {
+                        if (idioma.Descripcion == this.usuariobe.Idioma_Descripcion)
+                        {
+                            idiomaId = idioma.ID_Idioma;
+                        }
+                    }
+                    this.usuariobe.ID_Idioma = idiomaId;
+                    this.usuariobe.Permisos = new List<CompuestoBE>();
+                    this.usuariobe.Permisos.AddRange(this.familiasUsuario);
+                    this.usuariobe.Permisos.AddRange(this.patentesUsuario);
+                    this.usuarioBl.Guardar(usuariobe);
+                    flag = true;
+                    break;
+                case Operacion.Modificacion:
+                    if (this.ABMUsuariosTextoClave.Text.Length != 0 )
+                    {
+                        if (!ValidarClave())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                    if (!ValidarUsuarioUnico())
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioUnico", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    if (!ValidarUsuarioMail())
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioMail", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    if (!ValidarNombre())
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                    //Valorizamos entidad
+                    this.usuariobe.Nombre = this.ABMUsuariosTextoNombre.Text;
+                    this.usuariobe.Apellido = this.ABMUsuariosTextoApellido.Text;
+                    this.usuariobe.Nombre_Usuario = this.ABMUsuariosTextoUsuario.Text;
+                    this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
+                    this.usuariobe.Idioma_Descripcion = this.ABMUsuariosComboIdioma.SelectedItem.ToString();
+                    idiomaId = 0;
+                    foreach (IdiomaBE idioma in IdiomaBL.ListarIdiomas())
+                    {
+                        if (idioma.Descripcion == this.usuariobe.Idioma_Descripcion)
+                        {
+                            idiomaId = idioma.ID_Idioma;
+                        }
+                    }
+                    this.usuariobe.ID_Idioma = idiomaId;
+                    this.usuariobe.Permisos = new List<CompuestoBE>();
+                    this.usuariobe.Permisos.AddRange(this.familiasUsuario);
+                    this.usuariobe.Permisos.AddRange(this.patentesUsuario);
+                    this.usuarioBl.Guardar(usuariobe);
+                    flag = true;
+                    break;
+                case Operacion.Baja:
+                    DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    if (result == DialogResult.Yes)
+                    {
+                        this.usuarioBl.Eliminar(this.usuariobe);
+                        
+                    }
+                    flag = true;
+                    break;
+                case Operacion.Ver:
+                    break;
+            }
+            if (flag)
+            {
+                this.Close();
+            }
+        }
+        private void ABMUsuariosBotton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DeshabilitarBotones()
+        {
+            this.ABMUsuariosComboIdioma.Enabled = false;
+            this.ABMUsuariosTextoNombre.Enabled = false;
+            this.ABMUsuariosTextoApellido.Enabled = false;
+            this.ABMUsuariosTextoUsuario.Enabled = false;
+            this.ABMUsuariosTextoClave.Enabled = false;
+            this.ABMUsuariosBotton3.Enabled = false;
+            this.ABMUsuariosBotton4.Enabled = false;
+            this.ABMUsuariosBotton5.Enabled = false;
+            this.ABMUsuariosBotton6.Enabled = false;
+        }
+
+        private void Limpiar()
+        {
+            this.ABMUsuariosTextoNombre.Text = "";
+            this.ABMUsuariosTextoApellido.Text = "";
+            this.ABMUsuariosTextoUsuario.Text = "";
+            this.ABMUsuariosTextoClave.Text = "";
         }
 
         private void ListarPatentes()
@@ -174,7 +346,7 @@ namespace BuenViaje.Administracion.Usuarios
             ABMUsuariosGrillaPatente1.Rows.Clear();
             ABMUsuariosGrillaPatente2.Rows.Clear();
             List<PatenteBE> patentes = patenteBl.Listar();
-            
+
             foreach (PatenteBE patente in patentes)
             {
                 bool flag = false;
@@ -215,23 +387,100 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ListarFamilias()
         {
-            throw new NotImplementedException();
+            ABMUsuariosGrillaFamilia1.Rows.Clear();
+            ABMUsuariosGrillaFamilia2.Rows.Clear();
+            List<FamiliaBE> familias = familiaBl.Listar();
+
+            foreach (FamiliaBE familia in familias)
+            {
+                bool flag = false;
+                foreach (FamiliaBE familiaUsuario in familiasUsuario)
+                {
+                    if (familia.ID_Compuesto == familiaUsuario.ID_Compuesto)
+                    {
+                        flag = true;
+                    }
+                }
+                if (!flag)
+                {
+                    ABMUsuariosGrillaFamilia1.Rows.Add(familia.ID_Compuesto, familia.Nombre);
+                }
+            }
+            foreach (FamiliaBE familiaUsuario in familiasUsuario)
+            {
+                ABMUsuariosGrillaFamilia2.Rows.Add(familiaUsuario.ID_Compuesto, familiaUsuario.Nombre);
+            }
+
+            if (ABMUsuariosGrillaFamilia1.Rows.Count == 0)
+            {
+                ABMUsuariosBotton3.Enabled = false;
+            }
+            else
+            {
+                ABMUsuariosBotton3.Enabled = true;
+            }
+            if (ABMUsuariosGrillaFamilia2.Rows.Count == 0)
+            {
+                ABMUsuariosBotton4.Enabled = false;
+            }
+            else
+            {
+                ABMUsuariosBotton4.Enabled = true;
+            }
         }
 
-
-        private void Limpiar()
+        private bool ValidarClave()
         {
-            throw new NotImplementedException();
+            string Password = this.ABMUsuariosTextoClave.Text;
+            string regex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$";
+            return Regex.Match(Password, regex).Success;
+
         }
 
-        private void ABMUsuariosBotton2_Click(object sender, EventArgs e)
+        private bool ValidarUsuarioUnico()
         {
-            this.Close();
+            List<UsuarioBE> usuarios = usuarioBl.Listar();
+            switch (this.operacion)
+            {
+                case Operacion.Alta:
+                    return !(usuarios.Any(item => item.Nombre_Usuario == this.ABMUsuariosTextoUsuario.Text));
+                case Operacion.Modificacion:
+                    foreach (UsuarioBE user in usuarios)
+                    {
+                        if (user.Nombre_Usuario == this.ABMUsuariosTextoUsuario.Text)
+                        {
+                            if (user.ID_Usuario != this.usuariobe.ID_Usuario)
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return true;
+                default:
+                    return true;
+            }
         }
 
-        private void ABMUsuariosBotton1_Click(object sender, EventArgs e)
+        private bool ValidarUsuarioMail()
         {
+            try
+            {
+                MailAddress m = new MailAddress(ABMUsuariosTextoUsuario.Text);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
 
+        private bool ValidarNombre()
+        {
+            return !(this.ABMUsuariosTextoNombre.Text.Length > 50 || this.ABMUsuariosTextoApellido.Text.Length > 50);
         }
 
         private void ABMUsuariosBotton5_Click(object sender, EventArgs e)
@@ -244,7 +493,7 @@ namespace BuenViaje.Administracion.Usuarios
         private void ABMUsuariosBotton6_Click(object sender, EventArgs e)
         {
             PatenteBE patente = patenteBl.Obtener(int.Parse(ABMUsuariosGrillaPatente2.SelectedRows[0].Cells[0].Value.ToString()));
-            List<PatenteBE> aux = new List<PatenteBE>();
+            List<CompuestoBE> aux = new List<CompuestoBE>();
             foreach (PatenteBE p in patentesUsuario)
             {
                 if (p.ID_Compuesto != patente.ID_Compuesto)
@@ -255,6 +504,29 @@ namespace BuenViaje.Administracion.Usuarios
             this.patentesUsuario = aux;
             //patentesUsuario.Remove(patente);
             ListarPatentes();
+        }
+
+        private void ABMUsuariosBotton3_Click(object sender, EventArgs e)
+        {
+            FamiliaBE familia = familiaBl.Obtener(int.Parse(ABMUsuariosGrillaFamilia1.SelectedRows[0].Cells[0].Value.ToString()));
+            familiasUsuario.Add(familia);
+            ListarFamilias();
+        }
+
+        private void ABMUsuariosBotton4_Click(object sender, EventArgs e)
+        {
+            FamiliaBE familia = familiaBl.Obtener(int.Parse(ABMUsuariosGrillaFamilia2.SelectedRows[0].Cells[0].Value.ToString()));
+            List<CompuestoBE> aux = new List<CompuestoBE>();
+            foreach (FamiliaBE p in familiasUsuario)
+            {
+                if (p.ID_Compuesto != familia.ID_Compuesto)
+                {
+                    aux.Add(p);
+                }
+            }
+            this.familiasUsuario = aux;
+            //patentesUsuario.Remove(patente);
+            ListarFamilias();
         }
     }
 }

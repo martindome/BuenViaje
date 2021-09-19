@@ -152,5 +152,36 @@ namespace BuenViaje.Administracion.Usuarios
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Permiso-Usuario-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void UsuarioPrincipalBotton1_Click(object sender, EventArgs e)
+        {
+            UsuarioBL usuariobl = new UsuarioBL();
+            ABMUsuarios abmusuarios = new ABMUsuarios();
+            abmusuarios.operacion = Operacion.Ver;
+            abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].Value.ToString());
+            abmusuarios.ShowDialog();
+            ActualizarGrilla();
+        }
+
+        private void UsuarioPrincipalBotton3_Click(object sender, EventArgs e)
+        {
+            UsuarioBL usuariobl = new UsuarioBL();
+            ABMUsuarios abmusuarios = new ABMUsuarios();
+            abmusuarios.operacion = Operacion.Modificacion;
+            abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].Value.ToString());
+            abmusuarios.ShowDialog();
+            ActualizarGrilla();
+        }
+
+        private void UsuarioPrincipalBotton4_Click(object sender, EventArgs e)
+        {
+            UsuarioBL usuariobl = new UsuarioBL();
+            ABMUsuarios abmusuarios = new ABMUsuarios();
+            abmusuarios.operacion = Operacion.Baja;
+            abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].Value.ToString());
+            abmusuarios.usuariobe.Permisos = usuariobl.ObtenerPermisos(abmusuarios.usuariobe);
+            abmusuarios.ShowDialog();
+            ActualizarGrilla();
+        }
     }
 }

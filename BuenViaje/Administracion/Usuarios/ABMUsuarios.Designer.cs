@@ -328,6 +328,7 @@
             this.ABMUsuariosBotton4.TabIndex = 4;
             this.ABMUsuariosBotton4.Text = "Quitar";
             this.ABMUsuariosBotton4.UseVisualStyleBackColor = true;
+            this.ABMUsuariosBotton4.Click += new System.EventHandler(this.ABMUsuariosBotton4_Click);
             // 
             // ABMUsuariosBotton3
             // 
@@ -338,6 +339,7 @@
             this.ABMUsuariosBotton3.TabIndex = 3;
             this.ABMUsuariosBotton3.Text = "Agregar";
             this.ABMUsuariosBotton3.UseVisualStyleBackColor = true;
+            this.ABMUsuariosBotton3.Click += new System.EventHandler(this.ABMUsuariosBotton3_Click);
             // 
             // ABMUsuariosGrillaFamilia1
             // 

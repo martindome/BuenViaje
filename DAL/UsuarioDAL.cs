@@ -65,22 +65,24 @@ namespace DAL
         {
             string mCommand = "";
             string Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
-            string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + pUsuario.Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString());
             if (pUsuario.ID_Usuario == 0)
             {
+                string Clave = mCifra.CalcularHashMD5(pUsuario.Contrasenia);
+                string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + Nombre_Usuario + Clave + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
                 pUsuario.ID_Usuario = ProximoId(); 
-                mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, ID_Idioma, DVH) VALUES (" + pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + pUsuario.Nombre_Usuario + "', '" + pUsuario.Contrasenia + "', " + pUsuario.ID_Idioma +", '" + DVH + "')";
+                mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, ID_Idioma, DVH) VALUES (" + pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + Nombre_Usuario + "', '" + Clave + "', " + pUsuario.Intentos_Login + ", " + pUsuario.ID_Idioma +", '" + DVH + "')";
                 
             }
             else
-            { 
+            {
+                string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
                 mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
                     + "', Apellido = '" + pUsuario.Apellido
-                    + "', Nombre_Usuario = '" + pUsuario.Nombre_Usuario
+                    + "', Nombre_Usuario = '" + Nombre_Usuario
                     + "', Contrasenia = '" + pUsuario.Contrasenia
                     + "', Intentos_Login = " + pUsuario.Intentos_Login
                     + ", ID_Idioma = " + pUsuario.ID_Idioma
-                    + ", DVH = '" + DVH + "', WHERE ID_Usuario =" + pUsuario.ID_Usuario;
+                    + ", DVH = '" + DVH + "' WHERE ID_Usuario =" + pUsuario.ID_Usuario;
             }
             int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
@@ -117,7 +119,7 @@ namespace DAL
             }
             permisos.AddRange(familias);
             permisos.AddRange(patentes);
-            return familias;
+            return permisos;
         }
         public static int Eliminar (UsuarioBE pUsuario)
         {

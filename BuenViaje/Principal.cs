@@ -122,10 +122,13 @@ namespace BuenViaje
 
         private void gestionarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UsuariosPrincipal form = new UsuariosPrincipal();
-            form.MinimizeBox = false;
-            form.MaximizeBox = false;
-            form.ShowDialog();
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadUsuarios))
+            {
+                UsuariosPrincipal form = new UsuariosPrincipal();
+                form.MinimizeBox = false;
+                form.MaximizeBox = false;
+                form.ShowDialog();
+            }
         }
     }
 }

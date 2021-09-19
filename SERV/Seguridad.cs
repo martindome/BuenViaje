@@ -46,7 +46,7 @@ namespace SERV
             public static string Descifrar(string input)
             {
                 if (string.IsNullOrEmpty(input))
-                    throw new ArgumentNullException("cipherText");
+                    throw new ArgumentNullException("Text is not cipher");
 
                 if (!IsBase64String(input))
                     throw new Exception("The cipherText input parameter is not base64 encoded");

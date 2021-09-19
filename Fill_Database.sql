@@ -50,7 +50,12 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMUSuarios-Columna-FamiliaID', 'ID'),
 (1, 'ABMUSuarios-Columna-FamiliaNombre', 'Name'),
 (1, 'ABMUSuarios-Columna-PatenteID', 'ID'),
-(1, 'ABMUSuarios-Columna-PatenteNombre', 'Name')
+(1, 'ABMUSuarios-Columna-PatenteNombre', 'Name'),
+(1, 'ABMUsuarios-Validacion-Clave', 'Password must have 8+ chars, 1 number, 1 upper case, 1 lower case at least'),
+(1, 'ABMUsuarios-Validacion-UsuarioUnico', 'Username already taken'),
+(1, 'ABMUsuarios-Validacion-UsuarioMail', 'Username does not match an email address'),
+(1, 'ABMUsuarios-Validacion-Nombre', 'Name and surname must be 50 characters or less'),
+(2, 'ABMUsuarios-Confirmacion-Baja', 'Are you sure to delete the user?')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -96,7 +101,12 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMUSuarios-Columna-FamiliaID', 'ID'),
 (2, 'ABMUSuarios-Columna-FamiliaNombre', 'Nombre'),
 (2, 'ABMUSuarios-Columna-PatenteID', 'ID'),
-(2, 'ABMUSuarios-Columna-PatenteNombre', 'Nombre')
+(2, 'ABMUSuarios-Columna-PatenteNombre', 'Nombre'),
+(2, 'ABMUsuarios-Validacion-Clave', 'La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
+(2, 'ABMUsuarios-Validacion-UsuarioUnico', 'Nombre ya en uso'),
+(2, 'ABMUsuarios-Validacion-UsuarioMail', 'El nombre de usuario no es una casilla de mail'),
+(2, 'ABMUsuarios-Validacion-Nombre', 'Nombre y apellido deben tener menos de 50 caracteres'),
+(2, 'ABMUsuarios-Confirmacion-Baja', 'Esta seguro de borrar el usuario?')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -295,17 +305,19 @@ INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
 
 --Usuario_Familia
 INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES
-(1,1,49)
+(1,1,49),
+(1,2,50)
 
 --Permiso_Familia
 INSERT INTO Permiso_Familia(ID_Permiso, ID_Familia, DVH) VALUES
-(1,1,49),
+(1,2,49), --usuarios admin
+(10,2,148), --usuarios read
 (2,1,49),
 (3,1,49)
 
 
 Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values 
 (1, 'Usuario', '196993'),
-(2, 'Permiso_Familia', '147'),
-(3, 'Usuario_Familia', '49')
+(2, 'Permiso_Familia', '295'),
+(3, 'Usuario_Familia', '99')
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
