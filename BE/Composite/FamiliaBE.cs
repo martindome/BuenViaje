@@ -30,9 +30,17 @@ namespace BE.Composite
 
         public override void QuitarPermiso(CompuestoBE p)
         {
-            if (this.Hijos.Contains(p))
+            if (this.Hijos.Any(item => item.ID_Compuesto == p.ID_Compuesto && item.Nombre == p.Nombre))
             {
-                this.Hijos.Remove(p);
+                List<CompuestoBE> aux = new List<CompuestoBE>();
+                foreach(CompuestoBE comp in this.ObtenerHijos())
+                {
+                    if (comp.ID_Compuesto != p.ID_Compuesto)
+                    {
+                        aux.Add(comp);
+                    }
+                }
+                this.Hijos = aux;
             }
         }
 

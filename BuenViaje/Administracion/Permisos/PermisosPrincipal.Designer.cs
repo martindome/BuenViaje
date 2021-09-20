@@ -52,7 +52,7 @@
             this.PermisosPrincipalGroupBox.Controls.Add(this.PermisosPrinciplaText2);
             this.PermisosPrincipalGroupBox.Controls.Add(this.PermisosPrincipalLabel1);
             this.PermisosPrincipalGroupBox.Controls.Add(this.PermisosPrinciplaText1);
-            this.PermisosPrincipalGroupBox.Location = new System.Drawing.Point(439, 12);
+            this.PermisosPrincipalGroupBox.Location = new System.Drawing.Point(537, 12);
             this.PermisosPrincipalGroupBox.Name = "PermisosPrincipalGroupBox";
             this.PermisosPrincipalGroupBox.Size = new System.Drawing.Size(252, 159);
             this.PermisosPrincipalGroupBox.TabIndex = 17;
@@ -122,6 +122,7 @@
             this.PermisosPrincipalBotton4.TabIndex = 16;
             this.PermisosPrincipalBotton4.Text = "Baja";
             this.PermisosPrincipalBotton4.UseVisualStyleBackColor = true;
+            this.PermisosPrincipalBotton4.Click += new System.EventHandler(this.PermisosPrincipalBotton4_Click);
             // 
             // PermisosPrincipalBotton3
             // 
@@ -132,6 +133,7 @@
             this.PermisosPrincipalBotton3.TabIndex = 15;
             this.PermisosPrincipalBotton3.Text = "Modificar";
             this.PermisosPrincipalBotton3.UseVisualStyleBackColor = true;
+            this.PermisosPrincipalBotton3.Click += new System.EventHandler(this.PermisosPrincipalBotton3_Click);
             // 
             // PermisosPrincipalBotton2
             // 
@@ -142,6 +144,7 @@
             this.PermisosPrincipalBotton2.TabIndex = 14;
             this.PermisosPrincipalBotton2.Text = "Alta";
             this.PermisosPrincipalBotton2.UseVisualStyleBackColor = true;
+            this.PermisosPrincipalBotton2.Click += new System.EventHandler(this.PermisosPrincipalBotton2_Click);
             // 
             // PermisosPrincipalBotton1
             // 
@@ -152,6 +155,7 @@
             this.PermisosPrincipalBotton1.TabIndex = 13;
             this.PermisosPrincipalBotton1.Text = "Ver";
             this.PermisosPrincipalBotton1.UseVisualStyleBackColor = true;
+            this.PermisosPrincipalBotton1.Click += new System.EventHandler(this.PermisosPrincipalBotton1_Click);
             // 
             // grillaFamilias
             // 
@@ -161,14 +165,14 @@
             this.grillaFamilias.Name = "grillaFamilias";
             this.grillaFamilias.RowHeadersWidth = 51;
             this.grillaFamilias.RowTemplate.Height = 24;
-            this.grillaFamilias.Size = new System.Drawing.Size(423, 289);
+            this.grillaFamilias.Size = new System.Drawing.Size(521, 289);
             this.grillaFamilias.TabIndex = 12;
             // 
             // PermisosPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 340);
+            this.ClientSize = new System.Drawing.Size(794, 340);
             this.Controls.Add(this.PermisosPrincipalGroupBox);
             this.Controls.Add(this.PermisosPrincipalBotton4);
             this.Controls.Add(this.PermisosPrincipalBotton3);

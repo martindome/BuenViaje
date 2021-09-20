@@ -140,5 +140,45 @@ namespace BuenViaje.Administracion.Permisos
             this.PermisosPrinciplaText2.Text = "";
             ActualizarGrilla();
         }
+
+        private void PermisosPrincipalBotton1_Click(object sender, EventArgs e)
+        {
+            FamiliaBL familiabl = new FamiliaBL();
+            ABMPermisos abmpermisos = new ABMPermisos();
+            abmpermisos.operacion = Operacion.Ver;
+            abmpermisos.familiabe = familiabl.Obtener(int.Parse(this.grillaFamilias.SelectedRows[0].Cells[0].Value.ToString()));
+            abmpermisos.ShowDialog();
+            ActualizarGrilla();
+        }
+
+        private void PermisosPrincipalBotton2_Click(object sender, EventArgs e)
+        {
+            FamiliaBL familiabl = new FamiliaBL();
+            ABMPermisos abmpermisos = new ABMPermisos();
+            abmpermisos.operacion = Operacion.Alta;
+            abmpermisos.familiabe = new FamiliaBE();
+            abmpermisos.ShowDialog();
+            ActualizarGrilla();
+        }
+
+        private void PermisosPrincipalBotton3_Click(object sender, EventArgs e)
+        {
+            FamiliaBL familiabl = new FamiliaBL();
+            ABMPermisos abmpermisos = new ABMPermisos();
+            abmpermisos.operacion = Operacion.Modificacion;
+            abmpermisos.familiabe = familiabl.Obtener(int.Parse(this.grillaFamilias.SelectedRows[0].Cells[0].Value.ToString()));
+            abmpermisos.ShowDialog();
+            ActualizarGrilla();
+        }
+
+        private void PermisosPrincipalBotton4_Click(object sender, EventArgs e)
+        {
+            FamiliaBL familiabl = new FamiliaBL();
+            ABMPermisos abmpermisos = new ABMPermisos();
+            abmpermisos.operacion = Operacion.Baja;
+            abmpermisos.familiabe = familiabl.Obtener(int.Parse(this.grillaFamilias.SelectedRows[0].Cells[0].Value.ToString()));
+            abmpermisos.ShowDialog();
+            ActualizarGrilla();
+        }
     }
 }

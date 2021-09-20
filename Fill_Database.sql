@@ -66,6 +66,13 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'PermisosPrincipal-Columna-FamiliaNombre','Name'),
 (1, 'PermisosPrincipal-Columna-FamiliaDescripcion','Description')
 
+----ABM Permisos
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMPermisos-Form', 'Accesses'),
+(1, 'ABMPermisos-Validacion-Nombre', 'Name and description should be 50 chars or less'),
+(1, 'ABMPermisos-Confirmacion-Baja', 'Are you sure to delete the group?')
+
+
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Inicio-Error-ConexionBaseDatos', 'Error al conectar a la base de datos'),
@@ -125,6 +132,12 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'PermisosPrincipal-Columna-FamiliaID','ID'),
 (2, 'PermisosPrincipal-Columna-FamiliaNombre','Nombre'),
 (2, 'PermisosPrincipal-Columna-FamiliaDescripcion','Descripcion')
+
+----ABM Permisos
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMPermisos-Form', 'Permisos'),
+(2, 'ABMPermisos-Validacion-Nombre', 'Nombre y descripcion deben tener menos de 50 caracteres'),
+(2, 'ABMPermisos-Confirmacion-Baja', 'Esta seguro de borrar la familia?')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control

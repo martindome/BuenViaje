@@ -63,6 +63,12 @@
     <Compile Include="Administracion\Bitacora\Bitacora.Designer.cs">
       <DependentUpon>Bitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Permisos\ABMPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Permisos\ABMPermisos.Designer.cs">
+      <DependentUpon>ABMPermisos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Permisos\PermisosPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="Operacion.cs" />
     <EmbeddedResource Include="Administracion\Bitacora\Bitacora.resx">
       <DependentUpon>Bitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Permisos\ABMPermisos.resx">
+      <DependentUpon>ABMPermisos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Permisos\PermisosPrincipal.resx">
       <DependentUpon>PermisosPrincipal.cs</DependentUpon>

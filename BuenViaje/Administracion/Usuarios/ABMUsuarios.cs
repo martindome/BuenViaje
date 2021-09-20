@@ -209,133 +209,142 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosBotton1_Click(object sender, EventArgs e)
         {
+            
             bool flag = false;
             int idiomaId = 0;
             BitacoraBE mBitacora = new BitacoraBE();
-            //Boton Aplicar
-            switch (this.operacion)
+            try 
             {
-                case Operacion.Alta:
-                    if (!ValidarClave())
-                    {
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    if (!ValidarUsuarioUnico())
-                    {
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioUnico", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    if (!ValidarUsuarioMail())
-                    {
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioMail", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    if (!ValidarNombre())
-                    {
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    //Valorizamos entidad
-                    this.usuariobe.Nombre = this.ABMUsuariosTextoNombre.Text;
-                    this.usuariobe.Apellido = this.ABMUsuariosTextoApellido.Text;
-                    this.usuariobe.Nombre_Usuario = this.ABMUsuariosTextoUsuario.Text;
-                    this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
-                    this.usuariobe.Idioma_Descripcion = this.ABMUsuariosComboIdioma.SelectedItem.ToString();
-                    idiomaId = 0;
-                    foreach (IdiomaBE idioma in IdiomaBL.ListarIdiomas())
-                    {
-                        if (idioma.Descripcion == this.usuariobe.Idioma_Descripcion)
-                        {
-                            idiomaId = idioma.ID_Idioma;
-                        }
-                    }
-                    this.usuariobe.ID_Idioma = idiomaId;
-                    this.usuariobe.Permisos = new List<CompuestoBE>();
-                    this.usuariobe.Permisos.AddRange(this.familiasUsuario);
-                    this.usuariobe.Permisos.AddRange(this.patentesUsuario);
-                    this.usuarioBl.Guardar(usuariobe);
-                    //Bitacora
-                    mBitacora.Descripcion = "Se dio de alta al usuario: " + this.usuariobe.Nombre_Usuario;
-                    mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
-                    mBitacora.Tipo_Evento = "MEDIUM";
-                    Bitacorabl.Guardar(mBitacora);
-                    flag = true;
-                    break;
-                case Operacion.Modificacion:
-                    if (this.ABMUsuariosTextoClave.Text.Length != 0 )
-                    {
+                switch (this.operacion)
+                {
+                    case Operacion.Alta:
                         if (!ValidarClave())
                         {
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
-                    }
-                    if (!ValidarUsuarioUnico())
-                    {
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioUnico", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    if (!ValidarUsuarioMail())
-                    {
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioMail", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    if (!ValidarNombre())
-                    {
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    //Valorizamos entidad
-                    this.usuariobe.Nombre = this.ABMUsuariosTextoNombre.Text;
-                    this.usuariobe.Apellido = this.ABMUsuariosTextoApellido.Text;
-                    this.usuariobe.Nombre_Usuario = this.ABMUsuariosTextoUsuario.Text;
-                    this.usuariobe.Idioma_Descripcion = this.ABMUsuariosComboIdioma.SelectedItem.ToString();
-                    idiomaId = 0;
-                    foreach (IdiomaBE idioma in IdiomaBL.ListarIdiomas())
-                    {
-                        if (idioma.Descripcion == this.usuariobe.Idioma_Descripcion)
+                        if (!ValidarUsuarioUnico())
                         {
-                            idiomaId = idioma.ID_Idioma;
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioUnico", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
                         }
-                    }
-                    this.usuariobe.ID_Idioma = idiomaId;
-                    this.usuariobe.Permisos = new List<CompuestoBE>();
-                    this.usuariobe.Permisos.AddRange(this.familiasUsuario);
-                    this.usuariobe.Permisos.AddRange(this.patentesUsuario);
-                    this.usuarioBl.Guardar(usuariobe);
-                    //Bitacora
-                    mBitacora.Descripcion = "Se modifico al usuario: " + this.usuariobe.Nombre_Usuario;
-                    mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
-                    mBitacora.Tipo_Evento = "MEDIUM";
-                    Bitacorabl.Guardar(mBitacora);
-                    flag = true;
-                    break;
-                case Operacion.Baja:
-                    DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        this.usuarioBl.Eliminar(this.usuariobe);
-                        
-                    }
-                    //Bitacora
-                    mBitacora.Descripcion = "Se elimino al usuario: " + this.usuariobe.Nombre_Usuario;
-                    mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
-                    mBitacora.Tipo_Evento = "HIGH";
-                    Bitacorabl.Guardar(mBitacora);
-                    flag = true;
-                    break;
-                case Operacion.Ver:
-                    break;
+                        if (!ValidarUsuarioMail())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioMail", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (!ValidarNombre())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        //Valorizamos entidad
+                        this.usuariobe.Nombre = this.ABMUsuariosTextoNombre.Text;
+                        this.usuariobe.Apellido = this.ABMUsuariosTextoApellido.Text;
+                        this.usuariobe.Nombre_Usuario = this.ABMUsuariosTextoUsuario.Text;
+                        this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
+                        this.usuariobe.Idioma_Descripcion = this.ABMUsuariosComboIdioma.SelectedItem.ToString();
+                        idiomaId = 0;
+                        foreach (IdiomaBE idioma in IdiomaBL.ListarIdiomas())
+                        {
+                            if (idioma.Descripcion == this.usuariobe.Idioma_Descripcion)
+                            {
+                                idiomaId = idioma.ID_Idioma;
+                            }
+                        }
+                        this.usuariobe.ID_Idioma = idiomaId;
+                        this.usuariobe.Permisos = new List<CompuestoBE>();
+                        this.usuariobe.Permisos.AddRange(this.familiasUsuario);
+                        this.usuariobe.Permisos.AddRange(this.patentesUsuario);
+                        this.usuarioBl.Guardar(usuariobe);
+                        //Bitacora
+                        mBitacora.Descripcion = "Se dio de alta al usuario: " + this.usuariobe.Nombre_Usuario;
+                        mBitacora.Fecha = DateTime.Now;
+                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Tipo_Evento = "MEDIUM";
+                        Bitacorabl.Guardar(mBitacora);
+                        flag = true;
+                        break;
+                    case Operacion.Modificacion:
+                        if (this.ABMUsuariosTextoClave.Text.Length != 0)
+                        {
+                            if (!ValidarClave())
+                            {
+                                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                            this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
+                        }
+                        if (!ValidarUsuarioUnico())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioUnico", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (!ValidarUsuarioMail())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioMail", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (!ValidarNombre())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        //Valorizamos entidad
+                        this.usuariobe.Nombre = this.ABMUsuariosTextoNombre.Text;
+                        this.usuariobe.Apellido = this.ABMUsuariosTextoApellido.Text;
+                        this.usuariobe.Nombre_Usuario = this.ABMUsuariosTextoUsuario.Text;
+                        this.usuariobe.Idioma_Descripcion = this.ABMUsuariosComboIdioma.SelectedItem.ToString();
+                        idiomaId = 0;
+                        foreach (IdiomaBE idioma in IdiomaBL.ListarIdiomas())
+                        {
+                            if (idioma.Descripcion == this.usuariobe.Idioma_Descripcion)
+                            {
+                                idiomaId = idioma.ID_Idioma;
+                            }
+                        }
+                        this.usuariobe.ID_Idioma = idiomaId;
+                        this.usuariobe.Permisos = new List<CompuestoBE>();
+                        this.usuariobe.Permisos.AddRange(this.familiasUsuario);
+                        this.usuariobe.Permisos.AddRange(this.patentesUsuario);
+                        this.usuarioBl.Guardar(usuariobe);
+                        //Bitacora
+                        mBitacora.Descripcion = "Se modifico al usuario: " + this.usuariobe.Nombre_Usuario;
+                        mBitacora.Fecha = DateTime.Now;
+                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Tipo_Evento = "MEDIUM";
+                        Bitacorabl.Guardar(mBitacora);
+                        flag = true;
+                        break;
+                    case Operacion.Baja:
+                        DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            this.usuarioBl.Eliminar(this.usuariobe);
+
+                        }
+                        //Bitacora
+                        mBitacora.Descripcion = "Se elimino al usuario: " + this.usuariobe.Nombre_Usuario;
+                        mBitacora.Fecha = DateTime.Now;
+                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Tipo_Evento = "HIGH";
+                        Bitacorabl.Guardar(mBitacora);
+                        flag = true;
+                        break;
+                    case Operacion.Ver:
+                        break;
+                }
+                if (flag)
+                {
+                    this.Close();
+                }
             }
-            if (flag)
+            catch (Exception ex)
             {
-                this.Close();
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //Boton Aplicar
+            
         }
         private void ABMUsuariosBotton2_Click(object sender, EventArgs e)
         {

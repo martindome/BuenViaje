@@ -43,3 +43,4 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\Bue
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Administracion.Usuarios.ABMUsuarios.resources
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.CambiarPassword.resources
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Administracion.Permisos.PermisosPrincipal.resources
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Administracion.Permisos.ABMPermisos.resources

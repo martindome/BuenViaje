@@ -69,16 +69,22 @@ namespace DAL
             string mCommand = "Select p.ID_Familia, p.Nombre, p.Descripcion from Familia p WHERE p.ID_Familia = " + id;
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            FamiliaBE mFamilia = new FamiliaBE();
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
-                FamiliaBE mFamilia = new FamiliaBE();
                 ValorizarEntidad(mFamilia, mDataSet.Tables[0].Rows[0]);
-                return mFamilia;
             }
             else
             {
                 return null;
             }
+            List<PatenteBE> permisos = ListarPatentes(mFamilia);
+            foreach (PatenteBE permiso in permisos)
+            {
+                mFamilia.AgregarPermiso(permiso);
+            }
+            return mFamilia; 
+
         }
         public static void Guardar(FamiliaBE pFamilia)
         {
@@ -87,11 +93,11 @@ namespace DAL
             if (pFamilia.ID_Compuesto == 0)
             {
                 pFamilia.ID_Compuesto = ProximoId();
-                mCommand = "INSERT INTO Familia (ID_Familia, Nombre, Descripcion) VALUES ("+pFamilia.ID_Compuesto + ", '" + pFamilia.Nombre + "', '" + pFamilia.Descripcion + "')";
+                mCommand = "INSERT INTO Familia (ID_Familia, Nombre, Descripcion) VALUES (" + pFamilia.ID_Compuesto + ", '" + pFamilia.Nombre + "', '" + pFamilia.Descripcion + "')";
             }
             else
             {
-                mCommand = "UPDATE Familia SET Nombre = '" + pFamilia.Nombre + "', Descipcion = '" + pFamilia.Descripcion + "' WHERE ID_Familia = " + pFamilia.ID_Compuesto;
+                mCommand = "UPDATE Familia SET Nombre = '" + pFamilia.Nombre + "', Descripcion = '" + pFamilia.Descripcion + "' WHERE ID_Familia = " + pFamilia.ID_Compuesto;
             }
             DAO.GetInstance().ExecuteNonQuery(mCommand);
         }

@@ -131,7 +131,7 @@ namespace BL
             BitacoraBE mBitacora = new BitacoraBE();
             BitacoraBL Bitacorabl = new BitacoraBL();
             UsuarioBL Usuariobl = new UsuarioBL();
-            pUsuario.Contrasenia = DAL.LoginDAL.CalcularHashMD5(NuevaContrasenia);
+            pUsuario.Contrasenia = NuevaContrasenia;
             mBitacora.Descripcion = "Cambio de clave satisfactorio";
             mBitacora.Fecha = DateTime.Now;
             mBitacora.ID_Usuario = pUsuario.ID_Usuario;
