@@ -132,7 +132,7 @@ namespace BL
             BitacoraBL Bitacorabl = new BitacoraBL();
             UsuarioBL Usuariobl = new UsuarioBL();
             pUsuario.Contrasenia = NuevaContrasenia;
-            mBitacora.Descripcion = "Cambio de clave satisfactorio";
+            mBitacora.Descripcion = "Cambio de clave usuario: "+ pUsuario.Nombre_Usuario;
             mBitacora.Fecha = DateTime.Now;
             mBitacora.ID_Usuario = pUsuario.ID_Usuario;
             mBitacora.Tipo_Evento = "HIGH";
@@ -142,6 +142,13 @@ namespace BL
 
         public void ResetarConstrasenia(UsuarioBE pUsuario)
         {
+            BitacoraBE mBitacora = new BitacoraBE();
+            BitacoraBL Bitacorabl = new BitacoraBL();
+            mBitacora.Descripcion = "Reset clave usuario: "+ pUsuario.Nombre_Usuario;
+            mBitacora.Fecha = DateTime.Now;
+            mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+            mBitacora.Tipo_Evento = "HIGH";
+            Bitacorabl.Guardar(mBitacora);
             string newPassword = UsuarioDAL.ResetearConstrasenia(pUsuario);
         }
         public List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)

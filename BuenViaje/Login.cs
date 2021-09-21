@@ -16,15 +16,11 @@ namespace BuenViaje
     {
         LoginBL Loginbl = new LoginBL();
         UsuarioBL Usuariobl = new UsuarioBL();
+        string mIdioma;
 
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void LoginButton1_Click(object sender, EventArgs e)
@@ -45,7 +41,7 @@ namespace BuenViaje
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Login-Error-InicioSesion", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -56,9 +52,12 @@ namespace BuenViaje
 
         private void Login_Load (object sender, EventArgs e)
         {
-            string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
-            
+            mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
+            foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
+            {
+                LoginComboBox1.Items.Add(mIdioma.Descripcion);
+            }
         }
 
         private void CargarIdioma (List<ControlBE> Lista)
@@ -77,8 +76,23 @@ namespace BuenViaje
 
         private void LoginButton3_Click(object sender, EventArgs e)
         {
-            CambiarPassword mCambiarPassword = new CambiarPassword();
-            mCambiarPassword.ShowDialog(this);
+            try
+            {
+
+                CambiarPassword mCambiarPassword = new CambiarPassword();
+                mCambiarPassword.mIdioma = mIdioma;
+                mCambiarPassword.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Login-Error-cambiarClave", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mIdioma = LoginComboBox1.SelectedItem.ToString();
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
         }
     }
 }

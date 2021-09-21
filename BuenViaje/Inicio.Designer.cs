@@ -62,7 +62,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 141);
+            this.ClientSize = new System.Drawing.Size(346, 117);
             this.Controls.Add(this.InicioLabel1);
             this.Controls.Add(this.InicioProgressBar1);
             this.Name = "Inicio";

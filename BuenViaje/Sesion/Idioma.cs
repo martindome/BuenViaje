@@ -50,19 +50,29 @@ namespace BuenViaje.Sesion
 
         private void IdiomaBotton1_Click(object sender, EventArgs e)
         {
-            if(IdiomaComboBox1.SelectedItem != null)
+            try
             {
-                UsuarioBE mU = new UsuarioBE();
-                UsuarioBL mUsuariobl = new UsuarioBL();
-                mU = SingletonSesion.Instancia.Usuario;
-                mU.ID_Idioma = IdiomaComboBox1.SelectedIndex + 1;
-                mU.Idioma_Descripcion = IdiomaComboBox1.SelectedItem.ToString();
-                mUsuariobl.Actualizar(mU);
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Idioma-Info-cambio", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
-                this.parent.CargarIdioma(IdiomaBL.ObtenerMensajeControladores(IdiomaComboBox1.SelectedItem.ToString()));
+                if (IdiomaComboBox1.SelectedItem != null)
+                {
+                    UsuarioBE mU = new UsuarioBE();
+                    UsuarioBL mUsuariobl = new UsuarioBL();
+                    mU = SingletonSesion.Instancia.Usuario;
+                    mU.ID_Idioma = IdiomaComboBox1.SelectedIndex + 1;
+                    mU.Idioma_Descripcion = IdiomaComboBox1.SelectedItem.ToString();
+                    mUsuariobl.Actualizar(mU);
+                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Idioma-Info-cambio", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+                    this.parent.CargarIdioma(IdiomaBL.ObtenerMensajeControladores(IdiomaComboBox1.SelectedItem.ToString()));
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Idioma-Error-CambioIdioma", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Close();
             }
             
-            this.Close();
         }
     }
 }

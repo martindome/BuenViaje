@@ -13,6 +13,7 @@ using BuenViaje.Sesion;
 using BuenViaje.Administracion;
 using BuenViaje.Administracion.Usuarios;
 using BuenViaje.Administracion.Permisos;
+using BuenViaje.Administracion.Backup;
 
 namespace BuenViaje
 {
@@ -141,6 +142,37 @@ namespace BuenViaje
             if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadPermisos))
             {
                 PermisosPrincipal form = new PermisosPrincipal();
+                form.MinimizeBox = false;
+                form.MaximizeBox = false;
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Permiso-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void copiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminBackup)) 
+            {
+
+                Backup form = new Backup();
+                form.MinimizeBox = false;
+                form.MaximizeBox = false;
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Permiso-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void restauracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminBackup))
+            {
+                Restore form = new Restore();
                 form.MinimizeBox = false;
                 form.MaximizeBox = false;
                 form.ShowDialog();

@@ -57,6 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion\Backup\Backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Backup\Backup.Designer.cs">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Backup\Restore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Backup\Restore.Designer.cs">
+      <DependentUpon>Restore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Bitacora\Bitacora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,12 @@
       <DependentUpon>Idioma.cs</DependentUpon>
     </Compile>
     <Compile Include="Operacion.cs" />
+    <EmbeddedResource Include="Administracion\Backup\Backup.resx">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Backup\Restore.resx">
+      <DependentUpon>Restore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Bitacora\Bitacora.resx">
       <DependentUpon>Bitacora.cs</DependentUpon>
     </EmbeddedResource>

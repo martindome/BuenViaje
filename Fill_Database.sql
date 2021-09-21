@@ -1,5 +1,9 @@
 
 --https://www.guru99.com/sql-server-create-user.html
+ALTER ROLE [db_owner] ADD MEMBER [buenviajedtblogin]
+ALTER ROLE [db_datareader] ADD MEMBER [buenviajedtblogin]
+ALTER ROLE [db_datawriter] ADD MEMBER [buenviajedtblogin]
+
 --Idioma
 INSERT INTO dbo.Idioma(ID_Idioma, Descripcion) VALUES
 (1, 'English'),  
@@ -12,6 +16,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Inicio-Error-IntegridadBaseDatos', 'Error on the Data Base integrity'),  
 (1, 'Inicio-Info-CargaCorrecta', 'The application loaded successfully'), 
 (1, 'Inicio-Error-CargaIncorrecta', 'An error happend while loading the application')
+----Login
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'Login-Error-InicioSesion', 'Error while login in'),
+(1, 'Login-Error-cambiarClave', 'Error while changing password') 
 ----Principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Principal-Confirmar-CerrarSesion', 'Are you sure you want to close the session?'),
@@ -20,7 +28,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Idioma
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Idioma-Form', 'Change Languaje'),
-(1, 'Idioma-Info-cambio', 'Languaje has been changed')
+(1, 'Idioma-Info-cambio', 'Languaje has been changed'),
+(1, 'Idioma-Error-CambioIdioma', 'Error while changing lenguage')
 ----Bitacora
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Bitacora-Form', 'Logs'),
@@ -33,7 +42,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Cambiar Contrasenia
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'CambiarContrasenia-Form', 'Change Password'),
-(1, 'CambiarContrasenia-Info-CambioCorrecto', 'Password changed successfully')
+(1, 'CambiarContrasenia-Info-CambioCorrecto', 'Password changed successfully'),
+(1, 'CambiarContrasenia-Error-CambioClave', 'Error while changing password')
 ----Usuario principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'UsuarioPrincipal-Form', 'Users'),
@@ -56,7 +66,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMUsuarios-Validacion-UsuarioMail', 'Username does not match an email address'),
 (1, 'ABMUsuarios-Validacion-Nombre', 'Name and surname must be 50 characters or less'),
 (1, 'ABMUsuarios-Confirmacion-Baja', 'Are you sure to delete the user?'),
-(1, 'ABMUsuarios-Validacion-Resetear', 'Are you sure top reset the password?')
+(1, 'ABMUsuarios-Validacion-Resetear', 'Are you sure top reset the password?'),
+(1, 'ABMUsuario-Error-Aplicar', 'Error while operating users')
+
 
 ----Permisos principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -70,7 +82,24 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMPermisos-Form', 'Accesses'),
 (1, 'ABMPermisos-Validacion-Nombre', 'Name and description should be 50 chars or less'),
-(1, 'ABMPermisos-Confirmacion-Baja', 'Are you sure to delete the group?')
+(1, 'ABMPermisos-Confirmacion-Baja', 'Are you sure to delete the group?'),
+(2, 'ABMPermiso-Error-Aplicar', 'Error while operating groups')
+
+
+----Backup
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'Backup-Form', 'Backup'),
+(1, 'Backup-Confirmacion-Ejecucion', 'Create database backup?'),
+(1, 'Backup-Validacion-Ruta', 'Path is not valid'),
+(1, 'Backup-Confirmacion-Backup', 'The backup was created successfully')
+
+----Restore
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'Restore-Form', 'Restore'),
+(1, 'Restore-Columna-Volumen', 'Files'),
+(1, 'Restore-Confirmacion-Ejecucion', 'Execute restore?'),
+(1, 'Restore-Confirmacion-Backup', 'The restauration was executed successfully'),
+(1, 'Restore-Validacion-Rutas', 'File was not found')
 
 
 ----Inicio
@@ -79,6 +108,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Inicio-Error-IntegridadBaseDatos', 'Error en la integridad de la base de datos'),
 (2, 'Inicio-Info-CargaCorrecta', 'Carga de la aplicacion correcta'),
 (2, 'Inicio-Error-CargaIncorrecta', 'Ocurrio un error en la carga de la aplicacion')
+----Login
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'Login-Error-InicioSesion', 'Error al iniciar sesion'),
+(2, 'Login-Error-cambiarClave', 'Error al cambiar la clave') 
 ----Principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Principal-Confirmar-CerrarSesion', 'Esta seguro de cerrar la sesion?'),
@@ -87,7 +120,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Idioma
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Idioma-Form', 'Cambiar Lenguaje'),
-(2, 'Idioma-Info-cambio', 'El lenguaje ha sido cambiado')
+(2, 'Idioma-Info-cambio', 'El lenguaje ha sido cambiado'),
+(2, 'Idioma-Error-CambioIdioma', 'Error al cambiar el lenguaje')
 ----Bitacora
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Bitacora-Form', 'Bitacora'),
@@ -100,7 +134,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Cambiar Contrasenia
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'CambiarContrasenia-Form', 'Cambiar Contraseña'),
-(2, 'CambiarContrasenia-Info-CambioCorrecto', 'Clave cambiada satisfactoriamente')
+(2, 'CambiarContrasenia-Info-CambioCorrecto', 'Clave cambiada satisfactoriamente'),
+(2, 'CambiarContrasenia-Error-CambioClave', 'Error al cambiar clave')
 ----Usuario principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'UsuarioPrincipal-Form', 'Usuarios'),
@@ -119,11 +154,12 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMUSuarios-Columna-PatenteID', 'ID'),
 (2, 'ABMUSuarios-Columna-PatenteNombre', 'Nombre'),
 (2, 'ABMUsuarios-Validacion-Clave', 'La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
-(2, 'ABMUsuarios-Validacion-UsuarioUnico', 'Nombre ya en uso'),
+(2, 'ABMUsuarios-Validacion-UsuarioUnico', 'Nombre de usuario ya esta en uso'),
 (2, 'ABMUsuarios-Validacion-UsuarioMail', 'El nombre de usuario no es una casilla de mail'),
 (2, 'ABMUsuarios-Validacion-Nombre', 'Nombre y apellido deben tener menos de 50 caracteres'),
 (2, 'ABMUsuarios-Confirmacion-Baja', 'Esta seguro de borrar el usuario?'),
-(2, 'ABMUsuarios-Validacion-Resetear', 'Esta seguro de resetear clave?')
+(2, 'ABMUsuarios-Validacion-Resetear', 'Esta seguro de resetear clave?'),
+(2, 'ABMUsuario-Error-Aplicar', 'Error al operar con usuarios')
 
 ----Permisos principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -137,7 +173,25 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMPermisos-Form', 'Permisos'),
 (2, 'ABMPermisos-Validacion-Nombre', 'Nombre y descripcion deben tener menos de 50 caracteres'),
-(2, 'ABMPermisos-Confirmacion-Baja', 'Esta seguro de borrar la familia?')
+(2, 'ABMPermisos-Confirmacion-Baja', 'Esta seguro de borrar la familia?'),
+(2, 'ABMPermiso-Error-Aplicar', 'Error al operar con las familias')
+
+
+
+----Backup
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'Backup-Form', 'Copia de seguridad'),
+(2, 'Backup-Confirmacion-Ejecucion', 'Crear Copia de Seguridad?'),
+(2, 'Backup-Validacion-Ruta', 'Ruta no valida'),
+(2, 'Backup-Confirmacion-Backup', 'La copia de seguridad se creo exitosamente')
+
+----Restore
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'Restore-Form', 'Restauracion'),
+(2, 'Restore-Columna-Volumen', 'Volumenes'),
+(2, 'Restore-Confirmacion-Ejecucion', 'Realizar restauracion de la base de datos?'),
+(2, 'Restore-Confirmacion-Backup', 'La restauracion se realizo exitosamente'),
+(2, 'Restore-Validacion-Rutas', 'Volumen no encontrado')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -145,6 +199,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 ----Inicio
 (1, 'LoginLabel1', 'User'),  
 (1, 'LoginLabel2', 'Pass'), 
+(1, 'LoginLabel3', 'Lenguage'), 
 (1, 'LoginBotton1', 'Login'), 
 (1, 'LoginBotton2', 'Exit'),
 (1, 'LoginButton3', 'Change Password')
@@ -239,10 +294,11 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'PermisosPrincipalGroupBox', 'Filters')
 
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
-----Inicio
+----
 (2, 'LoginLabel1', 'Usuario'), 
 (2, 'LoginLabel2', 'Clave'), 
-(2, 'LoginBotton1', 'Login'), 
+(2, 'LoginLabel3', 'Idioma'), 
+(2, 'LoginBotton1', 'Iniciar Sesion'), 
 (2, 'LoginBotton2', 'Salir'),
 (2, 'LoginButton3', 'Cambiar Clave')
 ----ResetPasswrd

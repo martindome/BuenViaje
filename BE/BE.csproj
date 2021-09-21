@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupBE.cs" />
     <Compile Include="BitacoraBE.cs" />
     <Compile Include="Composite\TipoPermiso.cs" />
     <Compile Include="Composite\CompuestoBE.cs" />

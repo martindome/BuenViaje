@@ -19,26 +19,34 @@ namespace BuenViaje
             InitializeComponent();
         }
 
+        public string mIdioma;
+
         private void CambiarPasswordButton1_Click(object sender, EventArgs e)
         {
-            UsuarioBL Usuariobl = new UsuarioBL();
-            UsuarioBE mUsuario = Usuariobl.Obtener(CambiarPasswordText1.Text);
-            if (mUsuario != null)
+            try
             {
-                Usuariobl.ResetarConstrasenia(mUsuario);
-                MessageBox.Show("Clave actualizada", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                UsuarioBL Usuariobl = new UsuarioBL();
+                UsuarioBE mUsuario = Usuariobl.Obtener(CambiarPasswordText1.Text);
+                if (mUsuario != null)
+                {
+                    Usuariobl.ResetarConstrasenia(mUsuario);
+                    MessageBox.Show("Clave actualizada", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario no encotrado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Usuario no encotrado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Login-Error-cambiarClave", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void CambiarPassword_Load(object sender, EventArgs e)
         {
-            string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
-
+            //string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
         }
 

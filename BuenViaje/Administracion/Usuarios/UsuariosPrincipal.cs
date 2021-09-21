@@ -212,11 +212,11 @@ namespace BuenViaje.Administracion.Usuarios
                 usuarioBl.ResetarConstrasenia(usuariobe);
             }
             //Bitacora
-            mBitacora.Descripcion = "Se cambio la clave al usuario: " + usuariobe.Nombre_Usuario;
-            mBitacora.Fecha = DateTime.Now;
-            mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
-            mBitacora.Tipo_Evento = "HIGH";
-            Bitacorabl.Guardar(mBitacora);
+            //mBitacora.Descripcion = "Se cambio la clave al usuario: " + usuariobe.Nombre_Usuario;
+            //mBitacora.Fecha = DateTime.Now;
+            //mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+            //mBitacora.Tipo_Evento = "HIGH";
+            //Bitacorabl.Guardar(mBitacora);
         }
     }
 }

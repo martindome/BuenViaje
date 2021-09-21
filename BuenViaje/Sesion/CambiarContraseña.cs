@@ -173,9 +173,12 @@ namespace BuenViaje.Sesion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Error-CambioClave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            finally
+            {
+                this.Close();
+            }
         }
 
         private void CambiarContraseniaButton2_Click(object sender, EventArgs e)
