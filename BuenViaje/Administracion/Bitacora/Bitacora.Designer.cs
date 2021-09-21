@@ -143,7 +143,11 @@
             // 
             // BitacoraDataGrid1
             // 
+            this.BitacoraDataGrid1.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BitacoraDataGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.BitacoraDataGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.BitacoraDataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BitacoraDataGrid1.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.BitacoraDataGrid1.Location = new System.Drawing.Point(11, 136);
             this.BitacoraDataGrid1.Margin = new System.Windows.Forms.Padding(2);
             this.BitacoraDataGrid1.Name = "BitacoraDataGrid1";
@@ -157,7 +161,7 @@
             this.BitacoraDatePickerDesdeHora.CustomFormat = "H:mm:ss";
             this.BitacoraDatePickerDesdeHora.Location = new System.Drawing.Point(230, 28);
             this.BitacoraDatePickerDesdeHora.Name = "BitacoraDatePickerDesdeHora";
-            this.BitacoraDatePickerDesdeHora.Size = new System.Drawing.Size(72, 20);
+            this.BitacoraDatePickerDesdeHora.Size = new System.Drawing.Size(98, 20);
             this.BitacoraDatePickerDesdeHora.TabIndex = 24;
             // 
             // BitacoraDatePickerHastaHora
@@ -165,7 +169,7 @@
             this.BitacoraDatePickerHastaHora.CustomFormat = "H:mm:ss";
             this.BitacoraDatePickerHastaHora.Location = new System.Drawing.Point(230, 82);
             this.BitacoraDatePickerHastaHora.Name = "BitacoraDatePickerHastaHora";
-            this.BitacoraDatePickerHastaHora.Size = new System.Drawing.Size(72, 20);
+            this.BitacoraDatePickerHastaHora.Size = new System.Drawing.Size(98, 20);
             this.BitacoraDatePickerHastaHora.TabIndex = 25;
             // 
             // button1
@@ -182,6 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BitacoraDatePickerHastaHora);

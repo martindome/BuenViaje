@@ -21,6 +21,10 @@ namespace BuenViaje.Administracion.Backup
 
         private void Backup_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToParent();
             for (int i = 1; i < 6; i++)
             {
                 BackupComboBox1.Items.Add(i);
@@ -58,28 +62,52 @@ namespace BuenViaje.Administracion.Backup
 
         private void BackupButton2_Click(object sender, EventArgs e)
         {
-            if (ValidarRuta())
+            try
             {
-                DialogResult resultado = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Confirmacion-Ejecucion", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resultado == DialogResult.Yes)
+                if (ValidarRuta())
                 {
-                    try
+                    DialogResult resultado = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Confirmacion-Ejecucion", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado == DialogResult.Yes)
                     {
-                        BackupBL backupBl = new BackupBL();
-                        backupBl.RealizarBackup(int.Parse(this.BackupComboBox1.SelectedItem.ToString()), this.BackupText1.Text);
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Confirmacion-Backup", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            BackupBL backupBl = new BackupBL();
+                            backupBl.RealizarBackup(int.Parse(this.BackupComboBox1.SelectedItem.ToString()), this.BackupText1.Text);
+                            BitacoraBE mBitacora = new BitacoraBE();
+                            BitacoraBL Bitacorabl = new BitacoraBL();
+                            mBitacora.Descripcion = "Se realizo una copia de seguridad";
+                            mBitacora.Fecha = DateTime.Now;
+                            mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                            mBitacora.Tipo_Evento = "HIGH";
+                            Bitacorabl.Guardar(mBitacora);
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Confirmacion-Backup", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Validacion-Ruta", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Validacion-Ruta", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BitacoraBE mBitacora = new BitacoraBE();
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                mBitacora.Descripcion = "Error al realizar una copia de seguridad";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            finally
+            {
+                this.Close();
+            }
         }
 
         private bool ValidarRuta()

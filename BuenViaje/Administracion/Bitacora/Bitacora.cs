@@ -38,6 +38,10 @@ namespace BuenViaje.Administracion
 
         private void Bitacora_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToParent();
             BitacoraDataGrid1.Columns.Add(ObtenerMensajeColumna("Bitacora-Columna-BitacoraID"), ObtenerMensajeColumna("Bitacora-Columna-BitacoraID"));
             BitacoraDataGrid1.Columns.Add(ObtenerMensajeColumna("Bitacora-Columna-BitacoraFecha"), ObtenerMensajeColumna("Bitacora-Columna-BitacoraFecha"));
             BitacoraDataGrid1.Columns.Add(ObtenerMensajeColumna("Bitacora-Columna-BitacoraUsuario"), ObtenerMensajeColumna("Bitacora-Columna-BitacoraUsuario"));

@@ -27,6 +27,10 @@ namespace BuenViaje.Sesion
 
         private void Idioma_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToParent();
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             IdiomaComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
@@ -66,6 +70,13 @@ namespace BuenViaje.Sesion
             }
             catch(Exception ex)
             {
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                BitacoraBE mBitacora = new BitacoraBE();
+                mBitacora.Descripcion = "Error al cambiar idioma";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Idioma-Error-CambioIdioma", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally

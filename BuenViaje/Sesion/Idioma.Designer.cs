@@ -66,13 +66,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(206, 109);
             this.Controls.Add(this.IdiomaBotton1);
             this.Controls.Add(this.IdiomaComboBox1);
             this.Controls.Add(this.IdiomaLabel1);
-            this.Load += new System.EventHandler(this.Idioma_Load);
             this.Name = "Idioma";
             this.Text = "Idioma";
+            this.Load += new System.EventHandler(this.Idioma_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

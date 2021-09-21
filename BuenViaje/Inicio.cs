@@ -34,6 +34,10 @@ namespace BuenViaje
 
         private void Inicio_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToScreen();
             string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
             try
@@ -84,7 +88,6 @@ namespace BuenViaje
             {
                 BitacoraBE mBitacora = new BitacoraBE();
                 BitacoraBL bitacoraBL = new BitacoraBL();
-
                 mBitacora.Descripcion = "Error Carga del programa";
                 mBitacora.Tipo_Evento = "HIGH";
                 mBitacora.Fecha = DateTime.Now;

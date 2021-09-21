@@ -29,6 +29,10 @@ namespace BuenViaje.Sesion
 
         private void CambiarContraseña_Load(object sender, EventArgs e)
         {
+            this.CenterToParent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.CambiarContraseniaButton1.Enabled = false;
             this.CambiarContraseniaLabel4.Visible = false;
@@ -168,11 +172,25 @@ namespace BuenViaje.Sesion
             try
             {
                 Usuariobl.CambiarContrasenia(pUsuario, this.CambiarContraseniaTextBox1.Text, this.CambiarContraseniaTextBox2.Text);
+                BitacoraBE mBitacora = new BitacoraBE();
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                mBitacora.Descripcion = "Cambio de clave usuario: " + pUsuario.Nombre_Usuario;
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Info-CambioCorrecto", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)
             {
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                BitacoraBE mBitacora = new BitacoraBE();
+                mBitacora.Descripcion = "Error al cambiar clave";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Error-CambioClave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally

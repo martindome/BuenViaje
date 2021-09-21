@@ -30,6 +30,13 @@ namespace BuenViaje
                 if (mUsuario != null)
                 {
                     Usuariobl.ResetarConstrasenia(mUsuario);
+                    BitacoraBE mBitacora = new BitacoraBE();
+                    BitacoraBL Bitacorabl = new BitacoraBL();
+                    mBitacora.Descripcion = "Reset clave usuario: " + CambiarPasswordText1.Text;
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.ID_Usuario = 0;
+                    mBitacora.Tipo_Evento = "HIGH";
+                    Bitacorabl.Guardar(mBitacora);
                     MessageBox.Show("Clave actualizada", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -40,12 +47,22 @@ namespace BuenViaje
             }
             catch(Exception ex)
             {
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                BitacoraBE mBitacora = new BitacoraBE();
+                mBitacora.Descripcion = "Error al resetear password";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = 0;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Login-Error-cambiarClave", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void CambiarPassword_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             //string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
         }

@@ -41,6 +41,14 @@ namespace BuenViaje
             }
             catch (Exception ex)
             {
+                this.MaximizeBox = false;
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                BitacoraBE mBitacora = new BitacoraBE();
+                mBitacora.Descripcion = "Error al iniciar sesion";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = 0;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Login-Error-InicioSesion", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -52,12 +60,17 @@ namespace BuenViaje
 
         private void Login_Load (object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToScreen();
             mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
             foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
             {
                 LoginComboBox1.Items.Add(mIdioma.Descripcion);
             }
+            LoginComboBox1.SelectedIndex = 1;
         }
 
         private void CargarIdioma (List<ControlBE> Lista)
@@ -78,7 +91,6 @@ namespace BuenViaje
         {
             try
             {
-
                 CambiarPassword mCambiarPassword = new CambiarPassword();
                 mCambiarPassword.mIdioma = mIdioma;
                 mCambiarPassword.ShowDialog(this);

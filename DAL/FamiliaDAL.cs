@@ -93,11 +93,11 @@ namespace DAL
             if (pFamilia.ID_Compuesto == 0)
             {
                 pFamilia.ID_Compuesto = ProximoId();
-                mCommand = "INSERT INTO Familia (ID_Familia, Nombre, Descripcion) VALUES (" + pFamilia.ID_Compuesto + ", '" + pFamilia.Nombre + "', '" + pFamilia.Descripcion + "')";
+                mCommand = "INSERT INTO Familia (ID_Familia, Nombre, Descripcion) VALUES (" + pFamilia.ID_Compuesto + ", '" + Nombre_Familia + "', '" + pFamilia.Descripcion + "')";
             }
             else
             {
-                mCommand = "UPDATE Familia SET Nombre = '" + pFamilia.Nombre + "', Descripcion = '" + pFamilia.Descripcion + "' WHERE ID_Familia = " + pFamilia.ID_Compuesto;
+                mCommand = "UPDATE Familia SET Nombre = '" + Nombre_Familia + "', Descripcion = '" + pFamilia.Descripcion + "' WHERE ID_Familia = " + pFamilia.ID_Compuesto;
             }
             DAO.GetInstance().ExecuteNonQuery(mCommand);
         }
@@ -149,7 +149,7 @@ namespace DAL
         internal static void ValorizarEntidad(FamiliaBE pFamilia, DataRow mDataRow)
         {
             pFamilia.ID_Compuesto = int.Parse(mDataRow["ID_Familia"].ToString());
-            pFamilia.Nombre = mDataRow["Nombre"].ToString();
+            pFamilia.Nombre = SERV.Seguridad.Cifrado.Descifrar( mDataRow["Nombre"].ToString());
             pFamilia.Descripcion = mDataRow["Descripcion"].ToString();
         }
     }

@@ -5,7 +5,6 @@ using System.Text;
 using BE;
 using BE.Composite;
 using DAL;
-using BE.Composite;
 using SERV;
 
 namespace BL
@@ -128,27 +127,27 @@ namespace BL
             {
                 throw new Exception("La clave anterior y nueva son iguales");
             }
-            BitacoraBE mBitacora = new BitacoraBE();
-            BitacoraBL Bitacorabl = new BitacoraBL();
+            //BitacoraBE mBitacora = new BitacoraBE();
+            //BitacoraBL Bitacorabl = new BitacoraBL();
             UsuarioBL Usuariobl = new UsuarioBL();
             pUsuario.Contrasenia = NuevaContrasenia;
-            mBitacora.Descripcion = "Cambio de clave usuario: "+ pUsuario.Nombre_Usuario;
-            mBitacora.Fecha = DateTime.Now;
-            mBitacora.ID_Usuario = pUsuario.ID_Usuario;
-            mBitacora.Tipo_Evento = "HIGH";
-            Bitacorabl.Guardar(mBitacora);
+            //mBitacora.Descripcion = "Cambio de clave usuario: "+ pUsuario.Nombre_Usuario;
+            //mBitacora.Fecha = DateTime.Now;
+            //mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+            //mBitacora.Tipo_Evento = "HIGH";
+            //Bitacorabl.Guardar(mBitacora);
             Usuariobl.Actualizar(pUsuario);
         }
 
         public void ResetarConstrasenia(UsuarioBE pUsuario)
         {
-            BitacoraBE mBitacora = new BitacoraBE();
-            BitacoraBL Bitacorabl = new BitacoraBL();
-            mBitacora.Descripcion = "Reset clave usuario: "+ pUsuario.Nombre_Usuario;
-            mBitacora.Fecha = DateTime.Now;
-            mBitacora.ID_Usuario = pUsuario.ID_Usuario;
-            mBitacora.Tipo_Evento = "HIGH";
-            Bitacorabl.Guardar(mBitacora);
+            //BitacoraBE mBitacora = new BitacoraBE();
+            //BitacoraBL Bitacorabl = new BitacoraBL();
+            //mBitacora.Descripcion = "Reset clave usuario: "+ pUsuario.Nombre_Usuario;
+            //mBitacora.Fecha = DateTime.Now;
+            //mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+            //mBitacora.Tipo_Evento = "HIGH";
+            //Bitacorabl.Guardar(mBitacora);
             string newPassword = UsuarioDAL.ResetearConstrasenia(pUsuario);
         }
         public List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)

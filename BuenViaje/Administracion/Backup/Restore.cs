@@ -22,6 +22,10 @@ namespace BuenViaje.Administracion.Backup
 
         private void Restore_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToParent();
             archivos = new List<string>();
             RestoreGrilla1.Columns.Add(ObtenerMensajeColumna("Restore-Columna-Volumen"), ObtenerMensajeColumna("Restore-Columna-Volumen"));
             RestoreGrilla1.RowHeadersVisible = false;
@@ -86,10 +90,8 @@ namespace BuenViaje.Administracion.Backup
             OpenFileDialog fileDialog = new OpenFileDialog();
             RestoreGrilla1.Rows.Clear();
             archivos.Clear();
-            System.IO.Stream Stream;
             fileDialog.Filter = "bak files (*.bak)|*.bak|All files (*.*)|*.*";
             fileDialog.Multiselect = true;
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -97,44 +99,56 @@ namespace BuenViaje.Administracion.Backup
                 {
                     RestoreGrilla1.Rows.Add(file);
                     archivos.Add(file);
-                    //try
-                    //{
-                    //    if ((Stream = fileDialog.OpenFile()) != null)
-                    //    {
-                    //        using (Stream)
-                    //        {
-                                
-                    //        }
-                    //    }
-                    //}
-                    //catch(Exception ex)
-                    //{
-                    //    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
                 }
             }
         }
 
         private void RestoreButton2_Click(object sender, EventArgs e)
         {
-            if (ValidarArchivos() && archivos.Count > 0)
+            try
             {
-                DialogResult resultado = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Confirmacion-Ejecucion", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                try
+                if (ValidarArchivos() && archivos.Count > 0)
                 {
-                    BackupBL backupBl = new BackupBL();
-                    backupBl.RealizarRestore(archivos);
-                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Confirmacion-Backup", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult resultado = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Confirmacion-Ejecucion", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    try
+                    {
+                        BackupBL backupBl = new BackupBL();
+                        backupBl.RealizarRestore(archivos);
+                        BitacoraBE mBitacora = new BitacoraBE();
+                        BitacoraBL Bitacorabl = new BitacoraBL();
+                        mBitacora.Descripcion = "Se realizo una restauracion del sistema";
+                        mBitacora.Fecha = DateTime.Now;
+                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Tipo_Evento = "HIGH";
+                        Bitacorabl.Guardar(mBitacora);
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Confirmacion-Backup", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Validacion-Rutas", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Validacion-Rutas", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BitacoraBE mBitacora = new BitacoraBE();
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                mBitacora.Descripcion = "Error al restaurar el sistema";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                this.Close();
+            }
+            
         }
 
         private bool ValidarArchivos()

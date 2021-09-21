@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grillaUsuarios = new System.Windows.Forms.DataGridView();
             this.UsuarioPrincipalBotton1 = new System.Windows.Forms.Button();
             this.UsuarioPrincipalBotton2 = new System.Windows.Forms.Button();
@@ -54,10 +55,22 @@
             // 
             // grillaUsuarios
             // 
+            this.grillaUsuarios.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.grillaUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.grillaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaUsuarios.DefaultCellStyle = dataGridViewCellStyle1;
+            this.grillaUsuarios.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.grillaUsuarios.Location = new System.Drawing.Point(11, 12);
             this.grillaUsuarios.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaUsuarios.Name = "grillaUsuarios";
+            this.grillaUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaUsuarios.RowHeadersWidth = 51;
             this.grillaUsuarios.RowTemplate.Height = 24;
             this.grillaUsuarios.Size = new System.Drawing.Size(579, 289);
@@ -253,6 +266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(859, 346);
             this.Controls.Add(this.UsuarioPrincipalBotton7);
             this.Controls.Add(this.UsuarioPrincipalGroupBox);

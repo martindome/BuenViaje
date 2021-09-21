@@ -26,18 +26,38 @@ namespace BuenViaje
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            this.MinimizeBox = true;
-            this.MaximizeBox = true;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToScreen();
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Bounds = Screen.PrimaryScreen.Bounds;
+            //this.Bounds = Screen.PrimaryScreen.Bounds;
             string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             //Permisos Main Menu
             this.sesionToolStripMenuItem.Enabled = true;
             this.administracionToolStripMenuItem.Enabled = true;
-            this.pasajesStripMenuItem.Enabled = true;
-            this.rutasToolStripMenuItem.Enabled = true;
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminRutas) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadRutas))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageRutas);
+            }
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminClientes) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadClientes))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageClientes);
+            }
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminViajes) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadViajes))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageViajes);
+            }
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminLocalidades) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadLocalidades))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageLocalidades);
+            }
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.VendedorPasajes))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageClientes);
+                this.tabControl1.TabPages.Remove(this.tabPagePasajes);
+            }
 
         }
 
@@ -182,5 +202,6 @@ namespace BuenViaje
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Permiso-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

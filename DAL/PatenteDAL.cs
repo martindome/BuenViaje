@@ -17,7 +17,7 @@ namespace DAL
         public static void ValorizarEntidad(PatenteBE pPatente, DataRow mDataRow)
         {
             pPatente.ID_Compuesto = int.Parse(mDataRow["ID_Permiso"].ToString());
-            pPatente.Nombre = mDataRow["Nombre"].ToString();
+            pPatente.Nombre = SERV.Seguridad.Cifrado.Descifrar(mDataRow["Nombre"].ToString());
             pPatente.Descripcion = mDataRow["Descripcion"].ToString();
             pPatente.Tipo = (BE.Composite.TipoPermiso)Enum.Parse(typeof(BE.Composite.TipoPermiso), mDataRow["Tipo_Permiso"].ToString());
         }

@@ -104,7 +104,7 @@
             // 
             this.LoginButton3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.LoginButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.LoginButton3.Location = new System.Drawing.Point(304, 52);
+            this.LoginButton3.Location = new System.Drawing.Point(304, 86);
             this.LoginButton3.Name = "LoginButton3";
             this.LoginButton3.Size = new System.Drawing.Size(118, 23);
             this.LoginButton3.TabIndex = 7;

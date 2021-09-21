@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PermisosPrincipalGroupBox = new System.Windows.Forms.GroupBox();
             this.PermisosPrincipalBotton6 = new System.Windows.Forms.Button();
             this.PermisosPrincipalBotton5 = new System.Windows.Forms.Button();
@@ -159,10 +161,32 @@
             // 
             // grillaFamilias
             // 
+            this.grillaFamilias.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.grillaFamilias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.grillaFamilias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaFamilias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaFamilias.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaFamilias.DefaultCellStyle = dataGridViewCellStyle1;
+            this.grillaFamilias.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.grillaFamilias.Location = new System.Drawing.Point(11, 10);
             this.grillaFamilias.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaFamilias.Name = "grillaFamilias";
+            this.grillaFamilias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaFamilias.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.grillaFamilias.RowHeadersWidth = 51;
             this.grillaFamilias.RowTemplate.Height = 24;
             this.grillaFamilias.Size = new System.Drawing.Size(521, 289);
@@ -172,6 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(794, 340);
             this.Controls.Add(this.PermisosPrincipalGroupBox);
             this.Controls.Add(this.PermisosPrincipalBotton4);

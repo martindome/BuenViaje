@@ -24,6 +24,10 @@ namespace BuenViaje.Administracion.Permisos
 
         private void PermisosPrincipal_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToParent();
             grillaFamilias.Columns.Add(ObtenerMensajeColumna("PermisosPrincipal-Columna-FamiliaID"), ObtenerMensajeColumna("PermisosPrincipal-Columna-FamiliaID"));
             grillaFamilias.Columns.Add(ObtenerMensajeColumna("PermisosPrincipal-Columna-FamiliaNombre"), ObtenerMensajeColumna("PermisosPrincipal-Columna-FamiliaNombre"));
             grillaFamilias.Columns.Add(ObtenerMensajeColumna("PermisosPrincipal-Columna-FamiliaDescripcion"), ObtenerMensajeColumna("PermisosPrincipal-Columna-FamiliaDescripcion"));

@@ -29,6 +29,10 @@ namespace BuenViaje.Administracion.Permisos
 
         private void ABMPermisos_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToParent();
             ABMPermisoGrillaPatente1.Columns.Add(ObtenerMensajeColumna("ABMPermiso-Columna-PatenteID"), ObtenerMensajeColumna("ABMPermiso-Columna-PatenteID"));
             ABMPermisoGrillaPatente1.Columns.Add(ObtenerMensajeColumna("ABMPermiso-Columna-PatenteNombre"), ObtenerMensajeColumna("ABMPermiso-Columna-PatenteNombre"));
             ABMPermisoGrillaPatente1.Columns[ObtenerMensajeColumna("ABMPermiso-Columna-PatenteID")].Visible = false;
@@ -290,10 +294,18 @@ namespace BuenViaje.Administracion.Permisos
             }
             catch (Exception ex)
             {
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuario-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                mBitacora.Descripcion = "Error al operar con permisos";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMPermiso-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-
+            finally
+            {
+                this.Close();
+            }
         }
 
         private bool ValidarNombre()

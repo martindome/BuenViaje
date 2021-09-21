@@ -21,6 +21,10 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void UsuariosPrincipal_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.CenterToParent();
             grillaUsuarios.Columns.Add(ObtenerMensajeColumna("UsuarioPrincipal-Columna-UsuarioID"), ObtenerMensajeColumna("UsuarioPrincipal-Columna-UsuarioID"));
             grillaUsuarios.Columns.Add(ObtenerMensajeColumna("UsuarioPrincipal-Columna-Nombre"), ObtenerMensajeColumna("UsuarioPrincipal-Columna-Nombre"));
             grillaUsuarios.Columns.Add(ObtenerMensajeColumna("UsuarioPrincipal-Columna-Apellido"), ObtenerMensajeColumna("UsuarioPrincipal-Columna-Apellido"));
@@ -201,22 +205,36 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void UsuarioPrincipalBotton7_Click(object sender, EventArgs e)
         {
-            UsuarioBL usuarioBl = new UsuarioBL();
-            BitacoraBE mBitacora = new BitacoraBE();
-            BitacoraBL Bitacorabl = new BitacoraBL();
-            UsuarioBE usuariobe= usuarioBl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].Value.ToString());
-            usuariobe.Permisos = usuarioBl.ObtenerPermisos(usuariobe);
-            DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Resetear", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-            if (result == DialogResult.Yes)
+            try
             {
-                usuarioBl.ResetarConstrasenia(usuariobe);
+                UsuarioBL usuarioBl = new UsuarioBL();
+                BitacoraBE mBitacora = new BitacoraBE();
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                UsuarioBE usuariobe = usuarioBl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].Value.ToString());
+                usuariobe.Permisos = usuarioBl.ObtenerPermisos(usuariobe);
+                DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Resetear", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    usuarioBl.ResetarConstrasenia(usuariobe);
+                }
+                //Bitacora
+                mBitacora.Descripcion = "Se cambio la clave al usuario: " + usuariobe.Nombre_Usuario;
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
             }
-            //Bitacora
-            //mBitacora.Descripcion = "Se cambio la clave al usuario: " + usuariobe.Nombre_Usuario;
-            //mBitacora.Fecha = DateTime.Now;
-            //mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
-            //mBitacora.Tipo_Evento = "HIGH";
-            //Bitacorabl.Guardar(mBitacora);
+            catch(Exception ex)
+            {
+                BitacoraBL Bitacorabl = new BitacoraBL();
+                BitacoraBE mBitacora = new BitacoraBE();
+                mBitacora.Descripcion = "Error al resetear password";
+                mBitacora.Fecha = DateTime.Now;
+                mBitacora.ID_Usuario = 0;
+                mBitacora.Tipo_Evento = "HIGH";
+                Bitacorabl.Guardar(mBitacora);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuario-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }  
         }
     }
 }

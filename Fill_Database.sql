@@ -83,7 +83,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMPermisos-Form', 'Accesses'),
 (1, 'ABMPermisos-Validacion-Nombre', 'Name and description should be 50 chars or less'),
 (1, 'ABMPermisos-Confirmacion-Baja', 'Are you sure to delete the group?'),
-(2, 'ABMPermiso-Error-Aplicar', 'Error while operating groups')
+(1, 'ABMPermiso-Error-Aplicar', 'Error while operating groups')
 
 
 ----Backup
@@ -91,7 +91,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Backup-Form', 'Backup'),
 (1, 'Backup-Confirmacion-Ejecucion', 'Create database backup?'),
 (1, 'Backup-Validacion-Ruta', 'Path is not valid'),
-(1, 'Backup-Confirmacion-Backup', 'The backup was created successfully')
+(1, 'Backup-Confirmacion-Backup', 'The backup was created successfully'),
+(1, 'Backup-Error-Aplicar', 'Error while creating backup')
 
 ----Restore
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -99,7 +100,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Restore-Columna-Volumen', 'Files'),
 (1, 'Restore-Confirmacion-Ejecucion', 'Execute restore?'),
 (1, 'Restore-Confirmacion-Backup', 'The restauration was executed successfully'),
-(1, 'Restore-Validacion-Rutas', 'File was not found')
+(1, 'Restore-Validacion-Rutas', 'File was not found'),
+(1, 'Restore-Error-Aplicar', 'Error while restaurating backup')
 
 
 ----Inicio
@@ -183,7 +185,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Backup-Form', 'Copia de seguridad'),
 (2, 'Backup-Confirmacion-Ejecucion', 'Crear Copia de Seguridad?'),
 (2, 'Backup-Validacion-Ruta', 'Ruta no valida'),
-(2, 'Backup-Confirmacion-Backup', 'La copia de seguridad se creo exitosamente')
+(2, 'Backup-Confirmacion-Backup', 'La copia de seguridad se creo exitosamente'),
+(2, 'Backup-Error-Aplicar', 'Error al crear la copia de seguridad')
 
 ----Restore
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -191,7 +194,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Restore-Columna-Volumen', 'Volumenes'),
 (2, 'Restore-Confirmacion-Ejecucion', 'Realizar restauracion de la base de datos?'),
 (2, 'Restore-Confirmacion-Backup', 'La restauracion se realizo exitosamente'),
-(2, 'Restore-Validacion-Rutas', 'Volumen no encontrado')
+(2, 'Restore-Validacion-Rutas', 'Volumen no encontrado'),
+(2, 'Restore-Error-Aplicar', 'Error al restaurar copia de seguridad')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -298,7 +302,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'LoginLabel1', 'Usuario'), 
 (2, 'LoginLabel2', 'Clave'), 
 (2, 'LoginLabel3', 'Idioma'), 
-(2, 'LoginBotton1', 'Iniciar Sesion'), 
+(2, 'LoginButton1', 'Iniciar Sesion'), 
 (2, 'LoginBotton2', 'Salir'),
 (2, 'LoginButton3', 'Cambiar Clave')
 ----ResetPasswrd
@@ -399,35 +403,66 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 INSERT INTO dbo.Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, DVH, Intentos_Login, ID_Idioma) VALUES
 (1, 'Martin', 'Dome', 'bWFydGluZG9tZTk2QGdtYWlsLmNvbQ==', 'CB1338CD67E63B81FC59F8107E76811C','196993', 0, 2) 
 
+-- --Permisos
+-- INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES 
+-- (1, 'Administrador de Usuarios', 'Permite administrar usuarios', 'AdminUsuarios'),
+-- (2, 'Administrador de Permisos', 'Permite administrar permisos de usuario', 'AdminPermisos'),
+-- (3, 'Consultar Bitacora', 'Permite consultar la bitacora', 'ReadBitacora'),
+-- (4, 'Administrador de Copias de seguridad', 'Permite administrar Copias de seguridad', 'AdminBackup'),
+-- (5, 'Administrador de Restore', 'Permite administrar la restauracion del sistema', 'AdminRestore'),
+-- (6, 'Vender Pasajes', 'Permite manejar la venta de pasajes', 'VendedorPasajes'),
+-- (7, 'Administrador Rutas', 'Permite administrar la creacion de nuevas rutas', 'AdminRutas'),
+-- (8, 'Administrador Localidad', 'Permite administrar las localidades', 'AdminLocalidades'),
+-- (9, 'Administrador Cliente', 'Permite administrar el manejo de clientes', 'AdminClientes'),
+-- (10, 'Consultar Usuarios', 'Permite consultar usuarios', 'ReadUsuarios'),
+-- (11, 'Consultar Permisos', 'Permite consultar permisos', 'ReadPermisos'),
+-- (12, 'Consultar Pasajes', 'Permite consultar los pasajes vendidos', 'ReadVentas'),
+-- (13, 'Consultar Rutas', 'Permite consultar las rutas', 'ReadRutas'),
+-- (14, 'Consultar Localidades', 'Permite consultar las localidades', 'ReadLocalidades'),
+-- (15, 'Consultar Clientes', 'Permite consultar las localidades', 'ReadClientes'),
+-- (16, 'Administrador Viajes', 'Permite crear y administrar los viajes', 'AdminViajes'),
+-- (17, 'Consultar Viajes', 'Permite consultar los viajes', 'ReadViajes')
+
 --Permisos
 INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES 
-(1, 'Administrador de Usuarios', 'Permite administrar usuarios', 'AdminUsuarios'),
-(2, 'Administrador de Permisos', 'Permite administrar permisos de usuario', 'AdminPermisos'),
-(3, 'Consultar Bitacora', 'Permite consultar la bitacora', 'ReadBitacora'),
-(4, 'Administrador de Copias de seguridad', 'Permite administrar Copias de seguridad', 'AdminBackup'),
-(5, 'Administrador de Restore', 'Permite administrar la restauracion del sistema', 'AdminRestore'),
-(6, 'Vender Pasajes', 'Permite manejar la venta de pasajes', 'VendedorPasajes'),
-(7, 'Administrador Rutas', 'Permite administrar la creacion de nuevas rutas', 'AdminRutas'),
-(8, 'Administrador Localidad', 'Permite administrar las localidades', 'AdminLocalidades'),
-(9, 'Administrador Cliente', 'Permite administrar el manejo de clientes', 'AdminClientes'),
-(10, 'Consultar Usuarios', 'Permite consultar usuarios', 'ReadUsuarios'),
-(11, 'Consultar Permisos', 'Permite consultar permisos', 'ReadPermisos'),
-(12, 'Consultar Pasajes', 'Permite consultar los pasajes vendidos', 'ReadVentas'),
-(13, 'Consultar Rutas', 'Permite consultar las rutas', 'ReadRutas'),
-(14, 'Consultar Localidades', 'Permite consultar las localidades', 'ReadLocalidades'),
-(15, 'Consultar Clientes', 'Permite consultar las localidades', 'ReadClientes'),
-(16, 'Administrador Viajes', 'Permite crear y administrar los viajes', 'AdminViajes'),
-(17, 'Consultar Viajes', 'Permite consultar los viajes', 'ReadViajes')
+(1, 'QWRtaW5pc3RyYWRvciBkZSBVc3Vhcmlvcw==', 'Permite administrar usuarios', 'AdminUsuarios'),
+(2, 'QWRtaW5pc3RyYWRvciBkZSBQZXJtaXNvcw==', 'Permite administrar permisos de usuario', 'AdminPermisos'),
+(3, 'Q29uc3VsdGFyIEJpdGFjb3Jh', 'Permite consultar la bitacora', 'ReadBitacora'),
+(4, 'QWRtaW5pc3RyYWRvciBkZSBDb3BpYXMgZGUgc2VndXJpZGFk', 'Permite administrar Copias de seguridad', 'AdminBackup'),
+(5, 'QWRtaW5pc3RyYWRvciBkZSBSZXN0b3Jl', 'Permite administrar la restauracion del sistema', 'AdminRestore'),
+(6, 'VmVuZGVyIFBhc2FqZXM=', 'Permite manejar la venta de pasajes', 'VendedorPasajes'),
+(7, 'QWRtaW5pc3RyYWRvciBSdXRhcw==', 'Permite administrar la creacion de nuevas rutas', 'AdminRutas'),
+(8, 'QWRtaW5pc3RyYWRvciBMb2NhbGlkYWQ=', 'Permite administrar las localidades', 'AdminLocalidades'),
+(9, 'QWRtaW5pc3RyYWRvciBDbGllbnRl', 'Permite administrar el manejo de clientes', 'AdminClientes'),
+(10, 'Q29uc3VsdGFyIFVzdWFyaW9z', 'Permite consultar usuarios', 'ReadUsuarios'),
+(11, 'Q29uc3VsdGFyIFBlcm1pc29z', 'Permite consultar permisos', 'ReadPermisos'),
+(12, 'Q29uc3VsdGFyIFBhc2FqZXM=', 'Permite consultar los pasajes vendidos', 'ReadVentas'),
+(13, 'Q29uc3VsdGFyIFJ1dGFz', 'Permite consultar las rutas', 'ReadRutas'),
+(14, 'Q29uc3VsdGFyIExvY2FsaWRhZGVz', 'Permite consultar las localidades', 'ReadLocalidades'),
+(15, 'Q29uc3VsdGFyIENsaWVudGVz', 'Permite consultar las localidades', 'ReadClientes'),
+(16, 'QWRtaW5pc3RyYWRvciBWaWFqZXM=', 'Permite crear y administrar los viajes', 'AdminViajes'),
+(17, 'Q29uc3VsdGFyIFZpYWplcw==', 'Permite consultar los viajes', 'ReadViajes')
+
+
+-- --Familias
+-- INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
+-- (1, 'Administradores Sistema', 'Permite administrar la seguridad del sistema'),
+-- (2, 'Administradores Usuarios', 'Permite manejar los usuarios del sistema'),
+-- (3, 'Administradores Permisos', 'Permite manejar los usuarios del sistema'),
+-- (4, 'Auditores Seguridad', 'Permite acceder a los logs del sistema'),
+-- (5, 'Vendedores', 'Permite realizar ventas de pasajes y dar alta clientes'),
+-- (6, 'Auditor ventas', 'Permite acceder a las registros de ventas y clientes'),
+-- (7, 'Administrativos', 'Permite administrar rutas, viajes y localidades')
 
 --Familias
 INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
-(1, 'Administradores Sistema', 'Permite administrar la seguridad del sistema'),
-(2, 'Administradores Usuarios', 'Permite manejar los usuarios del sistema'),
-(3, 'Administradores Permisos', 'Permite manejar los usuarios del sistema'),
-(4, 'Auditores Seguridad', 'Permite acceder a los logs del sistema'),
-(5, 'Vendedores', 'Permite realizar ventas de pasajes y dar alta clientes'),
-(6, 'Auditor ventas', 'Permite acceder a las registros de ventas y clientes'),
-(7, 'Administrativos', 'Permite administrar rutas, viajes y localidades')
+(1, 'QWRtaW5pc3RyYWRvcmVzIFNpc3RlbWE=', 'Permite administrar la seguridad del sistema'),
+(2, 'QWRtaW5pc3RyYWRvcmVzIFVzdWFyaW9z', 'Permite manejar los usuarios del sistema'),
+(3, 'QWRtaW5pc3RyYWRvcmVzIFBlcm1pc29z', 'Permite manejar los usuarios del sistema'),
+(4, 'QXVkaXRvcmVzIFNlZ3VyaWRhZA==', 'Permite acceder a los logs del sistema'),
+(5, 'VmVuZGVkb3Jlcw==', 'Permite realizar ventas de pasajes y dar alta clientes'),
+(6, 'QXVkaXRvciB2ZW50YXM=', 'Permite acceder a las registros de ventas y clientes'),
+(7, 'QWRtaW5pc3RyYXRpdm9z', 'Permite administrar rutas, viajes y localidades')
 
 --Usuario_Familia
 INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES

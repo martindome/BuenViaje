@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RestoreButton2 = new System.Windows.Forms.Button();
             this.RestoreGrilla1 = new System.Windows.Forms.DataGridView();
             this.RestoreButton1 = new System.Windows.Forms.Button();
@@ -46,9 +47,22 @@
             // 
             // RestoreGrilla1
             // 
+            this.RestoreGrilla1.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.RestoreGrilla1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.RestoreGrilla1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.RestoreGrilla1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.RestoreGrilla1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.RestoreGrilla1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.RestoreGrilla1.Location = new System.Drawing.Point(12, 50);
             this.RestoreGrilla1.Name = "RestoreGrilla1";
+            this.RestoreGrilla1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.RestoreGrilla1.Size = new System.Drawing.Size(402, 190);
             this.RestoreGrilla1.TabIndex = 8;
             // 
@@ -66,6 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(426, 281);
             this.Controls.Add(this.RestoreButton2);
             this.Controls.Add(this.RestoreGrilla1);

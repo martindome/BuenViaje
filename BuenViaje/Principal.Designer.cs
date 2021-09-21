@@ -39,7 +39,15 @@
             this.gestionarPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restauracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageInicio = new System.Windows.Forms.TabPage();
+            this.tabPagePasajes = new System.Windows.Forms.TabPage();
+            this.tabPageClientes = new System.Windows.Forms.TabPage();
+            this.tabPageViajes = new System.Windows.Forms.TabPage();
+            this.tabPageRutas = new System.Windows.Forms.TabPage();
+            this.tabPageLocalidades = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -50,7 +58,7 @@
             this.administracionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1155, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -132,19 +140,98 @@
             this.restauracionToolStripMenuItem.Text = "Restauracion";
             this.restauracionToolStripMenuItem.Click += new System.EventHandler(this.restauracionToolStripMenuItem_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPageInicio);
+            this.tabControl1.Controls.Add(this.tabPagePasajes);
+            this.tabControl1.Controls.Add(this.tabPageClientes);
+            this.tabControl1.Controls.Add(this.tabPageViajes);
+            this.tabControl1.Controls.Add(this.tabPageRutas);
+            this.tabControl1.Controls.Add(this.tabPageLocalidades);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.HotTrack = true;
+            this.tabControl1.ItemSize = new System.Drawing.Size(159, 20);
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1155, 580);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPageInicio
+            // 
+            this.tabPageInicio.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageInicio.Location = new System.Drawing.Point(4, 24);
+            this.tabPageInicio.Name = "tabPageInicio";
+            this.tabPageInicio.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageInicio.TabIndex = 5;
+            this.tabPageInicio.Text = "Inicio";
+            // 
+            // tabPagePasajes
+            // 
+            this.tabPagePasajes.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPagePasajes.Location = new System.Drawing.Point(4, 24);
+            this.tabPagePasajes.Name = "tabPagePasajes";
+            this.tabPagePasajes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePasajes.Size = new System.Drawing.Size(1147, 552);
+            this.tabPagePasajes.TabIndex = 0;
+            this.tabPagePasajes.Text = "Pasajes";
+            // 
+            // tabPageClientes
+            // 
+            this.tabPageClientes.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageClientes.Location = new System.Drawing.Point(4, 24);
+            this.tabPageClientes.Name = "tabPageClientes";
+            this.tabPageClientes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageClientes.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageClientes.TabIndex = 1;
+            this.tabPageClientes.Text = "Clientes";
+            // 
+            // tabPageViajes
+            // 
+            this.tabPageViajes.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageViajes.Location = new System.Drawing.Point(4, 24);
+            this.tabPageViajes.Name = "tabPageViajes";
+            this.tabPageViajes.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageViajes.TabIndex = 2;
+            this.tabPageViajes.Text = "Viajes";
+            // 
+            // tabPageRutas
+            // 
+            this.tabPageRutas.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageRutas.Location = new System.Drawing.Point(4, 24);
+            this.tabPageRutas.Name = "tabPageRutas";
+            this.tabPageRutas.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageRutas.TabIndex = 3;
+            this.tabPageRutas.Text = "Rutas";
+            // 
+            // tabPageLocalidades
+            // 
+            this.tabPageLocalidades.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageLocalidades.Location = new System.Drawing.Point(4, 24);
+            this.tabPageLocalidades.Name = "tabPageLocalidades";
+            this.tabPageLocalidades.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageLocalidades.TabIndex = 4;
+            this.tabPageLocalidades.Text = "Localidades";
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1155, 604);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Principal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +250,12 @@
         private System.Windows.Forms.ToolStripMenuItem copiaDeSeguridadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restauracionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPagePasajes;
+        private System.Windows.Forms.TabPage tabPageClientes;
+        private System.Windows.Forms.TabPage tabPageViajes;
+        private System.Windows.Forms.TabPage tabPageRutas;
+        private System.Windows.Forms.TabPage tabPageLocalidades;
+        private System.Windows.Forms.TabPage tabPageInicio;
     }
 }
