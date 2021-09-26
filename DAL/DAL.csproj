@@ -57,6 +57,7 @@
     <Compile Include="FamiliaDAL.cs" />
     <Compile Include="IdiomaDAL.cs" />
     <Compile Include="IniciadorDAL.cs" />
+    <Compile Include="LocalidadDAL.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="PatenteDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

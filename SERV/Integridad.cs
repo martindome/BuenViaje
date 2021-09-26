@@ -30,13 +30,5 @@ namespace SERV
             }
             return acum.ToString();
         }
-        private static byte[] ConvertToByteArray(string str, Encoding encoding)
-        {
-            return encoding.GetBytes(str);
-        }
-        private static String ToBinary(Byte[] data)
-        {
-            return string.Join(" ", data.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
-        }
     }
 }

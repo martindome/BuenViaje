@@ -16,7 +16,7 @@ namespace DAL
         {
             try
             {
-                DAO.GetInstance().ProbarConexion();
+                DAO.Instancia().ProbarConexion();
             }
             catch (Exception ex)
             {
@@ -65,7 +65,7 @@ namespace DAL
             List<DigitoVerificadorVerticalBE> mTablas = new List<DigitoVerificadorVerticalBE>();
             mQuery = "SELECT * FROM Digito_Verificador";
             DataSet mDataset = new DataSet();
-            mDataset = DAL.DAO.GetInstance().ExecuteDataSet(mQuery);
+            mDataset = DAL.DAO.Instancia().ExecuteDataSet(mQuery);
 
             foreach (DataRow mDataRow in mDataset.Tables[0].Rows)
             {
@@ -84,7 +84,7 @@ namespace DAL
 
             mQuery = "SELECT * FROM " + Tabla;
             DataSet mDataset = new DataSet();
-            mDataset = DAL.DAO.GetInstance().ExecuteDataSet(mQuery);
+            mDataset = DAL.DAO.Instancia().ExecuteDataSet(mQuery);
             if (mDataset.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow mROW in mDataset.Tables[0].Rows)

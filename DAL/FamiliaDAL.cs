@@ -24,7 +24,7 @@ namespace DAL
                 "INNER JOIN Familia AS f ON pf.ID_Familia = f.ID_Familia " +
                 "WHERE f.ID_Familia = " + pFamilia.ID_Compuesto;
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow mDataRow in mDataSet.Tables[0].Rows)
@@ -41,7 +41,7 @@ namespace DAL
         {
             List<FamiliaBE> familias = new List<FamiliaBE>();
             string mCommand = "Select p.ID_Familia, p.Nombre, p.Descripcion from Familia p";
-            DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
 
 
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -68,7 +68,7 @@ namespace DAL
         {
             string mCommand = "Select p.ID_Familia, p.Nombre, p.Descripcion from Familia p WHERE p.ID_Familia = " + id;
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             FamiliaBE mFamilia = new FamiliaBE();
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
@@ -99,27 +99,27 @@ namespace DAL
             {
                 mCommand = "UPDATE Familia SET Nombre = '" + Nombre_Familia + "', Descripcion = '" + pFamilia.Descripcion + "' WHERE ID_Familia = " + pFamilia.ID_Compuesto;
             }
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
         }
 
         public static void Eliminar(FamiliaBE pFamilia)
         {
             string mCommand = "DELETE Familia WHERE ID_Familia = " + pFamilia.ID_Compuesto;
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
         }
 
         public static void GuardarFamiliaUsuario(FamiliaBE familia, UsuarioBE usuario)
         {
             string DVH = mIntegridad.CalcularDVH(usuario.ID_Usuario.ToString() + familia.ID_Compuesto.ToString());
             string mCommand = "INSERT INTO Usuario_Familia (ID_Familia, ID_Usuario, DVH) VALUES (" + familia.ID_Compuesto + ", " + usuario.ID_Usuario + ", '" + DVH + "')";
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Familia"), "Usuario_Familia");
         }
 
         public static void BorrarFamiliaUsuario(FamiliaBE familia, UsuarioBE usuario)
         {
             string mCommand = "DELETE FROM Usuario_Familia WHERE ID_Familia = " + familia.ID_Compuesto + " AND ID_Usuario = " + usuario.ID_Usuario;
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Familia"), "Usuario_Familia");
         }
 
@@ -127,21 +127,21 @@ namespace DAL
         {
             string DVH = mIntegridad.CalcularDVH(patente.ID_Compuesto.ToString() + familia.ID_Compuesto.ToString());
             string mCommand = "INSERT INTO Permiso_Familia (ID_Familia, ID_Permiso, DVH) VALUES (" + familia.ID_Compuesto + ", " + patente.ID_Compuesto + ", '" + DVH + "')";
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Permiso_Familia"), "Permiso_Familia");
         }
 
         public static void BorrarFamiliaPatente(FamiliaBE familia, PatenteBE patente)
         {
             string mCommand = "DELETE FROM Permiso_Familia WHERE ID_Familia = " + familia.ID_Compuesto + " AND ID_Permiso = " + patente.ID_Compuesto;
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Permiso_Familia"), "Permiso_Familia");
         }
 
         private static int ProximoId()
         {
             if (mId == 0)
-                mId = (DAO.GetInstance()).ObtenerUltimoId("Familia");
+                mId = (DAO.Instancia()).ObtenerUltimoId("Familia");
             mId += 1;
             return mId;
         }

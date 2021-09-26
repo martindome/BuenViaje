@@ -17,7 +17,7 @@ namespace DAL
             List<BitacoraBE> Lista = new List<BitacoraBE>();
             string mCommand = "SELECT b.ID_Bitacora, b.Fecha, b.Tipo_Evento, b.Descripcion, b.ID_Usuario, b.DVH, u.Nombre_Usuario FROM Bitacora as b INNER JOIN Usuario as u on u.ID_Usuario=b.ID_Usuario OR (u.ID_Usuario IS NOT NULL AND b.ID_Usuario IS NULL)";
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow mRow in mDataSet.Tables[0].Rows)
@@ -48,7 +48,7 @@ namespace DAL
                 mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, ID_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', " + pBitacora.ID_Usuario + ")";
                 mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, ID_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', " + pBitacora.ID_Usuario + ")";
             }
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Bitacora"), "Bitacora");
         }
 
@@ -57,7 +57,7 @@ namespace DAL
             string mCommand = "SELECT DISTINCT(b.ID_Usuario), u.Nombre_Usuario FROM Bitacora b INNER JOIN Usuario u on b.ID_Usuario = u.ID_Usuario";
             List<string> Lista = new List<string>();
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             foreach (DataRow mRow in mDataSet.Tables[0].Rows)
             {      
                 Lista.Add(SERV.Seguridad.Cifrado.Descifrar(mRow["Nombre_Usuario"].ToString()));
@@ -80,7 +80,7 @@ namespace DAL
         private static int ProximoId()
         {
             if (mId == 0)
-                mId = (DAO.GetInstance()).ObtenerUltimoId("Bitacora");
+                mId = (DAO.Instancia()).ObtenerUltimoId("Bitacora");
             mId += 1;
             return mId;
         }

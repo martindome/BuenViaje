@@ -115,7 +115,7 @@ namespace DAL
             return mConexion;
         }
 
-        public static DAO GetInstance()
+        public static DAO Instancia()
         {
             if (_instancia == null)
             {

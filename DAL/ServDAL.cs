@@ -35,7 +35,7 @@ namespace DAL
             List<string> mLista = new List<string>();
             string mQuery = "SELECT DVH FROM " + pTabla;
             DataSet mDataset = new DataSet();
-            mDataset = DAO.GetInstance().ExecuteDataSet(mQuery);
+            mDataset = DAO.Instancia().ExecuteDataSet(mQuery);
             foreach (DataRow mROW in mDataset.Tables[0].Rows)
             {
                 mLista.Add(mROW["DVH"].ToString());
@@ -52,26 +52,26 @@ namespace DAL
         static private int ObtenerCantidadRegistrosDigitos(string pTabla)
         {
             string mQuery = "SELECT COUNT(*) FROM Digito_Verificador WHERE Tabla='" + pTabla + "'";
-            return int.Parse(DAO.GetInstance().ExecuteScalar(mQuery).ToString());
+            return int.Parse(DAO.Instancia().ExecuteScalar(mQuery).ToString());
         }
 
         static private void GuardarNuevoDigitoVerificador(string pTabla, string DigitoVerificador)
         {
-            int Id = DAO.GetInstance().ObtenerUltimoId("Digito_Verificador") + 1;
+            int Id = DAO.Instancia().ObtenerUltimoId("Digito_Verificador") + 1;
             string mQuery = "INSERT INTO Digito_Verificador (ID_Digito_Verificador, Tabla, DVV) VALUES (" + Id + ", '" + pTabla + "', '" + DigitoVerificador + "')";
-            DAO.GetInstance().ExecuteNonQuery(mQuery);
+            DAO.Instancia().ExecuteNonQuery(mQuery);
         }
 
         static private void ModificarDigitoVerificador(string pTabla, string DigitoVerificador)
         {
             string mQuery = "UPDATE Digito_Verificador SET DVV = " + DigitoVerificador + "WHERE Tabla='" + pTabla + "'";
-            DAO.GetInstance().ExecuteNonQuery(mQuery);
+            DAO.Instancia().ExecuteNonQuery(mQuery);
         }
 
         static private void BorrarDigitoVerificador (string pTabla)
         {
             string mQuery = "DELETE Digito_Verificador WHERE Tabla='" + pTabla + "'";
-            DAO.GetInstance().ExecuteNonQuery(mQuery);
+            DAO.Instancia().ExecuteNonQuery(mQuery);
         }
         #endregion
 

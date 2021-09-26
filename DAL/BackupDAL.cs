@@ -27,7 +27,7 @@ namespace DAL
             mCommand = mCommand + "WITH NOFORMAT, NOINIT, NAME = 'BuenViajeBackup-" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + "', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
             try
             {
-                DAO.GetInstance().ExecuteNonQuery(mCommand);
+                DAO.Instancia().ExecuteNonQuery(mCommand);
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace DAL
             //mCommand = mCommand + "ALTER DATABASE BuenViaje SET MULTI_USER";
             try
             {
-                DAO.GetInstance().ExecuteNonQuery(mCommand);
+                DAO.Instancia().ExecuteNonQuery(mCommand);
             }
             catch (Exception ex)
             {

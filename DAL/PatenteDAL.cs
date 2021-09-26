@@ -26,7 +26,7 @@ namespace DAL
         {
             string mCommand = "Select p.ID_Permiso, p.Nombre, p.Descripcion, Tipo_Permiso from Permiso p WHERE p.ID_Permiso = " + id;
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
                 PatenteBE mPatente = new PatenteBE();
@@ -43,7 +43,7 @@ namespace DAL
         {
             List<PatenteBE> patentes = new List<PatenteBE>();
             string mCommand = "Select p.ID_Permiso, p.Nombre, p.Descripcion, Tipo_Permiso from Permiso p";
-            DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
 
 
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -62,14 +62,14 @@ namespace DAL
         {
             string DVH = mIntegridad.CalcularDVH(usuario.ID_Usuario.ToString() + patente.ID_Compuesto.ToString());
             string mCommand = "INSERT INTO Usuario_Permiso (ID_Permiso, ID_Usuario, DVH) VALUES (" +patente.ID_Compuesto + ", " + usuario.ID_Usuario  + ", '" + DVH +"')";
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Permiso"), "Usuario_Permiso");
         }
 
         public static void BorrarPatenteUsuario(PatenteBE patente, UsuarioBE usuario)
         {
             string mCommand = "DELETE FROM Usuario_Permiso WHERE ID_Permiso = " + patente.ID_Compuesto + " AND ID_Usuario = " + usuario.ID_Usuario;
-            DAO.GetInstance().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario_Permiso"), "Usuario_Permiso");
         }
     }

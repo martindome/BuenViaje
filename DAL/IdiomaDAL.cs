@@ -14,7 +14,7 @@ namespace DAL
             List<IdiomaBE> mListaIdiomas = new List<IdiomaBE>();
             string mCommand = "SELECT ID_Idioma, Descripcion FROM Idioma";
             DataSet mDataset = new DataSet();
-            mDataset = DAL.DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataset = DAL.DAO.Instancia().ExecuteDataSet(mCommand);
 
             foreach (DataRow mDataRow in mDataset.Tables[0].Rows)
             {
@@ -29,7 +29,7 @@ namespace DAL
         {
             string mCommand = "SELECT ID_Idioma, Descripcion FROM Idioma WHERE ID_Idioma = " + pId;
             DataSet mDataSet = new DataSet();
-            mDataSet = DAL.DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAL.DAO.Instancia().ExecuteDataSet(mCommand);
 
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
@@ -48,7 +48,7 @@ namespace DAL
             List<ControlBE> Lista = new List<ControlBE>();
             string mCommand = "SELECT c.ID_Idioma, c.Mensaje, c.ID_Control FROM Controles as c INNER JOIN Idioma as i on c.ID_Idioma = i.ID_Idioma where i.Descripcion = '" + pIdioma + "'";
             DataSet mDataset = new DataSet();
-            mDataset = DAL.DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataset = DAL.DAO.Instancia().ExecuteDataSet(mCommand);
 
             foreach (DataRow mDataRow in mDataset.Tables[0].Rows)
             {
@@ -65,7 +65,7 @@ namespace DAL
             string resultado = "";
             string mCommand = "Select t.ID_Idioma, t.Mensaje, t.ID_Texto FROM Texto AS t INNER JOIN Idioma AS i on t.ID_Idioma = i.ID_Idioma WHERE t.ID_Texto = '" + Texto + "' and i.Descripcion ='" + Idioma + "'";
             DataSet mDataset = new DataSet();
-            mDataset = DAL.DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataset = DAL.DAO.Instancia().ExecuteDataSet(mCommand);
 
             foreach (DataRow mDataRow in mDataset.Tables[0].Rows){
                 resultado = mDataRow["Mensaje"].ToString();

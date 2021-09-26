@@ -103,6 +103,24 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Restore-Validacion-Rutas', 'File was not found'),
 (1, 'Restore-Error-Aplicar', 'Error while restaurating backup')
 
+----Localidad Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'LocalidadPrincipal-Columna-Pais', 'Country'),
+(1, 'LocalidadPrincipal-Columna-LocalidadID','ID'),
+(1, 'LocalidadPrincipal-Columna-Nombre','Name'),
+(1, 'LocalidadPrincipal-Columna-Provincia','Provincia'),
+(1, 'tabPageInicio', 'Main'),
+(1, 'tabPagePasajes','Tickets'),
+(1, 'tabPageClientes','Costumers'),
+(1, 'tabPageViajes','Trips'),
+(1, 'tabPageRutas','Routes'),
+(1, 'tabPageLocalidades','Locations')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMLocalidades-Form', 'Locations'),
+(1, 'ABMLocalidades-Validacion-Localidad','Location already existing'),
+(1, 'ABMLocalidades-Confirmacion-Baja','Are you sure to delete the location?'),
+(1, 'ABMLocalidades-Error-Aplicar','An error has ocurred while applying the changes')
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -179,7 +197,6 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMPermiso-Error-Aplicar', 'Error al operar con las familias')
 
 
-
 ----Backup
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Backup-Form', 'Copia de seguridad'),
@@ -197,6 +214,26 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Restore-Validacion-Rutas', 'Volumen no encontrado'),
 (2, 'Restore-Error-Aplicar', 'Error al restaurar copia de seguridad')
 
+
+----Localidad Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'LocalidadPrincipal-Columna-Pais', 'Pais'),
+(2, 'LocalidadPrincipal-Columna-LocalidadID','ID'),
+(2, 'LocalidadPrincipal-Columna-Nombre','Nombre'),
+(2, 'LocalidadPrincipal-Columna-Provincia','Provincia'),
+(2, 'tabPageInicio', 'Inicio'),
+(2, 'tabPagePasajes','Pasajes'),
+(2, 'tabPageClientes','Clientes'),
+(2, 'tabPageViajes','Viajes'),
+(2, 'tabPageRutas','Rutas'),
+(2, 'tabPageLocalidades','Localidades')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMLocalidades-Form', 'Localidades'),
+(2, 'ABMLocalidades-Validacion-Localidad','Localidad ya existente'),
+(2, 'ABMLocalidades-Confirmacion-Baja','Esta seguro de borrar la localidad?'),
+(2, 'ABMLocalidades-Error-Aplicar','Un error ocurrio al intentar operar con localidades')
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -204,7 +241,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'LoginLabel1', 'User'),  
 (1, 'LoginLabel2', 'Pass'), 
 (1, 'LoginLabel3', 'Lenguage'), 
-(1, 'LoginBotton1', 'Login'), 
+(1, 'LoginButton1', 'Login'), 
 (1, 'LoginBotton2', 'Exit'),
 (1, 'LoginButton3', 'Change Password')
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -297,14 +334,34 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'PermisosPrincipalLabel2', 'Description'),
 (1, 'PermisosPrincipalGroupBox', 'Filters')
 
+
+--- Backup
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'BackupLabel1', 'Destination'),
+(1, 'BackupLabel2', 'Parts'),
+(1, 'BackupButton1', 'Search'),
+(1, 'BackupButton2', 'Create')
+
+---Restore
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 ----
-(2, 'LoginLabel1', 'Usuario'), 
-(2, 'LoginLabel2', 'Clave'), 
-(2, 'LoginLabel3', 'Idioma'), 
-(2, 'LoginButton1', 'Iniciar Sesion'), 
-(2, 'LoginBotton2', 'Salir'),
-(2, 'LoginButton3', 'Cambiar Clave')
+(1, 'RestoreButton1', 'Search'), 
+(1, 'RestoreButton2', 'Restore')
+
+
+--- Permisos Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'LocalidadBotton1', 'Read'),
+(1, 'LocalidadBotton2', 'New'),
+(1, 'LocalidadBotton3', 'Modify'),
+(1, 'LocalidadBotton4', 'Delete'),
+(1, 'LocalidadBotton5', 'Apply'),
+(1, 'LocalidadBotton6', 'Clean'),
+(1, 'LocalidadLabel1', 'Name'),
+(1, 'LocalidadLabel2', 'Province'),
+(1, 'LocalidadLabel3', 'Country'),
+(1, 'LocalidadGroupBox', 'Filters')
+
 ----ResetPasswrd
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'CambiarPasswordLabel1', 'Nombre de usuario'),
@@ -397,6 +454,31 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'PermisosPrincipalLabel1', 'Nombre'),
 (2, 'PermisosPrincipalLabel2', 'Descripcion'),
 (2, 'PermisosPrincipalGroupBox', 'Filtros')
+
+---Restore
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'BackupLabel1', 'Destination'),
+(2, 'BackupLabel2', 'Parts'),
+(2, 'BackupButton1', 'Search'),
+(2, 'BackupButton2', 'Create')
+
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+----
+(2, 'RestoreButton1', 'Search'), 
+(2, 'RestoreButton2', 'Restore')
+
+--- Permisos Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'LocalidadBotton1', 'Ver'),
+(2, 'LocalidadBotton2', 'Crear'),
+(2, 'LocalidadBotton3', 'Modificar'),
+(2, 'LocalidadBotton4', 'Borrar'),
+(2, 'LocalidadBotton5', 'Aplicar'),
+(2, 'LocalidadBotton6', 'Limpiar'),
+(2, 'LocalidadLabel1', 'Nombre'),
+(2, 'LocalidadLabel2', 'Provincia'),
+(2, 'LocalidadLabel3', 'Pais'),
+(2, 'LocalidadGroupBox', 'Filtros')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario
@@ -517,4 +599,9 @@ Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values
 (1, 'Usuario', '196993'),
 (2, 'Permiso_Familia', '3334'),
 (3, 'Usuario_Familia', '364')
+
+Insert INTO Localidad(ID_Localidad, Nombre, Provincia, Pais) VALUES
+(1,'El Chalten', 'Santa Cruz', 'Argentina'),
+(2,'El Calafate', 'Santa Cruz', 'Argentina'),
+(3,'Rio Gallegos', 'Santa Cruz', 'Argentina')
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

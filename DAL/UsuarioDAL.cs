@@ -22,7 +22,7 @@ namespace DAL
 
             string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contrasenia, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuario u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma";
 
-            DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommandText);
+            DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommandText);
 
 
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -40,7 +40,7 @@ namespace DAL
         private static int ProximoId()
         {
             if (mId == 0)
-                mId = (DAO.GetInstance()).ObtenerUltimoId("Usuario");
+                mId = (DAO.Instancia()).ObtenerUltimoId("Usuario");
             mId += 1;
             return mId;
         }
@@ -48,7 +48,7 @@ namespace DAL
         {
             string nombre_usuario = SERV.Seguridad.Cifrado.Cifrar(pNombreUsuario);
             string mCommandText = "Select u.ID_Usuario, u.Nombre, u.Apellido, u.Nombre_Usuario, u.Contrasenia, u.Intentos_Login, u.ID_Idioma, i.Descripcion FROM Usuario u INNER JOIN Idioma i ON u.ID_Idioma=i.ID_Idioma WHERE u.Nombre_Usuario = '" + nombre_usuario + "'";
-            DataSet mDataSet = DAO.GetInstance().ExecuteDataSet(mCommandText);
+            DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommandText);
 
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
@@ -84,7 +84,7 @@ namespace DAL
                     + ", ID_Idioma = " + pUsuario.ID_Idioma
                     + ", DVH = '" + DVH + "' WHERE ID_Usuario =" + pUsuario.ID_Usuario;
             }
-            int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
+            int value = DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
             return value;
         }
@@ -99,7 +99,7 @@ namespace DAL
                 + "', Intentos_Login = " + pUsuario.Intentos_Login
                 + ", ID_Idioma = " + pUsuario.ID_Idioma
                 + ", DVH = '" + DVH + "' WHERE ID_Usuario =" + pUsuario.ID_Usuario;
-            int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
+            int value = DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
         }
         public static string ResetearConstrasenia(UsuarioBE pUsuario)
@@ -109,14 +109,14 @@ namespace DAL
             string Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pUsuario.Nombre_Usuario);
             pUsuario.Intentos_Login = 0;
             string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + Nombre_Usuario + pUsuario.Contrasenia + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
-            string mCommand = "Update Usuario SET Nombre = '" + pUsuario.Nombre
+            string mCommand = "UPDATE Usuario SET Nombre = '" + pUsuario.Nombre
                 + "', Apellido = '" + pUsuario.Apellido
                 + "', Nombre_Usuario = '" + Nombre_Usuario
                 + "', Contrasenia = '" + pUsuario.Contrasenia
                 + "', Intentos_Login = " + pUsuario.Intentos_Login
                 + ", ID_Idioma = " + pUsuario.ID_Idioma
                 + ", DVH = '" + DVH + "' WHERE ID_Usuario =" + pUsuario.ID_Usuario;
-            int value = DAO.GetInstance().ExecuteNonQuery(mCommand);
+            int value = DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
             Seguridad.Contrasenia.EnviarNuevaContrasenia(newPassword, pUsuario.Nombre_Usuario);
             return newPassword;
@@ -144,14 +144,14 @@ namespace DAL
         public static int Eliminar (UsuarioBE pUsuario)
         {
             string mCommandText = "DELETE Usuario WHERE ID_Usuario = " + pUsuario.ID_Usuario;
-            int value = DAO.GetInstance().ExecuteNonQuery(mCommandText);
+            int value = DAO.Instancia().ExecuteNonQuery(mCommandText);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
             return value;
         }
         public static string ObtenerIdiomaUsuario(UsuarioBE pUsuario)
         {
             string mCommand = "SELECT i.Descripcion FROM Usuario u INNER JOIN Idioma i on u.ID_Idioma = i.ID_Idioma WHERE u.ID_Idioma = '" + pUsuario.ID_Idioma + "' AND u.ID_Usuario = " + pUsuario.ID_Usuario;
-            return DAO.GetInstance().ExecuteScalar(mCommand).ToString();
+            return DAO.Instancia().ExecuteScalar(mCommand).ToString();
         }
         public static List<CompuestoBE> ListarFamilias(UsuarioBE pUsuario)
         {
@@ -163,7 +163,7 @@ namespace DAL
                 "WHERE u.ID_Usuario = " + pUsuario.ID_Usuario;
 
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow mDataRow in mDataSet.Tables[0].Rows)
@@ -186,7 +186,7 @@ namespace DAL
                 "WHERE u.ID_Usuario = " + pUsuario.ID_Usuario;
 
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.GetInstance().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow mDataRow in mDataSet.Tables[0].Rows)

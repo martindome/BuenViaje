@@ -14,6 +14,7 @@ using BuenViaje.Administracion;
 using BuenViaje.Administracion.Usuarios;
 using BuenViaje.Administracion.Permisos;
 using BuenViaje.Administracion.Backup;
+using BuenViaje.Localidades;
 
 namespace BuenViaje
 {
@@ -89,6 +90,43 @@ namespace BuenViaje
                             inner.Text = c.Mensaje;
                         }
                     }
+                }
+            }
+
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                page.Text = IdiomaBL.ObtenerMensajeTextos(page.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                foreach (Control control in page.Controls)
+                {
+                    foreach (ControlBE c in Lista)
+                    {
+                        if (c.ID_Control == control.Name)
+                        {
+                            control.Text = c.Mensaje;
+                        }
+                    }
+                    if (control is GroupBox)
+                    {
+                        CargarIdiomaGroupBox((GroupBox)control, Lista) ;
+                    }
+                }
+            }
+        }
+
+        public void CargarIdiomaGroupBox(GroupBox groupBox, List<ControlBE> Lista)
+        {
+            foreach (Control control in groupBox.Controls)
+            {
+                foreach (ControlBE c in Lista)
+                {
+                    if (c.ID_Control == control.Name)
+                    {
+                        control.Text = c.Mensaje;
+                    }
+                }
+                if (control is GroupBox)
+                {
+                    CargarIdiomaGroupBox((GroupBox)control, Lista);
                 }
             }
         }
@@ -203,5 +241,94 @@ namespace BuenViaje
             }
         }
 
+        private string ObtenerMensajeColumna(string pstring)
+        {
+            return IdiomaBL.ObtenerMensajeTextos(pstring, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+        }
+
+        #region Localidades
+        private void tabPageLocalidades_Click(object sender, EventArgs e)
+        {
+            grillaLocalidad.Rows.Clear();
+            grillaLocalidad.Columns.Clear();
+            grillaLocalidad.Columns.Add(ObtenerMensajeColumna("LocalidadPrincipal-Columna-LocalidadID"), ObtenerMensajeColumna("LocalidadPrincipal-Columna-LocalidadID"));
+            grillaLocalidad.Columns.Add(ObtenerMensajeColumna("LocalidadPrincipal-Columna-Nombre"), ObtenerMensajeColumna("LocalidadPrincipal-Columna-Nombre"));
+            grillaLocalidad.Columns.Add(ObtenerMensajeColumna("LocalidadPrincipal-Columna-Provincia"), ObtenerMensajeColumna("LocalidadPrincipal-Columna-Provincia"));
+            grillaLocalidad.Columns.Add(ObtenerMensajeColumna("LocalidadPrincipal-Columna-Pais"), ObtenerMensajeColumna("LocalidadPrincipal-Columna-Pais"));
+            grillaLocalidad.Columns[ObtenerMensajeColumna("LocalidadPrincipal-Columna-LocalidadID")].Visible = false;
+
+            grillaLocalidad.MultiSelect = false;
+            grillaLocalidad.EditMode = DataGridViewEditMode.EditProgrammatically;
+            grillaLocalidad.AllowUserToAddRows = false;
+            grillaLocalidad.AllowUserToDeleteRows = false;
+            grillaLocalidad.AllowUserToResizeColumns = true;
+            grillaLocalidad.AllowUserToResizeRows = false;
+            grillaLocalidad.RowHeadersVisible = false;
+            grillaLocalidad.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grillaLocalidad.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grillaLocalidad.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminLocalidades))
+            {
+                LocalidadBotton2.Enabled = false;
+                LocalidadBotton3.Enabled = false;
+                LocalidadBotton4.Enabled = false;
+            }
+            else
+            {
+                LocalidadBotton2.Enabled = true;
+                LocalidadBotton3.Enabled = true;
+                LocalidadBotton4.Enabled = true;
+            }
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            ActulizarGrillaLocalidades();
+
+        }
+
+        private void ActulizarGrillaLocalidades()
+        {
+            grillaLocalidad.Rows.Clear();
+            LocalidadBL localidadbl = new LocalidadBL();
+            List<LocalidadBE> lista = localidadbl.Listar();
+            foreach (LocalidadBE localidad in lista)
+            {
+                bool flag = true;
+                if (this.LocalidadPrincipalText1.Text != "" && this.LocalidadPrincipalText1.Text != localidad.Nombre)
+                {
+                    flag = false;
+                }
+                if (this.LocalidadPrincipalText2.Text != "" && this.LocalidadPrincipalText2.Text != localidad.Provincia)
+                {
+                    flag = false;
+                }
+                if (this.LocalidadPrincipalText3.Text != "" && this.LocalidadPrincipalText3.Text != localidad.Pais)
+                {
+                    flag = false;
+                }
+                if (flag)
+                {
+                    grillaLocalidad.Rows.Add(localidad.ID_Localidad, localidad.Nombre, localidad.Provincia, localidad.Pais);
+                }
+            }
+        }
+        #endregion
+
+        private void LocalidadBotton5_Click(object sender, EventArgs e)
+        {
+            ActulizarGrillaLocalidades();
+        }
+
+        private void LocalidadBotton6_Click(object sender, EventArgs e)
+        {
+            this.LocalidadPrincipalText1.Text = "";
+            this.LocalidadPrincipalText2.Text = "";
+            this.LocalidadPrincipalText3.Text = "";
+            ActulizarGrillaLocalidades();
+        }
+
+        private void LocalidadBotton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

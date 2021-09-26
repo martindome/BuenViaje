@@ -55,6 +55,7 @@
     <Compile Include="FamiliaBL.cs" />
     <Compile Include="IdiomaBL.cs" />
     <Compile Include="IniciadorBL.cs" />
+    <Compile Include="LocalidadBL.cs" />
     <Compile Include="LoginBL.cs" />
     <Compile Include="PatenteBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
