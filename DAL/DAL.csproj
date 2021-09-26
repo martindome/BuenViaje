@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="BackupDAL.cs" />
     <Compile Include="BitacoraDAL.cs" />
+    <Compile Include="BusDAL.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="FamiliaDAL.cs" />
     <Compile Include="IdiomaDAL.cs" />

@@ -114,7 +114,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'tabPageClientes','Costumers'),
 (1, 'tabPageViajes','Trips'),
 (1, 'tabPageRutas','Routes'),
-(1, 'tabPageLocalidades','Locations')
+(1, 'tabPageLocalidades','Locations'),
+(1, 'UsuarioPrincipal-Localidades-AccesoDenegado', 'Users does not have enough access')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMLocalidades-Form', 'Locations'),
@@ -226,7 +227,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'tabPageClientes','Clientes'),
 (2, 'tabPageViajes','Viajes'),
 (2, 'tabPageRutas','Rutas'),
-(2, 'tabPageLocalidades','Localidades')
+(2, 'tabPageLocalidades','Localidades'),
+(2, 'UsuarioPrincipal-Localidades-AccesoDenegado', 'Usuario no tiene permisos necesarios')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMLocalidades-Form', 'Localidades'),
@@ -523,8 +525,9 @@ INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES
 (14, 'Q29uc3VsdGFyIExvY2FsaWRhZGVz', 'Permite consultar las localidades', 'ReadLocalidades'),
 (15, 'Q29uc3VsdGFyIENsaWVudGVz', 'Permite consultar las localidades', 'ReadClientes'),
 (16, 'QWRtaW5pc3RyYWRvciBWaWFqZXM=', 'Permite crear y administrar los viajes', 'AdminViajes'),
-(17, 'Q29uc3VsdGFyIFZpYWplcw==', 'Permite consultar los viajes', 'ReadViajes')
-
+(17, 'Q29uc3VsdGFyIFZpYWplcw==', 'Permite consultar los viajes', 'ReadViajes'),
+(18, 'QWRtaW5pc3RyYWRvciBkZSBCdXNlcw==','Permite administrar los buses','AdminBuses'),
+(19, 'Q29uc3VsdGFyIEJ1c2Vz','Permite consultar los buses','ReadBuses'),
 
 -- --Familias
 -- INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
@@ -600,8 +603,8 @@ Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values
 (2, 'Permiso_Familia', '3334'),
 (3, 'Usuario_Familia', '364')
 
-Insert INTO Localidad(ID_Localidad, Nombre, Provincia, Pais) VALUES
-(1,'El Chalten', 'Santa Cruz', 'Argentina'),
-(2,'El Calafate', 'Santa Cruz', 'Argentina'),
-(3,'Rio Gallegos', 'Santa Cruz', 'Argentina')
+-- Insert INTO Localidad(ID_Localidad, Nombre, Provincia, Pais) VALUES
+-- (1,'El Chalten', 'Santa Cruz', 'Argentina'),
+-- (2,'El Calafate', 'Santa Cruz', 'Argentina'),
+-- (3,'Rio Gallegos', 'Santa Cruz', 'Argentina')
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

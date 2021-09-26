@@ -28,6 +28,7 @@ namespace BuenViaje.Localidades
         {
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMLocalidades-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+            CargarCampos();
         }
 
         private void CargarCampos()
@@ -68,7 +69,7 @@ namespace BuenViaje.Localidades
         {
             this.ABMLocalidadesTexto1.Enabled = false;
             this.ABMLocalidadesTexto2.Enabled = false;
-            this.ABMLocalidadesTexto2.Enabled = false;
+            this.ABMLocalidadesTexto3.Enabled = false;
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -103,7 +104,7 @@ namespace BuenViaje.Localidades
                         this.localidadbe.Nombre = this.ABMLocalidadesTexto1.Text;
                         this.localidadbe.Provincia = this.ABMLocalidadesTexto2.Text;
                         this.localidadbe.Pais = this.ABMLocalidadesTexto3.Text;
-
+                        this.localidadbl.Guardar(localidadbe);
                         mBitacora.Descripcion = "Se dio de alta a la localidad: " + this.localidadbe.Nombre + "-" + this.localidadbe.Provincia + "-" + this.localidadbe.Pais;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
@@ -120,7 +121,7 @@ namespace BuenViaje.Localidades
                         this.localidadbe.Nombre = this.ABMLocalidadesTexto1.Text;
                         this.localidadbe.Provincia = this.ABMLocalidadesTexto2.Text;
                         this.localidadbe.Pais = this.ABMLocalidadesTexto3.Text;
-
+                        this.localidadbl.Guardar(localidadbe);
                         mBitacora.Descripcion = "Se dio de alta a la localidad: " + this.localidadbe.Nombre + "-" + this.localidadbe.Provincia + "-" + this.localidadbe.Pais;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;

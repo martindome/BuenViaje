@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +51,8 @@
             this.tabPageRutas = new System.Windows.Forms.TabPage();
             this.tabPageLocalidades = new System.Windows.Forms.TabPage();
             this.LocalidadGroupBox = new System.Windows.Forms.GroupBox();
+            this.LocalidadLabel3 = new System.Windows.Forms.Label();
+            this.LocalidadPrincipalText3 = new System.Windows.Forms.TextBox();
             this.LocalidadBotton6 = new System.Windows.Forms.Button();
             this.LocalidadBotton5 = new System.Windows.Forms.Button();
             this.LocalidadLabel2 = new System.Windows.Forms.Label();
@@ -60,13 +64,29 @@
             this.LocalidadBotton2 = new System.Windows.Forms.Button();
             this.LocalidadBotton1 = new System.Windows.Forms.Button();
             this.grillaLocalidad = new System.Windows.Forms.DataGridView();
-            this.LocalidadLabel3 = new System.Windows.Forms.Label();
-            this.LocalidadPrincipalText3 = new System.Windows.Forms.TextBox();
+            this.tabPageBuses = new System.Windows.Forms.TabPage();
+            this.busesGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.busesLabel3 = new System.Windows.Forms.Label();
+            this.busesText3 = new System.Windows.Forms.TextBox();
+            this.busesButton6 = new System.Windows.Forms.Button();
+            this.busesButton5 = new System.Windows.Forms.Button();
+            this.labelbusesLabel2 = new System.Windows.Forms.Label();
+            this.busesText2 = new System.Windows.Forms.TextBox();
+            this.busesLabel1 = new System.Windows.Forms.Label();
+            this.busesText1 = new System.Windows.Forms.TextBox();
+            this.busesButton4 = new System.Windows.Forms.Button();
+            this.busesButton3 = new System.Windows.Forms.Button();
+            this.busesButton2 = new System.Windows.Forms.Button();
+            this.busesButton1 = new System.Windows.Forms.Button();
+            this.grillaBuses = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageLocalidades.SuspendLayout();
             this.LocalidadGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaLocalidad)).BeginInit();
+            this.tabPageBuses.SuspendLayout();
+            this.busesGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaBuses)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -167,6 +187,7 @@
             this.tabControl1.Controls.Add(this.tabPageViajes);
             this.tabControl1.Controls.Add(this.tabPageRutas);
             this.tabControl1.Controls.Add(this.tabPageLocalidades);
+            this.tabControl1.Controls.Add(this.tabPageBuses);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.HotTrack = true;
             this.tabControl1.ItemSize = new System.Drawing.Size(159, 20);
@@ -259,6 +280,22 @@
             this.LocalidadGroupBox.TabStop = false;
             this.LocalidadGroupBox.Text = "Filtros";
             // 
+            // LocalidadLabel3
+            // 
+            this.LocalidadLabel3.AutoSize = true;
+            this.LocalidadLabel3.Location = new System.Drawing.Point(0, 119);
+            this.LocalidadLabel3.Name = "LocalidadLabel3";
+            this.LocalidadLabel3.Size = new System.Drawing.Size(27, 13);
+            this.LocalidadLabel3.TabIndex = 21;
+            this.LocalidadLabel3.Text = "Pais";
+            // 
+            // LocalidadPrincipalText3
+            // 
+            this.LocalidadPrincipalText3.Location = new System.Drawing.Point(0, 135);
+            this.LocalidadPrincipalText3.Name = "LocalidadPrincipalText3";
+            this.LocalidadPrincipalText3.Size = new System.Drawing.Size(240, 20);
+            this.LocalidadPrincipalText3.TabIndex = 20;
+            // 
             // LocalidadBotton6
             // 
             this.LocalidadBotton6.Location = new System.Drawing.Point(176, 161);
@@ -322,6 +359,7 @@
             this.LocalidadBotton4.TabIndex = 22;
             this.LocalidadBotton4.Text = "Baja";
             this.LocalidadBotton4.UseVisualStyleBackColor = true;
+            this.LocalidadBotton4.Click += new System.EventHandler(this.LocalidadBotton4_Click);
             // 
             // LocalidadBotton3
             // 
@@ -332,6 +370,7 @@
             this.LocalidadBotton3.TabIndex = 21;
             this.LocalidadBotton3.Text = "Modificar";
             this.LocalidadBotton3.UseVisualStyleBackColor = true;
+            this.LocalidadBotton3.Click += new System.EventHandler(this.LocalidadBotton3_Click);
             // 
             // LocalidadBotton2
             // 
@@ -361,47 +400,210 @@
             this.grillaLocalidad.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaLocalidad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaLocalidad.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grillaLocalidad.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaLocalidad.DefaultCellStyle = dataGridViewCellStyle27;
             this.grillaLocalidad.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.grillaLocalidad.Location = new System.Drawing.Point(7, 3);
             this.grillaLocalidad.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaLocalidad.Name = "grillaLocalidad";
             this.grillaLocalidad.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaLocalidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaLocalidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.grillaLocalidad.RowHeadersWidth = 51;
             this.grillaLocalidad.RowTemplate.Height = 24;
             this.grillaLocalidad.Size = new System.Drawing.Size(521, 289);
             this.grillaLocalidad.TabIndex = 18;
             // 
-            // LocalidadLabel3
+            // tabPageBuses
             // 
-            this.LocalidadLabel3.AutoSize = true;
-            this.LocalidadLabel3.Location = new System.Drawing.Point(0, 119);
-            this.LocalidadLabel3.Name = "LocalidadLabel3";
-            this.LocalidadLabel3.Size = new System.Drawing.Size(27, 13);
-            this.LocalidadLabel3.TabIndex = 21;
-            this.LocalidadLabel3.Text = "Pais";
+            this.tabPageBuses.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageBuses.Controls.Add(this.busesGroupBox1);
+            this.tabPageBuses.Controls.Add(this.busesButton4);
+            this.tabPageBuses.Controls.Add(this.busesButton3);
+            this.tabPageBuses.Controls.Add(this.busesButton2);
+            this.tabPageBuses.Controls.Add(this.busesButton1);
+            this.tabPageBuses.Controls.Add(this.grillaBuses);
+            this.tabPageBuses.Location = new System.Drawing.Point(4, 24);
+            this.tabPageBuses.Name = "tabPageBuses";
+            this.tabPageBuses.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageBuses.TabIndex = 6;
+            this.tabPageBuses.Text = "Buses";
+            this.tabPageBuses.Click += new System.EventHandler(this.tabPageBuses_Click);
             // 
-            // LocalidadPrincipalText3
+            // busesGroupBox1
             // 
-            this.LocalidadPrincipalText3.Location = new System.Drawing.Point(0, 135);
-            this.LocalidadPrincipalText3.Name = "LocalidadPrincipalText3";
-            this.LocalidadPrincipalText3.Size = new System.Drawing.Size(240, 20);
-            this.LocalidadPrincipalText3.TabIndex = 20;
+            this.busesGroupBox1.Controls.Add(this.busesLabel3);
+            this.busesGroupBox1.Controls.Add(this.busesText3);
+            this.busesGroupBox1.Controls.Add(this.busesButton6);
+            this.busesGroupBox1.Controls.Add(this.busesButton5);
+            this.busesGroupBox1.Controls.Add(this.labelbusesLabel2);
+            this.busesGroupBox1.Controls.Add(this.busesText2);
+            this.busesGroupBox1.Controls.Add(this.busesLabel1);
+            this.busesGroupBox1.Controls.Add(this.busesText1);
+            this.busesGroupBox1.Location = new System.Drawing.Point(533, 5);
+            this.busesGroupBox1.Name = "busesGroupBox1";
+            this.busesGroupBox1.Size = new System.Drawing.Size(252, 207);
+            this.busesGroupBox1.TabIndex = 29;
+            this.busesGroupBox1.TabStop = false;
+            this.busesGroupBox1.Text = "Filtros";
+            // 
+            // busesLabel3
+            // 
+            this.busesLabel3.AutoSize = true;
+            this.busesLabel3.Location = new System.Drawing.Point(0, 119);
+            this.busesLabel3.Name = "busesLabel3";
+            this.busesLabel3.Size = new System.Drawing.Size(47, 13);
+            this.busesLabel3.TabIndex = 21;
+            this.busesLabel3.Text = "Asientos";
+            // 
+            // busesText3
+            // 
+            this.busesText3.Location = new System.Drawing.Point(0, 135);
+            this.busesText3.Name = "busesText3";
+            this.busesText3.Size = new System.Drawing.Size(240, 20);
+            this.busesText3.TabIndex = 20;
+            // 
+            // busesButton6
+            // 
+            this.busesButton6.Location = new System.Drawing.Point(176, 161);
+            this.busesButton6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton6.Name = "busesButton6";
+            this.busesButton6.Size = new System.Drawing.Size(71, 27);
+            this.busesButton6.TabIndex = 19;
+            this.busesButton6.Text = "Limpiar";
+            this.busesButton6.UseVisualStyleBackColor = true;
+            this.busesButton6.Click += new System.EventHandler(this.busesButton6_Click);
+            // 
+            // busesButton5
+            // 
+            this.busesButton5.Location = new System.Drawing.Point(3, 161);
+            this.busesButton5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton5.Name = "busesButton5";
+            this.busesButton5.Size = new System.Drawing.Size(71, 27);
+            this.busesButton5.TabIndex = 18;
+            this.busesButton5.Text = "Aplicar";
+            this.busesButton5.UseVisualStyleBackColor = true;
+            this.busesButton5.Click += new System.EventHandler(this.busesButton5_Click);
+            // 
+            // labelbusesLabel2
+            // 
+            this.labelbusesLabel2.AutoSize = true;
+            this.labelbusesLabel2.Location = new System.Drawing.Point(0, 66);
+            this.labelbusesLabel2.Name = "labelbusesLabel2";
+            this.labelbusesLabel2.Size = new System.Drawing.Size(37, 13);
+            this.labelbusesLabel2.TabIndex = 11;
+            this.labelbusesLabel2.Text = "Marca";
+            // 
+            // busesText2
+            // 
+            this.busesText2.Location = new System.Drawing.Point(0, 82);
+            this.busesText2.Name = "busesText2";
+            this.busesText2.Size = new System.Drawing.Size(240, 20);
+            this.busesText2.TabIndex = 10;
+            // 
+            // busesLabel1
+            // 
+            this.busesLabel1.AutoSize = true;
+            this.busesLabel1.Location = new System.Drawing.Point(0, 17);
+            this.busesLabel1.Name = "busesLabel1";
+            this.busesLabel1.Size = new System.Drawing.Size(44, 13);
+            this.busesLabel1.TabIndex = 9;
+            this.busesLabel1.Text = "Patente";
+            // 
+            // busesText1
+            // 
+            this.busesText1.Location = new System.Drawing.Point(0, 33);
+            this.busesText1.Name = "busesText1";
+            this.busesText1.Size = new System.Drawing.Size(240, 20);
+            this.busesText1.TabIndex = 7;
+            // 
+            // busesButton4
+            // 
+            this.busesButton4.Location = new System.Drawing.Point(232, 298);
+            this.busesButton4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton4.Name = "busesButton4";
+            this.busesButton4.Size = new System.Drawing.Size(71, 27);
+            this.busesButton4.TabIndex = 28;
+            this.busesButton4.Text = "Baja";
+            this.busesButton4.UseVisualStyleBackColor = true;
+            this.busesButton4.Click += new System.EventHandler(this.busesButton4_Click);
+            // 
+            // busesButton3
+            // 
+            this.busesButton3.Location = new System.Drawing.Point(157, 298);
+            this.busesButton3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton3.Name = "busesButton3";
+            this.busesButton3.Size = new System.Drawing.Size(71, 27);
+            this.busesButton3.TabIndex = 27;
+            this.busesButton3.Text = "Modificar";
+            this.busesButton3.UseVisualStyleBackColor = true;
+            this.busesButton3.Click += new System.EventHandler(this.busesButton3_Click);
+            // 
+            // busesButton2
+            // 
+            this.busesButton2.Location = new System.Drawing.Point(82, 298);
+            this.busesButton2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton2.Name = "busesButton2";
+            this.busesButton2.Size = new System.Drawing.Size(71, 27);
+            this.busesButton2.TabIndex = 26;
+            this.busesButton2.Text = "Alta";
+            this.busesButton2.UseVisualStyleBackColor = true;
+            this.busesButton2.Click += new System.EventHandler(this.busesButton2_Click);
+            // 
+            // busesButton1
+            // 
+            this.busesButton1.Location = new System.Drawing.Point(7, 298);
+            this.busesButton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton1.Name = "busesButton1";
+            this.busesButton1.Size = new System.Drawing.Size(71, 27);
+            this.busesButton1.TabIndex = 25;
+            this.busesButton1.Text = "Ver";
+            this.busesButton1.UseVisualStyleBackColor = true;
+            // 
+            // grillaBuses
+            // 
+            this.grillaBuses.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.grillaBuses.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.grillaBuses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.grillaBuses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaBuses.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaBuses.DefaultCellStyle = dataGridViewCellStyle25;
+            this.grillaBuses.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grillaBuses.Location = new System.Drawing.Point(7, 3);
+            this.grillaBuses.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.grillaBuses.Name = "grillaBuses";
+            this.grillaBuses.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            this.grillaBuses.RowHeadersWidth = 51;
+            this.grillaBuses.RowTemplate.Height = 24;
+            this.grillaBuses.Size = new System.Drawing.Size(521, 289);
+            this.grillaBuses.TabIndex = 24;
             // 
             // Principal
             // 
@@ -423,6 +625,10 @@
             this.LocalidadGroupBox.ResumeLayout(false);
             this.LocalidadGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaLocalidad)).EndInit();
+            this.tabPageBuses.ResumeLayout(false);
+            this.busesGroupBox1.ResumeLayout(false);
+            this.busesGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaBuses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,5 +668,20 @@
         private System.Windows.Forms.DataGridView grillaLocalidad;
         private System.Windows.Forms.Label LocalidadLabel3;
         private System.Windows.Forms.TextBox LocalidadPrincipalText3;
+        private System.Windows.Forms.TabPage tabPageBuses;
+        private System.Windows.Forms.GroupBox busesGroupBox1;
+        private System.Windows.Forms.Label busesLabel3;
+        private System.Windows.Forms.TextBox busesText3;
+        private System.Windows.Forms.Button busesButton6;
+        private System.Windows.Forms.Button busesButton5;
+        private System.Windows.Forms.Label labelbusesLabel2;
+        private System.Windows.Forms.TextBox busesText2;
+        private System.Windows.Forms.Label busesLabel1;
+        private System.Windows.Forms.TextBox busesText1;
+        private System.Windows.Forms.Button busesButton4;
+        private System.Windows.Forms.Button busesButton3;
+        private System.Windows.Forms.Button busesButton2;
+        private System.Windows.Forms.Button busesButton1;
+        private System.Windows.Forms.DataGridView grillaBuses;
     }
 }

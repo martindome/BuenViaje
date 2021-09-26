@@ -15,11 +15,14 @@ using BuenViaje.Administracion.Usuarios;
 using BuenViaje.Administracion.Permisos;
 using BuenViaje.Administracion.Backup;
 using BuenViaje.Localidades;
+using BuenViaje.Buses;
+using BE.Composite;
 
 namespace BuenViaje
 {
     public partial class Principal : Form
     {
+        #region principal
         public Principal()
         {
             InitializeComponent();
@@ -54,12 +57,23 @@ namespace BuenViaje
             {
                 this.tabControl1.TabPages.Remove(this.tabPageLocalidades);
             }
+            else
+            {
+                this.Load_tabPageLocalidades();
+            }
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.VendedorPasajes))
             {
                 this.tabControl1.TabPages.Remove(this.tabPageClientes);
                 this.tabControl1.TabPages.Remove(this.tabPagePasajes);
             }
-
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminBuses) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadBuses))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageBuses);
+            }
+            else
+            {
+                this.Load_tabPageBuses();
+            }
         }
 
         public void CargarIdioma(List<ControlBE> Lista)
@@ -246,8 +260,29 @@ namespace BuenViaje
             return IdiomaBL.ObtenerMensajeTextos(pstring, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
         }
 
+        #endregion
+
         #region Localidades
         private void tabPageLocalidades_Click(object sender, EventArgs e)
+        {
+
+            //if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminLocalidades))
+            //{
+            //    LocalidadBotton2.Enabled = false;
+            //    LocalidadBotton3.Enabled = false;
+            //    LocalidadBotton4.Enabled = false;
+            //}
+            //else
+            //{
+            //    LocalidadBotton2.Enabled = true;
+            //    LocalidadBotton3.Enabled = true;
+            //    LocalidadBotton4.Enabled = true;
+            //}
+            //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            //ActulizarGrillaLocalidades();
+        }
+
+        private void Load_tabPageLocalidades()
         {
             grillaLocalidad.Rows.Clear();
             grillaLocalidad.Columns.Clear();
@@ -267,6 +302,8 @@ namespace BuenViaje
             grillaLocalidad.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grillaLocalidad.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grillaLocalidad.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            grillaLocalidad.Rows.Clear();
+
 
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminLocalidades))
             {
@@ -280,14 +317,14 @@ namespace BuenViaje
                 LocalidadBotton3.Enabled = true;
                 LocalidadBotton4.Enabled = true;
             }
+
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             ActulizarGrillaLocalidades();
-
         }
 
         private void ActulizarGrillaLocalidades()
         {
-            grillaLocalidad.Rows.Clear();
+            this.grillaLocalidad.Rows.Clear();
             LocalidadBL localidadbl = new LocalidadBL();
             List<LocalidadBE> lista = localidadbl.Listar();
             foreach (LocalidadBE localidad in lista)
@@ -311,7 +348,6 @@ namespace BuenViaje
                 }
             }
         }
-        #endregion
 
         private void LocalidadBotton5_Click(object sender, EventArgs e)
         {
@@ -328,7 +364,203 @@ namespace BuenViaje
 
         private void LocalidadBotton2_Click(object sender, EventArgs e)
         {
-
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminLocalidades))
+            {
+                LocalidadBL localidadbl = new LocalidadBL();
+                ABMLocalidades localidadesabm = new ABMLocalidades();
+                localidadesabm.operacion = Operacion.Alta;
+                //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+                localidadesabm.localidadbe = new LocalidadBE();
+                localidadesabm.ShowDialog();
+                ActulizarGrillaLocalidades();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Localidades-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        private void LocalidadBotton3_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminLocalidades))
+            {
+                LocalidadBL localidadbl = new LocalidadBL();
+                ABMLocalidades localidadesabm = new ABMLocalidades();
+                localidadesabm.operacion = Operacion.Modificacion;
+                //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+                localidadesabm.localidadbe = localidadbl.Obtener(int.Parse(this.grillaLocalidad.SelectedRows[0].Cells[0].Value.ToString()));
+                localidadesabm.ShowDialog();
+                ActulizarGrillaLocalidades();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Localidades-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LocalidadBotton4_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminLocalidades))
+            {
+                LocalidadBL localidadbl = new LocalidadBL();
+                ABMLocalidades localidadesabm = new ABMLocalidades();
+                localidadesabm.operacion = Operacion.Baja;
+                //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+                localidadesabm.localidadbe = localidadbl.Obtener(int.Parse(this.grillaLocalidad.SelectedRows[0].Cells[0].Value.ToString()));
+                localidadesabm.ShowDialog();
+                ActulizarGrillaLocalidades();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Localidades-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        #region Buses
+
+        private void Load_tabPageBuses()
+        {
+            grillaBuses.Rows.Clear();
+            grillaBuses.Columns.Clear();
+            grillaBuses.Columns.Add(ObtenerMensajeColumna("BusPrincipal-Columna-BusID"), ObtenerMensajeColumna("BusPrincipal-Columna-BusID"));
+            grillaBuses.Columns.Add(ObtenerMensajeColumna("BusPrincipal-Columna-Patente"), ObtenerMensajeColumna("BusPrincipal-Columna-Patente"));
+            grillaBuses.Columns.Add(ObtenerMensajeColumna("BusPrincipal-Columna-Marca"), ObtenerMensajeColumna("BusPrincipal-Columna-Marca"));
+            grillaBuses.Columns.Add(ObtenerMensajeColumna("BusPrincipal-Columna-Asientos"), ObtenerMensajeColumna("BusPrincipal-Columna-Asientos"));
+            grillaBuses.Columns[ObtenerMensajeColumna("BusPrincipal-Columna-BusID")].Visible = false;
+
+            grillaBuses.MultiSelect = false;
+            grillaBuses.EditMode = DataGridViewEditMode.EditProgrammatically;
+            grillaBuses.AllowUserToAddRows = false;
+            grillaBuses.AllowUserToDeleteRows = false;
+            grillaBuses.AllowUserToResizeColumns = true;
+            grillaBuses.AllowUserToResizeRows = false;
+            grillaBuses.RowHeadersVisible = false;
+            grillaBuses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grillaBuses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grillaBuses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            grillaBuses.Rows.Clear();
+
+
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminLocalidades))
+            {
+                busesButton2.Enabled = false;
+                busesButton3.Enabled = false;
+                busesButton4.Enabled = false;
+            }
+            else
+            {
+                busesButton2.Enabled = true;
+                busesButton3.Enabled = true;
+                busesButton4.Enabled = true;
+            }
+
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            ActulizarGrillaBuses();
+        }
+
+        private void ActulizarGrillaBuses()
+        {
+            this.grillaLocalidad.Rows.Clear();
+            BusBL busbl = new BusBL();
+            List<BusBE> lista = busbl.Listar();
+            foreach (BusBE localidad in lista)
+            {
+                bool flag = true;
+                if (this.busesText1.Text != "" && this.busesText1.Text != localidad.Patente)
+                {
+                    flag = false;
+                }
+                if (this.busesText2.Text != "" && this.busesText2.Text != localidad.Marca)
+                {
+                    flag = false;
+                }
+                if (this.busesText3.Text != "" && this.busesText3.Text != localidad.Asientos.ToString())
+                {
+                    flag = false;
+                }
+                if (flag)
+                {
+                    grillaLocalidad.Rows.Add(localidad.ID_Bus, localidad.Patente, localidad.Marca, localidad.Asientos);
+                }
+            }
+        }
+
+        private void busesButton2_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminBuses))
+            {
+                BusBL busbl = new BusBL();
+                ABMBuses busesabm = new ABMBuses();
+                busesabm.operacion = Operacion.Alta;
+                //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+                busesabm.busbe = new BusBE();
+                busesabm.ShowDialog();
+                ActulizarGrillaBuses();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Buses-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void busesButton3_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminBuses))
+            {
+                LocalidadBL localidadbl = new LocalidadBL();
+                ABMLocalidades localidadesabm = new ABMLocalidades();
+                localidadesabm.operacion = Operacion.Modificacion;
+                //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+                localidadesabm.localidadbe = localidadbl.Obtener(int.Parse(this.grillaLocalidad.SelectedRows[0].Cells[0].Value.ToString()));
+                localidadesabm.ShowDialog();
+                ActulizarGrillaLocalidades();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Buses-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void busesButton4_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminBuses))
+            {
+                LocalidadBL localidadbl = new LocalidadBL();
+                ABMLocalidades localidadesabm = new ABMLocalidades();
+                localidadesabm.operacion = Operacion.Baja;
+                //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
+                localidadesabm.localidadbe = localidadbl.Obtener(int.Parse(this.grillaLocalidad.SelectedRows[0].Cells[0].Value.ToString()));
+                localidadesabm.ShowDialog();
+                ActulizarGrillaLocalidades();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Buses-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void busesButton5_Click(object sender, EventArgs e)
+        {
+            ActulizarGrillaBuses();
+        }
+
+        private void busesButton6_Click(object sender, EventArgs e)
+        {
+            this.busesText1.Text = "";
+            this.busesText2.Text = "";
+            this.busesText3.Text = "";
+            ActulizarGrillaBuses();
+        }
+
+        private void tabPageBuses_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        #endregion
+
+        
     }
 }

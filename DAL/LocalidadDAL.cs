@@ -35,7 +35,7 @@ namespace DAL
         public static LocalidadBE Obtener(int pId)
         {
             string mCommand = "SELECT ID_Localidad, Nombre, Provincia, Pais FROM Localidad WHERE ID_Localidad = " + pId;
-            DataSet mDataSet = new DataSet();
+            DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
                 LocalidadBE mLocalidad = new LocalidadBE();
@@ -58,7 +58,7 @@ namespace DAL
             if (pLocalidad.ID_Localidad == 0)
             {
                 pLocalidad.ID_Localidad = ProximoId();
-                mCommand = "INSERT INTO Bitacora (ID_Localidad, Nombre, Pais, Provincia) VALUES (" + pLocalidad.ID_Localidad + ", '" + pLocalidad.Nombre + "', '" + pLocalidad.Provincia + "', '" + pLocalidad.Pais + "')";
+                mCommand = "INSERT INTO Localidad (ID_Localidad, Nombre, Provincia, Pais) VALUES (" + pLocalidad.ID_Localidad + ", '" + pLocalidad.Nombre + "', '" + pLocalidad.Provincia + "', '" + pLocalidad.Pais + "')";
             }
             else
             {
@@ -78,9 +78,9 @@ namespace DAL
         private static void ValorizarEntidad(LocalidadBE pLocalidad, DataRow pDataRow)
         {
             pLocalidad.ID_Localidad = int.Parse(pDataRow["ID_Localidad"].ToString());
-            pLocalidad.Nombre = (pDataRow["Nombre"].ToString());
-            pLocalidad.Provincia = (pDataRow["Provincia"].ToString());
-            pLocalidad.Pais = (pDataRow["Pais"].ToString());
+            pLocalidad.Nombre = SERV.Seguridad.Cifrado.Descifrar((pDataRow["Nombre"].ToString()));
+            pLocalidad.Provincia = SERV.Seguridad.Cifrado.Descifrar(pDataRow["Provincia"].ToString());
+            pLocalidad.Pais = SERV.Seguridad.Cifrado.Descifrar(pDataRow["Pais"].ToString());
 
         }
 

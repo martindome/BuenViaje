@@ -24,6 +24,8 @@ namespace BE.Composite
         ReadLocalidades,
         ReadClientes,
         AdminViajes,
-        ReadViajes
+        ReadViajes,
+        AdminBuses,
+        ReadBuses
     }
 }

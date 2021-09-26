@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BackupBE.cs" />
     <Compile Include="BitacoraBE.cs" />
+    <Compile Include="BusBE.cs" />
     <Compile Include="Composite\TipoPermiso.cs" />
     <Compile Include="Composite\CompuestoBE.cs" />
     <Compile Include="Composite\FamiliaBE.cs" />
