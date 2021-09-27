@@ -50,6 +50,14 @@ namespace BuenViaje
             {
                 this.tabControl1.TabPages.Remove(this.tabPageClientes);
             }
+            else
+            {
+                if (!this.tabControl1.TabPages.Contains(this.tabPageClientes))
+                {
+                    this.tabControl1.TabPages.Insert(this.tabControl1.TabPages.Count, this.tabPageClientes);
+                }
+                Load_tabPageClientes();
+            }
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminViajes) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadViajes))
             {
                 this.tabControl1.TabPages.Remove(this.tabPageViajes);
@@ -147,25 +155,22 @@ namespace BuenViaje
                 {
                     foreach (ControlBE c in Lista)
                     {
-                        bool flag = false;
-                        if (c.ID_Control == page.Name)
-                        {
-                            page.Text = c.Mensaje;
-                            flag = true;
-                        }
                         if (c.ID_Control == control.Name)
                         {
                             control.Text = c.Mensaje;
-                            flag = true;
-                        }
-                        if (flag)
-                        {
-                            break;
                         }
                     }
                     if (control is GroupBox)
                     {
                         CargarIdiomaGroupBox((GroupBox)control, Lista);
+                    }
+                }
+                foreach (ControlBE c in Lista)
+                {
+                    if (c.ID_Control == page.Name)
+                    {
+                        page.Text = c.Mensaje;
+                        break;
                     }
                 }
             }
