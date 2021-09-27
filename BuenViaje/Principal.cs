@@ -16,6 +16,7 @@ using BuenViaje.Administracion.Permisos;
 using BuenViaje.Administracion.Backup;
 using BuenViaje.Localidades;
 using BuenViaje.Buses;
+using BuenViaje.Clientes;
 using BE.Composite;
 
 namespace BuenViaje
@@ -28,7 +29,7 @@ namespace BuenViaje
             InitializeComponent();
         }
 
-        private void Principal_Load(object sender, EventArgs e)
+        private void CallOnLoad()
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -37,7 +38,7 @@ namespace BuenViaje
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             //this.Bounds = Screen.PrimaryScreen.Bounds;
             string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            
             //Permisos Main Menu
             this.sesionToolStripMenuItem.Enabled = true;
             this.administracionToolStripMenuItem.Enabled = true;
@@ -59,6 +60,10 @@ namespace BuenViaje
             }
             else
             {
+                if (!this.tabControl1.TabPages.Contains(this.tabPageLocalidades))
+                {
+                    this.tabControl1.TabPages.Insert(this.tabControl1.TabPages.Count, this.tabPageLocalidades);
+                }
                 this.Load_tabPageLocalidades();
             }
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.VendedorPasajes))
@@ -72,8 +77,18 @@ namespace BuenViaje
             }
             else
             {
+                if (!this.tabControl1.TabPages.Contains(this.tabPageBuses))
+                {
+                    this.tabControl1.TabPages.Insert(this.tabControl1.TabPages.Count, this.tabPageBuses);
+                }
                 this.Load_tabPageBuses();
             }
+            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            CallOnLoad();
         }
 
         public void CargarIdioma(List<ControlBE> Lista)
@@ -86,6 +101,10 @@ namespace BuenViaje
                     {
                         Control.Text = c.Mensaje;
                     }
+                }
+                if (Control is GroupBox)
+                {
+                    CargarIdiomaGroupBox((GroupBox)Control, Lista);
                 }
             }
 
@@ -109,19 +128,44 @@ namespace BuenViaje
 
             foreach (TabPage page in tabControl1.TabPages)
             {
-                page.Text = IdiomaBL.ObtenerMensajeTextos(page.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                //page.Text = IdiomaBL.ObtenerMensajeTextos(page.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                //foreach (Control control in page.Controls)
+                //{
+                //    foreach (ControlBE c in Lista)
+                //    {
+                //        if (c.ID_Control == control.Name)
+                //        {
+                //            control.Text = c.Mensaje;
+                //        }
+                //    }
+                //    if (control is GroupBox)
+                //    {
+                //        CargarIdiomaGroupBox((GroupBox)control, Lista) ;
+                //    }
+                //}
                 foreach (Control control in page.Controls)
                 {
                     foreach (ControlBE c in Lista)
                     {
+                        bool flag = false;
+                        if (c.ID_Control == page.Name)
+                        {
+                            page.Text = c.Mensaje;
+                            flag = true;
+                        }
                         if (c.ID_Control == control.Name)
                         {
                             control.Text = c.Mensaje;
+                            flag = true;
+                        }
+                        if (flag)
+                        {
+                            break;
                         }
                     }
                     if (control is GroupBox)
                     {
-                        CargarIdiomaGroupBox((GroupBox)control, Lista) ;
+                        CargarIdiomaGroupBox((GroupBox)control, Lista);
                     }
                 }
             }
@@ -167,6 +211,9 @@ namespace BuenViaje
             mForm.MinimizeBox = false;
             mForm.MaximizeBox = false;
             mForm.ShowDialog();
+            //this.Controls.Clear();
+            //this.InitializeComponent();
+            CallOnLoad();
         }
 
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,6 +225,7 @@ namespace BuenViaje
                 mForm.MinimizeBox = false;
                 mForm.MaximizeBox = false;
                 mForm.ShowDialog();
+                CallOnLoad();
             }
             else
             {
@@ -192,6 +240,7 @@ namespace BuenViaje
             mForm.MinimizeBox = false;
             mForm.MaximizeBox = false;
             mForm.ShowDialog();
+            CallOnLoad();
         }
 
         private void gestionarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -202,6 +251,7 @@ namespace BuenViaje
                 form.MinimizeBox = false;
                 form.MaximizeBox = false;
                 form.ShowDialog();
+                CallOnLoad();
             }
             else
             {
@@ -217,6 +267,7 @@ namespace BuenViaje
                 form.MinimizeBox = false;
                 form.MaximizeBox = false;
                 form.ShowDialog();
+                CallOnLoad();
             }
             else
             {
@@ -233,6 +284,7 @@ namespace BuenViaje
                 form.MinimizeBox = false;
                 form.MaximizeBox = false;
                 form.ShowDialog();
+                CallOnLoad();
             }
             else
             {
@@ -248,6 +300,7 @@ namespace BuenViaje
                 form.MinimizeBox = false;
                 form.MaximizeBox = false;
                 form.ShowDialog();
+                CallOnLoad();
             }
             else
             {
@@ -318,7 +371,7 @@ namespace BuenViaje
                 LocalidadBotton4.Enabled = true;
             }
 
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             ActulizarGrillaLocalidades();
         }
 
@@ -456,13 +509,13 @@ namespace BuenViaje
                 busesButton4.Enabled = true;
             }
 
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             ActulizarGrillaBuses();
         }
 
         private void ActulizarGrillaBuses()
         {
-            this.grillaLocalidad.Rows.Clear();
+            this.grillaBuses.Rows.Clear();
             BusBL busbl = new BusBL();
             List<BusBE> lista = busbl.Listar();
             foreach (BusBE localidad in lista)
@@ -482,7 +535,7 @@ namespace BuenViaje
                 }
                 if (flag)
                 {
-                    grillaLocalidad.Rows.Add(localidad.ID_Bus, localidad.Patente, localidad.Marca, localidad.Asientos);
+                    grillaBuses.Rows.Add(localidad.ID_Bus, localidad.Patente, localidad.Marca, localidad.Asientos);
                 }
             }
         }
@@ -509,13 +562,13 @@ namespace BuenViaje
         {
             if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminBuses))
             {
-                LocalidadBL localidadbl = new LocalidadBL();
-                ABMLocalidades localidadesabm = new ABMLocalidades();
-                localidadesabm.operacion = Operacion.Modificacion;
+                BusBL busbl = new BusBL();
+                ABMBuses busesabm = new ABMBuses();
+                busesabm.operacion = Operacion.Modificacion;
                 //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
-                localidadesabm.localidadbe = localidadbl.Obtener(int.Parse(this.grillaLocalidad.SelectedRows[0].Cells[0].Value.ToString()));
-                localidadesabm.ShowDialog();
-                ActulizarGrillaLocalidades();
+                busesabm.busbe = busbl.Obtener(int.Parse(this.grillaBuses.SelectedRows[0].Cells[0].Value.ToString()));
+                busesabm.ShowDialog();
+                ActulizarGrillaBuses();
             }
             else
             {
@@ -527,13 +580,14 @@ namespace BuenViaje
         {
             if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminBuses))
             {
-                LocalidadBL localidadbl = new LocalidadBL();
-                ABMLocalidades localidadesabm = new ABMLocalidades();
-                localidadesabm.operacion = Operacion.Baja;
+
+                BusBL busbl = new BusBL();
+                ABMBuses busesabm = new ABMBuses();
+                busesabm.operacion = Operacion.Baja;
                 //abmusuarios.usuariobe = usuariobl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].ToString());
-                localidadesabm.localidadbe = localidadbl.Obtener(int.Parse(this.grillaLocalidad.SelectedRows[0].Cells[0].Value.ToString()));
-                localidadesabm.ShowDialog();
-                ActulizarGrillaLocalidades();
+                busesabm.busbe = busbl.Obtener(int.Parse(this.grillaBuses.SelectedRows[0].Cells[0].Value.ToString()));
+                busesabm.ShowDialog();
+                ActulizarGrillaBuses();
             }
             else
             {
@@ -554,13 +608,158 @@ namespace BuenViaje
             ActulizarGrillaBuses();
         }
 
-        private void tabPageBuses_Click(object sender, EventArgs e)
+        #endregion
+
+
+        #region Clientes
+        private void Load_tabPageClientes()
         {
-            
+            grillaClientes.Rows.Clear();
+            grillaClientes.Columns.Clear();
+            grillaClientes.Columns.Add(ObtenerMensajeColumna("ClientesPrincipal-Columna-ClienteID"), ObtenerMensajeColumna("ClientesPrincipal-Columna-ClienteID"));
+            grillaClientes.Columns.Add(ObtenerMensajeColumna("ClientesPrincipal-Columna-Nombre"), ObtenerMensajeColumna("ClientesPrincipal-Columna-Nombre"));
+            grillaClientes.Columns.Add(ObtenerMensajeColumna("ClientesPrincipal-Columna-Apellido"), ObtenerMensajeColumna("ClientesPrincipal-Columna-Apellido"));
+            grillaClientes.Columns.Add(ObtenerMensajeColumna("ClientesPrincipal-Columna-DNI"), ObtenerMensajeColumna("ClientesPrincipal-Columna-DNI"));
+            grillaClientes.Columns.Add(ObtenerMensajeColumna("ClientesPrincipal-Columna-Email"), ObtenerMensajeColumna("ClientesPrincipal-Columna-Email"));
+            grillaClientes.Columns[ObtenerMensajeColumna("ClientesPrincipal-Columna-ClienteID")].Visible = false;
+
+            grillaClientes.MultiSelect = false;
+            grillaClientes.EditMode = DataGridViewEditMode.EditProgrammatically;
+            grillaClientes.AllowUserToAddRows = false;
+            grillaClientes.AllowUserToDeleteRows = false;
+            grillaClientes.AllowUserToResizeColumns = true;
+            grillaClientes.AllowUserToResizeRows = false;
+            grillaClientes.RowHeadersVisible = false;
+            grillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grillaClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grillaClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            grillaClientes.Rows.Clear();
+
+
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminClientes))
+            {
+                ClientesBotton2.Enabled = false;
+                ClientesBotton3.Enabled = false;
+                ClientesBotton4.Enabled = false;
+            }
+            else
+            {
+                ClientesBotton2.Enabled = true;
+                ClientesBotton3.Enabled = true;
+                ClientesBotton4.Enabled = true;
+            }
+
+            //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            ActualizarGrillaClientes();
+        }
+
+        private void ActualizarGrillaClientes()
+        {
+            this.grillaClientes.Rows.Clear();
+            ClienteBL clientebl = new ClienteBL();
+            List<ClienteBE> lista = clientebl.Listar();
+            foreach (ClienteBE clientebe in lista)
+            {
+                bool flag = true;
+                if (this.ClientesTextBox1.Text != "" && this.ClientesTextBox1.Text != clientebe.Nombre)
+                {
+                    flag = false;
+                }
+                if (this.ClientesTextBox2.Text != "" && this.ClientesTextBox2.Text != clientebe.Apellido)
+                {
+                    flag = false;
+                }
+                if (this.ClientesTextBox3.Text != "" && this.ClientesTextBox3.Text != clientebe.DNI)
+                {
+                    flag = false;
+                }
+                if (this.ClientesTextBox4.Text != "" && this.ClientesTextBox4.Text != clientebe.Email)
+                {
+                    flag = false;
+                }
+                if (flag)
+                {
+                    grillaClientes.Rows.Add(clientebe.ID_Cliente, clientebe.Nombre, clientebe.Apellido, clientebe.DNI, clientebe.Email);
+                }
+            }
+        }
+
+        private void tabPageClientes_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ClientesBotton2_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminClientes))
+            {
+                ClienteBL clientebl = new ClienteBL();
+                ABMCliente abmcliente = new ABMCliente();
+                abmcliente.operacion = Operacion.Alta;
+                abmcliente.clientebe = new ClienteBE();
+                abmcliente.ShowDialog();
+                ActualizarGrillaClientes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Clientes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClientesBotton3_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminClientes))
+            {
+                ClienteBL clientebl = new ClienteBL();
+                ABMCliente abmcliente = new ABMCliente();
+                abmcliente.operacion = Operacion.Modificacion;
+                abmcliente.clientebe = clientebl.Obtener(int.Parse(this.grillaClientes.SelectedRows[0].Cells[0].Value.ToString()));
+                abmcliente.ShowDialog();
+                ActualizarGrillaClientes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Clientes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClientesBotton4_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminClientes))
+            {
+                ClienteBL clientebl = new ClienteBL();
+                ABMCliente abmcliente = new ABMCliente();
+                abmcliente.operacion = Operacion.Baja;
+                abmcliente.clientebe = clientebl.Obtener(int.Parse(this.grillaClientes.SelectedRows[0].Cells[0].Value.ToString()));
+                abmcliente.ShowDialog();
+                ActualizarGrillaClientes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Clientes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClientesBotton5_Click(object sender, EventArgs e)
+        {
+            ActualizarGrillaClientes();
+        }
+
+        private void ClientesBotton6_Click(object sender, EventArgs e)
+        {
+            this.ClientesTextBox1.Text = "";
+            this.ClientesTextBox2.Text = "";
+            this.ClientesTextBox3.Text = "";
+            this.ClientesTextBox4.Text = "";
+            ActualizarGrillaClientes();
+        }
+
+        private void ClientesBotton1_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
 
-        
+
     }
 }

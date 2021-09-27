@@ -9,24 +9,24 @@ using System.Windows.Forms;
 using BE;
 using BL;
 
-namespace BuenViaje.Buses
+namespace BuenViaje.Clientes
 {
-    public partial class ABMBuses : Form
+    public partial class ABMCliente : Form
     {
-
         internal Operacion operacion;
-        internal BusBE busbe;
-        internal BusBL busbl= new BusBL();
+        internal ClienteBE clientebe;
+        internal ClienteBL clientebl = new ClienteBL();
         internal BitacoraBL bitacorabl = new BitacoraBL();
-        public ABMBuses()
+
+        public ABMCliente()
         {
             InitializeComponent();
         }
 
-        private void ABMBuses_Load(object sender, EventArgs e)
+        private void ABMCliente_Load(object sender, EventArgs e)
         {
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
-            this.Text = IdiomaBL.ObtenerMensajeTextos("ABMBuses-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+            this.Text = IdiomaBL.ObtenerMensajeTextos("ABMClientes-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             CargarCampos();
         }
 
@@ -39,16 +39,17 @@ namespace BuenViaje.Buses
                     break;
                 case Operacion.Modificacion:
                     Limpiar();
-                    this.ABMBusesTexto1.Text = this.busbe.Patente;
-                    this.ABMBusesTexto2.Text = this.busbe.Marca;
-                    this.ABMBusesTexto3.Text = this.busbe.Asientos.ToString();
-                    this.ABMBusesTexto1.Enabled = false;
+                    this.ABMClientesTexto1.Text = this.clientebe.Nombre;
+                    this.ABMClientesTexto2.Text = this.clientebe.Apellido;
+                    this.ABMClientesTexto3.Text = this.clientebe.DNI;
+                    this.ABMClientesTexto4.Text = this.clientebe.Email;
                     break;
                 case Operacion.Baja:
                     Limpiar();
-                    this.ABMBusesTexto1.Text = this.busbe.Patente;
-                    this.ABMBusesTexto2.Text = this.busbe.Marca;
-                    this.ABMBusesTexto3.Text = this.busbe.Asientos.ToString();
+                    this.ABMClientesTexto1.Text = this.clientebe.Nombre;
+                    this.ABMClientesTexto2.Text = this.clientebe.Apellido;
+                    this.ABMClientesTexto3.Text = this.clientebe.DNI;
+                    this.ABMClientesTexto4.Text = this.clientebe.Email;
                     DeshabilitarBotones();
                     break;
             }
@@ -67,9 +68,10 @@ namespace BuenViaje.Buses
 
         private void DeshabilitarBotones()
         {
-            this.ABMBusesTexto1.Enabled = false;
-            this.ABMBusesTexto2.Enabled = false;
-            this.ABMBusesTexto3.Enabled = false;
+            this.ABMClientesTexto1.Enabled = false;
+            this.ABMClientesTexto2.Enabled = false;
+            this.ABMClientesTexto3.Enabled = false;
+            this.ABMClientesTexto4.Enabled = false;
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -87,11 +89,11 @@ namespace BuenViaje.Buses
             }
         }
 
-        private bool ValidarBus()
+        private bool ValidarCliente()
         {
-            foreach (BusBE busbe in busbl.Listar())
+            foreach (ClienteBE clientebe in clientebl.Listar())
             {
-                if (busbe.Patente == this.ABMBusesTexto1.Text && this.operacion != Operacion.Modificacion)
+                if (clientebe.DNI == this.ABMClientesTexto3.Text && this.operacion != Operacion.Modificacion)
                 {
                     return false;
                 }
@@ -99,7 +101,7 @@ namespace BuenViaje.Buses
             return true;
         }
 
-        private void ABMBusesBotton1_Click(object sender, EventArgs e)
+        private void ABMClientesBotton1_Click(object sender, EventArgs e)
         {
             bool flag = false;
             BitacoraBE mBitacora = new BitacoraBE();
@@ -108,16 +110,17 @@ namespace BuenViaje.Buses
                 switch (this.operacion)
                 {
                     case Operacion.Alta:
-                        if (!ValidarBus())
+                        if (!ValidarCliente())
                         {
-                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Validacion-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Validacion-Cliente", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        this.busbe.Patente = this.ABMBusesTexto1.Text;
-                        this.busbe.Marca = this.ABMBusesTexto2.Text;
-                        this.busbe.Asientos = int.Parse(this.ABMBusesTexto3.Text);
-                        this.busbl.Guardar(busbe);
-                        mBitacora.Descripcion = "Se dio de alta al bus: " + this.busbe.Patente;
+                        this.clientebe.Nombre = this.ABMClientesTexto1.Text;
+                        this.clientebe.Apellido = this.ABMClientesTexto2.Text;
+                        this.clientebe.DNI = this.ABMClientesTexto3.Text;
+                        this.clientebe.Email = this.ABMClientesTexto4.Text;
+                        this.clientebl.Guardar(clientebe);
+                        mBitacora.Descripcion = "Se dio de alta al cliente: " + this.clientebe.DNI;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
@@ -125,16 +128,17 @@ namespace BuenViaje.Buses
                         flag = true;
                         break;
                     case Operacion.Modificacion:
-                        if (!ValidarBus())
+                        if (!ValidarCliente())
                         {
-                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Validacion-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Validacion-Cliente", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        this.busbe.Patente = this.ABMBusesTexto1.Text;
-                        this.busbe.Marca = this.ABMBusesTexto2.Text;
-                        this.busbe.Asientos = int.Parse(this.ABMBusesTexto3.Text);
-                        this.busbl.Guardar(busbe);
-                        mBitacora.Descripcion = "Se modifico el bus: " + this.busbe.Patente;
+                        this.clientebe.Nombre = this.ABMClientesTexto1.Text;
+                        this.clientebe.Apellido = this.ABMClientesTexto2.Text;
+                        this.clientebe.DNI = this.ABMClientesTexto3.Text;
+                        this.clientebe.Email = this.ABMClientesTexto4.Text;
+                        this.clientebl.Guardar(clientebe);
+                        mBitacora.Descripcion = "Se modifico el cliente: " + this.clientebe.DNI;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
@@ -142,13 +146,13 @@ namespace BuenViaje.Buses
                         flag = true;
                         break;
                     case Operacion.Baja:
-                        DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Confirmacion-Baja", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Confirmacion-Baja", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
-                            this.busbl.Eliminar(this.busbe);
+                            this.clientebl.Eliminar(this.clientebe);
                         }
                         //Bitacora
-                        mBitacora.Descripcion = "Se elimino al bus: " + this.busbe.Patente;
+                        mBitacora.Descripcion = "Se elimino al cliente: " + this.clientebe.DNI;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "HIGH";
@@ -169,7 +173,7 @@ namespace BuenViaje.Buses
                 mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -177,7 +181,7 @@ namespace BuenViaje.Buses
             }
         }
 
-        private void ABMBusessBotton2_Click(object sender, EventArgs e)
+        private void ABMClientesBotton2_Click(object sender, EventArgs e)
         {
             this.Close();
         }

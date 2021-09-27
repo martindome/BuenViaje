@@ -109,19 +109,47 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'LocalidadPrincipal-Columna-LocalidadID','ID'),
 (1, 'LocalidadPrincipal-Columna-Nombre','Name'),
 (1, 'LocalidadPrincipal-Columna-Provincia','Provincia'),
-(1, 'tabPageInicio', 'Main'),
-(1, 'tabPagePasajes','Tickets'),
-(1, 'tabPageClientes','Costumers'),
-(1, 'tabPageViajes','Trips'),
-(1, 'tabPageRutas','Routes'),
-(1, 'tabPageLocalidades','Locations'),
 (1, 'UsuarioPrincipal-Localidades-AccesoDenegado', 'Users does not have enough access')
 
+----ABM Localidad
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMLocalidades-Form', 'Locations'),
 (1, 'ABMLocalidades-Validacion-Localidad','Location already existing'),
 (1, 'ABMLocalidades-Confirmacion-Baja','Are you sure to delete the location?'),
 (1, 'ABMLocalidades-Error-Aplicar','An error has ocurred while applying the changes')
+
+----Buses Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'BusPrincipal-Columna-BusID', 'ID'),
+(1, 'BusPrincipal-Columna-Patente','Number'),
+(1, 'BusPrincipal-Columna-Marca','Brand'),
+(1, 'BusPrincipal-Columna-Asientos','Seats'),
+(1, 'UsuarioPrincipal-Buses-AccesoDenegado', 'User does not have enough permissions')
+
+----ABM Localidad
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMBuses-Form', 'Buses'),
+(1, 'ABMBuses-Validacion-Bus','Bus already exists'),
+(1, 'ABMBuses-Confirmacion-Baja','Are you sure to delete the bus?'),
+(1, 'ABMBuses-Error-Aplicar','An error has ocurred while applying the changes')
+
+----Clientes Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ClientesPrincipal-Columna-ClienteID', 'ID'),
+(1, 'ClientesPrincipal-Columna-Nombre','Name'),
+(1, 'ClientesPrincipal-Columna-Apellido','Surname'),
+(1, 'ClientesPrincipal-Columna-DNI','DNI'),
+(1, 'ClientesPrincipal-Columna-Email', 'Email'),
+(1, 'UsuarioPrincipal-Clientes-AccesoDenegado', 'User does not have enough privilages')
+
+----Clientes Localidad
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMClientes-Form', 'Clients'),
+(1, 'ABMClientes-Validacion-Cliente','Cliente already exists'),
+(1, 'ABMClientes-Confirmacion-Baja','Are you sure to delete the client'),
+(1, 'ABMClientes-Error-Aplicar','An error occured while applying the changes')
+
+---------- ESPANIOL
 
 ----Inicio
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -222,19 +250,45 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'LocalidadPrincipal-Columna-LocalidadID','ID'),
 (2, 'LocalidadPrincipal-Columna-Nombre','Nombre'),
 (2, 'LocalidadPrincipal-Columna-Provincia','Provincia'),
-(2, 'tabPageInicio', 'Inicio'),
-(2, 'tabPagePasajes','Pasajes'),
-(2, 'tabPageClientes','Clientes'),
-(2, 'tabPageViajes','Viajes'),
-(2, 'tabPageRutas','Rutas'),
-(2, 'tabPageLocalidades','Localidades'),
 (2, 'UsuarioPrincipal-Localidades-AccesoDenegado', 'Usuario no tiene permisos necesarios')
 
+----ABM Localidad
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMLocalidades-Form', 'Localidades'),
 (2, 'ABMLocalidades-Validacion-Localidad','Localidad ya existente'),
 (2, 'ABMLocalidades-Confirmacion-Baja','Esta seguro de borrar la localidad?'),
 (2, 'ABMLocalidades-Error-Aplicar','Un error ocurrio al intentar operar con localidades')
+
+----Buses Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'BusPrincipal-Columna-BusID', 'ID'),
+(2, 'BusPrincipal-Columna-Patente','Patente'),
+(2, 'BusPrincipal-Columna-Marca','Marca'),
+(2, 'BusPrincipal-Columna-Asientos','Asientos'),
+(2, 'UsuarioPrincipal-Buses-AccesoDenegado', 'El usuario no tiene los permisos suficientes')
+
+----ABM Localidad
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMBuses-Form', 'Buses'),
+(2, 'ABMBuses-Validacion-Bus','Bus ya existente'),
+(2, 'ABMBuses-Confirmacion-Baja','Esta seguro de elimianr el bus?'),
+(2, 'ABMBuses-Error-Aplicar','Un error ocurrio al aplicar los cambios')
+
+----Clientes Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ClientesPrincipal-Columna-ClienteID', 'ID'),
+(2, 'ClientesPrincipal-Columna-Nombre','Nombre'),
+(2, 'ClientesPrincipal-Columna-Apellido','Apellido'),
+(2, 'ClientesPrincipal-Columna-DNI','DNI'),
+(2, 'ClientesPrincipal-Columna-Email', 'Email'),
+(2, 'UsuarioPrincipal-Clientes-AccesoDenegado', 'El usuario no tiene los permisos suficientes')
+
+----Clientes Localidad
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMClientes-Form', 'Clientes'),
+(2, 'ABMClientes-Validacion-Cliente','Cliente ya existente'),
+(2, 'ABMClientes-Confirmacion-Baja','Esta seguro de elimianar el cliente?'),
+(2, 'ABMClientes-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -262,7 +316,14 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1,'copiaDeSeguridadToolStripMenuItem', 'Backup'),
 (1,'restauracionToolStripMenuItem', 'Restore'),
 (1,'pasajesStripMenuItem', 'Tickets'),
-(1,'rutasToolStripMenuItem', 'Routes')
+(1,'rutasToolStripMenuItem', 'Routes'),
+(1, 'tabPageInicio', 'Main'),
+(1, 'tabPagePasajes','Tickets'),
+(1, 'tabPageClientes','Clients'),
+(1, 'tabPageViajes','Trips'),
+(1, 'tabPageRutas','Routes'),
+(1, 'tabPageLocalidades','Locations'),
+(1, 'tabPageBuses', 'Buses')
 ----Idioma
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'IdiomaLabel1', 'Choose languaje'),
@@ -351,7 +412,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'RestoreButton2', 'Restore')
 
 
---- Permisos Principal
+---Localidades Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'LocalidadBotton1', 'Read'),
 (1, 'LocalidadBotton2', 'New'),
@@ -363,6 +424,58 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'LocalidadLabel2', 'Province'),
 (1, 'LocalidadLabel3', 'Country'),
 (1, 'LocalidadGroupBox', 'Filters')
+
+---ABM Localidades
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ABMLocalidadesLabel1', 'Name'),
+(1, 'ABMLocalidadesLabel2', 'Province'),
+(1, 'ABMLocalidadesLabel3', 'Country'),
+(1, 'ABMLocalidadesBotton1', 'Apply'),
+(1, 'ABMLocalidadesBotton2', 'Cancel')
+
+---Buses Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'busesButton1', 'Read'),
+(1, 'busesButton2', 'New'),
+(1, 'busesButton3', 'Modify'),
+(1, 'busesButton4', 'Delete'),
+(1, 'busesButton5', 'Apply'),
+(1, 'busesButton6', 'Clean'),
+(1, 'busesLabel1', 'Number'),
+(1, 'busesLabel2', 'Brand'),
+(1, 'busesLabel3', 'Seats'),
+(1, 'busesGroupBox1', 'Filters')
+
+---ABM Buses
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ABMBusesLabel1', 'Number'),
+(1, 'ABMBusesLabel2', 'Brand'),
+(1, 'ABMBusesLabel3', 'Seats'),
+(1, 'ABMBusesBotton1', 'Apply'),
+(1, 'ABMBusesBotton2', 'Cancel')
+
+---Clientes Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ClientesBotton1', 'Read'),
+(1, 'ClientesBotton2', 'New'),
+(1, 'ClientesBotton3', 'Modify'),
+(1, 'ClientesBotton4', 'Delete'),
+(1, 'ClientesBotton5', 'Apply'),
+(1, 'ClientesBotton6', 'Cleam'),
+(1, 'ClientesLabel1', 'Name'),
+(1, 'ClientesLabel2', 'Surname'),
+(1, 'ClientesLabel3', 'DNI'),
+(1, 'ClientesLabel4', 'Email'),
+(1, 'ClientesGroupBox1', 'Filters')
+
+---ABM Clientes
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ABMClientesLabel1', 'Name'),
+(1, 'ABMClientesLabel2', 'Surname'),
+(1, 'ABMClientesLabel3', 'DNI'),
+(1, 'ABMClientesLabel4', 'Email'),
+(1, 'ABMClientesBotton1', 'Apply'),
+(1, 'ABMClientesBotton2', 'Cancel')
 
 ----ResetPasswrd
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -381,7 +494,14 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2,'copiaDeSeguridadToolStripMenuItem', 'Copia de Seguridad'),
 (2,'restauracionToolStripMenuItem', 'Restauracion'),
 (2,'pasajesStripMenuItem', 'Pasajes'),
-(2,'rutasToolStripMenuItem', 'Rutas')
+(2,'rutasToolStripMenuItem', 'Rutas'),
+(2, 'tabPageInicio', 'Inicio'),
+(2, 'tabPagePasajes','Pasajes'),
+(2, 'tabPageClientes','Clientes'),
+(2, 'tabPageViajes','Viajes'),
+(2, 'tabPageRutas','Rutas'),
+(2, 'tabPageLocalidades','Localidades'),
+(2, 'tabPageBuses', 'Buses')
 ----Idioma
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'IdiomaLabel1', 'Elegir idioma'),
@@ -469,7 +589,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'RestoreButton1', 'Search'), 
 (2, 'RestoreButton2', 'Restore')
 
---- Permisos Principal
+---Localidades Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'LocalidadBotton1', 'Ver'),
 (2, 'LocalidadBotton2', 'Crear'),
@@ -481,6 +601,62 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'LocalidadLabel2', 'Provincia'),
 (2, 'LocalidadLabel3', 'Pais'),
 (2, 'LocalidadGroupBox', 'Filtros')
+
+---ABM Localidades
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ABMLocalidadesLabel1', 'Nombre'),
+(2, 'ABMLocalidadesLabel2', 'Provincia'),
+(2, 'ABMLocalidadesLabel3', 'Pais'),
+(2, 'ABMLocalidadesBotton1', 'Aplicar'),
+(2, 'ABMLocalidadesBotton2', 'Cancelar')
+
+---Buses Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'busesButton1', 'Ver'),
+(2, 'busesButton2', 'Alta'),
+(2, 'busesButton3', 'Modificar'),
+(2, 'busesButton4', 'Borrar'),
+(2, 'busesButton5', 'Aplicar'),
+(2, 'busesButton6', 'Limpiar'),
+(2, 'busesLabel1', 'Patente'),
+(2, 'busesLabel2', 'Marca'),
+(2, 'busesLabel3', 'Asientos'),
+(2, 'busesGroupBox1', 'Filtros')
+
+
+---ABM Buses
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ABMBusesLabel1', 'Patente'),
+(2, 'ABMBusesLabel2', 'Marca'),
+(2, 'ABMBusesLabel3', 'Asientos'),
+(2, 'ABMBusesBotton1', 'Aplicar'),
+(2, 'ABMBusesBotton2', 'Cancelar')
+
+
+---Clientes Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ClientesBotton1', 'Ver'),
+(2, 'ClientesBotton2', 'Alta'),
+(2, 'ClientesBotton3', 'Modificar'),
+(2, 'ClientesBotton4', 'Borrar'),
+(2, 'ClientesBotton5', 'Aplicar'),
+(2, 'ClientesBotton6', 'Limpiar'),
+(2, 'ClientesLabel1', 'Nombre'),
+(2, 'ClientesLabel2', 'Apellido'),
+(2, 'ClientesLabel3', 'DNI'),
+(2, 'ClientesLabel4', 'Email'),
+(2, 'ClientesGroupBox1', 'Filtros')
+
+
+---ABM Clientes
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ABMClientesLabel1', 'Nombre'),
+(2, 'ABMClientesLabel2', 'Apellido'),
+(2, 'ABMClientesLabel3', 'DNI'),
+(2, 'ABMClientesLabel4', 'Email'),
+(2, 'ABMClientesBotton1', 'Aplicar'),
+(2, 'ABMClientesBotton2', 'Cancelar')
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario
@@ -527,7 +703,7 @@ INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES
 (16, 'QWRtaW5pc3RyYWRvciBWaWFqZXM=', 'Permite crear y administrar los viajes', 'AdminViajes'),
 (17, 'Q29uc3VsdGFyIFZpYWplcw==', 'Permite consultar los viajes', 'ReadViajes'),
 (18, 'QWRtaW5pc3RyYWRvciBkZSBCdXNlcw==','Permite administrar los buses','AdminBuses'),
-(19, 'Q29uc3VsdGFyIEJ1c2Vz','Permite consultar los buses','ReadBuses'),
+(19, 'Q29uc3VsdGFyIEJ1c2Vz','Permite consultar los buses','ReadBuses')
 
 -- --Familias
 -- INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES

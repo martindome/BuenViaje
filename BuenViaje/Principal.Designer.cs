@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +49,22 @@
             this.tabPageInicio = new System.Windows.Forms.TabPage();
             this.tabPagePasajes = new System.Windows.Forms.TabPage();
             this.tabPageClientes = new System.Windows.Forms.TabPage();
+            this.ClientesGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.ClientesLabel4 = new System.Windows.Forms.Label();
+            this.ClientesTextBox4 = new System.Windows.Forms.TextBox();
+            this.ClientesLabel3 = new System.Windows.Forms.Label();
+            this.ClientesTextBox3 = new System.Windows.Forms.TextBox();
+            this.ClientesBotton6 = new System.Windows.Forms.Button();
+            this.ClientesBotton5 = new System.Windows.Forms.Button();
+            this.ClientesLabel2 = new System.Windows.Forms.Label();
+            this.ClientesTextBox2 = new System.Windows.Forms.TextBox();
+            this.ClientesLabel1 = new System.Windows.Forms.Label();
+            this.ClientesTextBox1 = new System.Windows.Forms.TextBox();
+            this.ClientesBotton4 = new System.Windows.Forms.Button();
+            this.ClientesBotton3 = new System.Windows.Forms.Button();
+            this.ClientesBotton2 = new System.Windows.Forms.Button();
+            this.ClientesBotton1 = new System.Windows.Forms.Button();
+            this.grillaClientes = new System.Windows.Forms.DataGridView();
             this.tabPageViajes = new System.Windows.Forms.TabPage();
             this.tabPageRutas = new System.Windows.Forms.TabPage();
             this.tabPageLocalidades = new System.Windows.Forms.TabPage();
@@ -70,7 +88,7 @@
             this.busesText3 = new System.Windows.Forms.TextBox();
             this.busesButton6 = new System.Windows.Forms.Button();
             this.busesButton5 = new System.Windows.Forms.Button();
-            this.labelbusesLabel2 = new System.Windows.Forms.Label();
+            this.busesLabel2 = new System.Windows.Forms.Label();
             this.busesText2 = new System.Windows.Forms.TextBox();
             this.busesLabel1 = new System.Windows.Forms.Label();
             this.busesText1 = new System.Windows.Forms.TextBox();
@@ -81,6 +99,9 @@
             this.grillaBuses = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPageClientes.SuspendLayout();
+            this.ClientesGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaClientes)).BeginInit();
             this.tabPageLocalidades.SuspendLayout();
             this.LocalidadGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaLocalidad)).BeginInit();
@@ -222,12 +243,201 @@
             // tabPageClientes
             // 
             this.tabPageClientes.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageClientes.Controls.Add(this.ClientesGroupBox1);
+            this.tabPageClientes.Controls.Add(this.ClientesBotton4);
+            this.tabPageClientes.Controls.Add(this.ClientesBotton3);
+            this.tabPageClientes.Controls.Add(this.ClientesBotton2);
+            this.tabPageClientes.Controls.Add(this.ClientesBotton1);
+            this.tabPageClientes.Controls.Add(this.grillaClientes);
             this.tabPageClientes.Location = new System.Drawing.Point(4, 24);
             this.tabPageClientes.Name = "tabPageClientes";
             this.tabPageClientes.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageClientes.Size = new System.Drawing.Size(1147, 552);
             this.tabPageClientes.TabIndex = 1;
             this.tabPageClientes.Text = "Clientes";
+            this.tabPageClientes.Click += new System.EventHandler(this.tabPageClientes_Click);
+            // 
+            // ClientesGroupBox1
+            // 
+            this.ClientesGroupBox1.Controls.Add(this.ClientesLabel4);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesTextBox4);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesLabel3);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesTextBox3);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesBotton6);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesBotton5);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesLabel2);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesTextBox2);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesLabel1);
+            this.ClientesGroupBox1.Controls.Add(this.ClientesTextBox1);
+            this.ClientesGroupBox1.Location = new System.Drawing.Point(533, 8);
+            this.ClientesGroupBox1.Name = "ClientesGroupBox1";
+            this.ClientesGroupBox1.Size = new System.Drawing.Size(252, 287);
+            this.ClientesGroupBox1.TabIndex = 29;
+            this.ClientesGroupBox1.TabStop = false;
+            this.ClientesGroupBox1.Text = "Filtros";
+            // 
+            // ClientesLabel4
+            // 
+            this.ClientesLabel4.AutoSize = true;
+            this.ClientesLabel4.Location = new System.Drawing.Point(0, 172);
+            this.ClientesLabel4.Name = "ClientesLabel4";
+            this.ClientesLabel4.Size = new System.Drawing.Size(32, 13);
+            this.ClientesLabel4.TabIndex = 23;
+            this.ClientesLabel4.Text = "Email";
+            // 
+            // ClientesTextBox4
+            // 
+            this.ClientesTextBox4.Location = new System.Drawing.Point(0, 188);
+            this.ClientesTextBox4.Name = "ClientesTextBox4";
+            this.ClientesTextBox4.Size = new System.Drawing.Size(240, 20);
+            this.ClientesTextBox4.TabIndex = 22;
+            // 
+            // ClientesLabel3
+            // 
+            this.ClientesLabel3.AutoSize = true;
+            this.ClientesLabel3.Location = new System.Drawing.Point(0, 119);
+            this.ClientesLabel3.Name = "ClientesLabel3";
+            this.ClientesLabel3.Size = new System.Drawing.Size(26, 13);
+            this.ClientesLabel3.TabIndex = 21;
+            this.ClientesLabel3.Text = "DNI";
+            // 
+            // ClientesTextBox3
+            // 
+            this.ClientesTextBox3.Location = new System.Drawing.Point(0, 135);
+            this.ClientesTextBox3.Name = "ClientesTextBox3";
+            this.ClientesTextBox3.Size = new System.Drawing.Size(240, 20);
+            this.ClientesTextBox3.TabIndex = 20;
+            // 
+            // ClientesBotton6
+            // 
+            this.ClientesBotton6.Location = new System.Drawing.Point(176, 249);
+            this.ClientesBotton6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClientesBotton6.Name = "ClientesBotton6";
+            this.ClientesBotton6.Size = new System.Drawing.Size(71, 27);
+            this.ClientesBotton6.TabIndex = 19;
+            this.ClientesBotton6.Text = "Limpiar";
+            this.ClientesBotton6.UseVisualStyleBackColor = true;
+            this.ClientesBotton6.Click += new System.EventHandler(this.ClientesBotton6_Click);
+            // 
+            // ClientesBotton5
+            // 
+            this.ClientesBotton5.Location = new System.Drawing.Point(5, 249);
+            this.ClientesBotton5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClientesBotton5.Name = "ClientesBotton5";
+            this.ClientesBotton5.Size = new System.Drawing.Size(71, 27);
+            this.ClientesBotton5.TabIndex = 18;
+            this.ClientesBotton5.Text = "Aplicar";
+            this.ClientesBotton5.UseVisualStyleBackColor = true;
+            this.ClientesBotton5.Click += new System.EventHandler(this.ClientesBotton5_Click);
+            // 
+            // ClientesLabel2
+            // 
+            this.ClientesLabel2.AutoSize = true;
+            this.ClientesLabel2.Location = new System.Drawing.Point(0, 66);
+            this.ClientesLabel2.Name = "ClientesLabel2";
+            this.ClientesLabel2.Size = new System.Drawing.Size(44, 13);
+            this.ClientesLabel2.TabIndex = 11;
+            this.ClientesLabel2.Text = "Apellido";
+            // 
+            // ClientesTextBox2
+            // 
+            this.ClientesTextBox2.Location = new System.Drawing.Point(0, 82);
+            this.ClientesTextBox2.Name = "ClientesTextBox2";
+            this.ClientesTextBox2.Size = new System.Drawing.Size(240, 20);
+            this.ClientesTextBox2.TabIndex = 10;
+            // 
+            // ClientesLabel1
+            // 
+            this.ClientesLabel1.AutoSize = true;
+            this.ClientesLabel1.Location = new System.Drawing.Point(0, 17);
+            this.ClientesLabel1.Name = "ClientesLabel1";
+            this.ClientesLabel1.Size = new System.Drawing.Size(44, 13);
+            this.ClientesLabel1.TabIndex = 9;
+            this.ClientesLabel1.Text = "Nombre";
+            // 
+            // ClientesTextBox1
+            // 
+            this.ClientesTextBox1.Location = new System.Drawing.Point(0, 33);
+            this.ClientesTextBox1.Name = "ClientesTextBox1";
+            this.ClientesTextBox1.Size = new System.Drawing.Size(240, 20);
+            this.ClientesTextBox1.TabIndex = 7;
+            // 
+            // ClientesBotton4
+            // 
+            this.ClientesBotton4.Location = new System.Drawing.Point(232, 301);
+            this.ClientesBotton4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClientesBotton4.Name = "ClientesBotton4";
+            this.ClientesBotton4.Size = new System.Drawing.Size(71, 27);
+            this.ClientesBotton4.TabIndex = 28;
+            this.ClientesBotton4.Text = "Baja";
+            this.ClientesBotton4.UseVisualStyleBackColor = true;
+            this.ClientesBotton4.Click += new System.EventHandler(this.ClientesBotton4_Click);
+            // 
+            // ClientesBotton3
+            // 
+            this.ClientesBotton3.Location = new System.Drawing.Point(157, 301);
+            this.ClientesBotton3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClientesBotton3.Name = "ClientesBotton3";
+            this.ClientesBotton3.Size = new System.Drawing.Size(71, 27);
+            this.ClientesBotton3.TabIndex = 27;
+            this.ClientesBotton3.Text = "Modificar";
+            this.ClientesBotton3.UseVisualStyleBackColor = true;
+            this.ClientesBotton3.Click += new System.EventHandler(this.ClientesBotton3_Click);
+            // 
+            // ClientesBotton2
+            // 
+            this.ClientesBotton2.Location = new System.Drawing.Point(82, 301);
+            this.ClientesBotton2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClientesBotton2.Name = "ClientesBotton2";
+            this.ClientesBotton2.Size = new System.Drawing.Size(71, 27);
+            this.ClientesBotton2.TabIndex = 26;
+            this.ClientesBotton2.Text = "Alta";
+            this.ClientesBotton2.UseVisualStyleBackColor = true;
+            this.ClientesBotton2.Click += new System.EventHandler(this.ClientesBotton2_Click);
+            // 
+            // ClientesBotton1
+            // 
+            this.ClientesBotton1.Location = new System.Drawing.Point(7, 301);
+            this.ClientesBotton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ClientesBotton1.Name = "ClientesBotton1";
+            this.ClientesBotton1.Size = new System.Drawing.Size(71, 27);
+            this.ClientesBotton1.TabIndex = 25;
+            this.ClientesBotton1.Text = "Ver";
+            this.ClientesBotton1.UseVisualStyleBackColor = true;
+            this.ClientesBotton1.Click += new System.EventHandler(this.ClientesBotton1_Click);
+            // 
+            // grillaClientes
+            // 
+            this.grillaClientes.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.grillaClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.grillaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.grillaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaClientes.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaClientes.DefaultCellStyle = dataGridViewCellStyle1;
+            this.grillaClientes.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grillaClientes.Location = new System.Drawing.Point(7, 6);
+            this.grillaClientes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.grillaClientes.Name = "grillaClientes";
+            this.grillaClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grillaClientes.RowHeadersWidth = 51;
+            this.grillaClientes.RowTemplate.Height = 24;
+            this.grillaClientes.Size = new System.Drawing.Size(521, 289);
+            this.grillaClientes.TabIndex = 24;
             // 
             // tabPageViajes
             // 
@@ -400,27 +610,27 @@
             this.grillaLocalidad.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaLocalidad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaLocalidad.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grillaLocalidad.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaLocalidad.DefaultCellStyle = dataGridViewCellStyle3;
             this.grillaLocalidad.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.grillaLocalidad.Location = new System.Drawing.Point(7, 3);
             this.grillaLocalidad.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaLocalidad.Name = "grillaLocalidad";
             this.grillaLocalidad.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaLocalidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaLocalidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grillaLocalidad.RowHeadersWidth = 51;
             this.grillaLocalidad.RowTemplate.Height = 24;
             this.grillaLocalidad.Size = new System.Drawing.Size(521, 289);
@@ -440,7 +650,6 @@
             this.tabPageBuses.Size = new System.Drawing.Size(1147, 552);
             this.tabPageBuses.TabIndex = 6;
             this.tabPageBuses.Text = "Buses";
-            this.tabPageBuses.Click += new System.EventHandler(this.tabPageBuses_Click);
             // 
             // busesGroupBox1
             // 
@@ -448,7 +657,7 @@
             this.busesGroupBox1.Controls.Add(this.busesText3);
             this.busesGroupBox1.Controls.Add(this.busesButton6);
             this.busesGroupBox1.Controls.Add(this.busesButton5);
-            this.busesGroupBox1.Controls.Add(this.labelbusesLabel2);
+            this.busesGroupBox1.Controls.Add(this.busesLabel2);
             this.busesGroupBox1.Controls.Add(this.busesText2);
             this.busesGroupBox1.Controls.Add(this.busesLabel1);
             this.busesGroupBox1.Controls.Add(this.busesText1);
@@ -497,14 +706,14 @@
             this.busesButton5.UseVisualStyleBackColor = true;
             this.busesButton5.Click += new System.EventHandler(this.busesButton5_Click);
             // 
-            // labelbusesLabel2
+            // busesLabel2
             // 
-            this.labelbusesLabel2.AutoSize = true;
-            this.labelbusesLabel2.Location = new System.Drawing.Point(0, 66);
-            this.labelbusesLabel2.Name = "labelbusesLabel2";
-            this.labelbusesLabel2.Size = new System.Drawing.Size(37, 13);
-            this.labelbusesLabel2.TabIndex = 11;
-            this.labelbusesLabel2.Text = "Marca";
+            this.busesLabel2.AutoSize = true;
+            this.busesLabel2.Location = new System.Drawing.Point(0, 66);
+            this.busesLabel2.Name = "busesLabel2";
+            this.busesLabel2.Size = new System.Drawing.Size(37, 13);
+            this.busesLabel2.TabIndex = 11;
+            this.busesLabel2.Text = "Marca";
             // 
             // busesText2
             // 
@@ -579,27 +788,27 @@
             this.grillaBuses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaBuses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaBuses.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grillaBuses.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaBuses.DefaultCellStyle = dataGridViewCellStyle5;
             this.grillaBuses.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.grillaBuses.Location = new System.Drawing.Point(7, 3);
             this.grillaBuses.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaBuses.Name = "grillaBuses";
             this.grillaBuses.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grillaBuses.RowHeadersWidth = 51;
             this.grillaBuses.RowTemplate.Height = 24;
             this.grillaBuses.Size = new System.Drawing.Size(521, 289);
@@ -621,6 +830,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPageClientes.ResumeLayout(false);
+            this.ClientesGroupBox1.ResumeLayout(false);
+            this.ClientesGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaClientes)).EndInit();
             this.tabPageLocalidades.ResumeLayout(false);
             this.LocalidadGroupBox.ResumeLayout(false);
             this.LocalidadGroupBox.PerformLayout();
@@ -674,7 +887,7 @@
         private System.Windows.Forms.TextBox busesText3;
         private System.Windows.Forms.Button busesButton6;
         private System.Windows.Forms.Button busesButton5;
-        private System.Windows.Forms.Label labelbusesLabel2;
+        private System.Windows.Forms.Label busesLabel2;
         private System.Windows.Forms.TextBox busesText2;
         private System.Windows.Forms.Label busesLabel1;
         private System.Windows.Forms.TextBox busesText1;
@@ -683,5 +896,21 @@
         private System.Windows.Forms.Button busesButton2;
         private System.Windows.Forms.Button busesButton1;
         private System.Windows.Forms.DataGridView grillaBuses;
+        private System.Windows.Forms.GroupBox ClientesGroupBox1;
+        private System.Windows.Forms.Label ClientesLabel4;
+        private System.Windows.Forms.TextBox ClientesTextBox4;
+        private System.Windows.Forms.Label ClientesLabel3;
+        private System.Windows.Forms.TextBox ClientesTextBox3;
+        private System.Windows.Forms.Button ClientesBotton6;
+        private System.Windows.Forms.Button ClientesBotton5;
+        private System.Windows.Forms.Label ClientesLabel2;
+        private System.Windows.Forms.TextBox ClientesTextBox2;
+        private System.Windows.Forms.Label ClientesLabel1;
+        private System.Windows.Forms.TextBox ClientesTextBox1;
+        private System.Windows.Forms.Button ClientesBotton4;
+        private System.Windows.Forms.Button ClientesBotton3;
+        private System.Windows.Forms.Button ClientesBotton2;
+        private System.Windows.Forms.Button ClientesBotton1;
+        private System.Windows.Forms.DataGridView grillaClientes;
     }
 }

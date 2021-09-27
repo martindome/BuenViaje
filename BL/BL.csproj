@@ -53,6 +53,7 @@
     <Compile Include="BackupBL.cs" />
     <Compile Include="BitacoraBL.cs" />
     <Compile Include="BusBL.cs" />
+    <Compile Include="ClienteBL.cs" />
     <Compile Include="FamiliaBL.cs" />
     <Compile Include="IdiomaBL.cs" />
     <Compile Include="IniciadorBL.cs" />

@@ -122,7 +122,7 @@ namespace BuenViaje.Localidades
                         this.localidadbe.Provincia = this.ABMLocalidadesTexto2.Text;
                         this.localidadbe.Pais = this.ABMLocalidadesTexto3.Text;
                         this.localidadbl.Guardar(localidadbe);
-                        mBitacora.Descripcion = "Se dio de alta a la localidad: " + this.localidadbe.Nombre + "-" + this.localidadbe.Provincia + "-" + this.localidadbe.Pais;
+                        mBitacora.Descripcion = "Se modifico a la localidad: " + this.localidadbe.Nombre + "-" + this.localidadbe.Provincia + "-" + this.localidadbe.Pais;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
@@ -143,6 +143,10 @@ namespace BuenViaje.Localidades
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
                         break;
+                }
+                if (flag)
+                {
+                    this.Close();
                 }
             }
             catch (Exception ex)

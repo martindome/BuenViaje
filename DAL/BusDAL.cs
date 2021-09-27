@@ -64,7 +64,7 @@ namespace DAL
             }
             else
             {
-                mCommand = "UPDATE Localidad SET Patente = '" + pBus.Patente + "', Marca = '" + pBus.Marca + "', Asientos = " + pBus.Asientos + ", DVH = '" + DVH + "' WHERE ID_Bus = " + pBus.ID_Bus;
+                mCommand = "UPDATE Bus SET Patente = '" + pBus.Patente + "', Marca = '" + pBus.Marca + "', Asientos = " + pBus.Asientos + ", DVH = '" + DVH + "' WHERE ID_Bus = " + pBus.ID_Bus;
             }
             DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Bus"), "Bus");
@@ -72,7 +72,7 @@ namespace DAL
 
         public static void Eliminar(BusBE pbus)
         {
-            string mCommand = "DELETE Bus WHERE ID_Localidad = " + pbus.ID_Bus;
+            string mCommand = "DELETE Bus WHERE ID_Bus = " + pbus.ID_Bus;
             DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Bus"), "Bus");
         }
