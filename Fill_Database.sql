@@ -149,6 +149,15 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMClientes-Confirmacion-Baja','Are you sure to delete the client'),
 (1, 'ABMClientes-Error-Aplicar','An error occured while applying the changes')
 
+----Rutas Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'RutaPrincpal-Columna-RutaID', 'ID'),
+(1, 'RutaPrincpal-Columna-Nombre','Name'),
+(1, 'RutaPrincpal-Columna-Origen','From'),
+(1, 'RutaPrincpal-Columna-Destino','To'),
+(1, 'RutaPrincpal-Columna-Duracion', 'Time(min)'),
+(1, 'UsuarioPrincipal-Rutas-AccesoDenegado', 'User does not have enough privilages')
+
 ---------- ESPANIOL
 
 ----Inicio
@@ -289,6 +298,15 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMClientes-Validacion-Cliente','Cliente ya existente'),
 (2, 'ABMClientes-Confirmacion-Baja','Esta seguro de elimianar el cliente?'),
 (2, 'ABMClientes-Error-Aplicar','Un error ocurrio al aplicar los cambios')
+
+----Rutas Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'RutaPrincpal-Columna-RutaID', 'ID'),
+(2, 'RutaPrincpal-Columna-Nombre','Nombre'),
+(2, 'RutaPrincpal-Columna-Origen','Origen'),
+(2, 'RutaPrincpal-Columna-Destino','Destino'),
+(2, 'RutaPrincpal-Columna-Duracion', 'Duracion(min)'),
+(2, 'UsuarioPrincipal-Rutas-AccesoDenegado', 'El usuario no tiene los permisos suficientes')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control

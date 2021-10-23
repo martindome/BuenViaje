@@ -615,7 +615,6 @@ namespace BuenViaje
 
         #endregion
 
-
         #region Clientes
         private void Load_tabPageClientes()
         {
@@ -763,6 +762,119 @@ namespace BuenViaje
 
         }
 
+
+        #endregion
+
+        #region rutas
+        private void Load_tabPageRutas()
+        {
+            dataGridRutas.Rows.Clear();
+            dataGridRutas.Columns.Clear();
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"), ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Nombre"), ObtenerMensajeColumna("RutaPrincpal-Columna-Nombre"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"), ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"), ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"), ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"));
+            dataGridRutas.Columns[ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID")].Visible = false;
+
+            dataGridRutas.MultiSelect = false;
+            dataGridRutas.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridRutas.AllowUserToAddRows = false;
+            dataGridRutas.AllowUserToDeleteRows = false;
+            dataGridRutas.AllowUserToResizeColumns = true;
+            dataGridRutas.AllowUserToResizeRows = false;
+            dataGridRutas.RowHeadersVisible = false;
+            dataGridRutas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridRutas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridRutas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            grillaClientes.Rows.Clear();
+
+
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminRutas))
+            {
+                RutasButton2.Enabled = false;
+                RutasButton3.Enabled = false;
+                RutasButton4.Enabled = false;
+            }
+            else
+            {
+                RutasButton2.Enabled = true;
+                RutasButton3.Enabled = true;
+                RutasButton4.Enabled = true;
+            }
+            //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            ActualizarGrillaRutas();
+        }
+        private void ActualizarGrillaRutas()
+        {
+            this.dataGridRutas.Rows.Clear();
+            RutaBL rutabl = new RutaBL();
+            List<RutaBE> lista = rutabl.Listar();
+            foreach (RutaBE rutabe in lista)
+            {
+                bool flag = true;
+                if (this.RutasPrincipalText1.Text != "" && this.RutasPrincipalText1.Text != rutabe.Nombre)
+                {
+                    flag = false;
+                }
+                if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
+                {
+                    flag = false;
+                }
+                if (this.RutasPrincipalText3.Text != "" && this.RutasPrincipalText3.Text != rutabe.Destino.Nombre)
+                {
+                    flag = false;
+                }
+                if (flag)
+                {
+                    grillaClientes.Rows.Add(rutabe.ID_Ruta, rutabe.Nombre, rutabe.Origen.Nombre, rutabe.Destino.Nombre, rutabe.Duracion.ToString());
+                }
+            }
+        }
+
+        private void RutasButton5_Click(object sender, EventArgs e)
+        {
+            ActualizarGrillaRutas();
+        }
+
+        private void RutasButton6_Click(object sender, EventArgs e)
+        {
+            this.RutasPrincipalText1.Text = "";
+            this.RutasPrincipalText2.Text = "";
+            this.RutasPrincipalText3.Text = "";
+            ActualizarGrillaRutas();
+        }
+        private void RutasButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RutasButton2_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminRutas))
+            {
+                RutaBL rutabl = new RutaBL();
+                ABMRuta abmruta = new ABMRuta();
+                abmruta.operacion = Operacion.Alta;
+                abmruta.rutabe = new RutaBE();
+                abmruta.ShowDialog();
+                ActualizarGrillaRutas();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Rutas-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void RutasButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RutasButton4_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
 

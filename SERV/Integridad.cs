@@ -18,7 +18,6 @@ namespace SERV
             {
                 acum += asciiBytes[i] * i;
             }
-            //return mCifra.CalcularHashMD5(pString);
             return acum.ToString();
         }
         public string CalcularDVV(List<string> pRows)
