@@ -61,6 +61,7 @@
     <Compile Include="LoginBL.cs" />
     <Compile Include="PatenteBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RutaBL.cs" />
     <Compile Include="Sesion.cs" />
     <Compile Include="SingletonSesion.cs" />
     <Compile Include="UsuarioBL.cs" />

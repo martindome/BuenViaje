@@ -17,6 +17,7 @@ using BuenViaje.Administracion.Backup;
 using BuenViaje.Localidades;
 using BuenViaje.Buses;
 using BuenViaje.Clientes;
+using BuenViaje.Rutas;
 using BE.Composite;
 
 namespace BuenViaje
@@ -854,7 +855,7 @@ namespace BuenViaje
             if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminRutas))
             {
                 RutaBL rutabl = new RutaBL();
-                ABMRuta abmruta = new ABMRuta();
+                ABMRutas abmruta = new ABMRutas();
                 abmruta.operacion = Operacion.Alta;
                 abmruta.rutabe = new RutaBE();
                 abmruta.ShowDialog();

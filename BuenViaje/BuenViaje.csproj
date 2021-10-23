@@ -143,6 +143,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rutas\ABMRutas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rutas\ABMRutas.Designer.cs">
+      <DependentUpon>ABMRutas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sesion\CambiarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Rutas\ABMRutas.resx">
+      <DependentUpon>ABMRutas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sesion\CambiarContraseña.resx">
       <DependentUpon>CambiarContraseña.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,7 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pasajes\" />
-    <Folder Include="Rutas\" />
     <Folder Include="Viajes\" />
   </ItemGroup>
   <ItemGroup>

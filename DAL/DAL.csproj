@@ -63,6 +63,7 @@
     <Compile Include="LoginDAL.cs" />
     <Compile Include="PatenteDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RutaDAL.cs" />
     <Compile Include="ServDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
