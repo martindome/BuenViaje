@@ -54,18 +54,16 @@ namespace BuenViaje.Rutas
                     break;
                 case Operacion.Modificacion:
                     Limpiar();
-                    this.RutasText1.Text = this.rutabe.Nombre;
                     this.RutasText2.Text = this.rutabe.Duracion.ToString();
                     this.rutasCombo1.SelectedItem = rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre;
-                    this.rutasCombo1.SelectedItem = rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre;
+                    this.rutasCombo2.SelectedItem = rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre;
                     
                     break;
                 case Operacion.Baja:
                     Limpiar();
-                    this.RutasText1.Text = this.rutabe.Nombre;
                     this.RutasText2.Text = this.rutabe.Duracion.ToString();
                     this.rutasCombo1.SelectedItem = rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre;
-                    this.rutasCombo1.SelectedItem = rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre;
+                    this.rutasCombo2.SelectedItem = rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre;
                     DeshabilitarBotones();
                     break;
             }
@@ -84,7 +82,6 @@ namespace BuenViaje.Rutas
 
         private void DeshabilitarBotones()
         {
-            this.RutasText1.Enabled = false;
             this.RutasText2.Enabled = false;
             this.rutasCombo1.Enabled = false;
             this.rutasCombo1.Enabled = false;
@@ -122,12 +119,16 @@ namespace BuenViaje.Rutas
         private bool ValidarRutaIgual()
         {
             LocalidadBE Origen = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);
-            LocalidadBE Destino = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);
+            LocalidadBE Destino = localidadbl.Obtener(rutasCombo2.SelectedIndex + 1);
             List<LocalidadBE> Localidades = localidadbl.Listar();
-            foreach (RutaBE in rutabl.Listar())
+            foreach (RutaBE ruta in rutabl.Listar())
             {
-                if ()
+                if (ruta.Destino.Equals(Origen) && ruta.Origen.Equals(Destino))
+                {
+                    return false;
+                }
             }
+            return true;
         }
 
           
@@ -141,17 +142,21 @@ namespace BuenViaje.Rutas
                 switch (this.operacion)
                 {
                     case Operacion.Alta:
-                        if (!ValidarCliente())
+                        if (!ValidarRutaMisma())
                         {
-                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Validacion-Cliente", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Misma", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        this.rutabe.Nombre = this.ABMClientesTexto1.Text;
-                        this.rutabe.Apellido = this.RutasText2.Text;
-                        this.rutabe.DNI = this.ABMClientesTexto3.Text;
-                        this.rutabe.Email = this.ABMClientesTexto4.Text;
-                        this.clientebl.Guardar(rutabe);
-                        mBitacora.Descripcion = "Se dio de alta al cliente: " + this.rutabe.DNI;
+                        if (!ValidarRutaIgual())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Igual", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        this.rutabe.Origen = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);
+                        this.rutabe.Destino = localidadbl.Obtener(rutasCombo2.SelectedIndex + 1);
+                        this.rutabe.Duracion = int.Parse(this.RutasText2.Text);
+                        this.rutabl.Guardar(rutabe);
+                        mBitacora.Descripcion = "Se dio de alta a la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
@@ -159,17 +164,21 @@ namespace BuenViaje.Rutas
                         flag = true;
                         break;
                     case Operacion.Modificacion:
-                        if (!ValidarCliente())
+                        if (!ValidarRutaMisma())
                         {
-                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Validacion-Cliente", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Misma", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        this.rutabe.Nombre = this.ABMClientesTexto1.Text;
-                        this.rutabe.Apellido = this.RutasText2.Text;
-                        this.rutabe.DNI = this.ABMClientesTexto3.Text;
-                        this.rutabe.Email = this.ABMClientesTexto4.Text;
-                        this.clientebl.Guardar(rutabe);
-                        mBitacora.Descripcion = "Se modifico el cliente: " + this.rutabe.DNI;
+                        if (!ValidarRutaIgual())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Igual", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        this.rutabe.Origen = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);
+                        this.rutabe.Destino = localidadbl.Obtener(rutasCombo2.SelectedIndex + 1);
+                        this.rutabe.Duracion = int.Parse(this.RutasText2.Text);
+                        this.rutabl.Guardar(rutabe);
+                        mBitacora.Descripcion = "Se modifico la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
@@ -177,13 +186,13 @@ namespace BuenViaje.Rutas
                         flag = true;
                         break;
                     case Operacion.Baja:
-                        DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Confirmacion-Baja", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Confirmacion-Baja", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
-                            this.clientebl.Eliminar(this.rutabe);
+                            this.rutabl.Eliminar(this.rutabe);
                         }
                         //Bitacora
-                        mBitacora.Descripcion = "Se elimino al cliente: " + this.rutabe.DNI;
+                        mBitacora.Descripcion = "Se elimino la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "HIGH";
@@ -199,12 +208,12 @@ namespace BuenViaje.Rutas
             catch (Exception ex)
             {
                 BitacoraBL Bitacorabl = new BitacoraBL();
-                mBitacora.Descripcion = "Error al operar con buses";
+                mBitacora.Descripcion = "Error al operar con Rutas";
                 mBitacora.Fecha = DateTime.Now;
                 mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

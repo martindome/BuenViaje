@@ -126,7 +126,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'BusPrincipal-Columna-Asientos','Seats'),
 (1, 'UsuarioPrincipal-Buses-AccesoDenegado', 'User does not have enough permissions')
 
-----ABM Localidad
+----ABM Buses
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMBuses-Form', 'Buses'),
 (1, 'ABMBuses-Validacion-Bus','Bus already exists'),
@@ -142,7 +142,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ClientesPrincipal-Columna-Email', 'Email'),
 (1, 'UsuarioPrincipal-Clientes-AccesoDenegado', 'User does not have enough privilages')
 
-----Clientes Localidad
+----Clientes ABM
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMClientes-Form', 'Clients'),
 (1, 'ABMClientes-Validacion-Cliente','Cliente already exists'),
@@ -157,6 +157,14 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'RutaPrincpal-Columna-Destino','To'),
 (1, 'RutaPrincpal-Columna-Duracion', 'Time(min)'),
 (1, 'UsuarioPrincipal-Rutas-AccesoDenegado', 'User does not have enough privilages')
+
+---
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMRutas-Form', 'Routes'),
+(1, 'ABMRuta-Validacion-Misma','Route cannot have same oring and desteny'),
+(1, 'ABMRuta-Validacion-Igual','There is already a route between those cities'),
+(1, 'ABMRuta-Confirmacion-Baja','Are you sure to delete the route?'),
+(1, 'ABMRuta-Error-Aplicar','An error occured while applying the changes')
 
 ---------- ESPANIOL
 
@@ -307,6 +315,14 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'RutaPrincpal-Columna-Destino','Destino'),
 (2, 'RutaPrincpal-Columna-Duracion', 'Duracion(min)'),
 (2, 'UsuarioPrincipal-Rutas-AccesoDenegado', 'El usuario no tiene los permisos suficientes')
+
+---
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMRutas-Form', 'Rutas'),
+(2, 'ABMRuta-Validacion-Misma','Ruta no puede tener mismo origen y destino'),
+(2, 'ABMRuta-Validacion-Igual','Ya existe una ruta entre esas ciudades'),
+(2, 'ABMRuta-Confirmacion-Baja','Esta seguro de que quiere borrar la ruta?'),
+(2, 'ABMRuta-Error-Aplicar','un error ocurrio al aplicar los cambios')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -495,6 +511,26 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'ABMClientesBotton1', 'Apply'),
 (1, 'ABMClientesBotton2', 'Cancel')
 
+---Rutas Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'RutasButton1', 'Read'),
+(1, 'RutasButton2', 'New'),
+(1, 'RutasButton3', 'Modify'),
+(1, 'RutasButton4', 'Delete'),
+(1, 'RutasButton5', 'Apply'),
+(1, 'RutasButton6', 'Clear'),
+(1, 'RutaLabel1', 'From'),
+(1, 'RutaLabel2', 'To'),
+(1, 'RutasGroupBox', 'Filters')
+
+---ABM Rutas
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'RutasLabel1', 'From'),
+(1, 'RutasLabel2', 'To'),
+(1, 'RutasLabel3', 'Duration'),
+(1, 'ABMRutasButton1', 'Apply'),
+(1, 'ABMRutasButton2', 'Cancel')
+
 ----ResetPasswrd
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'CambiarPasswordLabel1', 'Nombre de usuario'),
@@ -674,6 +710,26 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'ABMClientesLabel4', 'Email'),
 (2, 'ABMClientesBotton1', 'Aplicar'),
 (2, 'ABMClientesBotton2', 'Cancelar')
+
+---Rutas Principal
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'RutasButton1', 'Ver'),
+(2, 'RutasButton2', 'Nuevo'),
+(2, 'RutasButton3', 'Modificar'),
+(2, 'RutasButton4', 'Borrar'),
+(2, 'RutasButton5', 'Aplicar'),
+(2, 'RutasButton6', 'limpiar'),
+(2, 'RutaLabel1', 'Origen'),
+(2, 'RutaLabel2', 'Destino'),
+(2, 'RutasGroupBox', 'Filtros')
+
+---ABM Rutas
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'RutasLabel1', 'Origen'),
+(2, 'RutasLabel2', 'Destino'),
+(2, 'RutasLabel3', 'Duracion'),
+(2, 'ABMRutasButton1', 'Aplicar'),
+(2, 'ABMRutasButton2', 'Cancelar')
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

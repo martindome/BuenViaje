@@ -135,10 +135,8 @@ Create table Ruta(
     ID_Ruta bigint not null,
     Origen bigint not null,
     Destino bigint not null,
-    Descripcion varchar(max) not null,
     Duracion int not null,
     DVH varchar (MAX) not null,
-    Nombre varchar(200) not null,
     PRIMARY KEY CLUSTERED(ID_Ruta),
     FOREIGN KEY (Destino) REFERENCES Localidad (ID_Localidad) on delete no action,
     FOREIGN KEY (Origen) REFERENCES Localidad (ID_Localidad) on delete no action

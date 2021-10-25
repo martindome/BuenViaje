@@ -92,6 +92,18 @@ namespace BuenViaje
                 }
                 this.Load_tabPageBuses();
             }
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminRutas) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadRutas))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageRutas);
+            }
+            else
+            {
+                if (!this.tabControl1.TabPages.Contains(this.tabPageRutas))
+                {
+                    this.tabControl1.TabPages.Insert(this.tabControl1.TabPages.Count, this.tabPageRutas);
+                }
+                this.Load_tabPageRutas();
+            }
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
         }
 
@@ -772,7 +784,6 @@ namespace BuenViaje
             dataGridRutas.Rows.Clear();
             dataGridRutas.Columns.Clear();
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"), ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"));
-            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Nombre"), ObtenerMensajeColumna("RutaPrincpal-Columna-Nombre"));
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"), ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"));
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"), ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"));
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"), ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"));
@@ -814,21 +825,19 @@ namespace BuenViaje
             foreach (RutaBE rutabe in lista)
             {
                 bool flag = true;
-                if (this.RutasPrincipalText1.Text != "" && this.RutasPrincipalText1.Text != rutabe.Nombre)
+                //if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
+                if (this.RutasPrincipalText2.Text != "" && !(rutabe.Origen.Nombre.Contains(this.RutasPrincipalText2.Text) || rutabe.Origen.Provincia.Contains(this.RutasPrincipalText2.Text) || rutabe.Origen.Pais.Contains(this.RutasPrincipalText2.Text)))
                 {
                     flag = false;
                 }
-                if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
-                {
-                    flag = false;
-                }
-                if (this.RutasPrincipalText3.Text != "" && this.RutasPrincipalText3.Text != rutabe.Destino.Nombre)
+                //if (this.RutasPrincipalText3.Text != "" && this.RutasPrincipalText3.Text != rutabe.Destino.Nombre)
+                if (this.RutasPrincipalText3.Text != "" && !(rutabe.Destino.Nombre.Contains(this.RutasPrincipalText3.Text) || rutabe.Destino.Provincia.Contains(this.RutasPrincipalText3.Text) || rutabe.Destino.Pais.Contains(this.RutasPrincipalText3.Text)))
                 {
                     flag = false;
                 }
                 if (flag)
                 {
-                    grillaClientes.Rows.Add(rutabe.ID_Ruta, rutabe.Nombre, rutabe.Origen.Nombre, rutabe.Destino.Nombre, rutabe.Duracion.ToString());
+                   dataGridRutas.Rows.Add(rutabe.ID_Ruta, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, rutabe.Duracion.ToString());
                 }
             }
         }
@@ -840,7 +849,6 @@ namespace BuenViaje
 
         private void RutasButton6_Click(object sender, EventArgs e)
         {
-            this.RutasPrincipalText1.Text = "";
             this.RutasPrincipalText2.Text = "";
             this.RutasPrincipalText3.Text = "";
             ActualizarGrillaRutas();
@@ -869,15 +877,79 @@ namespace BuenViaje
 
         private void RutasButton3_Click(object sender, EventArgs e)
         {
-
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminRutas))
+            {
+                RutaBL rutabl = new RutaBL();
+                ABMRutas abmruta = new ABMRutas();
+                abmruta.operacion = Operacion.Modificacion;
+                abmruta.rutabe = rutabl.Obtener(int.Parse(this.dataGridRutas.SelectedRows[0].Cells[0].Value.ToString()));
+                abmruta.ShowDialog();
+                ActualizarGrillaRutas();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Rutas-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void RutasButton4_Click(object sender, EventArgs e)
         {
-
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminRutas))
+            {
+                RutaBL rutabl = new RutaBL();
+                ABMRutas abmruta = new ABMRutas();
+                abmruta.operacion = Operacion.Baja;
+                abmruta.rutabe = rutabl.Obtener(int.Parse(this.dataGridRutas.SelectedRows[0].Cells[0].Value.ToString()));
+                abmruta.ShowDialog();
+                ActualizarGrillaRutas();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Rutas-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
+        #region Viajes
+        private void Load_tabPageViajes()
+        {
+            dataGridRutas.Rows.Clear();
+            dataGridRutas.Columns.Clear();
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"), ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"), ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"), ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"), ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"));
+            dataGridRutas.Columns[ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID")].Visible = false;
 
+            dataGridRutas.MultiSelect = false;
+            dataGridRutas.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridRutas.AllowUserToAddRows = false;
+            dataGridRutas.AllowUserToDeleteRows = false;
+            dataGridRutas.AllowUserToResizeColumns = true;
+            dataGridRutas.AllowUserToResizeRows = false;
+            dataGridRutas.RowHeadersVisible = false;
+            dataGridRutas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridRutas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridRutas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            grillaClientes.Rows.Clear();
+
+
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminRutas))
+            {
+                RutasButton2.Enabled = false;
+                RutasButton3.Enabled = false;
+                RutasButton4.Enabled = false;
+            }
+            else
+            {
+                RutasButton2.Enabled = true;
+                RutasButton3.Enabled = true;
+                RutasButton4.Enabled = true;
+            }
+            //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            ActualizarGrillaRutas();
+        }
+
+        #endregion
     }
 }
