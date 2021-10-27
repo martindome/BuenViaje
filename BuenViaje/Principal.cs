@@ -104,7 +104,21 @@ namespace BuenViaje
                 }
                 this.Load_tabPageRutas();
             }
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminViajes) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadViajes))
+            {
+                this.tabControl1.TabPages.Remove(this.tabPageViajes);
+            }
+            else
+            {
+                if (!this.tabControl1.TabPages.Contains(this.tabPageViajes))
+                {
+                    this.tabControl1.TabPages.Insert(this.tabControl1.TabPages.Count, this.tabPageViajes);
+                }
+                Load_tabPageViajes();
+            }
+
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+            
         }
 
         private void Principal_Load(object sender, EventArgs e)
@@ -786,6 +800,7 @@ namespace BuenViaje
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"), ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"));
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"), ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"));
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"), ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"));
+            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Nombre"), ObtenerMensajeColumna("RutaPrincpal-Columna-Nombre"));
             dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"), ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"));
             dataGridRutas.Columns[ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID")].Visible = false;
 
@@ -913,28 +928,33 @@ namespace BuenViaje
         #region Viajes
         private void Load_tabPageViajes()
         {
-            dataGridRutas.Rows.Clear();
-            dataGridRutas.Columns.Clear();
-            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"), ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID"));
-            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"), ObtenerMensajeColumna("RutaPrincpal-Columna-Origen"));
-            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"), ObtenerMensajeColumna("RutaPrincpal-Columna-Destino"));
-            dataGridRutas.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"), ObtenerMensajeColumna("RutaPrincpal-Columna-Duracion"));
-            dataGridRutas.Columns[ObtenerMensajeColumna("RutaPrincpal-Columna-RutaID")].Visible = false;
+            ViajesPrincipalDataGrid.Rows.Clear();
+            ViajesPrincipalDataGrid.Columns.Clear();
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID"), ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID"), ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-BusID"), ObtenerMensajeColumna("ViajePrincpal-Columna-BusID"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-RutaNombre"), ObtenerMensajeColumna("RutaPrincpal-Columna-RutaNombre"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-BusPatente"), ObtenerMensajeColumna("RutaPrincpal-Columna-BusPatente"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Fecha"), ObtenerMensajeColumna("RutaPrincpal-Columna-Fecha"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("RutaPrincpal-Columna-Cancelado"), ObtenerMensajeColumna("RutaPrincpal-Columna-Cancelado"));
+            ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID")].Visible = false;
+            ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID")].Visible = false;
+            ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-BusID")].Visible = false;
 
-            dataGridRutas.MultiSelect = false;
-            dataGridRutas.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridRutas.AllowUserToAddRows = false;
-            dataGridRutas.AllowUserToDeleteRows = false;
-            dataGridRutas.AllowUserToResizeColumns = true;
-            dataGridRutas.AllowUserToResizeRows = false;
-            dataGridRutas.RowHeadersVisible = false;
-            dataGridRutas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridRutas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridRutas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            ViajesPrincipalDataGrid.MultiSelect = false;
+            ViajesPrincipalDataGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
+            ViajesPrincipalDataGrid.AllowUserToAddRows = false;
+            ViajesPrincipalDataGrid.AllowUserToDeleteRows = false;
+            ViajesPrincipalDataGrid.AllowUserToResizeColumns = true;
+            ViajesPrincipalDataGrid.AllowUserToResizeRows = false;
+            ViajesPrincipalDataGrid.RowHeadersVisible = false;
+            ViajesPrincipalDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ViajesPrincipalDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ViajesPrincipalDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             grillaClientes.Rows.Clear();
 
 
-            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminRutas))
+            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminViajes))
             {
                 RutasButton2.Enabled = false;
                 RutasButton3.Enabled = false;
@@ -947,7 +967,32 @@ namespace BuenViaje
                 RutasButton4.Enabled = true;
             }
             //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
-            ActualizarGrillaRutas();
+            ActualizarGrillaViajes();
+        }
+
+        private void ActualizarGrillaViajes()
+        {
+            this.ViajesPrincipalDataGrid.Rows.Clear();
+            RutaBL rutabl = new RutaBL();
+            List<RutaBE> lista = rutabl.Listar();
+            foreach (RutaBE rutabe in lista)
+            {
+                bool flag = true;
+                //if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
+                if (this.RutasPrincipalText2.Text != "" && !(rutabe.Origen.Nombre.Contains(this.RutasPrincipalText2.Text) || rutabe.Origen.Provincia.Contains(this.RutasPrincipalText2.Text) || rutabe.Origen.Pais.Contains(this.RutasPrincipalText2.Text)))
+                {
+                    flag = false;
+                }
+                //if (this.RutasPrincipalText3.Text != "" && this.RutasPrincipalText3.Text != rutabe.Destino.Nombre)
+                if (this.RutasPrincipalText3.Text != "" && !(rutabe.Destino.Nombre.Contains(this.RutasPrincipalText3.Text) || rutabe.Destino.Provincia.Contains(this.RutasPrincipalText3.Text) || rutabe.Destino.Pais.Contains(this.RutasPrincipalText3.Text)))
+                {
+                    flag = false;
+                }
+                if (flag)
+                {
+                    ViajesPrincipalDataGrid.Rows.Add(rutabe.ID_Ruta, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, rutabe.Duracion.ToString());
+                }
+            }
         }
 
         #endregion

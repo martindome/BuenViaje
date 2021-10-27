@@ -133,6 +133,7 @@ Create Table Localidad (
 
 Create table Ruta(
     ID_Ruta bigint not null,
+    Nombre varchar (MAX),
     Origen bigint not null,
     Destino bigint not null,
     Duracion int not null,
@@ -148,6 +149,7 @@ Create Table Viaje(
     ID_Bus bigint not null,
     Fecha varchar(100) not null,
     Cancelado bit not null,
+    DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED(ID_Viaje),
     FOREIGN KEY (ID_Ruta) REFERENCES Ruta (ID_Ruta) on delete no action,
     FOREIGN KEY (ID_Bus) REFERENCES Bus (ID_Bus) on delete no action

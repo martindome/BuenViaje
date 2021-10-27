@@ -36,11 +36,13 @@
             this.RutasLabel2 = new System.Windows.Forms.Label();
             this.rutasCombo1 = new System.Windows.Forms.ComboBox();
             this.rutasCombo2 = new System.Windows.Forms.ComboBox();
+            this.RutasText3 = new System.Windows.Forms.TextBox();
+            this.RutasLabel4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ABMRutasButton2
             // 
-            this.ABMRutasButton2.Location = new System.Drawing.Point(157, 136);
+            this.ABMRutasButton2.Location = new System.Drawing.Point(156, 172);
             this.ABMRutasButton2.Margin = new System.Windows.Forms.Padding(2);
             this.ABMRutasButton2.Name = "ABMRutasButton2";
             this.ABMRutasButton2.Size = new System.Drawing.Size(66, 21);
@@ -51,7 +53,7 @@
             // 
             // ABMRutasButton1
             // 
-            this.ABMRutasButton1.Location = new System.Drawing.Point(11, 136);
+            this.ABMRutasButton1.Location = new System.Drawing.Point(10, 172);
             this.ABMRutasButton1.Margin = new System.Windows.Forms.Padding(2);
             this.ABMRutasButton1.Name = "ABMRutasButton1";
             this.ABMRutasButton1.Size = new System.Drawing.Size(66, 21);
@@ -114,11 +116,31 @@
             this.rutasCombo2.Size = new System.Drawing.Size(212, 21);
             this.rutasCombo2.TabIndex = 43;
             // 
+            // RutasText3
+            // 
+            this.RutasText3.Location = new System.Drawing.Point(10, 147);
+            this.RutasText3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.RutasText3.Name = "RutasText3";
+            this.RutasText3.Size = new System.Drawing.Size(212, 20);
+            this.RutasText3.TabIndex = 45;
+            // 
+            // RutasLabel4
+            // 
+            this.RutasLabel4.AutoSize = true;
+            this.RutasLabel4.Location = new System.Drawing.Point(8, 131);
+            this.RutasLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RutasLabel4.Name = "RutasLabel4";
+            this.RutasLabel4.Size = new System.Drawing.Size(44, 13);
+            this.RutasLabel4.TabIndex = 44;
+            this.RutasLabel4.Text = "Nombre";
+            // 
             // ABMRutas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 170);
+            this.ClientSize = new System.Drawing.Size(254, 208);
+            this.Controls.Add(this.RutasText3);
+            this.Controls.Add(this.RutasLabel4);
             this.Controls.Add(this.rutasCombo2);
             this.Controls.Add(this.rutasCombo1);
             this.Controls.Add(this.ABMRutasButton2);
@@ -145,5 +167,7 @@
         private System.Windows.Forms.Label RutasLabel2;
         private System.Windows.Forms.ComboBox rutasCombo1;
         private System.Windows.Forms.ComboBox rutasCombo2;
+        private System.Windows.Forms.TextBox RutasText3;
+        private System.Windows.Forms.Label RutasLabel4;
     }
 }

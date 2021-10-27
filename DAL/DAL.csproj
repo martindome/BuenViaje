@@ -66,6 +66,7 @@
     <Compile Include="RutaDAL.cs" />
     <Compile Include="ServDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
+    <Compile Include="ViajeDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

@@ -17,7 +17,7 @@ namespace DAL
         {
             List<RutaBE> Lista = new List<RutaBE>();
             List<LocalidadBE> Localidades = LocalidadDAL.Listar();
-            string mCommand = "SELECT b.ID_Ruta, b.Origen, b.Destino, b.Duracion from Ruta as b";
+            string mCommand = "SELECT b.ID_Ruta, b.Nombre, b.Origen, b.Destino, b.Duracion from Ruta as b";
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -35,7 +35,7 @@ namespace DAL
 
         public static RutaBE Obtener(int pId)
         {
-            string mCommand = "SELECT b.ID_Ruta, b.Origen, b.Destino, b.Duracion from Ruta as b WHERE ID_Ruta = " + pId;
+            string mCommand = "SELECT b.ID_Ruta, b.Nombre, b.Origen, b.Destino, b.Duracion from Ruta as b WHERE ID_Ruta = " + pId;
             DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
@@ -52,15 +52,15 @@ namespace DAL
         public static void Guardar(RutaBE pRuta)
         {
             string mCommand = "";
-            string DVH = mIntegridad.CalcularDVH(pRuta.ID_Ruta.ToString() + pRuta.Origen.ID_Localidad.ToString() + pRuta.Destino.ID_Localidad.ToString() + pRuta.Duracion.ToString());
+            string DVH = mIntegridad.CalcularDVH(pRuta.ID_Ruta.ToString() + pRuta.Nombre + pRuta.Origen.ID_Localidad.ToString() + pRuta.Destino.ID_Localidad.ToString() + pRuta.Duracion.ToString());
             if (pRuta.ID_Ruta == 0)
             {
                 pRuta.ID_Ruta = ProximoId();
-                mCommand = "INSERT INTO Ruta (ID_Ruta, Origen, Destino, Duracion, DVH) VALUES (" + pRuta.ID_Ruta + ", " + pRuta.Origen.ID_Localidad + ", " + pRuta.Destino.ID_Localidad + ", " + pRuta.Duracion + ", " + DVH + ")";
+                mCommand = "INSERT INTO Ruta (ID_Ruta, Nombre, Origen, Destino, Duracion, DVH) VALUES (" + pRuta.ID_Ruta + ", '" +pRuta.Nombre + "', "+ pRuta.Origen.ID_Localidad + ", " + pRuta.Destino.ID_Localidad + ", " + pRuta.Duracion + ", " + DVH + ")";
             }
             else
             {
-                mCommand = "UPDATE Ruta SET Origen = " + pRuta.Origen.ID_Localidad + ", Destino = " + pRuta.Destino.ID_Localidad + ", Duracion = " + pRuta.Duracion + ", DVH = " + DVH + " WHERE ID_Ruta = " + pRuta.ID_Ruta;
+                mCommand = "UPDATE Ruta SET Nombre = '"+pRuta.Nombre + "', Origen = " + pRuta.Origen.ID_Localidad + ", Destino = " + pRuta.Destino.ID_Localidad + ", Duracion = " + pRuta.Duracion + ", DVH = " + DVH + " WHERE ID_Ruta = " + pRuta.ID_Ruta;
             }
             DAO.Instancia().ExecuteNonQuery(mCommand);
         }
@@ -75,6 +75,7 @@ namespace DAL
         private static void ValorizarEntidad(RutaBE pRuta, DataRow pDataRow)
         {
             pRuta.ID_Ruta = int.Parse(pDataRow["ID_Ruta"].ToString());
+            pRuta.Nombre = pDataRow["Nombre"].ToString();
             pRuta.Origen = LocalidadDAL.Obtener(int.Parse(pDataRow["Origen"].ToString()));
             pRuta.Destino = LocalidadDAL.Obtener(int.Parse(pDataRow["Destino"].ToString()));
             pRuta.Duracion = int.Parse(pDataRow["Duracion"].ToString());

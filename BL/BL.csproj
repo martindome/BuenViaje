@@ -65,6 +65,7 @@
     <Compile Include="Sesion.cs" />
     <Compile Include="SingletonSesion.cs" />
     <Compile Include="UsuarioBL.cs" />
+    <Compile Include="ViajeBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

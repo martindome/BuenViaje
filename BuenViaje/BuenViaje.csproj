@@ -162,6 +162,12 @@
       <DependentUpon>Idioma.cs</DependentUpon>
     </Compile>
     <Compile Include="Operacion.cs" />
+    <Compile Include="Viajes\ViajesABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viajes\ViajesABM.Designer.cs">
+      <DependentUpon>ViajesABM.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administracion\Backup\Backup.resx">
       <DependentUpon>Backup.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pasajes\" />
-    <Folder Include="Viajes\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

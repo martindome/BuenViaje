@@ -155,6 +155,7 @@ namespace BuenViaje.Rutas
                         this.rutabe.Origen = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);
                         this.rutabe.Destino = localidadbl.Obtener(rutasCombo2.SelectedIndex + 1);
                         this.rutabe.Duracion = int.Parse(this.RutasText2.Text);
+                        this.rutabe.Nombre = (this.RutasText3.Text);
                         this.rutabl.Guardar(rutabe);
                         mBitacora.Descripcion = "Se dio de alta a la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
@@ -177,6 +178,7 @@ namespace BuenViaje.Rutas
                         this.rutabe.Origen = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);
                         this.rutabe.Destino = localidadbl.Obtener(rutasCombo2.SelectedIndex + 1);
                         this.rutabe.Duracion = int.Parse(this.RutasText2.Text);
+                        this.rutabe.Nombre = (this.RutasText3.Text);
                         this.rutabl.Guardar(rutabe);
                         mBitacora.Descripcion = "Se modifico la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
