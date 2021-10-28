@@ -163,6 +163,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMRutas-Form', 'Routes'),
 (1, 'ABMRuta-Validacion-Misma','Route cannot have same oring and desteny'),
 (1, 'ABMRuta-Validacion-Igual','There is already a route between those cities'),
+(1, 'ABMRuta-Validacion-Nombre','There is already an existing route with that name'),
 (1, 'ABMRuta-Confirmacion-Baja','Are you sure to delete the route?'),
 (1, 'ABMRuta-Error-Aplicar','An error occured while applying the changes')
 
@@ -321,6 +322,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMRutas-Form', 'Rutas'),
 (2, 'ABMRuta-Validacion-Misma','Ruta no puede tener mismo origen y destino'),
 (2, 'ABMRuta-Validacion-Igual','Ya existe una ruta entre esas ciudades'),
+(2, 'ABMRuta-Validacion-Nombre','Ya existe una ruta con ese nombre'),
 (2, 'ABMRuta-Confirmacion-Baja','Esta seguro de que quiere borrar la ruta?'),
 (2, 'ABMRuta-Error-Aplicar','un error ocurrio al aplicar los cambios')
 

@@ -68,8 +68,8 @@ namespace DAL
             if (pUsuario.ID_Usuario == 0)
             {
                 string Clave = mCifra.CalcularHashMD5(pUsuario.Contrasenia);
+                pUsuario.ID_Usuario = ProximoId();
                 string DVH = mIntegridad.CalcularDVH(pUsuario.ID_Usuario.ToString() + pUsuario.Nombre + pUsuario.Apellido + Nombre_Usuario + Clave + pUsuario.Intentos_Login.ToString() + pUsuario.ID_Idioma.ToString());
-                pUsuario.ID_Usuario = ProximoId(); 
                 mCommand = "INSERT INTO Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, Intentos_Login, ID_Idioma, DVH) VALUES (" + pUsuario.ID_Usuario + ", '" + pUsuario.Nombre + "', '" + pUsuario.Apellido + "', '" + Nombre_Usuario + "', '" + Clave + "', " + pUsuario.Intentos_Login + ", " + pUsuario.ID_Idioma +", '" + DVH + "')";
                 
             }

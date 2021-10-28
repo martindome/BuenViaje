@@ -52,17 +52,19 @@ namespace DAL
         public static void Guardar(RutaBE pRuta)
         {
             string mCommand = "";
-            string DVH = mIntegridad.CalcularDVH(pRuta.ID_Ruta.ToString() + pRuta.Nombre + pRuta.Origen.ID_Localidad.ToString() + pRuta.Destino.ID_Localidad.ToString() + pRuta.Duracion.ToString());
             if (pRuta.ID_Ruta == 0)
             {
                 pRuta.ID_Ruta = ProximoId();
+                string DVH = mIntegridad.CalcularDVH(pRuta.ID_Ruta.ToString() + pRuta.Nombre + pRuta.Origen.ID_Localidad.ToString() + pRuta.Destino.ID_Localidad.ToString() + pRuta.Duracion.ToString());
                 mCommand = "INSERT INTO Ruta (ID_Ruta, Nombre, Origen, Destino, Duracion, DVH) VALUES (" + pRuta.ID_Ruta + ", '" +pRuta.Nombre + "', "+ pRuta.Origen.ID_Localidad + ", " + pRuta.Destino.ID_Localidad + ", " + pRuta.Duracion + ", " + DVH + ")";
             }
             else
             {
+                string DVH = mIntegridad.CalcularDVH(pRuta.ID_Ruta.ToString() + pRuta.Nombre + pRuta.Origen.ID_Localidad.ToString() + pRuta.Destino.ID_Localidad.ToString() + pRuta.Duracion.ToString());
                 mCommand = "UPDATE Ruta SET Nombre = '"+pRuta.Nombre + "', Origen = " + pRuta.Origen.ID_Localidad + ", Destino = " + pRuta.Destino.ID_Localidad + ", Duracion = " + pRuta.Duracion + ", DVH = " + DVH + " WHERE ID_Ruta = " + pRuta.ID_Ruta;
             }
             DAO.Instancia().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Ruta"), "Ruta");
         }
 
         public static void Eliminar(RutaBE pRuta)

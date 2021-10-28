@@ -46,7 +46,6 @@ namespace DAL
             {
                 string DVH = mIntegridad.CalcularDVH(pBitacora.ID_Bitacora.ToString() + pBitacora.Fecha.ToString() + pBitacora.Tipo_Evento + pBitacora.Descripcion + pBitacora.ID_Usuario.ToString());
                 mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, ID_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', " + pBitacora.ID_Usuario + ")";
-                mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, ID_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', " + pBitacora.ID_Usuario + ")";
             }
             DAO.Instancia().ExecuteNonQuery(mCommand);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Bitacora"), "Bitacora");

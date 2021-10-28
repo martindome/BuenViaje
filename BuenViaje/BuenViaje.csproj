@@ -162,11 +162,11 @@
       <DependentUpon>Idioma.cs</DependentUpon>
     </Compile>
     <Compile Include="Operacion.cs" />
-    <Compile Include="Viajes\ViajesABM.cs">
+    <Compile Include="Viajes\ABMViajes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Viajes\ViajesABM.Designer.cs">
-      <DependentUpon>ViajesABM.cs</DependentUpon>
+    <Compile Include="Viajes\ABMViajes.Designer.cs">
+      <DependentUpon>ABMViajes.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Administracion\Backup\Backup.resx">
       <DependentUpon>Backup.cs</DependentUpon>
@@ -227,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sesion\Idioma.resx">
       <DependentUpon>Idioma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viajes\ABMViajes.resx">
+      <DependentUpon>ABMViajes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

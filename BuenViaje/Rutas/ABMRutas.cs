@@ -131,6 +131,17 @@ namespace BuenViaje.Rutas
             return true;
         }
 
+        private bool ValidarNombre()
+        {
+            foreach (RutaBE ruta in rutabl.Listar())
+            {
+                if (ruta.Nombre == this.RutasText3.Text)
+                {
+                    return false;
+                } 
+            }
+            return true;
+        }
           
 
         private void RutasButton1_Click(object sender, EventArgs e)
@@ -150,6 +161,11 @@ namespace BuenViaje.Rutas
                         if (!ValidarRutaIgual())
                         {
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Igual", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (!ValidarNombre())
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                         this.rutabe.Origen = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);

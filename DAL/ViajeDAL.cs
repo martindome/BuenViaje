@@ -16,7 +16,7 @@ namespace DAL
         public static List<ViajeBE> Listar()
         {
             List<ViajeBE> Lista = new List<ViajeBE>();
-            string mCommand = "SELECT b.ID_Viaje, b.ID_Ruta, b.ID_Bus, b.Fecha, b.Cancelado FROM Viaje";
+            string mCommand = "SELECT b.ID_Viaje, b.ID_Ruta, b.ID_Bus, b.Fecha, b.Cancelado FROM Viaje as b";
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -34,16 +34,48 @@ namespace DAL
 
         public static ViajeBE Obtener(int pId)
         {
-            throw new NotImplementedException();
+            string mCommand = "SELECT b.ID_Viaje, b.ID_Ruta, b.ID_Bus, b.Fecha, b.Cancelado from Viaje as b WHERE ID_Viaje = " + pId;
+            DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
+            {
+                ViajeBE mViaje = new ViajeBE();
+                ValorizarEntidad(mViaje, mDataSet.Tables[0].Rows[0]);
+                return mViaje;
+            }
+            else
+            {
+                return null;
+            }
         }
         public static void Guardar(ViajeBE pViaje)
         {
-            throw new NotImplementedException();
+            string mCommand = "";
+            if (pViaje.ID_Viaje == 0)
+            {
+                pViaje.ID_Viaje = ProximoId();
+                string DVH = mIntegridad.CalcularDVH(pViaje.ID_Viaje.ToString() + pViaje.ID_Ruta.ToString() + pViaje.ID_Bus.ToString() + pViaje.Fecha.ToString() + pViaje.Cancelado.ToString());
+                mCommand = "INSERT INTO Viaje(ID_Viaje, ID_Ruta, ID_Bus, Fecha, Cancelado, DVH) VALUES (" + pViaje.ID_Viaje + ", " + pViaje.ID_Ruta + ", " + pViaje.ID_Bus + ", '" + pViaje.Fecha.ToString() + "', " + pViaje.Cancelado + ", '" + DVH + "')";
+
+            }
+            else
+            {
+                string DVH = mIntegridad.CalcularDVH(pViaje.ID_Viaje.ToString() + pViaje.ID_Ruta.ToString() + pViaje.ID_Bus.ToString() + pViaje.Fecha.ToString() + pViaje.Cancelado.ToString());
+                mCommand = "Update Usuario SET ID_Ruta = " + pViaje.ID_Ruta
+                    + ", ID_Bus = " + pViaje.ID_Bus
+                    + ", Fecha = '" + pViaje.Fecha.ToString()
+                    + "', Cancelado = " + pViaje.Cancelado
+                    + ", DVH = '" + DVH + "' WHERE ID_Viaje =" + pViaje.ID_Viaje;
+                
+            }
+            DAO.Instancia().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
         }
 
         public static void Borrar(ViajeBE pViaje)
         {
-            throw new NotImplementedException();
+            string mCommandText = "DELETE Viaje WHERE ID_Viaje = " + pViaje.ID_Viaje;
+            DAO.Instancia().ExecuteNonQuery(mCommandText);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
         }
 
 

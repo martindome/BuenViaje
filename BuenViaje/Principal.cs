@@ -18,6 +18,7 @@ using BuenViaje.Localidades;
 using BuenViaje.Buses;
 using BuenViaje.Clientes;
 using BuenViaje.Rutas;
+using BuenViaje.Viajes;
 using BE.Composite;
 
 namespace BuenViaje
@@ -852,7 +853,7 @@ namespace BuenViaje
                 }
                 if (flag)
                 {
-                   dataGridRutas.Rows.Add(rutabe.ID_Ruta, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, rutabe.Duracion.ToString());
+                   dataGridRutas.Rows.Add(rutabe.ID_Ruta, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre,, rutabe.Nombre, rutabe.Duracion.ToString());
                 }
             }
         }
@@ -928,6 +929,17 @@ namespace BuenViaje
         #region Viajes
         private void Load_tabPageViajes()
         {
+            ViajeDatePickerDesde.CustomFormat = "MM-dd-yyyy";
+            ViajeDatePickerDesde.Format = DateTimePickerFormat.Custom;
+
+            ViajeDatePickerDesdeHora.Format = DateTimePickerFormat.Time;
+            ViajeDatePickerDesdeHora.ShowUpDown = true;
+
+            ViajeDatePickerHasta.CustomFormat = "MM-dd-yyyy";
+            ViajeDatePickerHasta.Format = DateTimePickerFormat.Custom;
+
+            ViajeDatePickerHastaHora.Format = DateTimePickerFormat.Time;
+            ViajeDatePickerHastaHora.ShowUpDown = true;
             ViajesPrincipalDataGrid.Rows.Clear();
             ViajesPrincipalDataGrid.Columns.Clear();
             ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID"), ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID"));
@@ -973,28 +985,119 @@ namespace BuenViaje
         private void ActualizarGrillaViajes()
         {
             this.ViajesPrincipalDataGrid.Rows.Clear();
+            ViajeBL viajebl = new ViajeBL();
             RutaBL rutabl = new RutaBL();
-            List<RutaBE> lista = rutabl.Listar();
-            foreach (RutaBE rutabe in lista)
+            BusBL busbl = new BusBL();
+            DateTime Desde = ViajeDatePickerDesde.Value.Date + ViajeDatePickerDesdeHora.Value.TimeOfDay;
+            DateTime Hasta = ViajeDatePickerHasta.Value.Date + ViajeDatePickerHastaHora.Value.TimeOfDay;
+            foreach (ViajeBE viaje in viajebl.Listar(Desde, Hasta))
             {
                 bool flag = true;
                 //if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
-                if (this.RutasPrincipalText2.Text != "" && !(rutabe.Origen.Nombre.Contains(this.RutasPrincipalText2.Text) || rutabe.Origen.Provincia.Contains(this.RutasPrincipalText2.Text) || rutabe.Origen.Pais.Contains(this.RutasPrincipalText2.Text)))
+                if (this.ViajesPrincipalText1.Text != "" && !(busbl.Obtener(viaje.ID_Bus).Patente.Contains(this.ViajesPrincipalText1.Text)))
                 {
                     flag = false;
                 }
                 //if (this.RutasPrincipalText3.Text != "" && this.RutasPrincipalText3.Text != rutabe.Destino.Nombre)
-                if (this.RutasPrincipalText3.Text != "" && !(rutabe.Destino.Nombre.Contains(this.RutasPrincipalText3.Text) || rutabe.Destino.Provincia.Contains(this.RutasPrincipalText3.Text) || rutabe.Destino.Pais.Contains(this.RutasPrincipalText3.Text)))
-                {
+                if (this.ViajesPrincipalText1.Text != "" && !(rutabl.Obtener(viaje.ID_Ruta).Nombre.Contains(this.ViajesPrincipalText1.Text)))                {
                     flag = false;
                 }
                 if (flag)
                 {
-                    ViajesPrincipalDataGrid.Rows.Add(rutabe.ID_Ruta, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, rutabe.Duracion.ToString());
+                    ViajesPrincipalDataGrid.Rows.Add(viaje.ID_Ruta, viaje.ID_Ruta, viaje.ID_Bus, rutabl.Obtener(viaje.ID_Ruta).Nombre, busbl.Obtener(viaje.ID_Bus).Patente, viaje.Fecha.ToString(), viaje.Cancelado.ToString());
                 }
             }
         }
+        private void ViajesPrincipalButton5_Click(object sender, EventArgs e)
+        {
+            ActualizarGrillaViajes();
+        }
+
+        private void ViajesPrincipalButton6_Click(object sender, EventArgs e)
+        {
+            this.ViajesPrincipalText1.Text = "";
+            this.ViajesPrincipalText2.Text = "";
+            ViajeDatePickerDesde.Value = DateTime.Now;
+            ViajeDatePickerHasta.Value = DateTime.Now;
+            ActualizarGrillaViajes();
+        }
+
+        private void ViajesPrincipalButton2_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminViajes))
+            {
+                ViajeBL rutabl = new ViajeBL();
+                ABMViajes abmviajes = new ABMViajes();
+                abmviajes.operacion = Operacion.Alta;
+                abmviajes.viajebe = new ViajeBE();
+                abmviajes.ShowDialog();
+                ActualizarGrillaViajes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Viajes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
+
+        private void ViajesPrincipalButton3_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminViajes))
+            {
+                ViajeBL viajebl = new ViajeBL();
+                ABMViajes abmviajes = new ABMViajes();
+                abmviajes.operacion = Operacion.Modificacion;
+                abmviajes.viajebe = viajebl.Obtener(int.Parse(this.ViajesPrincipalDataGrid.SelectedRows[0].Cells[0].Value.ToString()));
+                abmviajes.ShowDialog();
+                ActualizarGrillaViajes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Viajes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ViajesPrincipalButton4_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminViajes))
+            {
+                ViajeBL viajebl = new ViajeBL();
+                ABMViajes abmviajes = new ABMViajes();
+                abmviajes.operacion = Operacion.Baja;
+                abmviajes.viajebe = viajebl.Obtener(int.Parse(this.ViajesPrincipalDataGrid.SelectedRows[0].Cells[0].Value.ToString()));
+                abmviajes.ShowDialog();
+                ActualizarGrillaViajes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Viajes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ViajesPrincipalButton1_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.AdminViajes))
+            {
+                ViajeBL viajebl = new ViajeBL();
+                ABMViajes abmviajes = new ABMViajes();
+                abmviajes.operacion = Operacion.Ver;
+                abmviajes.viajebe = viajebl.Obtener(int.Parse(this.ViajesPrincipalDataGrid.SelectedRows[0].Cells[0].Value.ToString()));
+                abmviajes.ShowDialog();
+                ActualizarGrillaViajes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Viajes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         #endregion
+
+        private void tabPageRutas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
