@@ -130,6 +130,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMBuses-Form', 'Buses'),
 (1, 'ABMBuses-Validacion-Bus','Bus already exists'),
+(1, 'ABMBuses-ValidacionPatente-Bus','Plate can only contain numbers and letters'),
 (1, 'ABMBuses-Confirmacion-Baja','Are you sure to delete the bus?'),
 (1, 'ABMBuses-Error-Aplicar','An error has ocurred while applying the changes')
 
@@ -166,6 +167,29 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMRuta-Validacion-Nombre','There is already an existing route with that name'),
 (1, 'ABMRuta-Confirmacion-Baja','Are you sure to delete the route?'),
 (1, 'ABMRuta-Error-Aplicar','An error occured while applying the changes')
+
+----Viajes Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ViajePrincpal-Columna-ViajeID', 'ID_Viaje'),
+(1, 'ViajePrincpal-Columna-RutaID','ID_Ruta'),
+(1, 'ViajePrincpal-Columna-BusID','ID_Bus'),
+(1, 'ViajePrincpal-Columna-RutaNombre','Route'),
+(1, 'ViajePrincpal-Columna-BusPatente', 'Bus'),
+(1, 'ViajePrincpal-Columna-Fecha', 'Date'),
+(1, 'ViajePrincpal-Columna-Cancelado', 'Canceled'),
+(1, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'User does not have enough permissions')
+
+--- Viajes ABM
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMViajes-Form', 'Trips'),
+(1, 'ABMViajes-Mensual', 'Monthly'),
+(1, 'ABMViajes-Semanal', 'Weekly'),
+(1, 'ABMViajes-Diario', 'Daily'),
+(1, 'ABMViajes-Especial', 'Especial'),
+(1, 'ABMViaje-Validacion-Fecha','Date is incorrect'),
+(1, 'ABMViaje-Validacion-Bus','Bus is busy in another trip'),
+(1, 'ABMViajes-Confirmacion-Baja','Are you sure to cancel the trip?'),
+(1, 'ABMViajes-Error-Aplicar','An error occured while applying the changes')
 
 ---------- ESPANIOL
 
@@ -289,7 +313,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMBuses-Form', 'Buses'),
 (2, 'ABMBuses-Validacion-Bus','Bus ya existente'),
+(2, 'ABMBuses-ValidacionPatente-Bus','Patente solo contiene numeros y letras'),
 (2, 'ABMBuses-Confirmacion-Baja','Esta seguro de elimianr el bus?'),
+
 (2, 'ABMBuses-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
 ----Clientes Principal
@@ -324,7 +350,30 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMRuta-Validacion-Igual','Ya existe una ruta entre esas ciudades'),
 (2, 'ABMRuta-Validacion-Nombre','Ya existe una ruta con ese nombre'),
 (2, 'ABMRuta-Confirmacion-Baja','Esta seguro de que quiere borrar la ruta?'),
-(2, 'ABMRuta-Error-Aplicar','un error ocurrio al aplicar los cambios')
+(2, 'ABMRuta-Error-Aplicar','Un error ocurrio al aplicar los cambios')
+
+----Viajes Principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ViajePrincpal-Columna-ViajeID', 'ID_Viaje'),
+(2, 'ViajePrincpal-Columna-RutaID','ID_Ruta'),
+(2, 'ViajePrincpal-Columna-BusID','ID_Bus'),
+(2, 'ViajePrincpal-Columna-RutaNombre','Ruta'),
+(2, 'ViajePrincpal-Columna-BusPatente', 'Bus'),
+(2, 'ViajePrincpal-Columna-Fecha', 'Fecha'),
+(2, 'ViajePrincpal-Columna-Cancelado', 'Cancelado'),
+(2, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'El usuario no tiene los permisos suficientes')
+
+--- Viajes ABM
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMViajes-Form', 'Viajes'),
+(2, 'ABMViajes-Mensual', 'Mensual'),
+(2, 'ABMViajes-Semanal', 'Semanal'),
+(2, 'ABMViajes-Diario', 'Diario'),
+(2, 'ABMViajes-Especial', 'Especial'),
+(2, 'ABMViaje-Validacion-Fecha','Fecha es incorrecta'),
+(2, 'ABMViaje-Validacion-Bus','Bus en uso para otro viaje'),
+(2, 'ABMViajes-Confirmacion-Baja','Esta seguro de que quiere cancelar el viaje?'),
+(2, 'ABMViajes-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control

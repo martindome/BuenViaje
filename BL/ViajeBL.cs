@@ -27,6 +27,11 @@ namespace BL
             }
             return lista;
         }
+        public List<ViajeBE> ListarBus(int pId)
+        {
+            return ViajeDAL.ListarBus(pId);
+        }
+
 
         public ViajeBE Obtener(int pId)
         {

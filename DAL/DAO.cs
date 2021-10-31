@@ -37,6 +37,29 @@ namespace DAL
             }
         }
 
+        public int ExecuteNonQuery(string pCommandText, Dictionary<string, Object> parameters)
+        {
+            try
+            {
+                SqlCommand mCom = new SqlCommand(pCommandText, mCon);
+                foreach (string key in parameters.Keys)
+                {
+                    mCom.Parameters.AddWithValue(key, parameters[key]);
+                }
+                mCon.Open();
+                return mCom.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (mCon.State != ConnectionState.Closed)
+                    mCon.Close();
+            }
+        }
+
         public int ExecuteNonQuery(string pCommandText)
         {
             try

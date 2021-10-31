@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using BE;
 using BL;
 
@@ -87,7 +88,7 @@ namespace BuenViaje.Buses
             }
         }
 
-        private bool ValidarBus()
+        private bool ValidarBusExistente()
         {
             foreach (BusBE busbe in busbl.Listar())
             {
@@ -108,12 +109,17 @@ namespace BuenViaje.Buses
                 switch (this.operacion)
                 {
                     case Operacion.Alta:
-                        if (!ValidarBus())
+                        if (!ValidarBusExistente())
                         {
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Validacion-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        this.busbe.Patente = this.ABMBusesTexto1.Text;
+                        if (!Regex.IsMatch(this.ABMBusesTexto1.Text, "[A-Za-z0-9]+"))
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-ValidacionPatente-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        this.busbe.Patente = this.ABMBusesTexto1.Text.ToUpper();
                         this.busbe.Marca = this.ABMBusesTexto2.Text;
                         this.busbe.Asientos = int.Parse(this.ABMBusesTexto3.Text);
                         this.busbl.Guardar(busbe);
@@ -125,9 +131,14 @@ namespace BuenViaje.Buses
                         flag = true;
                         break;
                     case Operacion.Modificacion:
-                        if (!ValidarBus())
+                        if (!ValidarBusExistente())
                         {
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Validacion-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (!Regex.IsMatch(this.ABMBusesTexto1.Text, "[A-Za-z0-9]+"))
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-ValidacionPatente-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                         this.busbe.Patente = this.ABMBusesTexto1.Text;
