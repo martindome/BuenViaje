@@ -142,15 +142,33 @@ namespace BuenViaje.Administracion
                 document.DefaultPageSetup.PageFormat = PageFormat.A4;
                 Section section = document.AddSection();
 
-                Paragraph paragraph = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "Heading1");
-                paragraph.AddBookmark("Tables");
 
-                this.DemonstrateSimpleTable(document, savefile.FileName);
+                //Titulo
+                Paragraph Title = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n\n", "Heading1");
+                Title.AddBookmark("Title");
+                Title.Format.Font.Size = 30;
+                //Title.Format.Font.Color = Colors.DarkBlue;
+                Title.Format.Alignment = ParagraphAlignment.Center;
+
+                Paragraph Date = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Date", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\nn", "Heading1");
+                Date.AddBookmark("Date");
+                Date.Format.Font.Size = 15;
+                //Date.Format.Font.Color = Colors.DarkBlue;
+                Date.Format.Alignment = ParagraphAlignment.Left;
+
+                Paragraph Requested = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Requested", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) +": " +  SingletonSesion.Instancia.Usuario.Nombre_Usuario + "\nn", "Heading1");
+                Requested.AddBookmark("Requested");
+                Requested.Format.Font.Size = 15;
+                //Requested.Format.Font.Color = Colors.DarkBlue;
+                Requested.Format.Alignment = ParagraphAlignment.Left;
+
+                this.CreateTable(document, savefile.FileName);
                 var renderer = new PdfDocumentRenderer();
                 renderer.Document = document;
                 renderer.RenderDocument();
 
                 renderer.Save(savefile.FileName);
+                
                 //DemonstrateAlignment(document);
                 //DemonstrateCellMerge(document);
 
@@ -183,18 +201,21 @@ namespace BuenViaje.Administracion
             }
         }
 
-        private void DemonstrateSimpleTable (Document document, string TableName)
+        private void CreateTable (Document document, string TableName)
         {
-            document.LastSection.AddParagraph(TableName, "Heading2");
+            //Paragraph paragraph = document.LastSection.AddParagraph(TableName, "Heading2");
 
             Table table = new Table();
             table.Borders.Width = 0.75;
 
-            Column column = table.AddColumn(Unit.FromCentimeter(3));
-            column.Format.Alignment = ParagraphAlignment.Center;
-            table.AddColumn(Unit.FromCentimeter(6));
-            table.AddColumn(Unit.FromCentimeter(2));
-            table.AddColumn(Unit.FromCentimeter(6));
+            Column column1 = table.AddColumn(Unit.FromCentimeter(2));
+            column1.Format.Alignment = ParagraphAlignment.Center;
+            Column column2 = table.AddColumn(Unit.FromCentimeter(5));
+            column2.Format.Alignment = ParagraphAlignment.Center;
+            Column column3 = table.AddColumn(Unit.FromCentimeter(2));
+            column3.Format.Alignment = ParagraphAlignment.Center;
+            Column column4 = table.AddColumn(Unit.FromCentimeter(8));
+            column4.Format.Alignment = ParagraphAlignment.Center;
 
             Row row = table.AddRow();
             Cell cell = row.Cells[0];
@@ -218,86 +239,14 @@ namespace BuenViaje.Administracion
                 cell.AddParagraph(GridRow.Cells[3].Value.ToString());
                 cell = row.Cells[3];
                 cell.AddParagraph(GridRow.Cells[4].Value.ToString());
-
             }
-
-            table.SetEdge(0, 0, 2, 3, Edge.Box, MigraDoc.DocumentObjectModel.BorderStyle.Single, 1.5, Colors.Black);
-
+            //table.SetEdge(0, 0, 2, 3, Edge.Box, MigraDoc.DocumentObjectModel.BorderStyle.Single, 1.5, Colors.Black);
             document.LastSection.Add(table);
         }
 
-        private static void DemonstrateAlignment(Document document)
+        private void button1_Click(object sender, EventArgs e)
         {
-            document.LastSection.AddParagraph("Cell Alignment", "Heading2");
 
-            Table table = document.LastSection.AddTable();
-            table.Borders.Visible = true;
-            table.Format.Shading.Color = Colors.LavenderBlush;
-            table.Shading.Color = Colors.Salmon;
-            table.TopPadding = 5;
-            table.BottomPadding = 5;
-
-            Column column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Left;
-
-            column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Center;
-
-            column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Right;
-
-            table.Rows.Height = 35;
-
-            Row row = table.AddRow();
-            row.VerticalAlignment = VerticalAlignment.Top;
-            row.Cells[0].AddParagraph("Text");
-            row.Cells[1].AddParagraph("Text");
-            row.Cells[2].AddParagraph("Text");
-
-            row = table.AddRow();
-            row.VerticalAlignment = VerticalAlignment.Center;
-            row.Cells[0].AddParagraph("Text");
-            row.Cells[1].AddParagraph("Text");
-            row.Cells[2].AddParagraph("Text");
-
-            row = table.AddRow();
-            row.VerticalAlignment = VerticalAlignment.Bottom;
-            row.Cells[0].AddParagraph("Text");
-            row.Cells[1].AddParagraph("Text");
-            row.Cells[2].AddParagraph("Text");
-        }
-
-        private static void DemonstrateCellMerge(Document document)
-        {
-            document.LastSection.AddParagraph("Cell Merge", "Heading2");
-
-            Table table = document.LastSection.AddTable();
-            table.Borders.Visible = true;
-            table.TopPadding = 5;
-            table.BottomPadding = 5;
-
-            Column column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Left;
-
-            column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Center;
-
-            column = table.AddColumn();
-            column.Format.Alignment = ParagraphAlignment.Right;
-
-            table.Rows.Height = 35;
-
-            Row row = table.AddRow();
-            row.Cells[0].AddParagraph("Merge Right");
-            row.Cells[0].MergeRight = 1;
-
-            row = table.AddRow();
-            row.VerticalAlignment = VerticalAlignment.Bottom;
-            row.Cells[0].MergeDown = 1;
-            row.Cells[0].VerticalAlignment = VerticalAlignment.Bottom;
-            row.Cells[0].AddParagraph("Merge Down");
-
-            table.AddRow();
         }
     }
 }

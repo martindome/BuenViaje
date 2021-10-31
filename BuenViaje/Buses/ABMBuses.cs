@@ -123,7 +123,7 @@ namespace BuenViaje.Buses
                         this.busbe.Marca = this.ABMBusesTexto2.Text;
                         this.busbe.Asientos = int.Parse(this.ABMBusesTexto3.Text);
                         this.busbl.Guardar(busbe);
-                        mBitacora.Descripcion = "Se dio de alta al bus: " + this.busbe.Patente;
+                        mBitacora.Descripcion = "Se dio de alta al bus: " + this.ABMBusesTexto1.Text.ToUpper();
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
@@ -145,7 +145,7 @@ namespace BuenViaje.Buses
                         this.busbe.Marca = this.ABMBusesTexto2.Text;
                         this.busbe.Asientos = int.Parse(this.ABMBusesTexto3.Text);
                         this.busbl.Guardar(busbe);
-                        mBitacora.Descripcion = "Se modifico el bus: " + this.busbe.Patente;
+                        mBitacora.Descripcion = "Se modifico el bus: " + this.ABMBusesTexto1.Text.ToUpper();
                         mBitacora.Fecha = DateTime.Now;
                         mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";

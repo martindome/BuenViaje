@@ -1116,11 +1116,18 @@ namespace BuenViaje
         }
 
 
-        #endregion
+        #endregion Viajes
 
+        #region Pasajes
         private void tabPageRutas_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void tabPagePasajes_Click(object sender, EventArgs e)
+        {
+
+        }
+    #endregion
     }
 }

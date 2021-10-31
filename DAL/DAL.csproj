@@ -61,6 +61,7 @@
     <Compile Include="IniciadorDAL.cs" />
     <Compile Include="LocalidadDAL.cs" />
     <Compile Include="LoginDAL.cs" />
+    <Compile Include="PasajeDAL.cs" />
     <Compile Include="PatenteDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RutaDAL.cs" />

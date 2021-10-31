@@ -102,14 +102,14 @@ namespace DAL
                 DAO.Instancia().ExecuteNonQuery(mCommand, parameters);
 
             }
-            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Viaje"), "Viaje");
         }
 
         public static void Borrar(ViajeBE pViaje)
         {
             string mCommandText = "DELETE Viaje WHERE ID_Viaje = " + pViaje.ID_Viaje;
             DAO.Instancia().ExecuteNonQuery(mCommandText);
-            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Viaje"), "Viaje");
         }
 
 

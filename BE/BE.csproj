@@ -62,6 +62,7 @@
     <Compile Include="DigitoVerificadorVerticalBE.cs" />
     <Compile Include="ControlBE.cs" />
     <Compile Include="LocalidadBE.cs" />
+    <Compile Include="PasajeBE.cs" />
     <Compile Include="RutaBE.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

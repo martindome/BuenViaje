@@ -59,6 +59,7 @@
     <Compile Include="IniciadorBL.cs" />
     <Compile Include="LocalidadBL.cs" />
     <Compile Include="LoginBL.cs" />
+    <Compile Include="PasajeBL.cs" />
     <Compile Include="PatenteBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RutaBL.cs" />

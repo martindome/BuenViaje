@@ -38,7 +38,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Bitacora-Columna-BitacoraUsuario', 'User'),
 (1, 'Bitacora-Columna-BitacoraCriticidad', 'Level'),
 (1, 'Bitacora-Columna-BitacoraMovimiento', 'Description'),
-(1, 'Bitacora-pdf-Title', 'Logs')
+(1, 'Bitacora-pdf-Title', 'Report of Logs'),
+(1, 'Bitacora-pdf-Date', 'Date'),
+(1, 'Bitacora-pdf-Requested', 'Requested By')
 ----Cambiar Contrasenia
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'CambiarContrasenia-Form', 'Change Password'),
@@ -223,7 +225,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Bitacora-Columna-BitacoraUsuario', 'Usuario'),
 (2, 'Bitacora-Columna-BitacoraCriticidad', 'Nivel'),
 (2, 'Bitacora-Columna-BitacoraMovimiento', 'Descripcion'),
-(2, 'Bitacora-pdf-Title', 'Bitacora')
+(2, 'Bitacora-pdf-Title', 'Reporte de Bitacora'),
+(2, 'Bitacora-pdf-Date', 'Fecha'),
+(2, 'Bitacora-pdf-Requested', 'Pedido por')
 ----Cambiar Contrasenia
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'CambiarContrasenia-Form', 'Cambiar Contraseña'),
@@ -905,7 +909,8 @@ INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
 (4, 'QXVkaXRvcmVzIFNlZ3VyaWRhZA==', 'Permite acceder a los logs del sistema'),
 (5, 'VmVuZGVkb3Jlcw==', 'Permite realizar ventas de pasajes y dar alta clientes'),
 (6, 'QXVkaXRvciB2ZW50YXM=', 'Permite acceder a las registros de ventas y clientes'),
-(7, 'QWRtaW5pc3RyYXRpdm9z', 'Permite administrar rutas, viajes y localidades')
+(7, 'QWRtaW5pc3RyYXRpdm9z', 'Permite administrar rutas, viajes y localidades'),
+(8, 'QWRtaW5zdHJhZG9yIEJ1c2Vz', 'Permite administrar Buses')
 
 --Usuario_Familia
 INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES
@@ -915,7 +920,8 @@ INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES
 (1,4,52),
 (1,5,53),
 (1,6,54),
-(1,7,55)
+(1,7,55),
+(1,8,56)
 
 --Permiso_Familia
 INSERT INTO Permiso_Familia(ID_Permiso, ID_Familia, DVH) VALUES
@@ -954,12 +960,15 @@ INSERT INTO Permiso_Familia(ID_Permiso, ID_Familia, DVH) VALUES
 (14,7,162), --read localidad
 (15,7,163), --read clientes
 (16,7,164), --admin viajes
-(17,7,165) --admin clientes
+(17,7,165), --admin clientes
+-- Familia Buses
+(18,8,168), --admin buses
+(19,8,169) --read buses
 
 Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values 
 (1, 'Usuario', '196993'),
-(2, 'Permiso_Familia', '3334'),
-(3, 'Usuario_Familia', '364')
+(2, 'Permiso_Familia', '3671'),
+(3, 'Usuario_Familia', '420')
 
 -- Insert INTO Localidad(ID_Localidad, Nombre, Provincia, Pais) VALUES
 -- (1,'El Chalten', 'Santa Cruz', 'Argentina'),

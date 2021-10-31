@@ -71,6 +71,7 @@ namespace DAL
         {
             string mCommand = "DELETE Ruta WHERE ID_Ruta = " + pRuta.ID_Ruta;
             DAO.Instancia().ExecuteNonQuery(mCommand);
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Ruta"), "Ruta");
         }
 
         #region private functions
