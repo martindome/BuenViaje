@@ -177,7 +177,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ViajePrincpal-Columna-BusPatente', 'Bus'),
 (1, 'ViajePrincpal-Columna-Fecha', 'Date'),
 (1, 'ViajePrincpal-Columna-Cancelado', 'Canceled'),
-(1, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'User does not have enough permissions')
+(1, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'User does not have enough permissions'),
+(1, 'Cancelado', 'Yes'),
+(1, 'No Cancelado', 'No')
 
 --- Viajes ABM
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -352,7 +354,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMRuta-Confirmacion-Baja','Esta seguro de que quiere borrar la ruta?'),
 (2, 'ABMRuta-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
-----Viajes Principal
+--Viajes Principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ViajePrincpal-Columna-ViajeID', 'ID_Viaje'),
 (2, 'ViajePrincpal-Columna-RutaID','ID_Ruta'),
@@ -361,7 +363,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ViajePrincpal-Columna-BusPatente', 'Bus'),
 (2, 'ViajePrincpal-Columna-Fecha', 'Fecha'),
 (2, 'ViajePrincpal-Columna-Cancelado', 'Cancelado'),
-(2, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'El usuario no tiene los permisos suficientes')
+(2, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'El usuario no tiene los permisos suficientes'),
+(2, 'Cancelado', 'Si'),
+(2, 'No Cancelado', 'No')
 
 --- Viajes ABM
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -582,6 +586,32 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'ABMRutasButton1', 'Apply'),
 (1, 'ABMRutasButton2', 'Cancel')
 
+---Viajes Principa;
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ViajesPrincipalButton1', 'Read'),
+(1, 'ViajesPrincipalButton2', 'New'),
+(1, 'ViajesPrincipalButton3', 'Modify'),
+(1, 'ViajesPrincipalButton4', 'Delete'),
+(1, 'ViajesPrincipalButton5', 'Apply'),
+(1, 'ViajesPrincipalButton6', 'Clear'),
+(1, 'ViajePrincipalLabel1', 'Bus'),
+(1, 'ViajePrincipalLabel2', 'Route'),
+(1, 'ViajePrincipalLabel3', 'Date From'),
+(1, 'ViajePrincipalLabel4', 'Date To'),
+(1, 'ToViajesPrincipalCheckBox', 'Canceled'),
+(1, 'ViajePrincipalGroupBox1', 'Filters')
+
+---ABM Rutas
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ViajeABMLabel1', 'Route'),
+(1, 'ViajeABMLabel2', 'Bus'),
+(1, 'ViajeABMLabel3', 'Type'),
+(1, 'ViajeABMLabel4', 'Date From'),
+(1, 'ViajeABMLabel5', 'Date to'),
+(1, 'ViajeABMCheckBox1', 'Cancel'),
+(1, 'ViajeABMButton1', 'Apply'),
+(1, 'ViajeABMButton2', 'Cancel')
+
 ----ResetPasswrd
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'CambiarPasswordLabel1', 'Nombre de usuario'),
@@ -781,6 +811,33 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'RutasLabel3', 'Duracion'),
 (2, 'ABMRutasButton1', 'Aplicar'),
 (2, 'ABMRutasButton2', 'Cancelar')
+
+---Viajes Principal;
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ViajesPrincipalButton1', 'Ver'),
+(2, 'ViajesPrincipalButton2', 'Alta'),
+(2, 'ViajesPrincipalButton3', 'Modificar'),
+(2, 'ViajesPrincipalButton4', 'Borrar'),
+(2, 'ViajesPrincipalButton5', 'Aplicar'),
+(2, 'ViajesPrincipalButton6', 'Limpiar'),
+(2, 'ViajePrincipalLabel1', 'Bus'),
+(2, 'ViajePrincipalLabel2', 'Ruta'),
+(2, 'ViajePrincipalLabel3', 'Desde'),
+(2, 'ViajePrincipalLabel4', 'Hasta'),
+(2, 'ToViajesPrincipalCheckBox', 'Cancelado'),
+(2, 'ViajePrincipalGroupBox1', 'Filtros')
+
+
+---ABM Rutas
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ViajeABMLabel1', 'Ruta'),
+(2, 'ViajeABMLabel2', 'Bus'),
+(2, 'ViajeABMLabel3', 'Tipo'),
+(2, 'ViajeABMLabel4', 'Fecha'),
+(2, 'ViajeABMLabel5', 'Fecha Hasta'),
+(2, 'ViajeABMCheckBox1', 'Cancelar'),
+(2, 'ViajeABMButton1', 'Aplicar'),
+(2, 'ViajeABMButton2', 'Cancelar')
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -79,6 +79,7 @@ namespace BuenViaje.Viajes
                     //Deshabilito botones
                     this.ViajeABMCombo1.Enabled = false;
                     this.ViajeABMCombo3.Enabled = false;
+                    this.ViajeABMCombo3.SelectedIndex = 3;
                     this.ViajeABMCheckBox1.Enabled = true;
                     this.ViajeABMDatePickerHasta.Enabled = false;
 
@@ -137,10 +138,12 @@ namespace BuenViaje.Viajes
             {
                 return false;
             }
-            
-            if (ViajeABMDatePickerDesde.Value.Date + ViajeABMDatePickerDesdeHora.Value.TimeOfDay <= ViajeABMDatePickerHasta.Value.Date)
+            if (ViajeABMCombo3.SelectedIndex != 3)
             {
-                return false;
+                if (ViajeABMDatePickerDesde.Value.Date + ViajeABMDatePickerDesdeHora.Value.TimeOfDay > ViajeABMDatePickerHasta.Value.Date)
+                {
+                    return false;
+                }
             }
             return true;
         }
@@ -157,11 +160,19 @@ namespace BuenViaje.Viajes
             {
                 foreach (ViajeBE viaje in viajes)
                 {
-                    RutaBE ruta = rutaBL.Obtener(viaje.ID_Ruta);
-                    if (Desde > viaje.Fecha && Desde < viaje.Fecha.AddMinutes(ruta.Duracion))
+                    if (!viaje.Cancelado && viajebe.ID_Viaje != viaje.ID_Viaje)
                     {
-                        return false;
+                        RutaBE ruta = rutaBL.Obtener(viaje.ID_Ruta);
+                        DateTime StartA = Desde;
+                        DateTime EndA = Desde.AddMinutes(ruta.Duracion);
+                        DateTime StartB = viaje.Fecha;
+                        DateTime EndB = viaje.Fecha.AddMinutes(ruta.Duracion);
+                        if (StartA <= EndB && StartB <= EndA)
+                        {
+                            return false;
+                        }
                     }
+               
                 }
             }
             else
@@ -170,26 +181,34 @@ namespace BuenViaje.Viajes
                 {
                     foreach (ViajeBE viaje in viajes)
                     {
-                        RutaBE ruta = rutaBL.Obtener(viaje.ID_Ruta);
-                        if (Desde > viaje.Fecha && Desde < viaje.Fecha.AddMinutes(ruta.Duracion))
+                        if (!viaje.Cancelado)
                         {
-                            return false;
+                            RutaBE ruta = rutaBL.Obtener(viaje.ID_Ruta);
+                            DateTime StartA = Desde;
+                            DateTime EndA = Desde.AddMinutes(ruta.Duracion);
+                            DateTime StartB = viaje.Fecha;
+                            DateTime EndB = viaje.Fecha.AddMinutes(ruta.Duracion);
+                            if (StartA <= EndB && StartB <= EndA)
+                            {
+                                return false;
+                            }
                         }
+                        
                     }
                     switch (ViajeABMCombo3.SelectedIndex)
                     {
                         case (0):
-                            Desde.AddMonths(1);
+                            Desde = Desde.AddMonths(1);
                             break;
                         case (1):
-                            Desde.AddDays(7);
+                            Desde = Desde.AddDays(7);
                             break;
                         case (2):
-                            Desde.AddDays(1);
+                            Desde = Desde.AddDays(1);
                             break;
                         case (3):
                             Desde = Hasta;
-                            Desde.AddYears(100);
+                            Desde = Desde.AddYears(100);
                             break;
                     }
                 }
@@ -243,13 +262,13 @@ namespace BuenViaje.Viajes
                                 switch (ViajeABMCombo3.SelectedIndex)
                                 {
                                     case (0):
-                                        Desde.AddMonths(1);
+                                        Desde = Desde.AddMonths(1);
                                         break;
                                     case (1):
-                                        Desde.AddDays(7);
+                                        Desde = Desde.AddDays(7);
                                         break;
                                     case (2):
-                                        Desde.AddDays(1);
+                                        Desde = Desde.AddDays(1);
                                         break;
                                 }
                                 mBitacora.Descripcion = "Se dio de alta al viaje: " + this.viajebe.ID_Viaje;

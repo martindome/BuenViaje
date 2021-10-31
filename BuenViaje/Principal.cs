@@ -946,13 +946,20 @@ namespace BuenViaje
             ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID"), ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID"));
             ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID"), ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID"));
             ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-BusID"), ObtenerMensajeColumna("ViajePrincpal-Columna-BusID"));
-            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-RutaNombre"), ObtenerMensajeColumna("RutaPrincpal-Columna-RutaNombre"));
-            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-BusPatente"), ObtenerMensajeColumna("RutaPrincpal-Columna-BusPatente"));
-            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-Fecha"), ObtenerMensajeColumna("RutaPrincpal-Columna-Fecha"));
-            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-Cancelado"), ObtenerMensajeColumna("RutaPrincpal-Columna-Cancelado"));
-            //ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID")].Visible = false;
-            //ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID")].Visible = false;
-            //ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-BusID")].Visible = false;
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-RutaNombre"), ObtenerMensajeColumna("ViajePrincpal-Columna-RutaNombre"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-BusPatente"), ObtenerMensajeColumna("ViajePrincpal-Columna-BusPatente"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-Fecha"), ObtenerMensajeColumna("ViajePrincpal-Columna-Fecha"));
+            ViajesPrincipalDataGrid.Columns.Add(ObtenerMensajeColumna("ViajePrincpal-Columna-Cancelado"), ObtenerMensajeColumna("ViajePrincpal-Columna-Cancelado"));
+            //DataGridViewCheckBoxColumn columna = new DataGridViewCheckBoxColumn();
+            //columna.Name = ObtenerMensajeColumna("ViajePrincpal-Columna-Cancelado");
+            //columna.HeaderText = ObtenerMensajeColumna("ViajePrincpal-Columna-Cancelado");
+            //columna.ReadOnly = true;
+            //columna.TrueValue = 1;
+            //columna.FalseValue = 0;
+            //ViajesPrincipalDataGrid.Columns.Add(columna);            ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID")].Visible = false;
+            ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-ViajeID")].Visible = false;
+            ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID")].Visible = false;
+            ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-BusID")].Visible = false;
 
             ViajesPrincipalDataGrid.MultiSelect = false;
             ViajesPrincipalDataGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
@@ -1005,9 +1012,22 @@ namespace BuenViaje
                 if (this.ViajesPrincipalText1.Text != "" && !(rutabl.Obtener(viaje.ID_Ruta).Nombre.Contains(this.ViajesPrincipalText2.Text)))                {
                     flag = false;
                 }
+                if (ViajesPrincipalCheckBox.Checked && !viaje.Cancelado)
+                {
+                    flag = false;
+                }
                 if (flag)
                 {
-                    ViajesPrincipalDataGrid.Rows.Add(viaje.ID_Viaje, viaje.ID_Ruta, viaje.ID_Bus, rutabl.Obtener(viaje.ID_Ruta).Nombre, busbl.Obtener(viaje.ID_Bus).Patente, viaje.Fecha.ToString(), viaje.Cancelado.ToString());
+                    string cancelado;
+                    if (viaje.Cancelado)
+                    {
+                        cancelado = IdiomaBL.ObtenerMensajeTextos("Cancelado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                    }
+                    else
+                    {
+                        cancelado = IdiomaBL.ObtenerMensajeTextos("No Cancelado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                    }
+                    ViajesPrincipalDataGrid.Rows.Add(viaje.ID_Viaje, viaje.ID_Ruta, viaje.ID_Bus, rutabl.Obtener(viaje.ID_Ruta).Nombre, busbl.Obtener(viaje.ID_Bus).Patente, viaje.Fecha, cancelado);
                 }
             }
         }

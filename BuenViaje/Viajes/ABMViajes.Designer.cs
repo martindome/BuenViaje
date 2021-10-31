@@ -32,16 +32,16 @@
             this.ViajeABMButton2 = new System.Windows.Forms.Button();
             this.ViajeABMButton1 = new System.Windows.Forms.Button();
             this.ViajeABMLabel1 = new System.Windows.Forms.Label();
-            this.ViajeABMLabel3 = new System.Windows.Forms.Label();
+            this.ViajeABMLabel4 = new System.Windows.Forms.Label();
             this.ViajeABMDatePickerDesdeHora = new System.Windows.Forms.DateTimePicker();
             this.ViajeABMDatePickerDesde = new System.Windows.Forms.DateTimePicker();
             this.ViajeABMCheckBox1 = new System.Windows.Forms.CheckBox();
             this.ViajeABMCombo2 = new System.Windows.Forms.ComboBox();
             this.ViajeABMLabel2 = new System.Windows.Forms.Label();
             this.ViajeABMCombo3 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ViajeABMLabel3 = new System.Windows.Forms.Label();
             this.ViajeABMDatePickerHasta = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
+            this.ViajeABMLabel5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ViajeABMCombo1
@@ -84,15 +84,15 @@
             this.ViajeABMLabel1.TabIndex = 49;
             this.ViajeABMLabel1.Text = "Ruta";
             // 
-            // ViajeABMLabel3
+            // ViajeABMLabel4
             // 
-            this.ViajeABMLabel3.AutoSize = true;
-            this.ViajeABMLabel3.Location = new System.Drawing.Point(9, 135);
-            this.ViajeABMLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ViajeABMLabel3.Name = "ViajeABMLabel3";
-            this.ViajeABMLabel3.Size = new System.Drawing.Size(37, 13);
-            this.ViajeABMLabel3.TabIndex = 46;
-            this.ViajeABMLabel3.Text = "Fecha";
+            this.ViajeABMLabel4.AutoSize = true;
+            this.ViajeABMLabel4.Location = new System.Drawing.Point(9, 135);
+            this.ViajeABMLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ViajeABMLabel4.Name = "ViajeABMLabel4";
+            this.ViajeABMLabel4.Size = new System.Drawing.Size(37, 13);
+            this.ViajeABMLabel4.TabIndex = 46;
+            this.ViajeABMLabel4.Text = "Fecha";
             // 
             // ViajeABMDatePickerDesdeHora
             // 
@@ -147,15 +147,15 @@
             this.ViajeABMCombo3.TabIndex = 63;
             this.ViajeABMCombo3.SelectedIndexChanged += new System.EventHandler(this.ViajeABMCombo3_SelectedIndexChanged);
             // 
-            // label1
+            // ViajeABMLabel3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 91);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 62;
-            this.label1.Text = "Tipo";
+            this.ViajeABMLabel3.AutoSize = true;
+            this.ViajeABMLabel3.Location = new System.Drawing.Point(14, 91);
+            this.ViajeABMLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ViajeABMLabel3.Name = "ViajeABMLabel3";
+            this.ViajeABMLabel3.Size = new System.Drawing.Size(28, 13);
+            this.ViajeABMLabel3.TabIndex = 62;
+            this.ViajeABMLabel3.Text = "Tipo";
             // 
             // ViajeABMDatePickerHasta
             // 
@@ -165,15 +165,15 @@
             this.ViajeABMDatePickerHasta.Size = new System.Drawing.Size(212, 20);
             this.ViajeABMDatePickerHasta.TabIndex = 65;
             // 
-            // label2
+            // ViajeABMLabel5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 177);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "Hasta";
+            this.ViajeABMLabel5.AutoSize = true;
+            this.ViajeABMLabel5.Location = new System.Drawing.Point(9, 177);
+            this.ViajeABMLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ViajeABMLabel5.Name = "ViajeABMLabel5";
+            this.ViajeABMLabel5.Size = new System.Drawing.Size(35, 13);
+            this.ViajeABMLabel5.TabIndex = 64;
+            this.ViajeABMLabel5.Text = "Hasta";
             // 
             // ABMViajes
             // 
@@ -181,9 +181,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 312);
             this.Controls.Add(this.ViajeABMDatePickerHasta);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ViajeABMLabel5);
             this.Controls.Add(this.ViajeABMCombo3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ViajeABMLabel3);
             this.Controls.Add(this.ViajeABMCombo2);
             this.Controls.Add(this.ViajeABMLabel2);
             this.Controls.Add(this.ViajeABMCheckBox1);
@@ -193,7 +193,7 @@
             this.Controls.Add(this.ViajeABMButton2);
             this.Controls.Add(this.ViajeABMButton1);
             this.Controls.Add(this.ViajeABMLabel1);
-            this.Controls.Add(this.ViajeABMLabel3);
+            this.Controls.Add(this.ViajeABMLabel4);
             this.Name = "ABMViajes";
             this.Text = "ViajesABM";
             this.Load += new System.EventHandler(this.ViajesABM_Load);
@@ -207,15 +207,15 @@
         private System.Windows.Forms.Button ViajeABMButton2;
         private System.Windows.Forms.Button ViajeABMButton1;
         private System.Windows.Forms.Label ViajeABMLabel1;
-        private System.Windows.Forms.Label ViajeABMLabel3;
+        private System.Windows.Forms.Label ViajeABMLabel4;
         private System.Windows.Forms.DateTimePicker ViajeABMDatePickerDesdeHora;
         private System.Windows.Forms.DateTimePicker ViajeABMDatePickerDesde;
         private System.Windows.Forms.CheckBox ViajeABMCheckBox1;
         private System.Windows.Forms.ComboBox ViajeABMCombo2;
         private System.Windows.Forms.Label ViajeABMLabel2;
         private System.Windows.Forms.ComboBox ViajeABMCombo3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ViajeABMLabel3;
         private System.Windows.Forms.DateTimePicker ViajeABMDatePickerHasta;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label ViajeABMLabel5;
     }
 }
