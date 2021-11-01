@@ -31,7 +31,7 @@ namespace BL
 
         public void Borrar (PasajeBE pasaje)
         {
-            PasajeDAL.Borrar(pasaje)
+            PasajeDAL.Borrar(pasaje);
         } 
     }
 }

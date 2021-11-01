@@ -78,7 +78,7 @@ namespace DAL
                 parameters.Add("@Viaje", pViaje.ID_Viaje);
                 parameters.Add("@Ruta", pViaje.ID_Ruta);
                 parameters.Add("@Bus", pViaje.ID_Bus);
-                parameters.Add("@Fecha", pViaje.Fecha);
+                parameters.Add("@Fecha", pViaje.Fecha.ToString());
                 parameters.Add("@Cancelado", pViaje.Cancelado);
                 parameters.Add("@DVH", DVH);
                 DAO.Instancia().ExecuteNonQuery(mCommand, parameters);
@@ -96,7 +96,7 @@ namespace DAL
                 parameters.Add("@Viaje", pViaje.ID_Viaje);
                 parameters.Add("@Ruta", pViaje.ID_Ruta);
                 parameters.Add("@Bus", pViaje.ID_Bus);
-                parameters.Add("@Fecha", pViaje.Fecha);
+                parameters.Add("@Fecha", pViaje.Fecha.ToString());
                 parameters.Add("@Cancelado", pViaje.Cancelado);
                 parameters.Add("@DVH", DVH);
                 DAO.Instancia().ExecuteNonQuery(mCommand, parameters);

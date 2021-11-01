@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,9 +57,32 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInicio = new System.Windows.Forms.TabPage();
             this.tabPagePasajes = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pasajesPrincipalButton6 = new System.Windows.Forms.Button();
+            this.pasajesPrincipalTextBox6 = new System.Windows.Forms.TextBox();
+            this.pasajesPrincipalLabel8 = new System.Windows.Forms.Label();
+            this.pasajesPrincipalButton3 = new System.Windows.Forms.Button();
+            this.pasajesPrincipalGroupBox2 = new System.Windows.Forms.GroupBox();
+            this.pasajesPrincipalDataGridViajes = new System.Windows.Forms.DataGridView();
+            this.pasajesPrincipalTextBox4 = new System.Windows.Forms.TextBox();
+            this.pasajesPrincipalButton2 = new System.Windows.Forms.Button();
+            this.pasajesPrincipalTextBox5 = new System.Windows.Forms.TextBox();
+            this.pasajeDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pasajesPrincipalLabel4 = new System.Windows.Forms.Label();
+            this.pasajeDateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.pasajesPrincipalLabel5 = new System.Windows.Forms.Label();
+            this.pasajesPrincipalLabel7 = new System.Windows.Forms.Label();
+            this.pasajesPrincipalLabe7 = new System.Windows.Forms.Label();
+            this.pasajesPrincipalGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.pasajesPrincipalDataGridClientes = new System.Windows.Forms.DataGridView();
+            this.pasajesPrincipalTextBox1 = new System.Windows.Forms.TextBox();
+            this.pasajesPrincipalTextBox2 = new System.Windows.Forms.TextBox();
+            this.pasajesPrincipalButton1 = new System.Windows.Forms.Button();
+            this.pasajesPrincipalTextBox3 = new System.Windows.Forms.TextBox();
+            this.pasajesPrincipalLabel3 = new System.Windows.Forms.Label();
+            this.pasajesPrincipalLabel1 = new System.Windows.Forms.Label();
+            this.pasajesPrincipalLabel2 = new System.Windows.Forms.Label();
+            this.pasajesPrincipalButton5 = new System.Windows.Forms.Button();
+            this.pasajesPrincipalButton4 = new System.Windows.Forms.Button();
             this.tabPageClientes = new System.Windows.Forms.TabPage();
             this.ClientesGroupBox1 = new System.Windows.Forms.GroupBox();
             this.ClientesLabel4 = new System.Windows.Forms.Label();
@@ -141,27 +164,13 @@
             this.busesButton1 = new System.Windows.Forms.Button();
             this.grillaBuses = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPagePasajes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pasajesPrincipalGroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pasajesPrincipalDataGridViajes)).BeginInit();
+            this.pasajesPrincipalGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pasajesPrincipalDataGridClientes)).BeginInit();
             this.tabPageClientes.SuspendLayout();
             this.ClientesGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaClientes)).BeginInit();
@@ -178,7 +187,6 @@
             this.busesGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaBuses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -189,7 +197,7 @@
             this.administracionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1155, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1158, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -288,7 +296,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1155, 580);
+            this.tabControl1.Size = new System.Drawing.Size(1158, 433);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
@@ -297,92 +305,330 @@
             this.tabPageInicio.BackColor = System.Drawing.Color.SteelBlue;
             this.tabPageInicio.Location = new System.Drawing.Point(4, 24);
             this.tabPageInicio.Name = "tabPageInicio";
-            this.tabPageInicio.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageInicio.Size = new System.Drawing.Size(1150, 355);
             this.tabPageInicio.TabIndex = 5;
             this.tabPageInicio.Text = "Inicio";
             // 
             // tabPagePasajes
             // 
             this.tabPagePasajes.BackColor = System.Drawing.Color.SteelBlue;
-            this.tabPagePasajes.Controls.Add(this.button2);
-            this.tabPagePasajes.Controls.Add(this.button1);
-            this.tabPagePasajes.Controls.Add(this.label7);
-            this.tabPagePasajes.Controls.Add(this.label6);
-            this.tabPagePasajes.Controls.Add(this.label5);
-            this.tabPagePasajes.Controls.Add(this.label4);
-            this.tabPagePasajes.Controls.Add(this.label3);
-            this.tabPagePasajes.Controls.Add(this.label1);
-            this.tabPagePasajes.Controls.Add(this.label2);
-            this.tabPagePasajes.Controls.Add(this.dateTimePicker1);
-            this.tabPagePasajes.Controls.Add(this.dateTimePicker2);
-            this.tabPagePasajes.Controls.Add(this.textBox5);
-            this.tabPagePasajes.Controls.Add(this.textBox4);
-            this.tabPagePasajes.Controls.Add(this.textBox3);
-            this.tabPagePasajes.Controls.Add(this.textBox2);
-            this.tabPagePasajes.Controls.Add(this.dataGridView2);
-            this.tabPagePasajes.Controls.Add(this.textBox1);
-            this.tabPagePasajes.Controls.Add(this.button5);
-            this.tabPagePasajes.Controls.Add(this.button6);
-            this.tabPagePasajes.Controls.Add(this.dataGridView1);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalButton6);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalTextBox6);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalLabel8);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalButton3);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalGroupBox2);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalGroupBox1);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalButton5);
+            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalButton4);
             this.tabPagePasajes.Location = new System.Drawing.Point(4, 24);
             this.tabPagePasajes.Name = "tabPagePasajes";
             this.tabPagePasajes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePasajes.Size = new System.Drawing.Size(1147, 552);
+            this.tabPagePasajes.Size = new System.Drawing.Size(1150, 405);
             this.tabPagePasajes.TabIndex = 0;
             this.tabPagePasajes.Text = "Pasajes";
             // 
-            // button5
+            // pasajesPrincipalButton6
             // 
-            this.button5.Location = new System.Drawing.Point(407, 370);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(153, 27);
-            this.button5.TabIndex = 38;
-            this.button5.Text = "Devolver Pasaje";
-            this.button5.UseVisualStyleBackColor = true;
+            this.pasajesPrincipalButton6.Location = new System.Drawing.Point(987, 301);
+            this.pasajesPrincipalButton6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalButton6.Name = "pasajesPrincipalButton6";
+            this.pasajesPrincipalButton6.Size = new System.Drawing.Size(153, 23);
+            this.pasajesPrincipalButton6.TabIndex = 61;
+            this.pasajesPrincipalButton6.Text = "Reporte";
+            this.pasajesPrincipalButton6.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // pasajesPrincipalTextBox6
             // 
-            this.button6.Location = new System.Drawing.Point(250, 370);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(153, 27);
-            this.button6.TabIndex = 37;
-            this.button6.Text = "Vender Pasaje";
-            this.button6.UseVisualStyleBackColor = true;
+            this.pasajesPrincipalTextBox6.Location = new System.Drawing.Point(485, 301);
+            this.pasajesPrincipalTextBox6.Name = "pasajesPrincipalTextBox6";
+            this.pasajesPrincipalTextBox6.Size = new System.Drawing.Size(100, 20);
+            this.pasajesPrincipalTextBox6.TabIndex = 58;
             // 
-            // dataGridView1
+            // pasajesPrincipalLabel8
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 67);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(459, 172);
-            this.dataGridView1.TabIndex = 36;
+            this.pasajesPrincipalLabel8.AutoSize = true;
+            this.pasajesPrincipalLabel8.Location = new System.Drawing.Point(430, 304);
+            this.pasajesPrincipalLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabel8.Name = "pasajesPrincipalLabel8";
+            this.pasajesPrincipalLabel8.Size = new System.Drawing.Size(52, 13);
+            this.pasajesPrincipalLabel8.TabIndex = 59;
+            this.pasajesPrincipalLabel8.Text = "Cantidad:";
+            // 
+            // pasajesPrincipalButton3
+            // 
+            this.pasajesPrincipalButton3.Location = new System.Drawing.Point(8, 297);
+            this.pasajesPrincipalButton3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalButton3.Name = "pasajesPrincipalButton3";
+            this.pasajesPrincipalButton3.Size = new System.Drawing.Size(153, 24);
+            this.pasajesPrincipalButton3.TabIndex = 60;
+            this.pasajesPrincipalButton3.Text = "Alta Cliente";
+            this.pasajesPrincipalButton3.UseVisualStyleBackColor = true;
+            this.pasajesPrincipalButton3.Click += new System.EventHandler(this.pasajesPrincipalButton3_Click);
+            // 
+            // pasajesPrincipalGroupBox2
+            // 
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalDataGridViajes);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalTextBox4);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalButton2);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalTextBox5);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajeDateTimePicker1);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalLabel4);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajeDateTimePicker2);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalLabel5);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalLabel7);
+            this.pasajesPrincipalGroupBox2.Controls.Add(this.pasajesPrincipalLabe7);
+            this.pasajesPrincipalGroupBox2.Location = new System.Drawing.Point(425, 6);
+            this.pasajesPrincipalGroupBox2.Name = "pasajesPrincipalGroupBox2";
+            this.pasajesPrincipalGroupBox2.Size = new System.Drawing.Size(715, 289);
+            this.pasajesPrincipalGroupBox2.TabIndex = 59;
+            this.pasajesPrincipalGroupBox2.TabStop = false;
+            this.pasajesPrincipalGroupBox2.Text = "Viajes";
+            // 
+            // pasajesPrincipalDataGridViajes
+            // 
+            this.pasajesPrincipalDataGridViajes.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.pasajesPrincipalDataGridViajes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.pasajesPrincipalDataGridViajes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.pasajesPrincipalDataGridViajes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pasajesPrincipalDataGridViajes.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.pasajesPrincipalDataGridViajes.DefaultCellStyle = dataGridViewCellStyle45;
+            this.pasajesPrincipalDataGridViajes.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pasajesPrincipalDataGridViajes.Location = new System.Drawing.Point(5, 58);
+            this.pasajesPrincipalDataGridViajes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalDataGridViajes.Name = "pasajesPrincipalDataGridViajes";
+            this.pasajesPrincipalDataGridViajes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.pasajesPrincipalDataGridViajes.RowHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            this.pasajesPrincipalDataGridViajes.RowHeadersWidth = 51;
+            this.pasajesPrincipalDataGridViajes.RowTemplate.Height = 24;
+            this.pasajesPrincipalDataGridViajes.Size = new System.Drawing.Size(703, 225);
+            this.pasajesPrincipalDataGridViajes.TabIndex = 41;
+            // 
+            // pasajesPrincipalTextBox4
+            // 
+            this.pasajesPrincipalTextBox4.Location = new System.Drawing.Point(14, 33);
+            this.pasajesPrincipalTextBox4.Name = "pasajesPrincipalTextBox4";
+            this.pasajesPrincipalTextBox4.Size = new System.Drawing.Size(100, 20);
+            this.pasajesPrincipalTextBox4.TabIndex = 44;
+            // 
+            // pasajesPrincipalButton2
+            // 
+            this.pasajesPrincipalButton2.Location = new System.Drawing.Point(630, 32);
+            this.pasajesPrincipalButton2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalButton2.Name = "pasajesPrincipalButton2";
+            this.pasajesPrincipalButton2.Size = new System.Drawing.Size(78, 20);
+            this.pasajesPrincipalButton2.TabIndex = 57;
+            this.pasajesPrincipalButton2.Text = "Buscar";
+            this.pasajesPrincipalButton2.UseVisualStyleBackColor = true;
+            this.pasajesPrincipalButton2.Click += new System.EventHandler(this.pasajesPrincipalButton2_Click);
+            // 
+            // pasajesPrincipalTextBox5
+            // 
+            this.pasajesPrincipalTextBox5.Location = new System.Drawing.Point(120, 33);
+            this.pasajesPrincipalTextBox5.Name = "pasajesPrincipalTextBox5";
+            this.pasajesPrincipalTextBox5.Size = new System.Drawing.Size(100, 20);
+            this.pasajesPrincipalTextBox5.TabIndex = 45;
+            // 
+            // pasajeDateTimePicker1
+            // 
+            this.pasajeDateTimePicker1.CustomFormat = "MM-dd-yy";
+            this.pasajeDateTimePicker1.Location = new System.Drawing.Point(226, 33);
+            this.pasajeDateTimePicker1.Name = "pasajeDateTimePicker1";
+            this.pasajeDateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.pasajeDateTimePicker1.TabIndex = 46;
+            // 
+            // pasajesPrincipalLabel4
+            // 
+            this.pasajesPrincipalLabel4.AutoSize = true;
+            this.pasajesPrincipalLabel4.Location = new System.Drawing.Point(11, 17);
+            this.pasajesPrincipalLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabel4.Name = "pasajesPrincipalLabel4";
+            this.pasajesPrincipalLabel4.Size = new System.Drawing.Size(38, 13);
+            this.pasajesPrincipalLabel4.TabIndex = 51;
+            this.pasajesPrincipalLabel4.Text = "Origen";
+            // 
+            // pasajeDateTimePicker2
+            // 
+            this.pasajeDateTimePicker2.CustomFormat = "MM-dd-yy";
+            this.pasajeDateTimePicker2.Location = new System.Drawing.Point(432, 33);
+            this.pasajeDateTimePicker2.Name = "pasajeDateTimePicker2";
+            this.pasajeDateTimePicker2.Size = new System.Drawing.Size(193, 20);
+            this.pasajeDateTimePicker2.TabIndex = 47;
+            // 
+            // pasajesPrincipalLabel5
+            // 
+            this.pasajesPrincipalLabel5.AutoSize = true;
+            this.pasajesPrincipalLabel5.Location = new System.Drawing.Point(117, 17);
+            this.pasajesPrincipalLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabel5.Name = "pasajesPrincipalLabel5";
+            this.pasajesPrincipalLabel5.Size = new System.Drawing.Size(43, 13);
+            this.pasajesPrincipalLabel5.TabIndex = 50;
+            this.pasajesPrincipalLabel5.Text = "Destino";
+            // 
+            // pasajesPrincipalLabel7
+            // 
+            this.pasajesPrincipalLabel7.AutoSize = true;
+            this.pasajesPrincipalLabel7.Location = new System.Drawing.Point(223, 17);
+            this.pasajesPrincipalLabel7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabel7.Name = "pasajesPrincipalLabel7";
+            this.pasajesPrincipalLabel7.Size = new System.Drawing.Size(38, 13);
+            this.pasajesPrincipalLabel7.TabIndex = 48;
+            this.pasajesPrincipalLabel7.Text = "Desde";
+            // 
+            // pasajesPrincipalLabe7
+            // 
+            this.pasajesPrincipalLabe7.AutoSize = true;
+            this.pasajesPrincipalLabe7.Location = new System.Drawing.Point(434, 17);
+            this.pasajesPrincipalLabe7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabe7.Name = "pasajesPrincipalLabe7";
+            this.pasajesPrincipalLabe7.Size = new System.Drawing.Size(35, 13);
+            this.pasajesPrincipalLabe7.TabIndex = 49;
+            this.pasajesPrincipalLabe7.Text = "Hasta";
+            // 
+            // pasajesPrincipalGroupBox1
+            // 
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalDataGridClientes);
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalTextBox1);
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalTextBox2);
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalButton1);
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalTextBox3);
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalLabel3);
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalLabel1);
+            this.pasajesPrincipalGroupBox1.Controls.Add(this.pasajesPrincipalLabel2);
+            this.pasajesPrincipalGroupBox1.Location = new System.Drawing.Point(8, 6);
+            this.pasajesPrincipalGroupBox1.Name = "pasajesPrincipalGroupBox1";
+            this.pasajesPrincipalGroupBox1.Size = new System.Drawing.Size(414, 289);
+            this.pasajesPrincipalGroupBox1.TabIndex = 58;
+            this.pasajesPrincipalGroupBox1.TabStop = false;
+            this.pasajesPrincipalGroupBox1.Text = "Clientes";
+            // 
+            // pasajesPrincipalDataGridClientes
+            // 
+            this.pasajesPrincipalDataGridClientes.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.pasajesPrincipalDataGridClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.pasajesPrincipalDataGridClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.pasajesPrincipalDataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pasajesPrincipalDataGridClientes.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.pasajesPrincipalDataGridClientes.DefaultCellStyle = dataGridViewCellStyle43;
+            this.pasajesPrincipalDataGridClientes.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pasajesPrincipalDataGridClientes.Location = new System.Drawing.Point(3, 59);
+            this.pasajesPrincipalDataGridClientes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalDataGridClientes.Name = "pasajesPrincipalDataGridClientes";
+            this.pasajesPrincipalDataGridClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.pasajesPrincipalDataGridClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle44;
+            this.pasajesPrincipalDataGridClientes.RowHeadersWidth = 51;
+            this.pasajesPrincipalDataGridClientes.RowTemplate.Height = 24;
+            this.pasajesPrincipalDataGridClientes.Size = new System.Drawing.Size(402, 224);
+            this.pasajesPrincipalDataGridClientes.TabIndex = 36;
+            // 
+            // pasajesPrincipalTextBox1
+            // 
+            this.pasajesPrincipalTextBox1.Location = new System.Drawing.Point(10, 33);
+            this.pasajesPrincipalTextBox1.Name = "pasajesPrincipalTextBox1";
+            this.pasajesPrincipalTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.pasajesPrincipalTextBox1.TabIndex = 40;
+            // 
+            // pasajesPrincipalTextBox2
+            // 
+            this.pasajesPrincipalTextBox2.Location = new System.Drawing.Point(116, 33);
+            this.pasajesPrincipalTextBox2.Name = "pasajesPrincipalTextBox2";
+            this.pasajesPrincipalTextBox2.Size = new System.Drawing.Size(100, 20);
+            this.pasajesPrincipalTextBox2.TabIndex = 42;
+            // 
+            // pasajesPrincipalButton1
+            // 
+            this.pasajesPrincipalButton1.Location = new System.Drawing.Point(327, 33);
+            this.pasajesPrincipalButton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalButton1.Name = "pasajesPrincipalButton1";
+            this.pasajesPrincipalButton1.Size = new System.Drawing.Size(78, 20);
+            this.pasajesPrincipalButton1.TabIndex = 55;
+            this.pasajesPrincipalButton1.Text = "Buscar";
+            this.pasajesPrincipalButton1.UseVisualStyleBackColor = true;
+            this.pasajesPrincipalButton1.Click += new System.EventHandler(this.pasajesPrincipalButton1_Click);
+            // 
+            // pasajesPrincipalTextBox3
+            // 
+            this.pasajesPrincipalTextBox3.Location = new System.Drawing.Point(222, 33);
+            this.pasajesPrincipalTextBox3.Name = "pasajesPrincipalTextBox3";
+            this.pasajesPrincipalTextBox3.Size = new System.Drawing.Size(100, 20);
+            this.pasajesPrincipalTextBox3.TabIndex = 43;
+            // 
+            // pasajesPrincipalLabel3
+            // 
+            this.pasajesPrincipalLabel3.AutoSize = true;
+            this.pasajesPrincipalLabel3.Location = new System.Drawing.Point(221, 17);
+            this.pasajesPrincipalLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabel3.Name = "pasajesPrincipalLabel3";
+            this.pasajesPrincipalLabel3.Size = new System.Drawing.Size(26, 13);
+            this.pasajesPrincipalLabel3.TabIndex = 54;
+            this.pasajesPrincipalLabel3.Text = "DNI";
+            // 
+            // pasajesPrincipalLabel1
+            // 
+            this.pasajesPrincipalLabel1.AutoSize = true;
+            this.pasajesPrincipalLabel1.Location = new System.Drawing.Point(9, 17);
+            this.pasajesPrincipalLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabel1.Name = "pasajesPrincipalLabel1";
+            this.pasajesPrincipalLabel1.Size = new System.Drawing.Size(44, 13);
+            this.pasajesPrincipalLabel1.TabIndex = 52;
+            this.pasajesPrincipalLabel1.Text = "Nombre";
+            // 
+            // pasajesPrincipalLabel2
+            // 
+            this.pasajesPrincipalLabel2.AutoSize = true;
+            this.pasajesPrincipalLabel2.Location = new System.Drawing.Point(113, 17);
+            this.pasajesPrincipalLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pasajesPrincipalLabel2.Name = "pasajesPrincipalLabel2";
+            this.pasajesPrincipalLabel2.Size = new System.Drawing.Size(44, 13);
+            this.pasajesPrincipalLabel2.TabIndex = 53;
+            this.pasajesPrincipalLabel2.Text = "Apellido";
+            // 
+            // pasajesPrincipalButton5
+            // 
+            this.pasajesPrincipalButton5.Location = new System.Drawing.Point(830, 301);
+            this.pasajesPrincipalButton5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalButton5.Name = "pasajesPrincipalButton5";
+            this.pasajesPrincipalButton5.Size = new System.Drawing.Size(153, 23);
+            this.pasajesPrincipalButton5.TabIndex = 38;
+            this.pasajesPrincipalButton5.Text = "Devoluciones";
+            this.pasajesPrincipalButton5.UseVisualStyleBackColor = true;
+            // 
+            // pasajesPrincipalButton4
+            // 
+            this.pasajesPrincipalButton4.Location = new System.Drawing.Point(590, 297);
+            this.pasajesPrincipalButton4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pasajesPrincipalButton4.Name = "pasajesPrincipalButton4";
+            this.pasajesPrincipalButton4.Size = new System.Drawing.Size(153, 27);
+            this.pasajesPrincipalButton4.TabIndex = 37;
+            this.pasajesPrincipalButton4.Text = "Vender Pasaje";
+            this.pasajesPrincipalButton4.UseVisualStyleBackColor = true;
             // 
             // tabPageClientes
             // 
@@ -396,7 +642,7 @@
             this.tabPageClientes.Location = new System.Drawing.Point(4, 24);
             this.tabPageClientes.Name = "tabPageClientes";
             this.tabPageClientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageClientes.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageClientes.Size = new System.Drawing.Size(1150, 355);
             this.tabPageClientes.TabIndex = 1;
             this.tabPageClientes.Text = "Clientes";
             this.tabPageClientes.Click += new System.EventHandler(this.tabPageClientes_Click);
@@ -557,27 +803,27 @@
             this.grillaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaClientes.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grillaClientes.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaClientes.DefaultCellStyle = dataGridViewCellStyle47;
             this.grillaClientes.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.grillaClientes.Location = new System.Drawing.Point(7, 6);
             this.grillaClientes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaClientes.Name = "grillaClientes";
             this.grillaClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
             this.grillaClientes.RowHeadersWidth = 51;
             this.grillaClientes.RowTemplate.Height = 24;
             this.grillaClientes.Size = new System.Drawing.Size(521, 289);
@@ -594,7 +840,7 @@
             this.tabPageViajes.Controls.Add(this.ViajesPrincipalDataGrid);
             this.tabPageViajes.Location = new System.Drawing.Point(4, 24);
             this.tabPageViajes.Name = "tabPageViajes";
-            this.tabPageViajes.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageViajes.Size = new System.Drawing.Size(1150, 405);
             this.tabPageViajes.TabIndex = 2;
             this.tabPageViajes.Text = "Viajes";
             // 
@@ -787,27 +1033,27 @@
             this.ViajesPrincipalDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.ViajesPrincipalDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ViajesPrincipalDataGrid.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ViajesPrincipalDataGrid.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ViajesPrincipalDataGrid.DefaultCellStyle = dataGridViewCellStyle49;
             this.ViajesPrincipalDataGrid.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.ViajesPrincipalDataGrid.Location = new System.Drawing.Point(19, 14);
             this.ViajesPrincipalDataGrid.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ViajesPrincipalDataGrid.Name = "ViajesPrincipalDataGrid";
             this.ViajesPrincipalDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ViajesPrincipalDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ViajesPrincipalDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle50;
             this.ViajesPrincipalDataGrid.RowHeadersWidth = 51;
             this.ViajesPrincipalDataGrid.RowTemplate.Height = 24;
             this.ViajesPrincipalDataGrid.Size = new System.Drawing.Size(521, 314);
@@ -824,10 +1070,9 @@
             this.tabPageRutas.Controls.Add(this.dataGridRutas);
             this.tabPageRutas.Location = new System.Drawing.Point(4, 24);
             this.tabPageRutas.Name = "tabPageRutas";
-            this.tabPageRutas.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageRutas.Size = new System.Drawing.Size(1150, 355);
             this.tabPageRutas.TabIndex = 3;
             this.tabPageRutas.Text = "Rutas";
-            this.tabPageRutas.Click += new System.EventHandler(this.tabPageRutas_Click);
             // 
             // RutasGroupBox
             // 
@@ -949,27 +1194,27 @@
             this.dataGridRutas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridRutas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRutas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridRutas.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridRutas.DefaultCellStyle = dataGridViewCellStyle51;
             this.dataGridRutas.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridRutas.Location = new System.Drawing.Point(7, 3);
             this.dataGridRutas.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridRutas.Name = "dataGridRutas";
             this.dataGridRutas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridRutas.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridRutas.RowHeadersDefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridRutas.RowHeadersWidth = 51;
             this.dataGridRutas.RowTemplate.Height = 24;
             this.dataGridRutas.Size = new System.Drawing.Size(521, 289);
@@ -986,7 +1231,7 @@
             this.tabPageLocalidades.Controls.Add(this.grillaLocalidad);
             this.tabPageLocalidades.Location = new System.Drawing.Point(4, 24);
             this.tabPageLocalidades.Name = "tabPageLocalidades";
-            this.tabPageLocalidades.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageLocalidades.Size = new System.Drawing.Size(1150, 355);
             this.tabPageLocalidades.TabIndex = 4;
             this.tabPageLocalidades.Text = "Localidades";
             this.tabPageLocalidades.Click += new System.EventHandler(this.tabPageLocalidades_Click);
@@ -1128,27 +1373,27 @@
             this.grillaLocalidad.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaLocalidad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaLocalidad.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grillaLocalidad.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaLocalidad.DefaultCellStyle = dataGridViewCellStyle53;
             this.grillaLocalidad.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.grillaLocalidad.Location = new System.Drawing.Point(7, 3);
             this.grillaLocalidad.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaLocalidad.Name = "grillaLocalidad";
             this.grillaLocalidad.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaLocalidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaLocalidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
             this.grillaLocalidad.RowHeadersWidth = 51;
             this.grillaLocalidad.RowTemplate.Height = 24;
             this.grillaLocalidad.Size = new System.Drawing.Size(521, 289);
@@ -1165,7 +1410,7 @@
             this.tabPageBuses.Controls.Add(this.grillaBuses);
             this.tabPageBuses.Location = new System.Drawing.Point(4, 24);
             this.tabPageBuses.Name = "tabPageBuses";
-            this.tabPageBuses.Size = new System.Drawing.Size(1147, 552);
+            this.tabPageBuses.Size = new System.Drawing.Size(1150, 355);
             this.tabPageBuses.TabIndex = 6;
             this.tabPageBuses.Text = "Buses";
             // 
@@ -1306,212 +1551,38 @@
             this.grillaBuses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grillaBuses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaBuses.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grillaBuses.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaBuses.DefaultCellStyle = dataGridViewCellStyle55;
             this.grillaBuses.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.grillaBuses.Location = new System.Drawing.Point(7, 3);
             this.grillaBuses.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grillaBuses.Name = "grillaBuses";
             this.grillaBuses.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaBuses.RowHeadersDefaultCellStyle = dataGridViewCellStyle56;
             this.grillaBuses.RowHeadersWidth = 51;
             this.grillaBuses.RowTemplate.Height = 24;
             this.grillaBuses.Size = new System.Drawing.Size(521, 289);
             this.grillaBuses.TabIndex = 24;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(8, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 40;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView2.Location = new System.Drawing.Point(468, 67);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(677, 172);
-            this.dataGridView2.TabIndex = 41;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(114, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 42;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(220, 41);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 43;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(477, 41);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 44;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(583, 41);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 45;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(897, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "Hasta";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(686, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Desde";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "MM-dd-yy";
-            this.dateTimePicker1.Location = new System.Drawing.Point(895, 41);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 47;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "MM-dd-yy";
-            this.dateTimePicker2.Location = new System.Drawing.Point(689, 41);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 46;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(580, 25);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 50;
-            this.label3.Text = "Desde";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(474, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "Desde";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 25);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "Desde";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(111, 25);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 53;
-            this.label6.Text = "Desde";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(219, 25);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 54;
-            this.label7.Text = "Desde";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(325, 41);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 20);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "Vender Pasaje";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(521, 266);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 20);
-            this.button2.TabIndex = 56;
-            this.button2.Text = "Vender Pasaje";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1155, 604);
+            this.ClientSize = new System.Drawing.Size(1158, 457);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -1524,7 +1595,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPagePasajes.ResumeLayout(false);
             this.tabPagePasajes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.pasajesPrincipalGroupBox2.ResumeLayout(false);
+            this.pasajesPrincipalGroupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pasajesPrincipalDataGridViajes)).EndInit();
+            this.pasajesPrincipalGroupBox1.ResumeLayout(false);
+            this.pasajesPrincipalGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pasajesPrincipalDataGridClientes)).EndInit();
             this.tabPageClientes.ResumeLayout(false);
             this.ClientesGroupBox1.ResumeLayout(false);
             this.ClientesGroupBox1.PerformLayout();
@@ -1546,7 +1622,6 @@
             this.busesGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaBuses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1648,26 +1723,32 @@
         private System.Windows.Forms.DateTimePicker ViajeDatePickerHasta;
         private System.Windows.Forms.DateTimePicker ViajeDatePickerDesde;
         private System.Windows.Forms.CheckBox ViajesPrincipalCheckBox;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button pasajesPrincipalButton5;
+        private System.Windows.Forms.Button pasajesPrincipalButton4;
+        private System.Windows.Forms.DataGridView pasajesPrincipalDataGridClientes;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox pasajesPrincipalTextBox5;
+        private System.Windows.Forms.TextBox pasajesPrincipalTextBox4;
+        private System.Windows.Forms.TextBox pasajesPrincipalTextBox3;
+        private System.Windows.Forms.TextBox pasajesPrincipalTextBox2;
+        private System.Windows.Forms.DataGridView pasajesPrincipalDataGridViajes;
+        private System.Windows.Forms.TextBox pasajesPrincipalTextBox1;
+        private System.Windows.Forms.Label pasajesPrincipalLabe7;
+        private System.Windows.Forms.Label pasajesPrincipalLabel7;
+        private System.Windows.Forms.DateTimePicker pasajeDateTimePicker2;
+        private System.Windows.Forms.DateTimePicker pasajeDateTimePicker1;
+        private System.Windows.Forms.Button pasajesPrincipalButton1;
+        private System.Windows.Forms.Label pasajesPrincipalLabel3;
+        private System.Windows.Forms.Label pasajesPrincipalLabel2;
+        private System.Windows.Forms.Label pasajesPrincipalLabel1;
+        private System.Windows.Forms.Label pasajesPrincipalLabel4;
+        private System.Windows.Forms.Label pasajesPrincipalLabel5;
+        private System.Windows.Forms.GroupBox pasajesPrincipalGroupBox2;
+        private System.Windows.Forms.Button pasajesPrincipalButton2;
+        private System.Windows.Forms.GroupBox pasajesPrincipalGroupBox1;
+        private System.Windows.Forms.TextBox pasajesPrincipalTextBox6;
+        private System.Windows.Forms.Label pasajesPrincipalLabel8;
+        private System.Windows.Forms.Button pasajesPrincipalButton3;
+        private System.Windows.Forms.Button pasajesPrincipalButton6;
     }
 }
