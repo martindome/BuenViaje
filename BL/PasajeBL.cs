@@ -19,13 +19,34 @@ namespace BL
             return PasajeDAL.ListarCliente(pId);
         }
 
+        public List<PasajeBE> ListarClienteDevueltos(int pId)
+        {
+            return PasajeDAL.ListarClienteDevueltos(pId);
+        }
+
+        public List<PasajeBE> ListarViaje(int pId)
+        {
+            return PasajeDAL.ListarViaje(pId);
+        }
+
+        public List<PasajeBE> ListarViajeDevueltos(int pId)
+        {
+            return PasajeDAL.ListarViajeDevueltos(pId);
+        }
+
         public PasajeBE Obtener(int pId)
         {
             return PasajeDAL.Obtener(pId);
         }
 
-        public void Guardar(PasajeBE pasaje)
+        public void Vender(PasajeBE pasaje)
         {
+            PasajeDAL.Guardar(pasaje);
+        }
+
+        public void Devolver(PasajeBE pasaje)
+        {
+            pasaje.Devuelto = true;
             PasajeDAL.Guardar(pasaje);
         }
 

@@ -19,6 +19,7 @@ using BuenViaje.Buses;
 using BuenViaje.Clientes;
 using BuenViaje.Rutas;
 using BuenViaje.Viajes;
+using BuenViaje.Pasajes;
 using BE.Composite;
 
 namespace BuenViaje
@@ -1163,6 +1164,7 @@ namespace BuenViaje
             pasajesPrincipalDataGridViajes.Columns.Add(ObtenerMensajeColumna("PasajePrincipal-Columna-Origen"), ObtenerMensajeColumna("PasajePrincipal-Columna-Origen"));
             pasajesPrincipalDataGridViajes.Columns.Add(ObtenerMensajeColumna("PasajePrincipal-Columna-Destino"), ObtenerMensajeColumna("PasajePrincipal-Columna-Destino"));
             pasajesPrincipalDataGridViajes.Columns.Add(ObtenerMensajeColumna("PasajePrincipal-Columna-Fecha"), ObtenerMensajeColumna("PasajePrincipal-Columna-Fecha"));
+            pasajesPrincipalDataGridViajes.Columns.Add(ObtenerMensajeColumna("PasajePrincipal-Columna-Disponibles"), ObtenerMensajeColumna("PasajePrincipal-Columna-Disponibles"));
             pasajesPrincipalDataGridViajes.Columns[ObtenerMensajeColumna("PasajePrincipal-Columna-ViajeID")].Visible = false;
             pasajesPrincipalDataGridViajes.Columns[ObtenerMensajeColumna("PasajePrincipal-Columna-RutaID")].Visible = false;
             pasajesPrincipalDataGridViajes.Columns[ObtenerMensajeColumna("PasajePrincipal-Columna-BusID")].Visible = false;
@@ -1210,10 +1212,16 @@ namespace BuenViaje
             ViajeBL viajebl = new ViajeBL();
             BusBL busbl = new BusBL();
             RutaBL rutabl = new RutaBL();
+            PasajeBL pasajebl = new PasajeBL();
             DateTime Desde = pasajeDateTimePicker1.Value.Date;
             DateTime Hasta = pasajeDateTimePicker2.Value.Date;
             foreach (ViajeBE viaje in viajebl.Listar(Desde, Hasta))
             {
+                List<PasajeBE> PasajesViaje = pasajebl.ListarViaje(viaje.ID_Viaje);
+                BusBE bus = busbl.Obtener(viaje.ID_Bus);
+                int Disponibles = bus.Asientos - PasajesViaje.Count;
+
+
                 bool flag = true;
                 RutaBE rutabe = rutabl.Obtener(viaje.ID_Ruta);
                 //if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
@@ -1229,7 +1237,7 @@ namespace BuenViaje
 
                 if (flag)
                 {
-                    pasajesPrincipalDataGridViajes.Rows.Add(viaje.ID_Viaje, viaje.ID_Ruta, viaje.ID_Bus, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, viaje.Fecha);
+                    pasajesPrincipalDataGridViajes.Rows.Add(viaje.ID_Viaje, viaje.ID_Ruta, viaje.ID_Bus, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, viaje.Fecha, Disponibles);
                 }
             }
         }
@@ -1268,7 +1276,7 @@ namespace BuenViaje
                 abmcliente.operacion = Operacion.Alta;
                 abmcliente.clientebe = new ClienteBE();
                 abmcliente.ShowDialog();
-                ActualizarGrillaClientes();
+                ActualizarGrillasPasajeCliente();
             }
             else
             {
@@ -1284,7 +1292,79 @@ namespace BuenViaje
             ActualizarGrillasPasajeViajes();
         }
 
+        private void pasajesPrincipalButton4_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.VendedorPasajes))
+            {
+                try
+                {
+                    BusBL busbl = new BusBL();
+                    PasajeBL pasajebl = new PasajeBL();
+                    ViajeBL viajebl = new ViajeBL();
+                    ViajeBE viaje = viajebl.Obtener(int.Parse(pasajesPrincipalDataGridViajes.SelectedRows[0].Cells[0].Value.ToString()));
+                    BusBE bus = busbl.Obtener(viaje.ID_Bus);
+                    if (int.Parse(pasajesPrincipalTextBox6.Text) > 7 || int.Parse(pasajesPrincipalDataGridViajes.SelectedRows[0].Cells[6].Value.ToString()) - int.Parse(pasajesPrincipalTextBox6.Text) < 0)
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("PasajePrincipal-Error-CantidadPasaje", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < int.Parse(pasajesPrincipalTextBox6.Text); i++) {
+                            PasajeBE pasaje = new PasajeBE();
+                            pasaje.ID_Cliente = int.Parse(pasajesPrincipalDataGridClientes.SelectedRows[0].Cells[0].Value.ToString());
+                            pasaje.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                            pasaje.Devuelto = false;
+                            pasaje.ID_Viaje = viaje.ID_Viaje;
+                            pasaje.Fecha = DateTime.Now;
+                            pasajebl.Vender(pasaje);
+                            //Bitacora
+                            BitacoraBL Bitacorabl = new BitacoraBL();
+                            BitacoraBE mBitacora = new BitacoraBE();
+                            mBitacora.Descripcion = "Comprado pasaje: " + pasaje.ID_Pasaje;
+                            mBitacora.Fecha = DateTime.Now;
+                            mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                            mBitacora.Tipo_Evento = "MEDIUM";
+                            Bitacorabl.Guardar(mBitacora);
+                        }
+                    }
+                    ActualizarGrillasPasajeViajes();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("PasajePrincipal-Error-VentaPasaje", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Clientes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pasajesPrincipalButton5_Click(object sender, EventArgs e)
+        {
+            if (SingletonSesion.Instancia.VerificarPermiso(TipoPermiso.VendedorPasajes))
+            {
+                DevolucionPasajes formPasajes = new DevolucionPasajes();
+                
+                formPasajes.clientebe = new ClienteBL().Obtener(int.Parse(pasajesPrincipalDataGridClientes.SelectedRows[0].Cells[0].Value.ToString()));
+                formPasajes.ShowDialog();
+                ActualizarGrillasPasajeViajes();
+            }
+            else
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("UsuarioPrincipal-Clientes-AccesoDenegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
         #endregion Pasajes
 
+        private void tabPagePasajes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

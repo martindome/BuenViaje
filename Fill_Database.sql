@@ -195,6 +195,25 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMViajes-Confirmacion-Baja','Are you sure to cancel the trip?'),
 (1, 'ABMViajes-Error-Aplicar','An error occured while applying the changes')
 
+--Pasaje principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'PasajePrincipal-Columna-ViajeID', 'IDViaje'),
+(1, 'PasajePrincipal-Columna-RutaID','IDRuta'),
+(1, 'PasajePrincipal-Columna-BusID','IDBus'),
+(1, 'PasajePrincipal-Columna-Origen','From'),
+(1, 'PasajePrincipal-Columna-Destino', 'To'),
+(1, 'PasajePrincipal-Columna-Fecha', 'Date'),
+(1, 'PasajePrincipal-Columna-Disponibles', 'Available'),
+(1, 'PasajePrincipal-Error-CantidadPasaje', 'Wrong amount of seats required'),
+(1, 'PasajePrincipal-Error-VentaPasaje', 'An error ocurred while trying to sell a ticket')
+
+---Devolucion
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'Devolucion-Form', 'Tickets'),
+(1, 'PasajePrincipal-Columna-PasajeID', 'IDPasaje'),
+(1, 'Devolucion-Info-Correcta', 'Ticket returned correctly'),
+(1, 'Devolucion-Error-Exception', 'An error occured while returning the ticket')
+
 ---------- ESPANIOL
 
 ----Inicio
@@ -382,6 +401,25 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMViaje-Validacion-Bus','Bus en uso para otro viaje'),
 (2, 'ABMViajes-Confirmacion-Baja','Esta seguro de que quiere cancelar el viaje?'),
 (2, 'ABMViajes-Error-Aplicar','Un error ocurrio al aplicar los cambios')
+
+--Pasaje principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'PasajePrincipal-Columna-ViajeID', 'IDViaje'),
+(2, 'PasajePrincipal-Columna-RutaID','IDRuta'),
+(2, 'PasajePrincipal-Columna-BusID','IDBus'),
+(2, 'PasajePrincipal-Columna-Origen','Desde'),
+(2, 'PasajePrincipal-Columna-Destino', 'Hasta'),
+(2, 'PasajePrincipal-Columna-Fecha', 'Fecha'),
+(2, 'PasajePrincipal-Columna-Disponibles', 'Disponibles'),
+(2, 'PasajePrincipal-Error-CantidadPasaje', 'Cantidad de asientos incorrecta'),
+(2, 'PasajePrincipal-Error-VentaPasaje', 'Un error ocurrio al intenter vender el pasaje')
+
+---Devolucion
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'Devolucion-Form', 'Pasajes'),
+(2, 'PasajePrincipal-Columna-PasajeID', 'IDPasaje'),
+(2, 'Devolucion-Info-Correcta', 'Ticket devuelto correctamente'),
+(2, 'Devolucion-Error-Exception', 'Un error ocurrio al intentar devolver un pasaje')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -616,6 +654,29 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'ViajeABMButton1', 'Apply'),
 (1, 'ViajeABMButton2', 'Cancel')
 
+---Pasajes Principa;
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'pasajesPrincipalButton1', 'Search'),
+(1, 'pasajesPrincipalButton2', 'Search'),
+(1, 'pasajesPrincipalButton3', 'New Client'),
+(1, 'pasajesPrincipalButton4', 'Sell ticket'),
+(1, 'pasajesPrincipalButton5', 'Returns'),
+(1, 'pasajesPrincipalLabel1', 'Name'),
+(1, 'pasajesPrincipalLabel2', 'Surname'),
+(1, 'pasajesPrincipalLabel3', 'ID'),
+(1, 'pasajesPrincipalLabel4', 'From'),
+(1, 'pasajesPrincipalLabel5', 'To'),
+(1, 'pasajesPrincipalLabel7', 'Since'),
+(1, 'pasajesPrincipalLabel6', 'Until'),
+(1, 'pasajesPrincipalLabel8', 'Amount'),
+(1, 'pasajesPrincipalGroupBox1', 'Clients'),
+(1, 'pasajesPrincipalGroupBox2', 'Trips')
+
+---Devoluciones
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'DevolucionText1', 'Return'),
+(1, 'DevolucionText2', 'Exit')
+
 ----ResetPasswrd
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'CambiarPasswordLabel1', 'Nombre de usuario'),
@@ -842,6 +903,29 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'ViajeABMCheckBox1', 'Cancelar'),
 (2, 'ViajeABMButton1', 'Aplicar'),
 (2, 'ViajeABMButton2', 'Cancelar')
+
+---Pasajes Principa;
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'pasajesPrincipalButton1', 'Buscar'),
+(2, 'pasajesPrincipalButton2', 'Buscar'),
+(2, 'pasajesPrincipalButton3', 'Nuevo Cliente'),
+(2, 'pasajesPrincipalButton4', 'Vender Pasaje'),
+(2, 'pasajesPrincipalButton5', 'Devoluciones'),
+(2, 'pasajesPrincipalLabel1', 'Nombre'),
+(2, 'pasajesPrincipalLabel2', 'Apellido'),
+(2, 'pasajesPrincipalLabel3', 'ID'),
+(2, 'pasajesPrincipalLabel4', 'Desde'),
+(2, 'pasajesPrincipalLabel5', 'Hsta'),
+(2, 'pasajesPrincipalLabel7', 'Desde'),
+(2, 'pasajesPrincipalLabel6', 'Hasta'),
+(2, 'pasajesPrincipalLabel8', 'Cantidad'),
+(2, 'pasajesPrincipalGroupBox1', 'Clientes'),
+(2, 'pasajesPrincipalGroupBox2', 'Viajes')
+
+---Devoluciones
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'DevolucionText1', 'Devolver'),
+(2, 'DevolucionText2', 'Salir')
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

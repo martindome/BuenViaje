@@ -16,7 +16,7 @@ namespace DAL
         public static List<PasajeBE> Listar()
         {
             List<PasajeBE> Lista = new List<PasajeBE>();
-            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, FROM Pasaje as b";
+            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, b.Devuelto FROM Pasaje as b";
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -31,11 +31,10 @@ namespace DAL
             }
             return Lista;
         }
-
         public static List<PasajeBE> ListarCliente(int pId)
         {
             List<PasajeBE> Lista = new List<PasajeBE>();
-            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, FROM Pasaje as b where b.ID_Cliente = " + pId;
+            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, b.Devuelto FROM Pasaje as b where b.ID_Cliente = " + pId;
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -50,10 +49,67 @@ namespace DAL
             }
             return Lista;
         }
+        public static List<PasajeBE> ListarClienteDevueltos(int pId)
+        {
+            List<PasajeBE> Lista = new List<PasajeBE>();
+            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, b.Devuelto FROM Pasaje as b where b.ID_Cliente = " + pId;
+            DataSet mDataSet = new DataSet();
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow mRow in mDataSet.Tables[0].Rows)
+                {
+                    PasajeBE mPasaje = new PasajeBE();
+                    ValorizarEntidad(mPasaje, mRow);
+                    if (!mPasaje.Devuelto)
+                    {
+                        Lista.Add(mPasaje);
+                    }
 
+                }
+            }
+            return Lista;
+        }
+        public static List<PasajeBE> ListarViaje(int pId)
+        {
+            List<PasajeBE> Lista = new List<PasajeBE>();
+            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, b.Devuelto FROM Pasaje as b where b.ID_Viaje = " + pId;
+            DataSet mDataSet = new DataSet();
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow mRow in mDataSet.Tables[0].Rows)
+                {
+                    PasajeBE mPasaje = new PasajeBE();
+                    ValorizarEntidad(mPasaje, mRow);
+                    if (!mPasaje.Devuelto)
+                    {
+                        Lista.Add(mPasaje);
+                    }
+                }
+            }
+            return Lista;
+        }
+        public static List<PasajeBE> ListarViajeDevueltos(int pId)
+        {
+            List<PasajeBE> Lista = new List<PasajeBE>();
+            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, b.Devuelto FROM Pasaje as b where b.ID_Viaje = " + pId;
+            DataSet mDataSet = new DataSet();
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
+            if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow mRow in mDataSet.Tables[0].Rows)
+                {
+                    PasajeBE mPasaje = new PasajeBE();
+                    ValorizarEntidad(mPasaje, mRow);
+                    Lista.Add(mPasaje);
+                }
+            }
+            return Lista;
+        }
         public static PasajeBE Obtener(int pId)
         {
-            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, FROM Pasaje as b where b.ID_Pasaje = " + pId;
+            string mCommand = "SELECT b.ID_Pasaje, b.ID_Usuario, b.ID_Viaje, b.ID_Cliente, b.Fecha, b.Devuelto FROM Pasaje as b where b.ID_Pasaje = " + pId;
             DataSet mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
@@ -69,11 +125,10 @@ namespace DAL
         public static void Guardar(PasajeBE pPasaje)
         {
             string mCommand = "";
-            if (pPasaje.ID_Viaje == 0)
+            if (pPasaje.ID_Pasaje == 0)
             {
-                pPasaje.ID_Viaje = ProximoId();
+                pPasaje.ID_Pasaje = ProximoId();
                 string DVH = mIntegridad.CalcularDVH(pPasaje.ID_Pasaje.ToString() + pPasaje.ID_Usuario.ToString()  + pPasaje.ID_Viaje.ToString() + pPasaje.ID_Cliente.ToString() + pPasaje.Fecha.ToString() + pPasaje.Devuelto.ToString());
-                //mCommand = "INSERT INTO Viaje(ID_Viaje, ID_Ruta, ID_Bus, Fecha, Cancelado, DVH) VALUES (" + pViaje.ID_Viaje + ", " + pViaje.ID_Ruta + ", " + pViaje.ID_Bus + ", '" + pViaje.Fecha.ToString() + "', " + pViaje.Cancelado + ", '" + DVH + "')";
                 mCommand = "INSERT INTO Pasaje(ID_Pasaje, ID_Usuario, ID_Viaje, ID_Cliente, Fecha, Devuelto, DVH) VALUES (@Pasaje, @Usuario, @Viaje, @Cliente, @Fecha, @Devuelto, @DVH)";
                 Dictionary<string, Object> parameters = new Dictionary<string, Object>();
                 parameters.Add("@Pasaje", pPasaje.ID_Pasaje);
@@ -88,11 +143,6 @@ namespace DAL
             else
             {
                 string DVH = mIntegridad.CalcularDVH(pPasaje.ID_Pasaje.ToString() + pPasaje.ID_Usuario.ToString() + pPasaje.ID_Viaje.ToString() + pPasaje.ID_Cliente.ToString() + pPasaje.Fecha.ToString() + pPasaje.Devuelto.ToString());
-                //mCommand = "Update Usuario SET ID_Ruta = " + pViaje.ID_Ruta
-                //    + ", ID_Bus = " + pViaje.ID_Bus
-                //    + ", Fecha = '" + pViaje.Fecha.ToString()
-                //    + "', Cancelado = " + pViaje.Cancelado
-                //    + ", DVH = '" + DVH + "' WHERE ID_Viaje =" + pViaje.ID_Viaje;
                 mCommand = "UPDATE Pasaje SET ID_Usuario = @Usuario, ID_Viaje = @Viaje, ID_Cliente = @Cliente, Fecha = @Fecha, Devuelto = @Devuelto, DVH = @DVH WHERE ID_Pasaje = @Pasaje";
                 Dictionary<string, Object> parameters = new Dictionary<string, Object>();
                 parameters.Add("@Pasaje", pPasaje.ID_Pasaje);
@@ -107,15 +157,12 @@ namespace DAL
             }
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Pasaje"), "Pasaje");
         }
-
         public static void Borrar(PasajeBE pPasaje)
         {
             string mCommandText = "DELETE Pasaje WHERE ID_Pasaje = " + pPasaje.ID_Pasaje;
             DAO.Instancia().ExecuteNonQuery(mCommandText);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Pasaje"), "Pasaje");
         }
-
-
         private static void ValorizarEntidad(PasajeBE pPasaje, DataRow pDataRow)
         {
             pPasaje.ID_Pasaje = int.Parse(pDataRow["ID_Pasaje"].ToString());
@@ -123,9 +170,8 @@ namespace DAL
             pPasaje.ID_Usuario = int.Parse(pDataRow["ID_Usuario"].ToString());
             pPasaje.ID_Cliente = int.Parse(pDataRow["ID_Cliente"].ToString());
             pPasaje.Fecha = DateTime.Parse(pDataRow["Fecha"].ToString());
-            pPasaje.Devuelto = (bool)pDataRow["Cancelado"];
+            pPasaje.Devuelto = (bool)pDataRow["Devuelto"];
         }
-
         private static int ProximoId()
         {
             if (mId == 0)
