@@ -17,6 +17,7 @@ namespace BuenViaje
         LoginBL Loginbl = new LoginBL();
         UsuarioBL Usuariobl = new UsuarioBL();
         string mIdioma;
+        private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
 
         public Login()
         {
@@ -71,6 +72,44 @@ namespace BuenViaje
                 LoginComboBox1.Items.Add(mIdioma.Descripcion);
             }
             LoginComboBox1.SelectedIndex = 1;
+            SetToolTips();
+            
+        }
+
+        private void SetToolTips()
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            foreach (Control c in this.Controls)
+            {
+                ToolTip toolTip;
+                string tooltipMessaje = IdiomaBL.ObtenerMensajeTextos(c.Name, mIdioma);
+                if (tooltipMessaje != "")
+                {
+                    if (tooltips.Keys.Contains(c.Name))
+                    {
+                        toolTip = tooltips[c.Name];
+                    }
+                    else
+                    {
+                        toolTip = new ToolTip();
+                        toolTip.AutoPopDelay = 5000;
+                        toolTip.InitialDelay = 1000;
+                        toolTip.ReshowDelay = 500;
+                        // Force the ToolTip text to be displayed whether or not the form is active.
+                        toolTip.ShowAlways = true;
+                        tooltips[c.Name] = toolTip;
+                    }
+                    
+                    toolTip.SetToolTip(c, tooltipMessaje);
+                }
+            }
         }
 
         private void CargarIdioma (List<ControlBE> Lista)
@@ -94,6 +133,7 @@ namespace BuenViaje
                 CambiarPassword mCambiarPassword = new CambiarPassword();
                 mCambiarPassword.mIdioma = mIdioma;
                 mCambiarPassword.ShowDialog(this);
+                SetToolTips();
             }
             catch (Exception ex)
             {
@@ -105,6 +145,7 @@ namespace BuenViaje
         {
             mIdioma = LoginComboBox1.SelectedItem.ToString();
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
+            SetToolTips();
         }
     }
 }

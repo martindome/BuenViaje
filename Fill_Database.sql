@@ -427,6 +427,180 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Devolucion-Info-Correcta', 'Ticket devuelto correctamente'),
 (2, 'Devolucion-Error-Exception', 'Un error ocurrio al intentar devolver un pasaje')
 
+
+---TOOL TIPS___________________
+------------------- Login
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'txtUser', 'Email of the user'),
+(1, 'txtPass', 'Password of the user'),
+(1, 'LoginButton1', 'Login suing username and password'),
+(1, 'LoginBotton2', 'Exit the aplication'),
+(1, 'LoginComboBox1', 'Change the languaje of the login screen'),
+(1, 'LoginButton3', 'Reset a password for a system user')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'txtUser', 'Email del usuario'),
+(2, 'txtPass', 'Contraseña del usuario'),
+(2, 'LoginButton1', 'Entrar al sistema usando nombre de usaurio y contraseña'),
+(2, 'LoginBotton2', 'Salir de la aplicacion'),
+(2, 'LoginComboBox1', 'Cambiar el lenguaje de la pantalla de login'),
+(2, 'LoginButton3', 'Cambiar la contraseña de un usuario del sistema')
+
+
+------------------- Principal Pasajes
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'pasajesPrincipalTextBox1', 'Name of the client'),
+(1, 'pasajesPrincipalTextBox2', 'Surname of the client'),
+(1, 'pasajesPrincipalTextBox3', 'ID of the client'),
+(1, 'pasajesPrincipalTextBox4', 'Origin city'),
+(1, 'pasajesPrincipalTextBox5', 'Destintaion city'),
+(1, 'pasajeDateTimePicker1', 'Earliest date to search tickets'),
+(1, 'pasajeDateTimePicker2', 'Latest date to search tickets'),
+(1, 'pasajesPrincipalTextBox6', 'Amount of tickets to sell'),
+(1, 'pasajesPrincipalButton1', 'Filter the clients with teh dates indicated'),
+(1, 'pasajesPrincipalButton2', 'Filter the trip on the dates indicated'),
+(1, 'pasajesPrincipalButton3', 'Create a new Client'),
+(1, 'pasajesPrincipalButton5', 'Return tickets to the selected client'),
+(1, 'pasajesPrincipalButton4', 'Sell selected ticket to the selected client the amount indicated')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'pasajesPrincipalTextBox1', 'Nombre del client'),
+(2, 'pasajesPrincipalTextBox2', 'Apellido del cliente'),
+(2, 'pasajesPrincipalTextBox3', 'Documento de identidad del client'),
+(2, 'pasajesPrincipalTextBox4', 'Ciudad de origen'),
+(2, 'pasajesPrincipalTextBox5', 'Ciudad de destino'),
+(2, 'pasajeDateTimePicker1', 'Fecha mas temprano par buscar tickets'),
+(2, 'pasajeDateTimePicker2', 'Fecha mas tarde para buscar tickets'),
+(2, 'pasajesPrincipalTextBox6', 'Cantidad de tickets para vender'),
+(2, 'pasajesPrincipalButton1', 'Buscar clientes con la informacion indicada'),
+(2, 'pasajesPrincipalButton2', 'Buscar viajes con la informacion indicada'),
+(2, 'pasajesPrincipalButton3', 'Ingresar un nuevo cliente'),
+(2, 'pasajesPrincipalButton5', 'Devolver tickets a el cliente seleccionado'),
+(2, 'pasajesPrincipalButton4', 'Vender tickets al cleinte seleccionado para el viaje seleccionado')
+
+
+------------------- Principal Clientes
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ClientesTextBox1', 'Name of the client'),
+(1, 'ClientesTextBox2', 'Surname of the client'),
+(1, 'ClientesTextBox3', 'ID of the client'),
+(1, 'ClientesTextBox4', 'Email of the client'),
+(1, 'ClientesBotton5', 'Filter the clients'),
+(1, 'ClientesBotton6', 'Clean the filters'),
+(1, 'ClientesBotton1', 'Read the client'),
+(1, 'ClientesBotton2', 'Create a new client'),
+(1, 'ClientesBotton3', 'Modify the selected client'),
+(1, 'ClientesBotton4', 'Delete the selected client')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ClientesTextBox1', 'Nombre del cliente'),
+(2, 'ClientesTextBox2', 'Apellido del cliente'),
+(2, 'ClientesTextBox3', 'Documento de identidad del client'),
+(2, 'ClientesTextBox4', 'Email del cliente'),
+(2, 'ClientesBotton5', 'Filtrar clientes'),
+(2, 'ClientesBotton6', 'Limpiar los filtros'),
+(2, 'ClientesBotton1', 'Ver cliente'),
+(2, 'ClientesBotton2', 'Ingresar un nuevo cliente'),
+(2, 'ClientesBotton3', 'Modificar el cliente seleccionado'),
+(2, 'ClientesBotton4', 'Eliminar el cliente seleccionado')
+
+------------------- Principal Viajes
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ViajesPrincipalText1', 'Bus Identifiaction'),
+(1, 'ViajesPrincipalText2', 'Route name'),
+(1, 'ViajesPrincipalCheckBox', 'Check to search for canceled trips'),
+(1, 'ViajeDatePickerDesde', 'First date to filter trips'),
+(1, 'ViajeDatePickerHasta', 'Last date to filter trips'),
+(1, 'ViajesPrincipalButton6', 'Clean the filters'),
+(1, 'ViajesPrincipalButton5', 'Apply the filters'),
+(1, 'ViajesPrincipalButton1', 'Read the trip'),
+(1, 'ViajesPrincipalButton2', 'Create a new trip'),
+(1, 'ViajesPrincipalButton3', 'Modify an existing trip'),
+(1, 'ViajesPrincipalButton4', 'Cancel the selected trip')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ViajesPrincipalText1', 'Patente del bus'),
+(2, 'ViajesPrincipalText2', 'Nombre de la ruta'),
+(2, 'ViajesPrincipalCheckBox', 'Prender para buscar viajes cancelados'),
+(2, 'ViajeDatePickerDesde', 'Primer fecha para filtrar viajes'),
+(2, 'ViajeDatePickerHasta', 'Ultima fecha para filtrar viajes'),
+(2, 'ViajesPrincipalButton6', 'Limpiar los filtros'),
+(2, 'ViajesPrincipalButton5', 'Aplicar los filtros'),
+(2, 'ViajesPrincipalButton1', 'Ver el viaje'),
+(2, 'ViajesPrincipalButton2', 'Ingresar nuevos viajes'),
+(2, 'ViajesPrincipalButton3', 'Modificar un viaje existente seleccionado'),
+(2, 'ViajesPrincipalButton4', 'Cancelar el viaje seleccionado')
+
+
+------------------- Principal Rutas
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'RutasPrincipalText2', 'City of origin'),
+(1, 'RutasPrincipalText3', 'City of destination'),
+(1, 'RutasButton6', 'Clean the filters'),
+(1, 'RutasButton5', 'Apply the filters'),
+(1, 'RutasButton1', 'Read the route'),
+(1, 'RutasButton2', 'Create a new route'),
+(1, 'RutasButton3', 'Modify an existing route'),
+(1, 'RutasButton4', 'Cancel the selected route')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'RutasPrincipalText2', 'Ciudad de origin'),
+(2, 'RutasPrincipalText3', 'Ciudad de destino'),
+(2, 'RutasButton6', 'Limpiar los filtros'),
+(2, 'RutasButton5', 'Aplicar los filtros'),
+(2, 'RutasButton1', 'Ver la ruta'),
+(2, 'RutasButton2', 'Crear una nueva ruta'),
+(2, 'RutasButton3', 'Modificar la ruta seleccionada'),
+(2, 'RutasButton4', 'Eliminar la ruta seleccionada')
+
+------------------- Principal Localidades
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'LocalidadPrincipalText1', 'Name of the city'),
+(1, 'LocalidadPrincipalText2', 'Name of the province'),
+(1, 'LocalidadPrincipalText3', 'Name of the country'),
+(1, 'LocalidadBotton6', 'Clean the filters'),
+(1, 'LocalidadBotton5', 'Apply the filters'),
+(1, 'LocalidadBotton1', 'Read the city'),
+(1, 'LocalidadBotton2', 'Ingress a new city'),
+(1, 'LocalidadBotton3', 'Modify an existing city'),
+(1, 'LocalidadBotton4', 'Cancel the selected city')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'LocalidadPrincipalText1', 'Nombre de la ciudad'),
+(2, 'LocalidadPrincipalText2', 'Nombre de la provincia'),
+(2, 'LocalidadPrincipalText3', 'nombre de la ciudad'),
+(2, 'LocalidadBotton6', 'Limpiar los filtros'),
+(2, 'LocalidadBotton5', 'Aplicar los filtros'),
+(2, 'LocalidadBotton1', 'Ver la ciudad'),
+(2, 'LocalidadBotton2', 'Ingresar una nueva ciudad'),
+(2, 'LocalidadBotton3', 'Modificar la ciudad seleccionada'),
+(2, 'LocalidadBotton4', 'Eliminar la ciudad seleccionada')
+
+------------------- Principal Buses
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'busesText1', 'Identification of the bus'),
+(1, 'busesText2', 'Brand of the bus'),
+(1, 'busesText3', 'Seats of the bus'),
+(1, 'busesButton6', 'Clean the filters'),
+(1, 'busesButton5', 'Apply the filters'),
+(1, 'busesButton7', 'Generate a report with teh filters applied'),
+(1, 'busesButton1', 'Read the selected bus'),
+(1, 'busesButton2', 'Ingress a new bus'),
+(1, 'busesButton3', 'Modify an existing bus'),
+(1, 'busesButton4', 'Eliminate the selected bus')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'busesText1', 'Patente del bus'),
+(2, 'busesText2', 'Marca del bus'),
+(2, 'busesText3', 'Asientos del bus'),
+(2, 'busesButton6', 'Limpiar los filtros'),
+(2, 'busesButton5', 'Aplicar los filtros'),
+(2, 'busesButton7', 'Crear un reporte de los buses con los filtros aplicados'),
+(2, 'busesButton1', 'Ver el bus seleccionado'),
+(2, 'busesButton2', 'Ingresar un nuevo bus'),
+(2, 'busesButton3', 'Modificar el bus seleccionado'),
+(2, 'busesButton4', 'Eliminar el bus seleccionado')
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES

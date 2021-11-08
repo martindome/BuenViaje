@@ -55,7 +55,6 @@
             this.copiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restauracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageInicio = new System.Windows.Forms.TabPage();
             this.tabPagePasajes = new System.Windows.Forms.TabPage();
             this.pasajesPrincipalTextBox6 = new System.Windows.Forms.TextBox();
             this.pasajesPrincipalLabel8 = new System.Windows.Forms.Label();
@@ -148,6 +147,7 @@
             this.LocalidadBotton1 = new System.Windows.Forms.Button();
             this.grillaLocalidad = new System.Windows.Forms.DataGridView();
             this.tabPageBuses = new System.Windows.Forms.TabPage();
+            this.busesButton7 = new System.Windows.Forms.Button();
             this.busesGroupBox1 = new System.Windows.Forms.GroupBox();
             this.busesLabel3 = new System.Windows.Forms.Label();
             this.busesText3 = new System.Windows.Forms.TextBox();
@@ -163,7 +163,6 @@
             this.busesButton1 = new System.Windows.Forms.Button();
             this.grillaBuses = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.busesButton7 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPagePasajes.SuspendLayout();
@@ -281,7 +280,6 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPageInicio);
             this.tabControl1.Controls.Add(this.tabPagePasajes);
             this.tabControl1.Controls.Add(this.tabPageClientes);
             this.tabControl1.Controls.Add(this.tabPageViajes);
@@ -299,15 +297,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1158, 433);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
-            // 
-            // tabPageInicio
-            // 
-            this.tabPageInicio.BackColor = System.Drawing.Color.SteelBlue;
-            this.tabPageInicio.Location = new System.Drawing.Point(4, 24);
-            this.tabPageInicio.Name = "tabPageInicio";
-            this.tabPageInicio.Size = new System.Drawing.Size(1150, 405);
-            this.tabPageInicio.TabIndex = 5;
-            this.tabPageInicio.Text = "Inicio";
             // 
             // tabPagePasajes
             // 
@@ -1406,6 +1395,17 @@
             this.tabPageBuses.TabIndex = 6;
             this.tabPageBuses.Text = "Buses";
             // 
+            // busesButton7
+            // 
+            this.busesButton7.Location = new System.Drawing.Point(536, 218);
+            this.busesButton7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton7.Name = "busesButton7";
+            this.busesButton7.Size = new System.Drawing.Size(71, 27);
+            this.busesButton7.TabIndex = 22;
+            this.busesButton7.Text = "Reporte";
+            this.busesButton7.UseVisualStyleBackColor = true;
+            this.busesButton7.Click += new System.EventHandler(this.busesButton7_Click);
+            // 
             // busesGroupBox1
             // 
             this.busesGroupBox1.Controls.Add(this.busesLabel3);
@@ -1569,17 +1569,6 @@
             this.grillaBuses.Size = new System.Drawing.Size(521, 289);
             this.grillaBuses.TabIndex = 24;
             // 
-            // busesButton7
-            // 
-            this.busesButton7.Location = new System.Drawing.Point(536, 218);
-            this.busesButton7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.busesButton7.Name = "busesButton7";
-            this.busesButton7.Size = new System.Drawing.Size(71, 27);
-            this.busesButton7.TabIndex = 22;
-            this.busesButton7.Text = "Reporte";
-            this.busesButton7.UseVisualStyleBackColor = true;
-            this.busesButton7.Click += new System.EventHandler(this.busesButton7_Click);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1649,7 +1638,6 @@
         private System.Windows.Forms.TabPage tabPageViajes;
         private System.Windows.Forms.TabPage tabPageRutas;
         private System.Windows.Forms.TabPage tabPageLocalidades;
-        private System.Windows.Forms.TabPage tabPageInicio;
         private System.Windows.Forms.GroupBox LocalidadGroupBox;
         private System.Windows.Forms.Button LocalidadBotton6;
         private System.Windows.Forms.Button LocalidadBotton5;

@@ -41,7 +41,6 @@
             this.BitacoraDataGrid1 = new System.Windows.Forms.DataGridView();
             this.BitacoraDatePickerDesdeHora = new System.Windows.Forms.DateTimePicker();
             this.BitacoraDatePickerHastaHora = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BitacoraDataGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,7 +120,7 @@
             // 
             // BitacoraBotonConsultar
             // 
-            this.BitacoraBotonConsultar.Location = new System.Drawing.Point(464, 80);
+            this.BitacoraBotonConsultar.Location = new System.Drawing.Point(453, 81);
             this.BitacoraBotonConsultar.Margin = new System.Windows.Forms.Padding(2);
             this.BitacoraBotonConsultar.Name = "BitacoraBotonConsultar";
             this.BitacoraBotonConsultar.Size = new System.Drawing.Size(96, 22);
@@ -132,7 +131,7 @@
             // 
             // BitacoraBottonExportToPDF
             // 
-            this.BitacoraBottonExportToPDF.Location = new System.Drawing.Point(564, 80);
+            this.BitacoraBottonExportToPDF.Location = new System.Drawing.Point(553, 81);
             this.BitacoraBottonExportToPDF.Margin = new System.Windows.Forms.Padding(2);
             this.BitacoraBottonExportToPDF.Name = "BitacoraBottonExportToPDF";
             this.BitacoraBottonExportToPDF.Size = new System.Drawing.Size(96, 22);
@@ -172,24 +171,12 @@
             this.BitacoraDatePickerHastaHora.Size = new System.Drawing.Size(98, 20);
             this.BitacoraDatePickerHastaHora.TabIndex = 25;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(664, 80);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 22);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Imprimir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Bitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.BitacoraDatePickerHastaHora);
             this.Controls.Add(this.BitacoraDatePickerDesdeHora);
             this.Controls.Add(this.BitacoraDataGrid1);
@@ -227,6 +214,5 @@
         private System.Windows.Forms.DataGridView BitacoraDataGrid1;
         private System.Windows.Forms.DateTimePicker BitacoraDatePickerDesdeHora;
         private System.Windows.Forms.DateTimePicker BitacoraDatePickerHastaHora;
-        private System.Windows.Forms.Button button1;
     }
 }
