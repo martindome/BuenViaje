@@ -20,3 +20,7 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\MigraDoc
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\de\MigraDoc.Rendering.resources.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DPDFPrintNative_x64.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DPDFPrintNative_x86.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DynamicPDF.Printing.NETFramework40.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DynamicPDF.Printing.NETFramework40.xml

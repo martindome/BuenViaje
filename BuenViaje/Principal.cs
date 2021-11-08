@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
+using System.IO;
+using System.Drawing.Printing;
 using BE;
+using BE.Composite;
 using BL;
 using BuenViaje.Sesion;
 using BuenViaje.Administracion;
@@ -20,13 +23,23 @@ using BuenViaje.Clientes;
 using BuenViaje.Rutas;
 using BuenViaje.Viajes;
 using BuenViaje.Pasajes;
-using BE.Composite;
+using MigraDoc;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.Rendering;
+using MigraDoc.Rendering.ChartMapper;
+using MigraDoc.Rendering.UnitTest;
+using MigraDoc.RtfRendering;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.DocumentObjectModel.Shapes;
+using MigraDoc.DocumentObjectModel.Shapes.Charts;
+using MigraDoc.DocumentObjectModel.Fields;
 
 namespace BuenViaje
 {
     public partial class Principal : Form
     {
         #region principal
+        internal PasajeBE pasajebe;
         public Principal()
         {
             InitializeComponent();
@@ -45,10 +58,6 @@ namespace BuenViaje
             //Permisos Main Menu
             this.sesionToolStripMenuItem.Enabled = true;
             this.administracionToolStripMenuItem.Enabled = true;
-            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminRutas) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadRutas))
-            {
-                this.tabControl1.TabPages.Remove(this.tabPageRutas);
-            }
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminClientes) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadClientes))
             {
                 this.tabControl1.TabPages.Remove(this.tabPageClientes);
@@ -61,10 +70,6 @@ namespace BuenViaje
                 }
                 Load_tabPageClientes();
             }
-            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminViajes) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadViajes))
-            {
-                this.tabControl1.TabPages.Remove(this.tabPageViajes);
-            }
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminLocalidades) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadLocalidades))
             {
                 this.tabControl1.TabPages.Remove(this.tabPageLocalidades);
@@ -76,11 +81,6 @@ namespace BuenViaje
                     this.tabControl1.TabPages.Insert(this.tabControl1.TabPages.Count, this.tabPageLocalidades);
                 }
                 this.Load_tabPageLocalidades();
-            }
-            if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.VendedorPasajes))
-            {
-                this.tabControl1.TabPages.Remove(this.tabPageClientes);
-                this.tabControl1.TabPages.Remove(this.tabPagePasajes);
             }
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminBuses) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadBuses))
             {
@@ -642,6 +642,88 @@ namespace BuenViaje
             }
         }
 
+        private void busesButton7_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            // set a default file name
+            savefile.FileName = @"report_" + this.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + @".pdf";
+            // set filters - this can be done in properties as well
+            savefile.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                Document document = new Document();
+                document.DefaultPageSetup.Orientation = MigraDoc.DocumentObjectModel.Orientation.Portrait;
+                document.DefaultPageSetup.PageFormat = PageFormat.A4;
+                Section section = document.AddSection();
+
+                //Titulo
+                Paragraph Title = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n\n", "Heading1");
+                Title.AddBookmark("Title");
+                Title.Format.Font.Size = 30;
+                //Title.Format.Font.Color = Colors.DarkBlue;
+                Title.Format.Alignment = ParagraphAlignment.Center;
+
+                Paragraph Date = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Date", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\nn", "Heading1");
+                Date.AddBookmark("Date");
+                Date.Format.Font.Size = 15;
+                //Date.Format.Font.Color = Colors.DarkBlue;
+                Date.Format.Alignment = ParagraphAlignment.Left;
+
+                Paragraph Requested = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Requested", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + SingletonSesion.Instancia.Usuario.Nombre_Usuario + "\nn", "Heading1");
+                Requested.AddBookmark("Requested");
+                Requested.Format.Font.Size = 15;
+                //Requested.Format.Font.Color = Colors.DarkBlue;
+                Requested.Format.Alignment = ParagraphAlignment.Left;
+
+                this.CreateTable(document, savefile.FileName);
+                var renderer = new PdfDocumentRenderer();
+                renderer.Document = document;
+                renderer.RenderDocument();
+                renderer.Save(savefile.FileName);
+
+            }
+        }
+
+        private void CreateTable(Document document, string TableName)
+        {
+            //Paragraph paragraph = document.LastSection.AddParagraph(TableName, "Heading2");
+
+            Table table = new Table();
+            table.Borders.Width = 0.75;
+
+            Column column1 = table.AddColumn(Unit.FromCentimeter(2));
+            column1.Format.Alignment = ParagraphAlignment.Center;
+            Column column2 = table.AddColumn(Unit.FromCentimeter(5));
+            column2.Format.Alignment = ParagraphAlignment.Center;
+            Column column3 = table.AddColumn(Unit.FromCentimeter(2));
+            column3.Format.Alignment = ParagraphAlignment.Center;
+            Column column4 = table.AddColumn(Unit.FromCentimeter(8));
+            column4.Format.Alignment = ParagraphAlignment.Center;
+
+            Row row = table.AddRow();
+            Cell cell = row.Cells[0];
+            cell.AddParagraph(ObtenerMensajeColumna("BusPrincipal-Columna-Patente"));
+            cell = row.Cells[1];
+            cell.AddParagraph((ObtenerMensajeColumna("BusPrincipal-Columna-Marca")));
+            cell = row.Cells[2];
+            cell.AddParagraph((ObtenerMensajeColumna("BusPrincipal-Columna-Asientos")));
+
+            //BitacoraDataGrid1.Sort(BitacoraDataGrid1.Columns[1], ListSortDirection.Ascending);
+            foreach (DataGridViewRow GridRow in grillaBuses.Rows)
+            {
+                row = table.AddRow();
+                cell = row.Cells[0];
+                cell.AddParagraph(GridRow.Cells[1].Value.ToString());
+                cell = row.Cells[1];
+                cell.AddParagraph(GridRow.Cells[2].Value.ToString());
+                cell = row.Cells[2];
+                cell.AddParagraph(GridRow.Cells[3].Value.ToString());
+            }
+            //table.SetEdge(0, 0, 2, 3, Edge.Box, MigraDoc.DocumentObjectModel.BorderStyle.Single, 1.5, Colors.Black);
+            document.LastSection.Add(table);
+        }
+
         private void busesButton5_Click(object sender, EventArgs e)
         {
             ActulizarGrillaBuses();
@@ -660,7 +742,6 @@ namespace BuenViaje
         #region Clientes
         private void Load_tabPageClientes()
         {
-            grillaClientes.Rows.Clear();
             grillaClientes.Columns.Clear();
             grillaClientes.Columns.Add(ObtenerMensajeColumna("ClientesPrincipal-Columna-ClienteID"), ObtenerMensajeColumna("ClientesPrincipal-Columna-ClienteID"));
             grillaClientes.Columns.Add(ObtenerMensajeColumna("ClientesPrincipal-Columna-Nombre"), ObtenerMensajeColumna("ClientesPrincipal-Columna-Nombre"));
@@ -679,7 +760,6 @@ namespace BuenViaje
             grillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grillaClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grillaClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            grillaClientes.Rows.Clear();
 
 
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminClientes))
@@ -829,7 +909,6 @@ namespace BuenViaje
             dataGridRutas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridRutas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridRutas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            grillaClientes.Rows.Clear();
 
 
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminRutas))
@@ -1318,6 +1397,8 @@ namespace BuenViaje
                             pasaje.ID_Viaje = viaje.ID_Viaje;
                             pasaje.Fecha = DateTime.Now;
                             pasajebl.Vender(pasaje);
+                            this.pasajebe = pasaje;
+                            ImprimirPasaje(pasaje);
                             //Bitacora
                             BitacoraBL Bitacorabl = new BitacoraBL();
                             BitacoraBE mBitacora = new BitacoraBE();
@@ -1358,13 +1439,70 @@ namespace BuenViaje
             }
         }
 
+        private void ImprimirPasaje(PasajeBE pasaje)
+        {
 
+            PrintDocument pd = new PrintDocument();
+            PaperSize ps = new PaperSize("", 475, 550);
+
+            pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+
+            pd.PrintController = new StandardPrintController();
+            pd.DefaultPageSettings.Margins.Left = 0;
+            pd.DefaultPageSettings.Margins.Right = 0;
+            pd.DefaultPageSettings.Margins.Top = 0;
+            pd.DefaultPageSettings.Margins.Bottom = 0;
+
+            pd.DefaultPageSettings.PaperSize = ps;
+            pd.Print();
+        }
+
+        private void pd_PrintPage(object sender, PrintPageEventArgs e)
+        {
+
+            ViajeBE viaje = new ViajeBL().Obtener(pasajebe.ID_Viaje);
+            RutaBE ruta = new RutaBL().Obtener(viaje.ID_Ruta);
+            BusBE bus = new BusBL().Obtener(viaje.ID_Bus);
+            ClienteBE cliente = new ClienteBL().Obtener(pasajebe.ID_Cliente);
+            
+            int SPACE = 145;
+            Graphics g = e.Graphics;
+            g.DrawRectangle(Pens.Black, 5, 5, 420, 450);
+
+            // g.DrawImage(Image.FromFile(title),50,7);
+            System.Drawing.Font fBody = new System.Drawing.Font("Lucida Console", 15, FontStyle.Bold);
+            System.Drawing.Font fBody1 = new System.Drawing.Font("Lucida Console", 15, FontStyle.Regular);
+            System.Drawing.Font rs = new System.Drawing.Font("Stencil", 25, FontStyle.Bold);
+            System.Drawing.Font fTType = new System.Drawing.Font("Stencil", 50, FontStyle.Bold);
+            SolidBrush sb = new SolidBrush(System.Drawing.Color.Black);
+
+            g.DrawString("BuenViaje", fTType, sb, 10, 20);
+
+            g.DrawString("-------------------------------", fBody1, sb, 10, 120);
+
+            g.DrawString("Date :", fBody, sb, 10, SPACE);
+            g.DrawString(viaje.Fecha.ToShortDateString(), fBody1, sb, 90, SPACE);
+
+            g.DrawString("Time :", fBody, sb, 10, SPACE + 30);
+            g.DrawString(viaje.Fecha.ToShortTimeString(), fBody1, sb, 90, SPACE + 30);
+
+            g.DrawString("BusNo.:", fBody, sb, 10, SPACE + 60);
+            g.DrawString(bus.Patente, fBody1, sb, 100, SPACE + 60);
+
+            g.DrawString("Client:", fBody, sb, 10, SPACE + 90);
+            g.DrawString(cliente.DNI, fBody1, sb, 100, SPACE + 90);
+
+            g.DrawString("Route:", fBody, sb, 10, SPACE + 120);
+            g.DrawString(ruta.Nombre, fBody1, sb, 100, SPACE + 120);
+
+            g.DrawString("Sold:", fBody, sb, 10, SPACE + 150);
+            g.DrawString(pasajebe.Fecha.ToShortDateString(), fBody1, sb, 100, SPACE + 150);
+
+            g.DrawString("-------------------------------", fBody1, sb, 10, SPACE + 175);
+        }
 
         #endregion Pasajes
 
-        private void tabPagePasajes_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

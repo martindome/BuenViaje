@@ -52,3 +52,7 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\Bue
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Rutas.ABMRutas.resources
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Viajes.ABMViajes.resources
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.Pasajes.DevolucionPasajes.resources
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\DPDFPrintNative_x64.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\DPDFPrintNative_x86.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\DynamicPDF.Printing.NETFramework40.dll
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\DynamicPDF.Printing.NETFramework40.xml

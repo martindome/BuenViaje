@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <Target Name="PlatformCheck" BeforeTargets="ResolveAssemblyReferences">
+    <Message Importance="High" Text="$(MSBuildThisFileName) works only with .NET framework and .NET Core Applications in Windows platforms."></Message>
+  </Target>
+	
+  <Target Name="OSCheck" AfterTargets="PlatformCheck" Condition=" '$(TargetPlatformIdentifier)' == 'UAP' OR '$(TargetFramework)' == 'uap' OR '$(TargetFrameworkMoniker)' == 'MonoAndroid' OR '$(TargetFrameworkMoniker)' == 'Xamarin.iOS' OR '$(TargetFramework)' == 'Xamarin.iOS' ">
+    <Error Text="$(MSBuildThisFileName) does not work with Android/iOS/UWP Apps." />
+  </Target>
+  
+  <ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
+    <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\DPDFPrintNative_x64.dll">
+	<Link>DPDFPrintNative_x64.dll</Link>
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x86\DPDFPrintNative_x86.dll">
+	<Link>DPDFPrintNative_x86.dll</Link>
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
+<Target Name="CopyDLLtoOutput" BeforeTargets="Build" Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)../../lib/netstandard20/DynamicPDF.Printing.NETStandard20.dll" DestinationFolder="$(TargetDir)\" />
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)../../lib/netstandard20/DynamicPDF.Printing.NETStandard20.xml" DestinationFolder="$(TargetDir)\" />
+</Target>
+</Project>

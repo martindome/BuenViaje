@@ -57,7 +57,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInicio = new System.Windows.Forms.TabPage();
             this.tabPagePasajes = new System.Windows.Forms.TabPage();
-            this.pasajesPrincipalButton6 = new System.Windows.Forms.Button();
             this.pasajesPrincipalTextBox6 = new System.Windows.Forms.TextBox();
             this.pasajesPrincipalLabel8 = new System.Windows.Forms.Label();
             this.pasajesPrincipalButton3 = new System.Windows.Forms.Button();
@@ -164,6 +163,7 @@
             this.busesButton1 = new System.Windows.Forms.Button();
             this.grillaBuses = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.busesButton7 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPagePasajes.SuspendLayout();
@@ -312,7 +312,6 @@
             // tabPagePasajes
             // 
             this.tabPagePasajes.BackColor = System.Drawing.Color.SteelBlue;
-            this.tabPagePasajes.Controls.Add(this.pasajesPrincipalButton6);
             this.tabPagePasajes.Controls.Add(this.pasajesPrincipalTextBox6);
             this.tabPagePasajes.Controls.Add(this.pasajesPrincipalLabel8);
             this.tabPagePasajes.Controls.Add(this.pasajesPrincipalButton3);
@@ -326,17 +325,6 @@
             this.tabPagePasajes.Size = new System.Drawing.Size(1150, 405);
             this.tabPagePasajes.TabIndex = 0;
             this.tabPagePasajes.Text = "Pasajes";
-            this.tabPagePasajes.Click += new System.EventHandler(this.tabPagePasajes_Click);
-            // 
-            // pasajesPrincipalButton6
-            // 
-            this.pasajesPrincipalButton6.Location = new System.Drawing.Point(987, 301);
-            this.pasajesPrincipalButton6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pasajesPrincipalButton6.Name = "pasajesPrincipalButton6";
-            this.pasajesPrincipalButton6.Size = new System.Drawing.Size(153, 23);
-            this.pasajesPrincipalButton6.TabIndex = 61;
-            this.pasajesPrincipalButton6.Text = "Reporte";
-            this.pasajesPrincipalButton6.UseVisualStyleBackColor = true;
             // 
             // pasajesPrincipalTextBox6
             // 
@@ -613,7 +601,7 @@
             // 
             // pasajesPrincipalButton5
             // 
-            this.pasajesPrincipalButton5.Location = new System.Drawing.Point(830, 301);
+            this.pasajesPrincipalButton5.Location = new System.Drawing.Point(8, 327);
             this.pasajesPrincipalButton5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pasajesPrincipalButton5.Name = "pasajesPrincipalButton5";
             this.pasajesPrincipalButton5.Size = new System.Drawing.Size(153, 23);
@@ -1405,6 +1393,7 @@
             // tabPageBuses
             // 
             this.tabPageBuses.BackColor = System.Drawing.Color.SteelBlue;
+            this.tabPageBuses.Controls.Add(this.busesButton7);
             this.tabPageBuses.Controls.Add(this.busesGroupBox1);
             this.tabPageBuses.Controls.Add(this.busesButton4);
             this.tabPageBuses.Controls.Add(this.busesButton3);
@@ -1580,6 +1569,17 @@
             this.grillaBuses.Size = new System.Drawing.Size(521, 289);
             this.grillaBuses.TabIndex = 24;
             // 
+            // busesButton7
+            // 
+            this.busesButton7.Location = new System.Drawing.Point(536, 218);
+            this.busesButton7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.busesButton7.Name = "busesButton7";
+            this.busesButton7.Size = new System.Drawing.Size(71, 27);
+            this.busesButton7.TabIndex = 22;
+            this.busesButton7.Text = "Reporte";
+            this.busesButton7.UseVisualStyleBackColor = true;
+            this.busesButton7.Click += new System.EventHandler(this.busesButton7_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1752,6 +1752,6 @@
         private System.Windows.Forms.TextBox pasajesPrincipalTextBox6;
         private System.Windows.Forms.Label pasajesPrincipalLabel8;
         private System.Windows.Forms.Button pasajesPrincipalButton3;
-        private System.Windows.Forms.Button pasajesPrincipalButton6;
+        private System.Windows.Forms.Button busesButton7;
     }
 }

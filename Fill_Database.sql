@@ -126,7 +126,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'BusPrincipal-Columna-Patente','Number'),
 (1, 'BusPrincipal-Columna-Marca','Brand'),
 (1, 'BusPrincipal-Columna-Asientos','Seats'),
-(1, 'UsuarioPrincipal-Buses-AccesoDenegado', 'User does not have enough permissions')
+(1, 'UsuarioPrincipal-Buses-AccesoDenegado', 'User does not have enough permissions'),
+(1, 'Buses-pdf-Title', 'Report of Buses'),
+(1, 'Buses-pdf-Date', 'Date'),
+(1, 'Buses-pdf-Requested', 'Requested By')
 
 ----ABM Buses
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -332,7 +335,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'BusPrincipal-Columna-Patente','Patente'),
 (2, 'BusPrincipal-Columna-Marca','Marca'),
 (2, 'BusPrincipal-Columna-Asientos','Asientos'),
-(2, 'UsuarioPrincipal-Buses-AccesoDenegado', 'El usuario no tiene los permisos suficientes')
+(2, 'UsuarioPrincipal-Buses-AccesoDenegado', 'El usuario no tiene los permisos suficientes'),
+(2, 'Buses-pdf-Title', 'Reporte de buses'),
+(2, 'Buses-pdf-Date', 'Fecha'),
+(2, 'Buses-pdf-Requested', 'Pedido por')
 
 ----ABM Localidad
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -572,6 +578,8 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'busesButton4', 'Delete'),
 (1, 'busesButton5', 'Apply'),
 (1, 'busesButton6', 'Clean'),
+(1, 'busesButton7', 'Export pdf'),
+(1, 'busesButton8', 'Print'),
 (1, 'busesLabel1', 'Number'),
 (1, 'busesLabel2', 'Brand'),
 (1, 'busesLabel3', 'Seats'),
@@ -818,6 +826,8 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'busesButton4', 'Borrar'),
 (2, 'busesButton5', 'Aplicar'),
 (2, 'busesButton6', 'Limpiar'),
+(2, 'busesButton7', 'Exportar pdf'),
+(2, 'busesButton8', 'Impirmir'),
 (2, 'busesLabel1', 'Patente'),
 (2, 'busesLabel2', 'Marca'),
 (2, 'busesLabel3', 'Asientos'),
