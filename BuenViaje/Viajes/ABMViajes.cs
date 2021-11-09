@@ -23,8 +23,25 @@ namespace BuenViaje.Viajes
         public ABMViajes()
         {
             InitializeComponent();
+
         }
 
+
+        private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
+        {
+            // This event is raised when the F1 key is pressed or the
+            // Help cursor is clicked on any of the address fields.
+            // The Help text for the field is in the control's
+            // Tag property. It is retrieved and displayed in the label.
+
+            Control requestingControl = (Control)sender;
+            string message = IdiomaBL.ObtenerMensajeTextos(requestingControl.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+            if (message != "")
+            {
+                MessageBox.Show(message);
+                hlpevent.Handled = true;
+            }
+        }
         private void ViajesABM_Load(object sender, EventArgs e)
         {
             this.ViajeABMDatePickerDesde.CustomFormat = "MM-dd-yyyy";

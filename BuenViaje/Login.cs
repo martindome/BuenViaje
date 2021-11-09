@@ -20,8 +20,10 @@ namespace BuenViaje
         private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
 
         public Login()
-        {
+        {   
             InitializeComponent();
+            this.txtUser.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            this.txtPass.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
         }
 
         private void LoginButton1_Click(object sender, EventArgs e)
@@ -74,6 +76,21 @@ namespace BuenViaje
             LoginComboBox1.SelectedIndex = 1;
             SetToolTips();
             
+        }
+
+        private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
+        {
+            // This event is raised when the F1 key is pressed or the
+            // Help cursor is clicked on any of the address fields.
+            // The Help text for the field is in the control's
+            // Tag property. It is retrieved and displayed in the label.
+
+            Control requestingControl = (Control)sender;
+            string message = IdiomaBL.ObtenerMensajeTextos(requestingControl.Name, mIdioma);
+            if ( message != ""){
+                MessageBox.Show(message);
+                hlpevent.Handled = true;
+            }
         }
 
         private void SetToolTips()

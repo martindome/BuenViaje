@@ -44,6 +44,26 @@ namespace BuenViaje
         public Principal()
         {
             InitializeComponent();
+            this.pasajesPrincipalTextBox1.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            this. pasajesPrincipalTextBox2.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            pasajesPrincipalTextBox3.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            pasajesPrincipalTextBox4.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            pasajesPrincipalTextBox5.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            pasajesPrincipalTextBox6.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            ClientesTextBox1.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            ClientesTextBox2.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            ClientesTextBox3.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            ClientesTextBox4.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            ViajesPrincipalText1.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            ViajesPrincipalText2.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            RutasPrincipalText2.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            RutasPrincipalText3.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            LocalidadPrincipalText1.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            LocalidadPrincipalText2.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            LocalidadPrincipalText3.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            busesText1.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            busesText2.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            busesText3.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
         }
 
         private void CallOnLoad()
@@ -236,6 +256,22 @@ namespace BuenViaje
                 {
                     CargarIdiomaGroupBox((GroupBox)control, Lista);
                 }
+            }
+        }
+
+        private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
+        {
+            // This event is raised when the F1 key is pressed or the
+            // Help cursor is clicked on any of the address fields.
+            // The Help text for the field is in the control's
+            // Tag property. It is retrieved and displayed in the label.
+
+            Control requestingControl = (Control)sender;
+            string message = IdiomaBL.ObtenerMensajeTextos(requestingControl.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+            if (message != "")
+            {
+                MessageBox.Show(message);
+                hlpevent.Handled = true;
             }
         }
 

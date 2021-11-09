@@ -37,6 +37,7 @@
             this.LoginButton3 = new System.Windows.Forms.Button();
             this.LoginComboBox1 = new System.Windows.Forms.ComboBox();
             this.loginLabel3 = new System.Windows.Forms.Label();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // LoginLabel1
@@ -148,6 +149,7 @@
             this.Controls.Add(this.LoginButton1);
             this.Controls.Add(this.LoginLabel2);
             this.Controls.Add(this.LoginLabel1);
+            this.HelpButton = true;
             this.Name = "Login";
             this.Text = "Idioma";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -167,6 +169,7 @@
         private System.Windows.Forms.Button LoginButton3;
         private System.Windows.Forms.ComboBox LoginComboBox1;
         private System.Windows.Forms.Label loginLabel3;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 
