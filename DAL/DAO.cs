@@ -15,7 +15,7 @@ namespace DAL
     {
         private static DAO _instancia;
 
-        static SqlConnection mCon = new SqlConnection(ConfigurationManager.ConnectionStrings["BuenViaje"].ConnectionString);
+        static SqlConnection mCon = new SqlConnection(SERV.Seguridad.Cifrado.Descifrar(ConfigurationManager.ConnectionStrings["BuenViaje"].ConnectionString));
 
         public DataSet ExecuteDataSet(string pCommandText)
         {

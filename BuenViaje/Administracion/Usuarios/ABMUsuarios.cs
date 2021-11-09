@@ -18,6 +18,7 @@ namespace BuenViaje.Administracion.Usuarios
 {
     public partial class ABMUsuarios : Form
     {
+        private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
         internal Operacion operacion;
         internal UsuarioBE usuariobe;
         List<CompuestoBE> patentesUsuario = new List<CompuestoBE>();
@@ -30,6 +31,87 @@ namespace BuenViaje.Administracion.Usuarios
         public ABMUsuarios()
         {
             InitializeComponent();
+        }
+
+        private void SetToolTips()
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            foreach (Control c in this.Controls)
+            {
+                ToolTip toolTip;
+                string tooltipMessaje = IdiomaBL.ObtenerMensajeTextos(c.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                if (tooltipMessaje != "")
+                {
+                    if (tooltips.Keys.Contains(c.Name))
+                    {
+                        toolTip = tooltips[c.Name];
+                    }
+                    else
+                    {
+                        toolTip = new ToolTip();
+                        toolTip.AutoPopDelay = 5000;
+                        toolTip.InitialDelay = 1000;
+                        toolTip.ReshowDelay = 500;
+                        // Force the ToolTip text to be displayed whether or not the form is active.
+                        toolTip.ShowAlways = true;
+                        tooltips[c.Name] = toolTip;
+                    }
+
+                    toolTip.SetToolTip(c, tooltipMessaje);
+                }
+                if (c is GroupBox)
+                {
+                    SetToolTipsGroupBox((GroupBox)c);
+                }
+            }
+
+        }
+
+        private void SetToolTipsGroupBox(GroupBox groupBox)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            foreach (Control c in groupBox.Controls)
+            {
+                ToolTip toolTip;
+                string tooltipMessaje = IdiomaBL.ObtenerMensajeTextos(c.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                if (tooltipMessaje != "")
+                {
+                    if (tooltips.Keys.Contains(c.Name))
+                    {
+                        toolTip = tooltips[c.Name];
+                    }
+                    else
+                    {
+                        toolTip = new ToolTip();
+                        toolTip.AutoPopDelay = 5000;
+                        toolTip.InitialDelay = 1000;
+                        toolTip.ReshowDelay = 500;
+                        // Force the ToolTip text to be displayed whether or not the form is active.
+                        toolTip.ShowAlways = true;
+                        tooltips[c.Name] = toolTip;
+                    }
+
+                    toolTip.SetToolTip(c, tooltipMessaje);
+                }
+                if (c is GroupBox)
+                {
+                    SetToolTipsGroupBox((GroupBox)c);
+                }
+            }
         }
 
         private void ABMUsuarios_Load(object sender, EventArgs e)
@@ -114,9 +196,10 @@ namespace BuenViaje.Administracion.Usuarios
             #endregion
 
             CargarGrillas();
-
+    
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+            SetToolTips();
         }
 
         private void CargarIdioma(List<ControlBE> pControles)

@@ -1616,8 +1616,12 @@ namespace BuenViaje
             g.DrawString("-------------------------------", fBody1, sb, 10, SPACE + 175);
         }
 
+
         #endregion Pasajes
 
-        
+        private void tabPagePasajes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -33,7 +33,6 @@
             this.BitacoraLabelDesde = new System.Windows.Forms.Label();
             this.BitacoraLabelHasta = new System.Windows.Forms.Label();
             this.BitacoraLabelUsuario = new System.Windows.Forms.Label();
-            this.BitacoraComboUsuario = new System.Windows.Forms.ComboBox();
             this.BitacoraLabelCriticidad = new System.Windows.Forms.Label();
             this.BitacoraComboCriticidad = new System.Windows.Forms.ComboBox();
             this.BitacoraBotonConsultar = new System.Windows.Forms.Button();
@@ -41,6 +40,7 @@
             this.BitacoraDataGrid1 = new System.Windows.Forms.DataGridView();
             this.BitacoraDatePickerDesdeHora = new System.Windows.Forms.DateTimePicker();
             this.BitacoraDatePickerHastaHora = new System.Windows.Forms.DateTimePicker();
+            this.BitacoraComboUsuario = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BitacoraDataGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,15 +89,6 @@
             this.BitacoraLabelUsuario.Size = new System.Drawing.Size(43, 13);
             this.BitacoraLabelUsuario.TabIndex = 17;
             this.BitacoraLabelUsuario.Text = "Usuario";
-            // 
-            // BitacoraComboUsuario
-            // 
-            this.BitacoraComboUsuario.FormattingEnabled = true;
-            this.BitacoraComboUsuario.Location = new System.Drawing.Point(333, 27);
-            this.BitacoraComboUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.BitacoraComboUsuario.Name = "BitacoraComboUsuario";
-            this.BitacoraComboUsuario.Size = new System.Drawing.Size(116, 21);
-            this.BitacoraComboUsuario.TabIndex = 18;
             // 
             // BitacoraLabelCriticidad
             // 
@@ -171,12 +162,20 @@
             this.BitacoraDatePickerHastaHora.Size = new System.Drawing.Size(98, 20);
             this.BitacoraDatePickerHastaHora.TabIndex = 25;
             // 
+            // BitacoraComboUsuario
+            // 
+            this.BitacoraComboUsuario.Location = new System.Drawing.Point(334, 28);
+            this.BitacoraComboUsuario.Name = "BitacoraComboUsuario";
+            this.BitacoraComboUsuario.Size = new System.Drawing.Size(150, 20);
+            this.BitacoraComboUsuario.TabIndex = 26;
+            // 
             // Bitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BitacoraComboUsuario);
             this.Controls.Add(this.BitacoraDatePickerHastaHora);
             this.Controls.Add(this.BitacoraDatePickerDesdeHora);
             this.Controls.Add(this.BitacoraDataGrid1);
@@ -184,7 +183,6 @@
             this.Controls.Add(this.BitacoraBotonConsultar);
             this.Controls.Add(this.BitacoraComboCriticidad);
             this.Controls.Add(this.BitacoraLabelCriticidad);
-            this.Controls.Add(this.BitacoraComboUsuario);
             this.Controls.Add(this.BitacoraLabelUsuario);
             this.Controls.Add(this.BitacoraLabelHasta);
             this.Controls.Add(this.BitacoraLabelDesde);
@@ -206,7 +204,6 @@
         private System.Windows.Forms.Label BitacoraLabelDesde;
         private System.Windows.Forms.Label BitacoraLabelHasta;
         private System.Windows.Forms.Label BitacoraLabelUsuario;
-        private System.Windows.Forms.ComboBox BitacoraComboUsuario;
         private System.Windows.Forms.Label BitacoraLabelCriticidad;
         private System.Windows.Forms.ComboBox BitacoraComboCriticidad;
         private System.Windows.Forms.Button BitacoraBotonConsultar;
@@ -214,5 +211,6 @@
         private System.Windows.Forms.DataGridView BitacoraDataGrid1;
         private System.Windows.Forms.DateTimePicker BitacoraDatePickerDesdeHora;
         private System.Windows.Forms.DateTimePicker BitacoraDatePickerHastaHora;
+        private System.Windows.Forms.TextBox BitacoraComboUsuario;
     }
 }

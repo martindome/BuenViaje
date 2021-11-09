@@ -25,6 +25,7 @@ namespace BuenViaje.Administracion
     public partial class Bitacora : Form
     {
         public Principal parent { get; set; }
+        private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
         public Bitacora()
         {
             InitializeComponent();
@@ -34,6 +35,87 @@ namespace BuenViaje.Administracion
         {
             parent = fPrincipal;
             InitializeComponent();
+        }
+
+        private void SetToolTips()
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            foreach (Control c in this.Controls)
+            {
+                ToolTip toolTip;
+                string tooltipMessaje = IdiomaBL.ObtenerMensajeTextos(c.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                if (tooltipMessaje != "")
+                {
+                    if (tooltips.Keys.Contains(c.Name))
+                    {
+                        toolTip = tooltips[c.Name];
+                    }
+                    else
+                    {
+                        toolTip = new ToolTip();
+                        toolTip.AutoPopDelay = 5000;
+                        toolTip.InitialDelay = 1000;
+                        toolTip.ReshowDelay = 500;
+                        // Force the ToolTip text to be displayed whether or not the form is active.
+                        toolTip.ShowAlways = true;
+                        tooltips[c.Name] = toolTip;
+                    }
+
+                    toolTip.SetToolTip(c, tooltipMessaje);
+                }
+                if (c is GroupBox)
+                {
+                    SetToolTipsGroupBox((GroupBox)c);
+                }
+            }
+
+        }
+
+        private void SetToolTipsGroupBox(GroupBox groupBox)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            foreach (Control c in groupBox.Controls)
+            {
+                ToolTip toolTip;
+                string tooltipMessaje = IdiomaBL.ObtenerMensajeTextos(c.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                if (tooltipMessaje != "")
+                {
+                    if (tooltips.Keys.Contains(c.Name))
+                    {
+                        toolTip = tooltips[c.Name];
+                    }
+                    else
+                    {
+                        toolTip = new ToolTip();
+                        toolTip.AutoPopDelay = 5000;
+                        toolTip.InitialDelay = 1000;
+                        toolTip.ReshowDelay = 500;
+                        // Force the ToolTip text to be displayed whether or not the form is active.
+                        toolTip.ShowAlways = true;
+                        tooltips[c.Name] = toolTip;
+                    }
+
+                    toolTip.SetToolTip(c, tooltipMessaje);
+                }
+                if (c is GroupBox)
+                {
+                    SetToolTipsGroupBox((GroupBox)c);
+                }
+            }
         }
 
         private void Bitacora_Load(object sender, EventArgs e)
@@ -72,20 +154,16 @@ namespace BuenViaje.Administracion
             BitacoraDatePickerHastaHora.ShowUpDown = true;
 
             //ComboBox
-            BitacoraComboUsuario.Items.Add("*");
-            foreach (string mS in BitacoraBL.ListarUsuarios())
-                BitacoraComboUsuario.Items.Add(mS);
             BitacoraComboCriticidad.Items.Add("*");
             BitacoraComboCriticidad.Items.Add("HIGH");
             BitacoraComboCriticidad.Items.Add("MEDIUM");
             BitacoraComboCriticidad.Items.Add("LOW");
             BitacoraComboCriticidad.DropDownStyle = ComboBoxStyle.DropDownList;
-            BitacoraComboUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             BitacoraComboCriticidad.SelectedIndex = 0;
-            BitacoraComboUsuario.SelectedIndex = 0;
 
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("Bitacora-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+            SetToolTips();
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -113,11 +191,31 @@ namespace BuenViaje.Administracion
             BitacoraBE mBitacora = new BitacoraBE();
             DateTime Desde = BitacoraDatePickerDesde.Value.Date + BitacoraDatePickerDesdeHora.Value.TimeOfDay;
             DateTime Hasta = BitacoraDatePickerHasta.Value.Date + BitacoraDatePickerHastaHora.Value.TimeOfDay;
-            mBitacora.Nombre_Usuario = BitacoraComboUsuario.SelectedItem.ToString();
+            if (this.BitacoraComboUsuario.Text != "")
+            {
+                UsuarioBE usuario = new UsuarioBL().Obtener(this.BitacoraComboUsuario.Text);
+                if (null == usuario)
+                {
+                    mBitacora.Nombre_Usuario = "*";
+                }
+                else
+                {
+                    mBitacora.Nombre_Usuario = usuario.Nombre_Usuario;
+                }
+            }
+            
             mBitacora.Tipo_Evento = BitacoraComboCriticidad.SelectedItem.ToString();
             BitacoraBL pBitacora = new BitacoraBL();
             List<BitacoraBE> Registros = pBitacora.Listar(mBitacora, Desde, Hasta);
-            ActualizarGrilla(Registros);
+            List<BitacoraBE> RegistrosAux = new List<BitacoraBE>();
+            foreach (BitacoraBE bitacora in Registros)
+            {
+                if (bitacora.Nombre_Usuario.Contains(this.BitacoraComboUsuario.Text.ToString()))
+                {
+                    RegistrosAux.Add(bitacora);
+                }
+            }
+            ActualizarGrilla(RegistrosAux);
         }
 
         private void ActualizarGrilla(List<BitacoraBE> Registros)

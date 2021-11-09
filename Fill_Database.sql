@@ -601,6 +601,243 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'busesButton3', 'Modificar el bus seleccionado'),
 (2, 'busesButton4', 'Eliminar el bus seleccionado')
 
+
+------------------- Reset Password
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'CambiarPasswordText1', 'Email of the user'),
+(1, 'CambiarPasswordButton1', 'Reset the password of the user specified')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'CambiarPasswordText1', 'Email del usuario'),
+(2, 'CambiarPasswordButton1', 'Restaurar la clave del usuario especificado')
+
+
+------------------- Cambiar clave
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'CambiarContraseniaTextBox1', 'Current password of the user'),
+(1, 'CambiarContraseniaTextBox2', 'New password to be assigned to the user'),
+(1, 'CambiarContraseniaTextBox3', 'Confirm the new password for the user'),
+(1, 'Confirmar', 'Change the password of the user'),
+(1, 'Cancelar', 'Exit')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'CambiarContraseniaTextBox1', 'Actual clave del usuario'),
+(2, 'CambiarContraseniaTextBox2', 'Nueva clave para asignar al usuario'),
+(2, 'CambiarContraseniaTextBox3', 'Confirmar la nueva clave'),
+(2, 'Confirmar', 'Cambiar la clave del usuario'),
+(2, 'Cancelar', 'Salir')
+
+
+------------------- Cambiar Idioma
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'IdiomaComboBox1', 'Languaje for the application'),
+(1, 'IdiomaBotton1', 'Change the languaje')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'IdiomaComboBox1', 'Idioma para la aplicacion'),
+(2, 'IdiomaBotton1', 'Cambiar el lenguaje')
+
+
+------------------- ABM Rutas
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'rutasCombo1', 'City of origin'),
+(1, 'rutasCombo2', 'City of destination'),
+(1, 'RutasText2', 'Duration of the trip (in minutes)'),
+(1, 'RutasText3', 'Mame of the route'),
+(1, 'ABMRutasButton1', 'Apply the changes'),
+(1, 'ABMRutasButton2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'rutasCombo1', 'Ciudad de origin'),
+(2, 'rutasCombo2', 'Ciudad de destino'),
+(2, 'RutasText2', 'Duracion del viaje (en minutos)'),
+(2, 'RutasText3', 'Nombre de la ruta'),
+(2, 'ABMRutasButton1', 'Aplicar los cambios'),
+(2, 'ABMRutasButton2', 'Salir del formulario')
+
+
+------------------- ABM Viajes
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ViajeABMCombo1', 'Route of the trip'),
+(1, 'ViajeABMCombo2', 'Bus that is going to take the trip'),
+(1, 'ViajeABMCombo3', 'Frecuency for the trip'),
+(1, 'ViajeABMCheckBox1', 'Cancel de trip'),
+(1, 'ViajeABMButton1', 'Apply the changes'),
+(1, 'ViajeABMButton2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ViajeABMCombo1', 'Ruta del viaje'),
+(2, 'ViajeABMCombo2', 'Bus que va a realizar el viaje'),
+(2, 'ViajeABMCombo3', 'Frecuencia del viaje'),
+(2, 'ViajeABMCheckBox1', 'Cancelar el viaje'),
+(2, 'ViajeABMButton1', 'Aplicar los cambios'),
+(2, 'ViajeABMButton2', 'Salir del formulario')
+
+------------------- Devolucion de pasaje
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'DevolucionText1', 'Return the ticket'),
+(1, 'DevolucionText2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'DevolucionText1', 'Devolver el pasaje'),
+(2, 'DevolucionText2', 'Salir del formulario')
+
+------------------- ABM Localidades
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMLocalidadesTexto1', 'Name of the city'),
+(1, 'ABMLocalidadesTexto2', 'Province of the city'),
+(1, 'ABMLocalidadesTexto3', 'Country of the city'),
+(1, 'ABMLocalidadesBotton1', 'Apply the changes'),
+(1, 'ABMLocalidadesBotton2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMLocalidadesTexto1', 'Nombre de la ciudad'),
+(2, 'ABMLocalidadesTexto2', 'Provincia de la ciudad'),
+(2, 'ABMLocalidadesTexto3', 'Pais de la ciudad'),
+(2, 'ABMLocalidadesBotton1', 'Aplicar los cambios'),
+(2, 'ABMLocalidadesBotton2', 'Salir del formulario')
+
+------------------- ABM Clientes
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMClientesTexto1', 'Name of the client'),
+(1, 'ABMClientesTexto2', 'Surname of the client'),
+(1, 'ABMClientesTexto3', 'ID of the client'),
+(1, 'ABMClientesTexto4', 'Email of the client'),
+(1, 'ABMClientesBotton1', 'Apply the changes'),
+(1, 'ABMClientesBotton2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMClientesTexto1', 'Nombre del cliente'),
+(2, 'ABMClientesTexto2', 'Apellido del cliente'),
+(2, 'ABMClientesTexto3', 'DNI del cliente'),
+(2, 'ABMClientesTexto4', 'Email del cliente'),
+(2, 'ABMClientesBotton1', 'Aplicar los cambios'),
+(2, 'ABMClientesBotton2', 'Salir del formulario')
+
+------------------- ABM Buses
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMBusesTexto1', 'ID of the bus'),
+(1, 'ABMBusesTexto2', 'Brand of the bus'),
+(1, 'ABMBusesTexto3', 'Amount of seats of the bus'),
+(1, 'ABMBusesBotton1', 'Apply the changes'),
+(1, 'ABMBusessBotton2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMBusesTexto1', 'Patente del bus'),
+(2, 'ABMBusesTexto2', 'Marca del bus'),
+(2, 'ABMBusesTexto3', 'Cantidad de asientos del bus'),
+(2, 'ABMBusesBotton1', 'Aplicar los cambios'),
+(2, 'ABMBusessBotton2', 'Salir del formulario')
+
+
+-------------------ABM Usuarios
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMUsuariosTextoNombre', 'Name of the user'),
+(1, 'ABMUsuariosTextoApellido', 'Surname of the user'),
+(1, 'ABMUsuariosTextoUsuario', 'Username of the user'),
+(1, 'ABMUsuariosTextoClave', 'Password of the user'),
+(1, 'ABMUsuariosComboIdioma', 'Languaje for the users application'),
+(1, 'ABMUsuariosBotton3', 'Add user to selected family'),
+(1, 'ABMUsuariosBotton4', 'Remove user from selected family'),
+(1, 'ABMUsuariosBotton5', 'Add user to selected permission'),
+(1, 'ABMUsuariosBotton6', 'Remove user from selected permission'),
+(1, 'ABMUsuariosBotton1', 'Apply the changes'),
+(1, 'ABMUsuariosBotton2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMUsuariosTextoNombre', 'Nombre del usuario'),
+(2, 'ABMUsuariosTextoApellido', 'Apellido del usuario'),
+(2, 'ABMUsuariosTextoUsuario', 'Username del usuario'),
+(2, 'ABMUsuariosTextoClave', 'Clave del usuario'),
+(2, 'ABMUsuariosComboIdioma', 'Idioma para la aplicacion del usuario'),
+(2, 'ABMUsuariosBotton3', 'Asignar usuario a la familia seleccionada'),
+(2, 'ABMUsuariosBotton4', 'Remover usuario de la familia seleccionada'),
+(2, 'ABMUsuariosBotton5', 'Asignar al usuario la patente seleccionada'),
+(2, 'ABMUsuariosBotton6', 'Remover al usuario la patente seleccionada'),
+(2, 'ABMUsuariosBotton1', 'Aplicar los cambios'),
+(2, 'ABMUsuariosBotton2', 'Salir del formulario')
+
+
+-------------------Usuarios principal
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'UsuarioPrinciplaText1', 'Name of the user'),
+(1, 'UsuarioPrinciplaText2', 'Surname of the user'),
+(1, 'UsuarioPrinciplaText3', 'Username of the user'),
+(1, 'UsuarioPrinciplaText4', 'Amount of failed logins'),
+(1, 'UsuarioPrinciplaText5', 'Languaje for the users application'),
+(1, 'UsuarioPrincipalBotton5', 'Search users with the provided filters'),
+(1, 'UsuarioPrincipalBotton6', 'Clean the filters'),
+(1, 'UsuarioPrincipalBotton1', 'Read user'),
+(1, 'UsuarioPrincipalBotton2', 'Create new user'),
+(1, 'UsuarioPrincipalBotton3', 'Modify the selected user'),
+(1, 'UsuarioPrincipalBotton4', 'Delete the selected user'),
+(1, 'UsuarioPrincipalBotton7', 'Reset the selected users password')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'UsuarioPrinciplaText1', 'Nombre del usuario'),
+(2, 'UsuarioPrinciplaText2', 'Apellido del usuario'),
+(2, 'UsuarioPrinciplaText3', 'Username del usuario'),
+(2, 'UsuarioPrinciplaText4', 'Cantidad de logins fallidos'),
+(2, 'UsuarioPrinciplaText5', 'Idioma aplicado por el usuario'),
+(2, 'UsuarioPrincipalBotton5', 'Buscar usuarios con los filtros aplicados'),
+(2, 'UsuarioPrincipalBotton6', 'Limpiar los filtros'),
+(2, 'UsuarioPrincipalBotton1', 'Ver el usuario'),
+(2, 'UsuarioPrincipalBotton2', 'Crear un nuevo usuario'),
+(2, 'UsuarioPrincipalBotton3', 'Modificar el usuario seleccionado'),
+(2, 'UsuarioPrincipalBotton4', 'Borrar el usuario seleccionado'),
+(2, 'UsuarioPrincipalBotton7', 'Resetear la clave del usuario seleccionado')
+
+-------------------ABM Permisos
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'ABMPermisoTextoNombre', 'Name of the family'),
+(1, 'ABMPermisoTextoDescripcion', 'Description of the family'),
+(1, 'ABMPermisoBotton3', 'Add permission to teh family'),
+(1, 'ABMPermisoBotton4', 'Remove permission from the family'),
+(1, 'ABMPermisoBotton1', 'Apply the changes'),
+(1, 'ABMPermisoBotton2', 'Exit the form')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'ABMPermisoTextoNombre', 'Nombre de la familia'),
+(2, 'ABMPermisoTextoDescripcion', 'Descripcion de la familia'),
+(2, 'ABMPermisoBotton3', 'Agregar permiso a la familia'),
+(2, 'ABMPermisoBotton4', 'Remover permiso de la familia'),
+(2, 'ABMPermisoBotton1', 'Aplicar los cambios'),
+(2, 'ABMPermisoBotton2', 'Salir del form')
+
+-------------------Bitacora
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'BitacoraComboUsuario', 'Search for and especific user'),
+(1, 'BitacoraComboCriticidad', 'Search for an specific level'),
+(1, 'BitacoraBotonConsultar', 'Apply the filters'),
+(1, 'BitacoraBottonExportToPDF', 'Create a pdf report')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'BitacoraComboUsuario', 'Buscar por un usuario en especifico'),
+(2, 'BitacoraComboCriticidad', 'Buscar por un nivel especifico'),
+(2, 'BitacoraBotonConsultar', 'Aplicar filtros'),
+(2, 'BitacoraBottonExportToPDF', 'Crear un reporte pdf')
+
+
+-------------------Backup
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'BackupButton1', 'Search path for the destination backup files'),
+(1, 'BackupComboBox1', 'Amount of parts for the backup files'),
+(1, 'BackupButton2', 'Create the restore point')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'BackupButton1', 'Buscar ruta para los archivos de backup'),
+(2, 'BackupComboBox1', 'Cantidad de partes para los archivos de backup'),
+(2, 'BackupButton2', 'Crear archivos de restauracion')
+
+-------------------Restore
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'RestoreButton1', 'Search path for the backup files'),
+(1, 'RestoreButton2', 'Restore application database')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'RestoreButton1', 'Buscar ruta a los archivos de backup'),
+(2, 'RestoreButton2', 'Restaurar base de datos')
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES

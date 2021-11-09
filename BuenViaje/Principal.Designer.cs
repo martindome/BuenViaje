@@ -314,6 +314,7 @@
             this.tabPagePasajes.Size = new System.Drawing.Size(1150, 405);
             this.tabPagePasajes.TabIndex = 0;
             this.tabPagePasajes.Text = "Pasajes";
+            this.tabPagePasajes.Click += new System.EventHandler(this.tabPagePasajes_Click);
             // 
             // pasajesPrincipalTextBox6
             // 
