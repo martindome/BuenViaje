@@ -14,7 +14,7 @@ namespace DAL
     {
         static SERV.Seguridad.Cifrado mCifra = new SERV.Seguridad.Cifrado();
         static SERV.Integridad mIntegridad = new SERV.Integridad();
-        public static void ValorizarEntidad(PatenteBE pPatente, DataRow mDataRow)
+         public static void ValorizarEntidad(PatenteBE pPatente, DataRow mDataRow)
         {
             pPatente.ID_Compuesto = int.Parse(mDataRow["ID_Permiso"].ToString());
             pPatente.Nombre = SERV.Seguridad.Cifrado.Descifrar(mDataRow["Nombre"].ToString());

@@ -28,8 +28,85 @@ namespace BL
 
         public void Guardar(UsuarioBE pUsuario)
         {
-            List<CompuestoBE> permisosViejos = this.ObtenerPermisos(pUsuario);
+            //Validar que todas las patentes esten asigandas a un usuario por lo menos
+            PatenteBL patentebl = new PatenteBL();
+            UsuarioBL usuariobl = new UsuarioBL();
+            List<PatenteBE> patentes = patentebl.Listar();
+            bool TodasPatentesFlag = true;
+            foreach (PatenteBE patente in patentes)
+            {
+                bool PatenteFlag = false;
+                foreach (UsuarioBE user in UsuarioDAL.Listar())
+                {
+                    //Cuando el user no es pUsuario, tengo que ir a buscar los permisos a la BD porque no los tengo cargados en memoria
+                    if (user.ID_Usuario != pUsuario.ID_Usuario)
+                    {
+                        foreach (CompuestoBE permiso in usuariobl.ObtenerPermisos(user))
+                        {
+                            if (permiso is PatenteBE && ((PatenteBE)permiso).Tipo == patente.Tipo)
+                            {
+                                PatenteFlag = true;
+                                break;
+                            }
+                            else if (permiso is FamiliaBE)
+                            {
+                                foreach (CompuestoBE innerPatente in permiso.ObtenerHijos())
+                                {
+                                    if (innerPatente is PatenteBE && ((PatenteBE)innerPatente).Tipo == patente.Tipo)
+                                    {
+                                        PatenteFlag = true;
+                                        break;
+                                    }
+                                }
+                                if (PatenteFlag)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //Cuando el user es pUsuario, tengo los permisos en memoria
+                        foreach (CompuestoBE permiso in pUsuario.Permisos)
+                        {
+                            if (permiso is PatenteBE && ((PatenteBE)permiso).Tipo == patente.Tipo)
+                            {
+                                PatenteFlag = true;
+                                break;
+                            }
+                            else if(permiso is FamiliaBE)
+                            {
+                                foreach (CompuestoBE innerPatente in permiso.ObtenerHijos())
+                                {
+                                    if (innerPatente is PatenteBE && ((PatenteBE)innerPatente).Tipo == patente.Tipo)
+                                    {
+                                        PatenteFlag = true;
+                                        break;
+                                    }
+                                }
+                                if (PatenteFlag)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (PatenteFlag)
+                    {
+                        break;
+                    }
+                }
+                TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
+                if (!TodasPatentesFlag)
+                {
+                    throw new Exception("No todas las patentes estan asignadas a un usuario");
+                }
+            }
+
+            //Guardamos y borramos permisos
             UsuarioDAL.Guardar(pUsuario);
+            List<CompuestoBE> permisosViejos = this.ObtenerPermisos(pUsuario);
             foreach (CompuestoBE permiso in pUsuario.Permisos)
             {
                 bool flag = false;
@@ -37,7 +114,7 @@ namespace BL
                 {
                     if (permiso is PatenteBE && permisoViejo is PatenteBE && permisoViejo.ID_Compuesto == permiso.ID_Compuesto)
                     {
-                        flag = true;  
+                        flag = true;
                     }
                     else if (permiso is FamiliaBE && permisoViejo is FamiliaBE && permisoViejo.ID_Compuesto == permiso.ID_Compuesto)
                     {
@@ -84,8 +161,84 @@ namespace BL
             }
         }
 
+        private static bool VerificarTodasPatentes(UsuarioBE pUsuario)
+        {
+            //Validar que todas las patentes esten asigandas a un usuario por lo menos
+            PatenteBL patentebl = new PatenteBL();
+            UsuarioBL usuariobl = new UsuarioBL();
+            List<PatenteBE> patentes = patentebl.Listar();
+            bool TodasPatentesFlag = true;
+            foreach (PatenteBE patente in patentes)
+            {
+                bool PatenteFlag = false;
+                foreach (UsuarioBE user in UsuarioDAL.Listar())
+                {
+                    // Elimino de la lista al usuario que estoy borrando
+                    if (user.ID_Usuario != pUsuario.ID_Usuario)
+                    {
+                        foreach (CompuestoBE permiso in usuariobl.ObtenerPermisos(user))
+                        {
+                            if (permiso is PatenteBE && ((PatenteBE)permiso).Tipo == patente.Tipo)
+                            {
+                                PatenteFlag = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (PatenteFlag)
+                    {
+                        break;
+                    }
+                }
+                TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
+                if (!TodasPatentesFlag)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public void Eliminar(UsuarioBE pUsuario)
         {
+            if (pUsuario.ID_Usuario == SingletonSesion.Instancia.Usuario.ID_Usuario)
+            {
+                throw new Exception("Un usuario no se puede eliminar a si mismo");
+            }
+            //Validar que todas las patentes esten asigandas a un usuario por lo menos
+            PatenteBL patentebl = new PatenteBL();
+            UsuarioBL usuariobl = new UsuarioBL();
+            List<PatenteBE> patentes = patentebl.Listar();
+            bool TodasPatentesFlag = true;
+            foreach (PatenteBE patente in patentes)
+            {
+                bool PatenteFlag = false;
+                foreach (UsuarioBE user in UsuarioDAL.Listar())
+                {
+                    //Cuando user es pUsuario, lo saco porque quiero ver el estado de los permisos cuando pUsuario sea removido
+                    if (user.ID_Usuario != pUsuario.ID_Usuario)
+                    {
+                        foreach (CompuestoBE permiso in usuariobl.ObtenerPermisos(user))
+                        {
+                            if (permiso is PatenteBE && ((PatenteBE)permiso).Tipo == patente.Tipo)
+                            {
+                                PatenteFlag = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (PatenteFlag)
+                    {
+                        break;
+                    }
+                }
+                TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
+                if (!TodasPatentesFlag)
+                {
+                    throw new Exception("No todas las patentes estan asignadas a un usuario");
+                }
+            }
+            //Eliminamos permisos y patentes
             foreach (CompuestoBE permiso in pUsuario.Permisos)
             {
                 if (permiso is PatenteBE)
@@ -98,6 +251,7 @@ namespace BL
                 }
             }
             UsuarioDAL.Eliminar(pUsuario);
+
         }
 
         public void Actualizar(UsuarioBE pUsuario)
@@ -155,7 +309,7 @@ namespace BL
             return UsuarioDAL.ObtenerPermisos(pUsuario);
         }
 
-        public List<CompuestoBE> ObtenerPatentes(UsuarioBE usuario)
+        public List<PatenteBE> ObtenerPatentes(UsuarioBE usuario)
         {
             return UsuarioDAL.ListarPatentes(usuario);
         }

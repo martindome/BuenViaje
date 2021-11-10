@@ -127,7 +127,7 @@ namespace DAL
             List<CompuestoBE> permisos = new List<CompuestoBE>();
 
             List<CompuestoBE> familias = UsuarioDAL.ListarFamilias(pUsuario);
-            List<CompuestoBE> patentes = UsuarioDAL.ListarPatentes(pUsuario);
+            List<PatenteBE> patentes = UsuarioDAL.ListarPatentes(pUsuario);
             
             foreach (FamiliaBE familia in familias)
             {
@@ -146,6 +146,7 @@ namespace DAL
             string mCommandText = "DELETE Usuario WHERE ID_Usuario = " + pUsuario.ID_Usuario;
             int value = DAO.Instancia().ExecuteNonQuery(mCommandText);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Usuario"), "Usuario");
+            ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Bitacora"), "Bitacora");
             return value;
         }
         public static string ObtenerIdiomaUsuario(UsuarioBE pUsuario)
@@ -176,9 +177,9 @@ namespace DAL
 
             return familias;
         }
-        public static List<CompuestoBE> ListarPatentes(UsuarioBE pUsuario)
+        public static List<PatenteBE> ListarPatentes(UsuarioBE pUsuario)
         {
-            List<CompuestoBE> patentes = new List<CompuestoBE>();
+            List<PatenteBE> patentes = new List<PatenteBE>();
             string mCommand = "SELECT p.ID_Permiso, p.Nombre, p.Descripcion, p.Tipo_Permiso, u.ID_Usuario " +
                 "FROM Permiso AS p " +
                 "INNER JOIN Usuario_Permiso AS up ON up.ID_Permiso = p.ID_Permiso " +

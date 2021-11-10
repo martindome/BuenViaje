@@ -21,7 +21,7 @@ namespace BuenViaje.Administracion.Usuarios
         private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
         internal Operacion operacion;
         internal UsuarioBE usuariobe;
-        List<CompuestoBE> patentesUsuario = new List<CompuestoBE>();
+        List<PatenteBE> patentesUsuario = new List<PatenteBE>();
         List<CompuestoBE> familiasUsuario = new List<CompuestoBE>();
         UsuarioBL usuarioBl = new UsuarioBL();
         PatenteBL patenteBl = new PatenteBL();
@@ -211,7 +211,7 @@ namespace BuenViaje.Administracion.Usuarios
             }
 
             #region Obtener permisos
-            List<CompuestoBE> patentesUsuario = new List<CompuestoBE>();
+            List<PatenteBE> patentesUsuario = new List<PatenteBE>();
             if (this.usuariobe.ID_Usuario != 0)
             {
                 patentesUsuario = usuarioBl.ObtenerPatentes(this.usuariobe);
@@ -644,7 +644,7 @@ namespace BuenViaje.Administracion.Usuarios
         private void ABMUsuariosBotton6_Click(object sender, EventArgs e)
         {
             PatenteBE patente = patenteBl.Obtener(int.Parse(ABMUsuariosGrillaPatente2.SelectedRows[0].Cells[0].Value.ToString()));
-            List<CompuestoBE> aux = new List<CompuestoBE>();
+            List<PatenteBE> aux = new List<PatenteBE>();
             foreach (PatenteBE p in patentesUsuario)
             {
                 if (p.ID_Compuesto != patente.ID_Compuesto)

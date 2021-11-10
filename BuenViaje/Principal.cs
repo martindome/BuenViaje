@@ -443,7 +443,7 @@ namespace BuenViaje
 
         private void gestionarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadUsuarios))
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadUsuarios) || SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminUsuarios))
             {
                 UsuariosPrincipal form = new UsuariosPrincipal();
                 form.MinimizeBox = false;
@@ -459,7 +459,7 @@ namespace BuenViaje
 
         private void gestionarPermisosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadPermisos))
+            if (SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.ReadPermisos) || SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminPermisos))
             {
                 PermisosPrincipal form = new PermisosPrincipal();
                 form.MinimizeBox = false;
@@ -1543,7 +1543,6 @@ namespace BuenViaje
                         for (int i = 0; i < int.Parse(pasajesPrincipalTextBox6.Text); i++) {
                             PasajeBE pasaje = new PasajeBE();
                             pasaje.ID_Cliente = int.Parse(pasajesPrincipalDataGridClientes.SelectedRows[0].Cells[0].Value.ToString());
-                            pasaje.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
                             pasaje.Devuelto = false;
                             pasaje.ID_Viaje = viaje.ID_Viaje;
                             pasaje.Fecha = DateTime.Now;

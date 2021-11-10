@@ -23,6 +23,40 @@ namespace BL
 
         public void Guardar(FamiliaBE familia)
         {
+            UsuarioBL usuarioBl = new UsuarioBL();
+            PatenteBL patentebl = new PatenteBL();
+            UsuarioBL usuariobl = new UsuarioBL();
+            List<UsuarioBE> usuarios = usuarioBl.Listar();
+            List<CompuestoBE> patentesFamilia = familia.ObtenerHijos();
+            List<PatenteBE> patentes = patentebl.Listar();
+
+            //Todas las patentes de la familia deben estar asignadas a usuarios por otras familias / asignaciones
+            bool TodasPatentesFlag = true;
+            foreach (PatenteBE patente in patentesFamilia)
+            {
+                bool PatenteFlag = false;
+                foreach (UsuarioBE user in UsuarioDAL.Listar())
+                {
+                    foreach (CompuestoBE permiso in usuariobl.ObtenerPermisos(user))
+                    {
+                        if (permiso is PatenteBE && ((PatenteBE)permiso).Tipo == patente.Tipo)
+                        {
+                            PatenteFlag = true;
+                            break;
+                        }
+                    }
+                    if (PatenteFlag)
+                    {
+                        break;
+                    }
+                }
+                TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
+                if (!TodasPatentesFlag)
+                {
+                    throw new Exception("No todas las patentes estan asignadas a un usuario");
+                }
+            }
+
             FamiliaDAL.Guardar(familia);
             List<PatenteBE> permisosViejos = this.ListarPatentes(familia);
             foreach (PatenteBE patente in familia.ObtenerHijos())
@@ -55,20 +89,53 @@ namespace BL
                     EliminarFamiliaPermiso(familia, permisoViejo);
                 }
             }
+            
         }
 
         public void Eliminar (FamiliaBE familia)
         {
             UsuarioBL usuarioBl = new UsuarioBL();
+            PatenteBL patentebl = new PatenteBL();
+            UsuarioBL usuariobl = new UsuarioBL();
             List<UsuarioBE> usuarios = usuarioBl.Listar();
-            foreach (UsuarioBE usuario in usuarios)
+            List<PatenteBE> patentesFamilia = this.ListarPatentes(familia);
+            List<PatenteBE> patentes = patentebl.Listar();
+
+            //Todas las patentes de la familia deben estar asignadas a usuarios por otras familias / asignaciones
+            bool TodasPatentesFlag = true;
+            foreach (PatenteBE patente in patentesFamilia)
             {
-                List<CompuestoBE> familias = usuarioBl.ObtenerFamilias(usuario);
-                if (familias.Any(item => item.ID_Compuesto == familia.ID_Compuesto))
+                bool PatenteFlag = false;
+                foreach (UsuarioBE user in UsuarioDAL.Listar())
                 {
-                    throw new Exception("Hay usuarios asignados a la familia");
+                    foreach (CompuestoBE permiso in usuariobl.ObtenerPermisos(user))
+                    {
+                        if (permiso is PatenteBE && ((PatenteBE)permiso).Tipo == patente.Tipo)
+                        {
+                            PatenteFlag = true;
+                            break;
+                        }
+                    }
+                    if (PatenteFlag)
+                    {
+                        break;
+                    }
+                }
+                TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
+                if (!TodasPatentesFlag)
+                {
+                    throw new Exception("No todas las patentes estan asignadas a un usuario");
                 }
             }
+            //No se pueden eliminar familias con usuarios asignados
+            //foreach (UsuarioBE usuario in usuarios)
+            //{
+            //    List<CompuestoBE> familias = usuarioBl.ObtenerFamilias(usuario);
+            //    if (familias.Any(item => item.ID_Compuesto == familia.ID_Compuesto))
+            //    {
+            //        throw new Exception("Hay usuarios asignados a la familia");
+            //    }
+            //}
             foreach (PatenteBE patente in familia.ObtenerHijos())
             {
                 EliminarFamiliaPermiso(familia, patente);
