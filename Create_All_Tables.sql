@@ -79,8 +79,8 @@ Create Table Usuario_Permiso(
     --Descripcion varchar(max) not null,
     DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Permiso),
-    FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete no action,
-    FOREIGN KEY (ID_Permiso) REFERENCES Permiso (ID_Permiso) on delete no action 
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete cascade,
+    FOREIGN KEY (ID_Permiso) REFERENCES Permiso (ID_Permiso) on delete CASCADE 
 );
 
 Create Table Usuario_Familia(
@@ -89,8 +89,8 @@ Create Table Usuario_Familia(
     --Descripcion varchar(max) not null,
     DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Familia),
-    FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete no action,
-    FOREIGN KEY (ID_Familia) REFERENCES Familia (ID_Familia) on delete no action 
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete CASCADE,
+    FOREIGN KEY (ID_Familia) REFERENCES Familia (ID_Familia) on delete CASCADE 
 );
 
 Create Table Permiso_Familia(
@@ -99,8 +99,8 @@ Create Table Permiso_Familia(
     --Descripcion varchar(max) not null,
     DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Permiso, ID_Familia),
-    FOREIGN KEY (ID_Permiso) REFERENCES Permiso (ID_Permiso) on delete no action,
-    FOREIGN KEY (ID_Familia) REFERENCES Familia (ID_Familia) on delete no action 
+    FOREIGN KEY (ID_Permiso) REFERENCES Permiso (ID_Permiso) on delete CASCADE,
+    FOREIGN KEY (ID_Familia) REFERENCES Familia (ID_Familia) on delete CASCADE 
 );
 
 Create Table Bitacora(
@@ -109,9 +109,9 @@ Create Table Bitacora(
     Tipo_Evento varchar (50),
     Descripcion varchar (MAX),
     DVH varchar (MAX),
-    ID_Usuario bigint null,
-    PRIMARY KEY CLUSTERED (ID_Bitacora),
-    FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) ON DELETE No action
+    Nombre_Usuario varchar (100) not null,
+    PRIMARY KEY CLUSTERED (ID_Bitacora)
+    ---FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) ON DELETE No action
 );
 
 Create Table Bus(

@@ -31,6 +31,7 @@ namespace BL
             //Validar que todas las patentes esten asigandas a un usuario por lo menos
             PatenteBL patentebl = new PatenteBL();
             UsuarioBL usuariobl = new UsuarioBL();
+            FamiliaBL familiabl = new FamiliaBL();
             List<PatenteBE> patentes = patentebl.Listar();
             bool TodasPatentesFlag = true;
             foreach (PatenteBE patente in patentes)
@@ -77,9 +78,9 @@ namespace BL
                             }
                             else if(permiso is FamiliaBE)
                             {
-                                foreach (CompuestoBE innerPatente in permiso.ObtenerHijos())
+                                foreach (PatenteBE innerPatente in familiabl.ListarPatentes((FamiliaBE)permiso))
                                 {
-                                    if (innerPatente is PatenteBE && ((PatenteBE)innerPatente).Tipo == patente.Tipo)
+                                    if ( innerPatente.Tipo == patente.Tipo)
                                     {
                                         PatenteFlag = true;
                                         break;

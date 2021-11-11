@@ -326,7 +326,7 @@ namespace BuenViaje.Administracion.Usuarios
                 //Bitacora
                 mBitacora.Descripcion = "Se cambio la clave al usuario: " + usuariobe.Nombre_Usuario;
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
             }
@@ -336,7 +336,7 @@ namespace BuenViaje.Administracion.Usuarios
                 BitacoraBE mBitacora = new BitacoraBE();
                 mBitacora.Descripcion = "Error al resetear password";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = 0;
+                mBitacora.Nombre_Usuario = SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuario-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

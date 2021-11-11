@@ -175,7 +175,7 @@ namespace BuenViaje.Administracion.Backup
                             BitacoraBL Bitacorabl = new BitacoraBL();
                             mBitacora.Descripcion = "Se realizo una copia de seguridad";
                             mBitacora.Fecha = DateTime.Now;
-                            mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                            mBitacora.Nombre_Usuario = SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                             mBitacora.Tipo_Evento = "HIGH";
                             Bitacorabl.Guardar(mBitacora);
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Confirmacion-Backup", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -197,7 +197,7 @@ namespace BuenViaje.Administracion.Backup
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 mBitacora.Descripcion = "Error al realizar una copia de seguridad";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Backup-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

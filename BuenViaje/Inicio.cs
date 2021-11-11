@@ -52,7 +52,7 @@ namespace BuenViaje
                         mBitacora.Descripcion = "Error conexion base de datos";
                         mBitacora.Tipo_Evento = "HIGH";
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = 0;
+                        mBitacora.Nombre_Usuario = "NULL";
                         bitacoraBL.Guardar(mBitacora);
                         MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
@@ -74,7 +74,7 @@ namespace BuenViaje
                     mBitacora.Descripcion = "Error Integridad base de datos";
                     mBitacora.Tipo_Evento = "HIGH";
                     mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = 0;
+                    mBitacora.Nombre_Usuario = "NULL";
                     bitacoraBL.Guardar(mBitacora);
                     MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-IntegridadBaseDatos", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -91,7 +91,7 @@ namespace BuenViaje
                 mBitacora.Descripcion = "Error Carga del programa";
                 mBitacora.Tipo_Evento = "HIGH";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = 0;
+                mBitacora.Nombre_Usuario = "NULL";
                 bitacoraBL.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-CargaIncorrecta", mIdioma) + "\n" + ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

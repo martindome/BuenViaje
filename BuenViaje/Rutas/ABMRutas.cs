@@ -277,7 +277,7 @@ namespace BuenViaje.Rutas
                         this.rutabl.Guardar(rutabe);
                         mBitacora.Descripcion = "Se dio de alta a la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -300,7 +300,7 @@ namespace BuenViaje.Rutas
                         this.rutabl.Guardar(rutabe);
                         mBitacora.Descripcion = "Se modifico la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -314,7 +314,7 @@ namespace BuenViaje.Rutas
                         //Bitacora
                         mBitacora.Descripcion = "Se elimino la ruta: " + this.rutabe.Origen.Nombre + "-" + this.rutabe.Destino.Nombre;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "HIGH";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -330,7 +330,7 @@ namespace BuenViaje.Rutas
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 mBitacora.Descripcion = "Error al operar con Rutas";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

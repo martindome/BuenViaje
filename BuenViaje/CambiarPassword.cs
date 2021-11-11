@@ -54,7 +54,7 @@ namespace BuenViaje
                     BitacoraBL Bitacorabl = new BitacoraBL();
                     mBitacora.Descripcion = "Reset clave usuario: " + CambiarPasswordText1.Text;
                     mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = 0;
+                    mBitacora.Nombre_Usuario = "NULL";
                     mBitacora.Tipo_Evento = "HIGH";
                     Bitacorabl.Guardar(mBitacora);
                     MessageBox.Show("Clave actualizada", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -71,7 +71,7 @@ namespace BuenViaje
                 BitacoraBE mBitacora = new BitacoraBE();
                 mBitacora.Descripcion = "Error al resetear password";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = 0;
+                mBitacora.Nombre_Usuario = "NULL";
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Login-Error-cambiarClave", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

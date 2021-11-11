@@ -205,35 +205,68 @@ namespace BuenViaje.Administracion
 
         private void BitacoraBotonConsultar_Click(object sender, EventArgs e)
         {
-            BitacoraBE mBitacora = new BitacoraBE();
+            //BitacoraBE mBitacora = new BitacoraBE();
+            //DateTime Desde = BitacoraDatePickerDesde.Value.Date + BitacoraDatePickerDesdeHora.Value.TimeOfDay;
+            //DateTime Hasta = BitacoraDatePickerHasta.Value.Date + BitacoraDatePickerHastaHora.Value.TimeOfDay;
+            //if (this.BitacoraComboUsuario.Text != "")
+            //{
+            //    UsuarioBE usuario = new UsuarioBL().Obtener(this.BitacoraComboUsuario.Text);
+            //    if (null == usuario)
+            //    {
+            //        mBitacora.Nombre_Usuario = "*";
+            //    }
+            //    else
+            //    {
+            //        mBitacora.Nombre_Usuario = usuario.Nombre_Usuario;
+            //    }
+            //}
+            //else if(this.BitacoraComboUsuario.Text != "" || this.BitacoraComboUsuario.Text != "")
+            //{
+            //    mBitacora.Nombre_Usuario = "*";
+            //}
+
+            //mBitacora.Tipo_Evento = BitacoraComboCriticidad.SelectedItem.ToString();
+            //BitacoraBL pBitacora = new BitacoraBL();
+            //List<BitacoraBE> Registros = pBitacora.Listar(mBitacora, Desde, Hasta);
+            //List<BitacoraBE> RegistrosAux = new List<BitacoraBE>();
+            //foreach (BitacoraBE bitacora in Registros)
+            //{
+            //    if (bitacora.Nombre_Usuario.Contains(this.BitacoraComboUsuario.Text.ToString()))
+            //    {
+            //        RegistrosAux.Add(bitacora);
+            //    }
+            //}
+            //ActualizarGrilla(RegistrosAux);
+            ActualizarGrillaBitacora();
+        }
+
+
+        private void ActualizarGrillaBitacora()
+        {
+            this.BitacoraDataGrid1.Rows.Clear();
+            BitacoraBL bitacorabl = new BitacoraBL();
             DateTime Desde = BitacoraDatePickerDesde.Value.Date + BitacoraDatePickerDesdeHora.Value.TimeOfDay;
             DateTime Hasta = BitacoraDatePickerHasta.Value.Date + BitacoraDatePickerHastaHora.Value.TimeOfDay;
-            if (this.BitacoraComboUsuario.Text != "")
+            foreach (BitacoraBE bitacorabe in bitacorabl.Listar(Desde, Hasta))
             {
-                UsuarioBE usuario = new UsuarioBL().Obtener(this.BitacoraComboUsuario.Text);
-                if (null == usuario)
+                bool flag = true;
+                //if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
+                if (this.BitacoraComboUsuario.Text != "" && !(bitacorabe).Nombre_Usuario.Contains(this.BitacoraComboUsuario.Text) && this.BitacoraComboUsuario.Text != "*")
                 {
-                    mBitacora.Nombre_Usuario = "*";
+                    flag = false;
                 }
-                else
+                //if (this.RutasPrincipalText3.Text != "" && this.RutasPrincipalText3.Text != rutabe.Destino.Nombre)
+                if (BitacoraComboCriticidad.SelectedItem.ToString() != "" && !(bitacorabe).Tipo_Evento.Contains(BitacoraComboCriticidad.SelectedItem.ToString()) && BitacoraComboCriticidad.SelectedItem.ToString() != "*")
                 {
-                    mBitacora.Nombre_Usuario = usuario.Nombre_Usuario;
+                    flag = false;
+                }
+                if (flag)
+                {
+                BitacoraDataGrid1.Rows.Add(bitacorabe.ID_Bitacora, bitacorabe.Fecha, bitacorabe.Nombre_Usuario, bitacorabe.Tipo_Evento, bitacorabe.Descripcion);
                 }
             }
-            
-            mBitacora.Tipo_Evento = BitacoraComboCriticidad.SelectedItem.ToString();
-            BitacoraBL pBitacora = new BitacoraBL();
-            List<BitacoraBE> Registros = pBitacora.Listar(mBitacora, Desde, Hasta);
-            List<BitacoraBE> RegistrosAux = new List<BitacoraBE>();
-            foreach (BitacoraBE bitacora in Registros)
-            {
-                if (bitacora.Nombre_Usuario.Contains(this.BitacoraComboUsuario.Text.ToString()))
-                {
-                    RegistrosAux.Add(bitacora);
-                }
-            }
-            ActualizarGrilla(RegistrosAux);
         }
+
 
         private void ActualizarGrilla(List<BitacoraBE> Registros)
         {

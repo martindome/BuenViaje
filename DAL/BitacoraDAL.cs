@@ -12,10 +12,10 @@ namespace DAL
         static int mId;
         static SERV.Seguridad.Cifrado mCifra = new SERV.Seguridad.Cifrado();
         static SERV.Integridad mIntegridad = new SERV.Integridad();
-        public static List<BitacoraBE> Listar(BitacoraBE pBitacora)
+        public static List<BitacoraBE> Listar()
         {
             List<BitacoraBE> Lista = new List<BitacoraBE>();
-            string mCommand = "SELECT b.ID_Bitacora, b.Fecha, b.Tipo_Evento, b.Descripcion, b.ID_Usuario, b.DVH, u.Nombre_Usuario FROM Bitacora as b INNER JOIN Usuario as u on u.ID_Usuario=b.ID_Usuario OR (u.ID_Usuario IS NOT NULL AND b.ID_Usuario IS NULL)";
+            string mCommand = "SELECT b.ID_Bitacora, b.Fecha, b.Tipo_Evento, b.Descripcion, b.Nombre_Usuario, b.DVH, b.Nombre_Usuario FROM Bitacora as b";
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
@@ -36,24 +36,47 @@ namespace DAL
             string mCommand = "";
             pBitacora.ID_Bitacora = ProximoId();
             pBitacora.Descripcion = SERV.Seguridad.Cifrado.Cifrar(pBitacora.Descripcion);
-            
-            if (pBitacora.ID_Usuario == 0)
+            Dictionary<string, Object> parameters = new Dictionary<string, Object>();
+            if (pBitacora.Nombre_Usuario == "NULL")
             {
-                string DVH = mIntegridad.CalcularDVH(pBitacora.ID_Bitacora.ToString() + pBitacora.Fecha.ToString() + pBitacora.Tipo_Evento + pBitacora.Descripcion);
-                mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, ID_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha.ToString() + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', NULL)";
+                pBitacora.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar("NULL");
+                string DVH = mIntegridad.CalcularDVH(pBitacora.ID_Bitacora.ToString() + pBitacora.Fecha.ToString() + pBitacora.Tipo_Evento + pBitacora.Descripcion + pBitacora.Nombre_Usuario);
+                //mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha.ToString() + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', NULL)";
+                mCommand = "INSERT INTO Bitacora(ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (@ID_Bitacora, @Fecha, @Tipo, @Descripcion, @DVH, @Nombre_Usuario)";    
+                parameters.Add("@ID_Bitacora", pBitacora.ID_Bitacora);
+                parameters.Add("@Fecha", pBitacora.Fecha.ToString());
+                parameters.Add("@Tipo", pBitacora.Tipo_Evento);
+                parameters.Add("@Descripcion", pBitacora.Descripcion);
+                parameters.Add("@DVH", DVH);
+                parameters.Add("@Nombre_Usuario", pBitacora.Nombre_Usuario);
+                //DAO.Instancia().ExecuteNonQuery(mCommand, parameters);
             }
             else
             {
-                string DVH = mIntegridad.CalcularDVH(pBitacora.ID_Bitacora.ToString() + pBitacora.Fecha.ToString() + pBitacora.Tipo_Evento + pBitacora.Descripcion + pBitacora.ID_Usuario.ToString());
-                mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, ID_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', " + pBitacora.ID_Usuario + ")";
+                pBitacora.Nombre_Usuario = SERV.Seguridad.Cifrado.Cifrar(pBitacora.Nombre_Usuario);
+                string DVH = mIntegridad.CalcularDVH(pBitacora.ID_Bitacora.ToString() + pBitacora.Fecha.ToString() + pBitacora.Tipo_Evento + pBitacora.Descripcion + pBitacora.Nombre_Usuario);
+                //mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha.ToString() + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', NULL)";
+                mCommand = "INSERT INTO Bitacora(ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (@ID_Bitacora, @Fecha, @Tipo, @Descripcion, @DVH, @Nombre_Usuario)";
+                parameters.Add("@ID_Bitacora", pBitacora.ID_Bitacora);
+                parameters.Add("@Fecha", pBitacora.Fecha.ToString());
+                parameters.Add("@Tipo", pBitacora.Tipo_Evento);
+                parameters.Add("@Descripcion", pBitacora.Descripcion);
+                parameters.Add("@DVH", DVH);
+                parameters.Add("@Nombre_Usuario", pBitacora.Nombre_Usuario);
+                //DAO.Instancia().ExecuteNonQuery(mCommand, parameters);
             }
-            DAO.Instancia().ExecuteNonQuery(mCommand);
+            DAO.Instancia().ExecuteNonQuery(mCommand, parameters);
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Bitacora"), "Bitacora");
         }
 
+        //public static void UpdateBitacora(BitacoraBE pBitacora)
+        //{
+        //    List<Bitacora> registros = 
+        //}
+
         public static List<string> ListarUsuarios()
         {
-            string mCommand = "SELECT DISTINCT(b.ID_Usuario), u.Nombre_Usuario FROM Bitacora b INNER JOIN Usuario u on b.ID_Usuario = u.ID_Usuario";
+            string mCommand = "SELECT DISTINCT(b.Nombre_Usuario), u.Nombre_Usuario FROM Bitacora b INNER JOIN Usuario u on b.Nombre_Usuario = u.Nombre_Usuario";
             List<string> Lista = new List<string>();
             DataSet mDataSet = new DataSet();
             mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
@@ -72,8 +95,7 @@ namespace DAL
             pBitacora.Tipo_Evento = pDataRow["Tipo_Evento"].ToString();
             pBitacora.Descripcion = SERV.Seguridad.Cifrado.Descifrar(pDataRow["Descripcion"].ToString());
             pBitacora.DVH = (pDataRow["DVH"].ToString());
-            pBitacora.ID_Usuario = (pDataRow["ID_Usuario"].ToString() != "") ? int.Parse(pDataRow["ID_Usuario"].ToString()) : 0;
-            pBitacora.Nombre_Usuario = (pDataRow["ID_Usuario"].ToString() != "") ? SERV.Seguridad.Cifrado.Descifrar(pDataRow["Nombre_Usuario"].ToString()) : "NULL"; 
+            pBitacora.Nombre_Usuario = (pDataRow["Nombre_Usuario"].ToString() != "NULL") ? SERV.Seguridad.Cifrado.Descifrar(pDataRow["Nombre_Usuario"].ToString()) : "NULL"; 
         }
 
         private static int ProximoId()

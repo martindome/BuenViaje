@@ -347,7 +347,7 @@ namespace BuenViaje.Viajes
                             viajeBL.Guardar(viajebe);
                             mBitacora.Descripcion = "Se dio de alta al viaje: " + this.viajebe.ID_Viaje;
                             mBitacora.Fecha = DateTime.Now;
-                            mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                            mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                             mBitacora.Tipo_Evento = "MEDIUM";
                             bitacorabl.Guardar(mBitacora);
                             flag = true;
@@ -373,7 +373,7 @@ namespace BuenViaje.Viajes
                                 }
                                 mBitacora.Descripcion = "Se dio de alta al viaje: " + this.viajebe.ID_Viaje;
                                 mBitacora.Fecha = DateTime.Now;
-                                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                                 mBitacora.Tipo_Evento = "MEDIUM";
                                 bitacorabl.Guardar(mBitacora);
                                 flag = true;
@@ -398,7 +398,7 @@ namespace BuenViaje.Viajes
                         viajeBL.Guardar(viajebe);
                         mBitacora.Descripcion = "Se modifico el viaje: " + this.viajebe.ID_Viaje;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -413,7 +413,7 @@ namespace BuenViaje.Viajes
                         //Bitacora
                         mBitacora.Descripcion = "Se cancelo el viaje: " + this.viajebe.ID_Viaje;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "HIGH";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -429,7 +429,7 @@ namespace BuenViaje.Viajes
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 mBitacora.Descripcion = "Error al operar con Rutas";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMViajes-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

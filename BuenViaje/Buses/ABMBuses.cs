@@ -228,7 +228,7 @@ namespace BuenViaje.Buses
                         this.busbl.Guardar(busbe);
                         mBitacora.Descripcion = "Se dio de alta al bus: " + this.ABMBusesTexto1.Text.ToUpper();
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -250,7 +250,7 @@ namespace BuenViaje.Buses
                         this.busbl.Guardar(busbe);
                         mBitacora.Descripcion = "Se modifico el bus: " + this.ABMBusesTexto1.Text.ToUpper();
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -264,7 +264,7 @@ namespace BuenViaje.Buses
                         //Bitacora
                         mBitacora.Descripcion = "Se elimino al bus: " + this.busbe.Patente;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "HIGH";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -280,7 +280,7 @@ namespace BuenViaje.Buses
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 mBitacora.Descripcion = "Error al operar con buses";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

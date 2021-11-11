@@ -217,7 +217,7 @@ namespace BuenViaje.Administracion.Backup
                         BitacoraBL Bitacorabl = new BitacoraBL();
                         mBitacora.Descripcion = "Se realizo una restauracion del sistema";
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario = SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "HIGH";
                         Bitacorabl.Guardar(mBitacora);
                         MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Confirmacion-Backup", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -238,7 +238,7 @@ namespace BuenViaje.Administracion.Backup
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 mBitacora.Descripcion = "Error al restaurar el sistema";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario = SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

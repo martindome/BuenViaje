@@ -49,7 +49,7 @@ namespace BuenViaje
                 BitacoraBE mBitacora = new BitacoraBE();
                 mBitacora.Descripcion = "Error al iniciar sesion";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = 0;
+                mBitacora.Nombre_Usuario = "NULL";
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Login-Error-InicioSesion", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

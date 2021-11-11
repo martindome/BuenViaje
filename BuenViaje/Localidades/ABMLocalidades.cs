@@ -210,7 +210,7 @@ namespace BuenViaje.Localidades
                         this.localidadbl.Guardar(localidadbe);
                         mBitacora.Descripcion = "Se dio de alta a la localidad: " + this.ABMLocalidadesTexto1.Text + "-" + this.ABMLocalidadesTexto2.Text + "-" + this.ABMLocalidadesTexto3.Text;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -227,7 +227,7 @@ namespace BuenViaje.Localidades
                         this.localidadbl.Guardar(localidadbe);
                         mBitacora.Descripcion = "Se modifico la localidad: " + this.ABMLocalidadesTexto1.Text + "-" + this.ABMLocalidadesTexto2.Text + "-" + this.ABMLocalidadesTexto3.Text;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "MEDIUM";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -241,7 +241,7 @@ namespace BuenViaje.Localidades
                         //Bitacora
                         mBitacora.Descripcion = "Se elimino la localidad: " + this.localidadbe.Nombre + "-" + this.localidadbe.Provincia + "-" + this.localidadbe.Pais;
                         mBitacora.Fecha = DateTime.Now;
-                        mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                        mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                         mBitacora.Tipo_Evento = "HIGH";
                         bitacorabl.Guardar(mBitacora);
                         flag = true;
@@ -257,7 +257,7 @@ namespace BuenViaje.Localidades
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 mBitacora.Descripcion = "Error al operar con localidades";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMLocalidades-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

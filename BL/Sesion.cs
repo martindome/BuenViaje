@@ -33,7 +33,7 @@ namespace BL
             mBitacora.Descripcion = "Usuario cerro sesion";
             mBitacora.Tipo_Evento = "LOW";
             mBitacora.Fecha = DateTime.Now;
-            mBitacora.ID_Usuario = this.usuario.ID_Usuario;
+            mBitacora.Nombre_Usuario = this.usuario.Nombre_Usuario;
             bitacoraBL.Guardar(mBitacora);
 
             this.usuario = null;

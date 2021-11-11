@@ -246,7 +246,7 @@ namespace BuenViaje.Pasajes
                 BitacoraBE mBitacora = new BitacoraBE();
                 mBitacora.Descripcion = "Devulto pasaje: " + int.Parse(pasajesDevolucionDataGridViajes.SelectedRows[0].Cells[0].Value.ToString());
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "MEDIUM";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Devolucion-Info-Correcta", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -258,7 +258,7 @@ namespace BuenViaje.Pasajes
                 BitacoraBE mBitacora = new BitacoraBE();
                 mBitacora.Descripcion = "Error al devolver pasaje";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Devolucion-Error-Exception", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -14,47 +14,58 @@ namespace BL
             BitacoraDAL.Guardar(pBitacora);
         }
 
-        public List<BitacoraBE> Listar(BitacoraBE pBitacora, DateTime Desde, DateTime Hasta)
+        public List<BitacoraBE> Listar(DateTime Desde, DateTime Hasta)
         {
-            UsuarioBL pUsuario = new UsuarioBL();
-            if (pBitacora.Nombre_Usuario != "*")
+            //UsuarioBL pUsuario = new UsuarioBL();
+            //if (pBitacora.Nombre_Usuario != "*")
+            //{
+            //    //pUsuario.Nombre_Usuario = pBitacora.Nombre_Usuario;
+            //    pBitacora.Nombre_Usuario = pUsuario.Obtener(pBitacora.Nombre_Usuario).Nombre_Usuario;
+            //}
+            //if (pBitacora.Tipo_Evento == "*")
+            //{
+            //    pBitacora.Tipo_Evento = "*";
+            //}
+            //List<BitacoraBE> Registros = new List<BitacoraBE>();
+            //List<BitacoraBE> RegistrosTemp = BitacoraDAL.Listar(pBitacora);
+            //foreach (BitacoraBE mRegistro in RegistrosTemp)
+            //{
+            //    bool Flag = true;
+            //    if (pBitacora.Nombre_Usuario != "*")
+            //    {
+            //        if (mRegistro.Nombre_Usuario != pBitacora.Nombre_Usuario)
+            //        {
+            //            Flag = false;
+            //        }
+            //    }
+            //    if (pBitacora.Tipo_Evento != "*")
+            //    {
+            //        if (mRegistro.Tipo_Evento != pBitacora.Tipo_Evento)
+            //        {
+            //            Flag = false;
+            //        }
+            //    }
+            //    if (mRegistro.Fecha > Hasta || mRegistro.Fecha < Desde) 
+            //    {
+            //        Flag = false;
+            //    }
+            //    if (Flag == true)
+            //    {
+            //        Registros.Add(mRegistro);
+            //    }
+            //}
+            //return Registros;
+
+            List<BitacoraBE> lista = new List<BitacoraBE>();
+
+            foreach (BitacoraBE bitacora in BitacoraDAL.Listar())
             {
-                //pUsuario.Nombre_Usuario = pBitacora.Nombre_Usuario;
-                pBitacora.ID_Usuario = pUsuario.Obtener(pBitacora.Nombre_Usuario).ID_Usuario;
-            }
-            if (pBitacora.Tipo_Evento == "*")
-            {
-                pBitacora.Tipo_Evento = "*";
-            }
-            List<BitacoraBE> Registros = new List<BitacoraBE>();
-            List<BitacoraBE> RegistrosTemp = BitacoraDAL.Listar(pBitacora);
-            foreach (BitacoraBE mRegistro in RegistrosTemp)
-            {
-                bool Flag = true;
-                if (pBitacora.Nombre_Usuario != "*")
+                if (bitacora.Fecha > Desde && bitacora.Fecha < Hasta)
                 {
-                    if (mRegistro.Nombre_Usuario != pBitacora.Nombre_Usuario)
-                    {
-                        Flag = false;
-                    }
-                }
-                if (pBitacora.Tipo_Evento != "*")
-                {
-                    if (mRegistro.Tipo_Evento != pBitacora.Tipo_Evento)
-                    {
-                        Flag = false;
-                    }
-                }
-                if (mRegistro.Fecha > Hasta || mRegistro.Fecha < Desde) 
-                {
-                    Flag = false;
-                }
-                if (Flag == true)
-                {
-                    Registros.Add(mRegistro);
+                    lista.Add(bitacora);
                 }
             }
-            return Registros;
+            return lista;
         }
 
         static public List<string> ListarUsuarios()

@@ -31,7 +31,7 @@ namespace BL
                     //Crear Registro en bitacora
                     mBitacora.Descripcion = "Oper. no autorizada: intento de inicio de sesio con usuario bloqueado";
                     mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = mUsuario.ID_Usuario;
+                    mBitacora.Nombre_Usuario = mUsuario.Nombre_Usuario;
                     mBitacora.Tipo_Evento = "HIGH";
                     Bitacorabl.Guardar(mBitacora);
                     throw new Exception("Usuario esta bloqueado");
@@ -49,7 +49,7 @@ namespace BL
                 //Crear Registro en bitacora
                 mBitacora.Descripcion = "Oper. no autorizada: intento de inicio de sesio con usuario inexistente";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = 0;
+                mBitacora.Nombre_Usuario = "NULL";
                 mBitacora.Tipo_Evento = "LOW";
                 Bitacorabl.Guardar(mBitacora);
                 throw new Exception("Usuario no esta registrado");
@@ -67,7 +67,7 @@ namespace BL
                 pUsuario.Intentos_Login = 0;
                 mBitacora.Descripcion = "Inicio de sesion satisfactorio";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                mBitacora.Nombre_Usuario = pUsuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "LOW";
                 Bitacorabl.Guardar(mBitacora);
                 Usuariobl.Actualizar(pUsuario);
@@ -82,7 +82,7 @@ namespace BL
                     mBitacora.Descripcion = "Ingreso de clave incorrecta en el inicio de sesion";
                     mBitacora.Tipo_Evento = "MEDIUM";
                     mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                    mBitacora.Nombre_Usuario = pUsuario.Nombre_Usuario;
                     Bitacorabl.Guardar(mBitacora);
                 }
                 else
@@ -90,7 +90,7 @@ namespace BL
                     mBitacora.Descripcion = "Usuario bloqueado por maximo de ingresos incorrectos";
                     mBitacora.Tipo_Evento = "HIGH";
                     mBitacora.Fecha = DateTime.Now;
-                    mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                    mBitacora.Nombre_Usuario = pUsuario.Nombre_Usuario;
                     Bitacorabl.Guardar(mBitacora);
                 }
                 Usuariobl.Actualizar(pUsuario);

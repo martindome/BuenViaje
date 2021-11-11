@@ -279,7 +279,7 @@ namespace BuenViaje.Sesion
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 mBitacora.Descripcion = "Cambio de clave usuario: " + pUsuario.Nombre_Usuario;
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = pUsuario.ID_Usuario;
+                mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Info-CambioCorrecto", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -291,7 +291,7 @@ namespace BuenViaje.Sesion
                 BitacoraBE mBitacora = new BitacoraBE();
                 mBitacora.Descripcion = "Error al cambiar clave";
                 mBitacora.Fecha = DateTime.Now;
-                mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                mBitacora.Nombre_Usuario = SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarContrasenia-Error-CambioClave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

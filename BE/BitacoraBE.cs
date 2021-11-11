@@ -12,7 +12,6 @@ namespace BE
         public string Tipo_Evento { get; set; }
         public string Descripcion { get; set; }
         public string DVH { get; set; }
-        public int ID_Usuario { get; set; }
 
         public string Nombre_Usuario { get; set; }
 

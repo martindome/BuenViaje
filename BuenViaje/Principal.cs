@@ -1554,7 +1554,7 @@ namespace BuenViaje
                             BitacoraBE mBitacora = new BitacoraBE();
                             mBitacora.Descripcion = "Comprado pasaje: " + pasaje.ID_Pasaje;
                             mBitacora.Fecha = DateTime.Now;
-                            mBitacora.ID_Usuario = SingletonSesion.Instancia.Usuario.ID_Usuario;
+                            mBitacora.Nombre_Usuario= SingletonSesion.Instancia.Usuario.Nombre_Usuario;
                             mBitacora.Tipo_Evento = "MEDIUM";
                             Bitacorabl.Guardar(mBitacora);
                         }
@@ -1654,9 +1654,5 @@ namespace BuenViaje
 
         #endregion Pasajes
 
-        private void tabPagePasajes_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
