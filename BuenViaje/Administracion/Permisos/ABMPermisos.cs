@@ -373,7 +373,7 @@ namespace BuenViaje.Administracion.Permisos
                         flag = true;
                         break;
                     case Operacion.Baja:
-                        DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Confirmacion-Baja", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMPermisos-Confirmacion-Baja", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
                             this.familiaBl.Eliminar(this.familiabe);

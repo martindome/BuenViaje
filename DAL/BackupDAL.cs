@@ -38,7 +38,7 @@ namespace DAL
         public static void RealizarRestore(List<string> archivos)
         {
             //string mCommand = "USE MASTER ALTER DATABASE BuenViaje SET SINGLE_USER WITH ROLLBACK IMMEDIATE RESTORE DATABASE BuenViaje FROM ";
-            string mCommand = "USE MASTER RESTORE DATABASE BuenViaje FROM ";
+            string mCommand = "USE MASTER ALTER DATABASE BuenViaje SET SINGLE_USER WITH ROLLBACK IMMEDIATE RESTORE DATABASE BuenViaje FROM ";
             for (int i = 0; i < archivos.Count; i++)
             {
                 mCommand = mCommand + "DISK = '" + archivos[i] + "'" ;

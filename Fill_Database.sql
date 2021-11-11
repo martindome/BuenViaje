@@ -919,7 +919,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'ABMUsuariosLabel1', 'Name'),
 (1, 'ABMUsuariosLabel2', 'Surname'),
-(1, 'ABMUsuariosLabel3', 'Usuer'),
+(1, 'ABMUsuariosLabel3', 'User'),
 (1, 'ABMUsuariosLabel4', 'Password'),
 (1, 'ABMUsuariosLabel5', 'Language'),
 (1, 'ABMUsuariosLabel6', 'Available'),
