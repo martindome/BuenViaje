@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BE;
 using BE.Composite;
@@ -166,7 +167,7 @@ namespace BuenViaje.Administracion.Permisos
             {
                 patentesFamilia = familiaBl.ListarPatentes(this.familiabe);
             }
-
+            ABMPermisoBotton1.Enabled = false;
             CargarGrillas();
 
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
@@ -328,7 +329,7 @@ namespace BuenViaje.Administracion.Permisos
                         }
                         if (!ValidarDescripcion())
                         {
-                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMPermisos-Confirmacion-Baja", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMPermisos-Validacion-Nombre", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                         this.familiabe.Nombre = this.ABMPermisoTextoNombre.Text;
@@ -411,12 +412,29 @@ namespace BuenViaje.Administracion.Permisos
 
         private bool ValidarNombre()
         {
-            return !(this.ABMPermisoTextoNombre.Text.Length > 50);
+            bool output = !(this.ABMPermisoTextoNombre.Text.Length > 50 || !Regex.IsMatch(this.ABMPermisoTextoNombre.Text, @"^[a-zA-Z\s]+$"));
+            if (output)
+            {
+                List<FamiliaBE> familias = familiaBl.Listar();
+                foreach (FamiliaBE familia in familias)
+                {
+                    if (familia.ID_Compuesto != this.familiabe.ID_Compuesto && familia.Nombre == this.ABMPermisoTextoNombre.Text)
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+            
         }
 
         private bool ValidarDescripcion()
         {
-            return !(this.ABMPermisoTextoDescripcion.Text.Length > 50);
+            return !(this.ABMPermisoTextoDescripcion.Text.Length > 50 || !Regex.IsMatch(this.ABMPermisoTextoDescripcion.Text, @"^[a-zA-Z\s]+$"));
         }
 
         private void ABMPermisoBotton3_Click(object sender, EventArgs e)
@@ -442,6 +460,35 @@ namespace BuenViaje.Administracion.Permisos
             this.patentesFamilia = aux;
             //patentesUsuario.Remove(patente);
             ListarPatentes();
+        }
+
+        private void ABMPermisoTextoNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMPermisoTextoNombre.Text.Length > 0 && ABMPermisoTextoDescripcion.Text.Length > 0)
+            {
+                ABMPermisoBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMPermisoBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMPermisoTextoDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMPermisoTextoNombre.Text.Length > 0 && ABMPermisoTextoDescripcion.Text.Length > 0)
+            {
+                ABMPermisoBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMPermisoBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMPermisoBotton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -56,16 +56,17 @@ namespace BL
             //}
             //return Registros;
 
-            List<BitacoraBE> lista = new List<BitacoraBE>();
+            //List<BitacoraBE> lista = new List<BitacoraBE>();
 
-            foreach (BitacoraBE bitacora in BitacoraDAL.Listar())
-            {
-                if (bitacora.Fecha > Desde && bitacora.Fecha < Hasta)
-                {
-                    lista.Add(bitacora);
-                }
-            }
-            return lista;
+            //foreach (BitacoraBE bitacora in BitacoraDAL.Listar(Desde, Hasta))
+            //{
+            //    if (bitacora.Fecha > Desde && bitacora.Fecha < Hasta)
+            //    {
+            //        lista.Add(bitacora);
+            //    }
+            //}
+            //return lista;
+            return BitacoraDAL.Listar(Desde, Hasta);
         }
 
         static public List<string> ListarUsuarios()

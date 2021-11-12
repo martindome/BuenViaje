@@ -105,7 +105,7 @@ Create Table Permiso_Familia(
 
 Create Table Bitacora(
     ID_Bitacora bigint not null,
-    Fecha varchar(100) not null,
+    Fecha Datetime not null,
     Tipo_Evento varchar (50),
     Descripcion varchar (MAX),
     DVH varchar (MAX),
@@ -147,7 +147,7 @@ Create Table Viaje(
     ID_Viaje bigint not null,
     ID_Ruta bigint not null,
     ID_Bus bigint not null,
-    Fecha varchar(100) not null,
+    Fecha Datetime not null,
     Cancelado bit not null,
     DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED(ID_Viaje),

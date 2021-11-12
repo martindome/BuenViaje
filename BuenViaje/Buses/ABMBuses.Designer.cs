@@ -77,6 +77,7 @@
             this.ABMBusesTexto3.Name = "ABMBusesTexto3";
             this.ABMBusesTexto3.Size = new System.Drawing.Size(212, 20);
             this.ABMBusesTexto3.TabIndex = 30;
+            this.ABMBusesTexto3.TextChanged += new System.EventHandler(this.ABMBusesTexto3_TextChanged);
             // 
             // ABMBusesLabel3
             // 
@@ -95,6 +96,7 @@
             this.ABMBusesTexto2.Name = "ABMBusesTexto2";
             this.ABMBusesTexto2.Size = new System.Drawing.Size(212, 20);
             this.ABMBusesTexto2.TabIndex = 28;
+            this.ABMBusesTexto2.TextChanged += new System.EventHandler(this.ABMBusesTexto2_TextChanged);
             // 
             // ABMBusesTexto1
             // 
@@ -103,6 +105,7 @@
             this.ABMBusesTexto1.Name = "ABMBusesTexto1";
             this.ABMBusesTexto1.Size = new System.Drawing.Size(212, 20);
             this.ABMBusesTexto1.TabIndex = 27;
+            this.ABMBusesTexto1.TextChanged += new System.EventHandler(this.ABMBusesTexto1_TextChanged);
             // 
             // ABMBusesLabel2
             // 

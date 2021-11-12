@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using BE;
 using BL;
 
@@ -145,6 +146,7 @@ namespace BuenViaje.Rutas
             //}
             CargarCampos();
             SetToolTips();
+            ABMRutasButton1.Enabled = false;
         }
 
         private void CargarCampos()
@@ -225,7 +227,7 @@ namespace BuenViaje.Rutas
             List<LocalidadBE> Localidades = localidadbl.Listar();
             foreach (RutaBE ruta in rutabl.Listar())
             {
-                if (ruta.Destino.Equals(Origen) && ruta.Origen.Equals(Destino))
+                if (ruta.Destino.ID_Localidad == Origen.ID_Localidad && ruta.Origen.ID_Localidad == Destino.ID_Localidad)
                 {
                     return false;
                 }
@@ -344,6 +346,54 @@ namespace BuenViaje.Rutas
         private void RutasButton2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rutasCombo1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            {
+                ABMRutasButton1.Enabled = true;
+            }
+            else
+            {
+                ABMRutasButton1.Enabled = false;
+            }
+        }
+
+        private void rutasCombo2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            {
+                ABMRutasButton1.Enabled = true;
+            }
+            else
+            {
+                ABMRutasButton1.Enabled = false;
+            }
+        }
+
+        private void RutasText2_TextChanged(object sender, EventArgs e)
+        {
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            {
+                ABMRutasButton1.Enabled = true;
+            }
+            else
+            {
+                ABMRutasButton1.Enabled = false;
+            }
+        }
+
+        private void RutasText3_TextChanged(object sender, EventArgs e)
+        {
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            {
+                ABMRutasButton1.Enabled = true;
+            }
+            else
+            {
+                ABMRutasButton1.Enabled = false;
+            }
         }
     }
 }

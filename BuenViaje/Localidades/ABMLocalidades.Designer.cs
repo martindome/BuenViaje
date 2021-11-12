@@ -45,6 +45,7 @@
             this.ABMLocalidadesTexto3.Name = "ABMLocalidadesTexto3";
             this.ABMLocalidadesTexto3.Size = new System.Drawing.Size(212, 20);
             this.ABMLocalidadesTexto3.TabIndex = 22;
+            this.ABMLocalidadesTexto3.TextChanged += new System.EventHandler(this.ABMLocalidadesTexto3_TextChanged);
             // 
             // ABMLocalidadesLabel3
             // 
@@ -63,6 +64,7 @@
             this.ABMLocalidadesTexto2.Name = "ABMLocalidadesTexto2";
             this.ABMLocalidadesTexto2.Size = new System.Drawing.Size(212, 20);
             this.ABMLocalidadesTexto2.TabIndex = 16;
+            this.ABMLocalidadesTexto2.TextChanged += new System.EventHandler(this.ABMLocalidadesTexto2_TextChanged);
             // 
             // ABMLocalidadesTexto1
             // 
@@ -71,6 +73,7 @@
             this.ABMLocalidadesTexto1.Name = "ABMLocalidadesTexto1";
             this.ABMLocalidadesTexto1.Size = new System.Drawing.Size(212, 20);
             this.ABMLocalidadesTexto1.TabIndex = 15;
+            this.ABMLocalidadesTexto1.TextChanged += new System.EventHandler(this.ABMLocalidadesTexto1_TextChanged);
             // 
             // ABMLocalidadesLabel2
             // 

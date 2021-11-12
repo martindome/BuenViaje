@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
 using System.Drawing.Printing;
+using System.Text.RegularExpressions;
 using BE;
 using BE.Composite;
 using BL;
@@ -581,15 +582,15 @@ namespace BuenViaje
             foreach (LocalidadBE localidad in lista)
             {
                 bool flag = true;
-                if (this.LocalidadPrincipalText1.Text != "" && this.LocalidadPrincipalText1.Text != localidad.Nombre)
+                if (this.LocalidadPrincipalText1.Text != "" && !localidad.Nombre.Contains(this.LocalidadPrincipalText1.Text))
                 {
                     flag = false;
                 }
-                if (this.LocalidadPrincipalText2.Text != "" && this.LocalidadPrincipalText2.Text != localidad.Provincia)
+                if (this.LocalidadPrincipalText2.Text != "" && !localidad.Provincia.Contains(this.LocalidadPrincipalText2.Text))
                 {
                     flag = false;
                 }
-                if (this.LocalidadPrincipalText3.Text != "" && this.LocalidadPrincipalText3.Text != localidad.Pais)
+                if (this.LocalidadPrincipalText3.Text != "" && !localidad.Pais.Contains(this.LocalidadPrincipalText3.Text))
                 {
                     flag = false;
                 }
@@ -719,11 +720,11 @@ namespace BuenViaje
             foreach (BusBE localidad in lista)
             {
                 bool flag = true;
-                if (this.busesText1.Text != "" && this.busesText1.Text != localidad.Patente)
+                if (this.busesText1.Text != "" && !localidad.Patente.Contains(this.busesText1.Text))
                 {
                     flag = false;
                 }
-                if (this.busesText2.Text != "" && this.busesText2.Text != localidad.Marca)
+                if (this.busesText2.Text != "" && localidad.Marca.Contains(this.busesText2.Text))
                 {
                     flag = false;
                 }
@@ -938,19 +939,19 @@ namespace BuenViaje
             foreach (ClienteBE clientebe in lista)
             {
                 bool flag = true;
-                if (this.ClientesTextBox1.Text != "" && this.ClientesTextBox1.Text != clientebe.Nombre)
+                if (this.ClientesTextBox1.Text != "" && !clientebe.Nombre.Contains(this.ClientesTextBox1.Text))
                 {
                     flag = false;
                 }
-                if (this.ClientesTextBox2.Text != "" && this.ClientesTextBox2.Text != clientebe.Apellido)
+                if (this.ClientesTextBox2.Text != "" && !clientebe.Apellido.Contains(this.ClientesTextBox2.Text))
                 {
                     flag = false;
                 }
-                if (this.ClientesTextBox3.Text != "" && this.ClientesTextBox3.Text != clientebe.DNI)
+                if (this.ClientesTextBox3.Text != "" && !clientebe.DNI.Contains(this.ClientesTextBox3.Text))
                 {
                     flag = false;
                 }
-                if (this.ClientesTextBox4.Text != "" && this.ClientesTextBox4.Text != clientebe.Email)
+                if (this.ClientesTextBox4.Text != "" && !clientebe.Email.Contains(this.ClientesTextBox4.Text))
                 {
                     flag = false;
                 }
@@ -1533,7 +1534,8 @@ namespace BuenViaje
                     ViajeBL viajebl = new ViajeBL();
                     ViajeBE viaje = viajebl.Obtener(int.Parse(pasajesPrincipalDataGridViajes.SelectedRows[0].Cells[0].Value.ToString()));
                     BusBE bus = busbl.Obtener(viaje.ID_Bus);
-                    if (int.Parse(pasajesPrincipalTextBox6.Text) > 7 || int.Parse(pasajesPrincipalDataGridViajes.SelectedRows[0].Cells[6].Value.ToString()) - int.Parse(pasajesPrincipalTextBox6.Text) < 0)
+                    Regex regex = new Regex(@"^\d+$");
+                    if (!regex.IsMatch(pasajesPrincipalTextBox6.Text) || int.Parse(pasajesPrincipalTextBox6.Text) > 7 || int.Parse(pasajesPrincipalDataGridViajes.SelectedRows[0].Cells[6].Value.ToString()) - int.Parse(pasajesPrincipalTextBox6.Text) < 0)
                     {
                         MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("PasajePrincipal-Error-CantidadPasaje", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

@@ -34,6 +34,7 @@ namespace BuenViaje.Administracion.Backup
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("Backup-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             SetToolTips();
+            BackupButton2.Enabled = false;
         }
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -211,6 +212,23 @@ namespace BuenViaje.Administracion.Backup
         private bool ValidarRuta()
         {
             return Directory.Exists(this.BackupText1.Text);
+        }
+
+        private void BackupText1_TextChanged(object sender, EventArgs e)
+        {
+            if (this.BackupText1.Text.Length >0 && BackupComboBox1.SelectedItem.ToString().Length > 0 && Directory.Exists(this.BackupText1.Text))
+            {
+                BackupButton2.Enabled = true;
+            }
+            else
+            {
+                BackupButton2.Enabled = false;
+            }
+        }
+
+        private void BackupComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -176,11 +176,11 @@ namespace BuenViaje.Administracion.Permisos
             foreach (FamiliaBE familia in familias)
             {
                 bool flag = true;
-                if (this.PermisosPrinciplaText1.Text != "" && this.PermisosPrinciplaText1.Text != familia.Nombre)
+                if (this.PermisosPrinciplaText1.Text != "" && !familia.Nombre.Contains(this.PermisosPrinciplaText1.Text))
                 {
                     flag = false;
                 }
-                if (this.PermisosPrinciplaText2.Text != "" && this.PermisosPrinciplaText2.Text != familia.Descripcion)
+                if (this.PermisosPrinciplaText2.Text != "" && !familia.Descripcion.Contains(this.PermisosPrinciplaText2.Text))
                 {
                     flag = false;
                 }

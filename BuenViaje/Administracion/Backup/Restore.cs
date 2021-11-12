@@ -136,6 +136,7 @@ namespace BuenViaje.Administracion.Backup
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("Restore-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             SetToolTips();
+            RestoreButton2.Enabled = false;
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -199,6 +200,10 @@ namespace BuenViaje.Administracion.Backup
                     RestoreGrilla1.Rows.Add(file);
                     archivos.Add(file);
                 }
+            }
+            if (RestoreGrilla1.Rows.Count > 0)
+            {
+                RestoreButton2.Enabled = true;
             }
         }
 

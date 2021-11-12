@@ -51,6 +51,7 @@
             this.ViajeABMCombo1.Name = "ViajeABMCombo1";
             this.ViajeABMCombo1.Size = new System.Drawing.Size(212, 21);
             this.ViajeABMCombo1.TabIndex = 52;
+            this.ViajeABMCombo1.SelectedIndexChanged += new System.EventHandler(this.ViajeABMCombo1_SelectedIndexChanged);
             // 
             // ViajeABMButton2
             // 
@@ -127,6 +128,7 @@
             this.ViajeABMCombo2.Name = "ViajeABMCombo2";
             this.ViajeABMCombo2.Size = new System.Drawing.Size(212, 21);
             this.ViajeABMCombo2.TabIndex = 61;
+            this.ViajeABMCombo2.SelectedIndexChanged += new System.EventHandler(this.ViajeABMCombo2_SelectedIndexChanged);
             // 
             // ViajeABMLabel2
             // 

@@ -48,6 +48,7 @@
             this.CambiarPasswordText1.Name = "CambiarPasswordText1";
             this.CambiarPasswordText1.Size = new System.Drawing.Size(191, 20);
             this.CambiarPasswordText1.TabIndex = 1;
+            this.CambiarPasswordText1.TextChanged += new System.EventHandler(this.CambiarPasswordText1_TextChanged);
             // 
             // CambiarPasswordButton1
             // 

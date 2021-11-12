@@ -16,16 +16,17 @@ namespace BL
 
         public List<ViajeBE> Listar(DateTime Desde, DateTime Hasta)
         {
-            List<ViajeBE> lista = new List<ViajeBE>();
+            //List<ViajeBE> lista = new List<ViajeBE>();
 
-            foreach (ViajeBE viaje in ViajeDAL.Listar())
-            {
-                if (viaje.Fecha > Desde && viaje.Fecha < Hasta)
-                {
-                    lista.Add(viaje);
-                }
-            }
-            return lista;
+            //foreach (ViajeBE viaje in ViajeDAL.Listar())
+            //{
+            //    if (viaje.Fecha > Desde && viaje.Fecha < Hasta)
+            //    {
+            //        lista.Add(viaje);
+            //    }
+            //}
+            //return lista;
+            return ViajeDAL.Listar(Desde,Hasta);
         }
         public List<ViajeBE> ListarBus(int pId)
         {

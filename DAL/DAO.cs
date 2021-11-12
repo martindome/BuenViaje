@@ -37,6 +37,30 @@ namespace DAL
             }
         }
 
+        public DataSet ExecuteDataSet(string pCommandText, Dictionary<string, Object> parameters)
+        {
+            try
+            {
+                SqlDataAdapter mDa = new SqlDataAdapter(pCommandText, mCon);
+                foreach (string key in parameters.Keys)
+                {
+                    mDa.SelectCommand.Parameters.AddWithValue(key, parameters[key]);
+                }
+                DataSet mDs = new DataSet();
+                mDa.Fill(mDs);
+                return mDs;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (mCon.State != ConnectionState.Closed)
+                    mCon.Close();
+            }
+        }
+
         public int ExecuteNonQuery(string pCommandText, Dictionary<string, Object> parameters)
         {
             try

@@ -66,7 +66,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMUsuarios-Validacion-Clave', 'Password must have 8+ chars, 1 number, 1 upper case, 1 lower case at least'),
 (1, 'ABMUsuarios-Validacion-UsuarioUnico', 'Username already taken'),
 (1, 'ABMUsuarios-Validacion-UsuarioMail', 'Username does not match an email address'),
-(1, 'ABMUsuarios-Validacion-Nombre', 'Name and surname must be 50 characters or less'),
+(1, 'ABMUsuarios-Validacion-Nombre', 'Name or surname is not valid'),
 (1, 'ABMUsuarios-Confirmacion-Baja', 'Are you sure to delete the user?'),
 (1, 'ABMUsuarios-Validacion-Resetear', 'Are you sure top reset the password?'),
 (1, 'ABMUsuario-Error-Aplicar', 'Error while operating users')
@@ -83,7 +83,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----ABM Permisos
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMPermisos-Form', 'Accesses'),
-(1, 'ABMPermisos-Validacion-Nombre', 'Name and description should be 50 chars or less'),
+(1, 'ABMPermisos-Validacion-Nombre', 'Name or description not valid'),
 (1, 'ABMPermisos-Confirmacion-Baja', 'Are you sure to delete the group?'),
 (1, 'ABMPermiso-Error-Aplicar', 'Error while operating groups')
 
@@ -275,7 +275,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMUsuarios-Validacion-Clave', 'La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
 (2, 'ABMUsuarios-Validacion-UsuarioUnico', 'Nombre de usuario ya esta en uso'),
 (2, 'ABMUsuarios-Validacion-UsuarioMail', 'El nombre de usuario no es una casilla de mail'),
-(2, 'ABMUsuarios-Validacion-Nombre', 'Nombre y apellido deben tener menos de 50 caracteres'),
+(2, 'ABMUsuarios-Validacion-Nombre', 'Nombre o apellido no valido'),
 (2, 'ABMUsuarios-Confirmacion-Baja', 'Esta seguro de borrar el usuario?'),
 (2, 'ABMUsuarios-Validacion-Resetear', 'Esta seguro de resetear clave?'),
 (2, 'ABMUsuario-Error-Aplicar', 'Error al operar con usuarios')
@@ -291,7 +291,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----ABM Permisos
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMPermisos-Form', 'Permisos'),
-(2, 'ABMPermisos-Validacion-Nombre', 'Nombre y descripcion deben tener menos de 50 caracteres'),
+(2, 'ABMPermisos-Validacion-Nombre', 'Nombre o descripcion no validos'),
 (2, 'ABMPermisos-Confirmacion-Baja', 'Esta seguro de borrar la familia?'),
 (2, 'ABMPermiso-Error-Aplicar', 'Error al operar con las familias')
 
@@ -346,7 +346,6 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMBuses-Validacion-Bus','Bus ya existente'),
 (2, 'ABMBuses-ValidacionPatente-Bus','Patente solo contiene numeros y letras'),
 (2, 'ABMBuses-Confirmacion-Baja','Esta seguro de elimianr el bus?'),
-
 (2, 'ABMBuses-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
 ----Clientes Principal
@@ -534,8 +533,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- Principal Rutas
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'RutasPrincipalText2', 'City of origin'),
-(1, 'RutasPrincipalText3', 'City of destination'),
+(1, 'RutasPrincipalText2', 'City of origin. Only letters'),
+(1, 'RutasPrincipalText3', 'City of destination. Only letters'),
 (1, 'RutasButton6', 'Clean the filters'),
 (1, 'RutasButton5', 'Apply the filters'),
 (1, 'RutasButton1', 'Read the route'),
@@ -544,8 +543,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'RutasButton4', 'Cancel the selected route')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'RutasPrincipalText2', 'Ciudad de origin'),
-(2, 'RutasPrincipalText3', 'Ciudad de destino'),
+(2, 'RutasPrincipalText2', 'Ciudad de origin. Solo letras'),
+(2, 'RutasPrincipalText3', 'Ciudad de destino. Solo letras'),
 (2, 'RutasButton6', 'Limpiar los filtros'),
 (2, 'RutasButton5', 'Aplicar los filtros'),
 (2, 'RutasButton1', 'Ver la ruta'),
@@ -555,9 +554,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- Principal Localidades
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'LocalidadPrincipalText1', 'Name of the city'),
-(1, 'LocalidadPrincipalText2', 'Name of the province'),
-(1, 'LocalidadPrincipalText3', 'Name of the country'),
+(1, 'LocalidadPrincipalText1', 'Name of the city. Only letters'),
+(1, 'LocalidadPrincipalText2', 'Name of the province. Only letters'),
+(1, 'LocalidadPrincipalText3', 'Name of the country. Only letters'),
 (1, 'LocalidadBotton6', 'Clean the filters'),
 (1, 'LocalidadBotton5', 'Apply the filters'),
 (1, 'LocalidadBotton1', 'Read the city'),
@@ -566,9 +565,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'LocalidadBotton4', 'Cancel the selected city')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'LocalidadPrincipalText1', 'Nombre de la ciudad'),
-(2, 'LocalidadPrincipalText2', 'Nombre de la provincia'),
-(2, 'LocalidadPrincipalText3', 'nombre de la ciudad'),
+(2, 'LocalidadPrincipalText1', 'Nombre de la ciudad. Solo letras'),
+(2, 'LocalidadPrincipalText2', 'Nombre de la provincia Solo letras'),
+(2, 'LocalidadPrincipalText3', 'nombre de la ciudad. Solo letras'),
 (2, 'LocalidadBotton6', 'Limpiar los filtros'),
 (2, 'LocalidadBotton5', 'Aplicar los filtros'),
 (2, 'LocalidadBotton1', 'Ver la ciudad'),
@@ -578,9 +577,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- Principal Buses
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'busesText1', 'Identification of the bus'),
-(1, 'busesText2', 'Brand of the bus'),
-(1, 'busesText3', 'Seats of the bus'),
+(1, 'busesText1', 'ID for the bus. No spaces. Only numbers an letters'),
+(1, 'busesText2', 'Brand of the bus. Only numbers and letters'),
+(1, 'busesText3', 'Seats of the bus. Only Numbers'),
 (1, 'busesButton6', 'Clean the filters'),
 (1, 'busesButton5', 'Apply the filters'),
 (1, 'busesButton7', 'Generate a report with teh filters applied'),
@@ -590,9 +589,9 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'busesButton4', 'Eliminate the selected bus')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'busesText1', 'Patente del bus'),
-(2, 'busesText2', 'Marca del bus'),
-(2, 'busesText3', 'Asientos del bus'),
+(2, 'busesText1', 'Patente del bus. Sin espacios. Solo numeros y letras'),
+(2, 'busesText2', 'Marca del bus. Solo letras'),
+(2, 'busesText3', 'Asientos del bus. Solo numeros'),
 (2, 'busesButton6', 'Limpiar los filtros'),
 (2, 'busesButton5', 'Aplicar los filtros'),
 (2, 'busesButton7', 'Crear un reporte de los buses con los filtros aplicados'),
@@ -790,6 +789,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 -------------------ABM Permisos
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMPermisoTextoNombre', 'Name of the family'),
+(1, 'ABMPermisoLabel3', 'Available'),
+(1, 'ABMPermisoLabel4', 'Owned'),
 (1, 'ABMPermisoTextoDescripcion', 'Description of the family'),
 (1, 'ABMPermisoBotton3', 'Add permission to teh family'),
 (1, 'ABMPermisoBotton4', 'Remove permission from the family'),
@@ -799,6 +800,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMPermisoTextoNombre', 'Nombre de la familia'),
 (2, 'ABMPermisoTextoDescripcion', 'Descripcion de la familia'),
+(2, 'ABMPermisoLabel3', 'Disponibles'),
+(2, 'ABMPermisoLabel4', 'Asignadas'),
 (2, 'ABMPermisoBotton3', 'Agregar permiso a la familia'),
 (2, 'ABMPermisoBotton4', 'Remover permiso de la familia'),
 (2, 'ABMPermisoBotton1', 'Aplicar los cambios'),

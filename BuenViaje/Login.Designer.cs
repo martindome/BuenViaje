@@ -79,6 +79,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(237, 20);
             this.txtUser.TabIndex = 3;
+            this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
             // 
             // txtPass
             // 
@@ -89,6 +90,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(237, 20);
             this.txtPass.TabIndex = 4;
+            this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // LoginBotton2
             // 

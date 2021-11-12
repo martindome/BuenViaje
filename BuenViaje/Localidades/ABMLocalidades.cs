@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using BL;
 using BE;
 
@@ -132,6 +133,7 @@ namespace BuenViaje.Localidades
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMLocalidades-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             CargarCampos();
             SetToolTips();
+            ABMLocalidadesBotton1.Enabled = false;
         }
 
         private void CargarCampos()
@@ -284,6 +286,42 @@ namespace BuenViaje.Localidades
         private void ABMLocalidadesBotton2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ABMLocalidadesTexto1_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMLocalidadesTexto1.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
+            {
+                ABMLocalidadesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMLocalidadesBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMLocalidadesTexto2_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMLocalidadesTexto1.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
+            {
+                ABMLocalidadesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMLocalidadesBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMLocalidadesTexto3_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMLocalidadesTexto1.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
+            {
+                ABMLocalidadesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMLocalidadesBotton1.Enabled = false;
+            }
         }
     }
 }

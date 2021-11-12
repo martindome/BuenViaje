@@ -217,7 +217,7 @@ namespace BuenViaje.Administracion.Usuarios
                 patentesUsuario = usuarioBl.ObtenerPatentes(this.usuariobe);
             }
             #endregion
-
+            ABMUsuariosBotton1.Enabled = false;
             CargarGrillas();
     
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
@@ -459,10 +459,10 @@ namespace BuenViaje.Administracion.Usuarios
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuario-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                this.Close();
-            }
+            //finally
+            //{
+            //    this.Close();
+            //}
             //Boton Aplicar
             
         }
@@ -618,20 +618,21 @@ namespace BuenViaje.Administracion.Usuarios
 
         private bool ValidarUsuarioMail()
         {
-            try
-            {
-                MailAddress m = new MailAddress(ABMUsuariosTextoUsuario.Text);
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
+            //try
+            //{
+            //    MailAddress m = new MailAddress(ABMUsuariosTextoUsuario.Text);
+            //    return true;
+            //}
+            //catch (FormatException)
+            //{
+            //    return false;
+            //}
+            return Regex.IsMatch(ABMUsuariosTextoUsuario.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
 
         private bool ValidarNombre()
         {
-            return !(this.ABMUsuariosTextoNombre.Text.Length > 50 || this.ABMUsuariosTextoApellido.Text.Length > 50);
+            return !(this.ABMUsuariosTextoNombre.Text.Length > 50 || this.ABMUsuariosTextoApellido.Text.Length > 50 || !Regex.IsMatch(this.ABMUsuariosTextoNombre.Text, @"^[a-zA-Z\s]+$") || !Regex.IsMatch(this.ABMUsuariosTextoApellido.Text, @"^[a-zA-Z\s]+$"));
         }
 
         private void ABMUsuariosBotton5_Click(object sender, EventArgs e)
@@ -678,6 +679,66 @@ namespace BuenViaje.Administracion.Usuarios
             this.familiasUsuario = aux;
             //patentesUsuario.Remove(patente);
             ListarFamilias();
+        }
+
+        private void ABMUsuariosTextoNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length >0 && this.ABMUsuariosTextoClave.Text.Length >0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            {
+                ABMUsuariosBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMUsuariosBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMUsuariosTextoApellido_TextChanged(object sender, EventArgs e)
+        {
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            {
+                ABMUsuariosBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMUsuariosBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMUsuariosTextoUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            {
+                ABMUsuariosBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMUsuariosBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMUsuariosTextoClave_TextChanged(object sender, EventArgs e)
+        {
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            {
+                ABMUsuariosBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMUsuariosBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMUsuariosComboIdioma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            {
+                ABMUsuariosBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMUsuariosBotton1.Enabled = false;
+            }
         }
     }
 }

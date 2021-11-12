@@ -12,12 +12,15 @@ namespace DAL
         static int mId;
         static SERV.Seguridad.Cifrado mCifra = new SERV.Seguridad.Cifrado();
         static SERV.Integridad mIntegridad = new SERV.Integridad();
-        public static List<BitacoraBE> Listar()
+        public static List<BitacoraBE> Listar(DateTime Desde, DateTime Hasta)
         {
             List<BitacoraBE> Lista = new List<BitacoraBE>();
-            string mCommand = "SELECT b.ID_Bitacora, b.Fecha, b.Tipo_Evento, b.Descripcion, b.Nombre_Usuario, b.DVH, b.Nombre_Usuario FROM Bitacora as b";
+            string mCommand = "SELECT TOP 1000 b.ID_Bitacora, b.Fecha, b.Tipo_Evento, b.Descripcion, b.Nombre_Usuario, b.DVH, b.Nombre_Usuario FROM Bitacora as b WHERE b.Fecha Between @Date1 and @Date2";
+            Dictionary<string, Object> parameters = new Dictionary<string, Object>();
+            parameters.Add("@Date1", Desde);
+            parameters.Add("@Date2", Hasta);
             DataSet mDataSet = new DataSet();
-            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand);
+            mDataSet = DAO.Instancia().ExecuteDataSet(mCommand, parameters);
             if (mDataSet.Tables.Count > 0 && mDataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow mRow in mDataSet.Tables[0].Rows)
@@ -30,6 +33,8 @@ namespace DAL
             }
             return Lista;
         }
+
+
 
         public static void Guardar(BitacoraBE pBitacora)
         {
@@ -44,7 +49,7 @@ namespace DAL
                 //mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha.ToString() + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', NULL)";
                 mCommand = "INSERT INTO Bitacora(ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (@ID_Bitacora, @Fecha, @Tipo, @Descripcion, @DVH, @Nombre_Usuario)";    
                 parameters.Add("@ID_Bitacora", pBitacora.ID_Bitacora);
-                parameters.Add("@Fecha", pBitacora.Fecha.ToString());
+                parameters.Add("@Fecha", pBitacora.Fecha);
                 parameters.Add("@Tipo", pBitacora.Tipo_Evento);
                 parameters.Add("@Descripcion", pBitacora.Descripcion);
                 parameters.Add("@DVH", DVH);
@@ -66,6 +71,8 @@ namespace DAL
                 //DAO.Instancia().ExecuteNonQuery(mCommand, parameters);
             }
             DAO.Instancia().ExecuteNonQuery(mCommand, parameters);
+
+
             ServDAL.GuardarDigitoVerificador(ServDAL.ObtenerDVHs("Bitacora"), "Bitacora");
         }
 

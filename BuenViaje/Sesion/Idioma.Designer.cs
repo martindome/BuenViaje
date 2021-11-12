@@ -50,6 +50,7 @@
             this.IdiomaComboBox1.Name = "IdiomaComboBox1";
             this.IdiomaComboBox1.Size = new System.Drawing.Size(149, 21);
             this.IdiomaComboBox1.TabIndex = 2;
+            this.IdiomaComboBox1.SelectedIndexChanged += new System.EventHandler(this.IdiomaComboBox1_SelectedIndexChanged);
             // 
             // IdiomaBotton1
             // 

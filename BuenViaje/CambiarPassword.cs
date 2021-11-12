@@ -86,6 +86,7 @@ namespace BuenViaje
             //string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
             SetToolTips();
+            this.CambiarPasswordButton1.Enabled = false;
 
         }
 
@@ -181,6 +182,18 @@ namespace BuenViaje
                 {
                     SetToolTipsGroupBox((GroupBox)c);
                 }
+            }
+        }
+
+        private void CambiarPasswordText1_TextChanged(object sender, EventArgs e)
+        {
+            if (this.CambiarPasswordText1.Text.Length > 0)
+            {
+                this.CambiarPasswordButton1.Enabled = true;
+            }
+            else
+            {
+                this.CambiarPasswordButton1.Enabled = false;
             }
         }
     }

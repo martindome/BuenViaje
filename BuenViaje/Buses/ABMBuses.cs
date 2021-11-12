@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using BE;
@@ -35,6 +36,7 @@ namespace BuenViaje.Buses
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMBuses-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             CargarCampos();
             SetToolTips();
+            ABMBusesBotton1.Enabled = false;
         }
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -217,7 +219,7 @@ namespace BuenViaje.Buses
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Validacion-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (!Regex.IsMatch(this.ABMBusesTexto1.Text, "[A-Za-z0-9]+"))
+                        if (!Regex.IsMatch(this.ABMBusesTexto1.Text, "^[A-Z0-9]+$"))
                         {
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-ValidacionPatente-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
@@ -239,7 +241,7 @@ namespace BuenViaje.Buses
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Validacion-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (!Regex.IsMatch(this.ABMBusesTexto1.Text, "[A-Za-z0-9]+"))
+                        if (!Regex.IsMatch(this.ABMBusesTexto1.Text, "^[A-Z0-9]+$"))
                         {
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-ValidacionPatente-Bus", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
@@ -284,9 +286,6 @@ namespace BuenViaje.Buses
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMBuses-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
                 this.Close();
             }
         }
@@ -294,6 +293,42 @@ namespace BuenViaje.Buses
         private void ABMBusessBotton2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ABMBusesTexto1_TextChanged(object sender, EventArgs e)
+        {
+            if (this.ABMBusesTexto1.Text.Length >0 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto3.Text.Length > 0 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$")  )
+            {
+                ABMBusesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMBusesBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMBusesTexto2_TextChanged(object sender, EventArgs e)
+        {
+            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto3.Text.Length > 0 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$" ) && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
+            {
+                ABMBusesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMBusesBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMBusesTexto3_TextChanged(object sender, EventArgs e)
+        {
+            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto3.Text.Length > 0 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
+            {
+                ABMBusesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMBusesBotton1.Enabled = false;
+            }
         }
     }
 }

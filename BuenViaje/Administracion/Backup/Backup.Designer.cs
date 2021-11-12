@@ -43,6 +43,7 @@
             this.BackupComboBox1.Name = "BackupComboBox1";
             this.BackupComboBox1.Size = new System.Drawing.Size(64, 21);
             this.BackupComboBox1.TabIndex = 13;
+            this.BackupComboBox1.SelectedIndexChanged += new System.EventHandler(this.BackupComboBox1_SelectedIndexChanged);
             // 
             // BackupButton1
             // 
@@ -83,6 +84,7 @@
             this.BackupText1.Name = "BackupText1";
             this.BackupText1.Size = new System.Drawing.Size(324, 20);
             this.BackupText1.TabIndex = 9;
+            this.BackupText1.TextChanged += new System.EventHandler(this.BackupText1_TextChanged);
             // 
             // BackupLabel1
             // 

@@ -40,6 +40,7 @@ namespace BuenViaje.Sesion
             }
             this.Text = IdiomaBL.ObtenerMensajeTextos("Idioma-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             SetToolTips();
+            IdiomaBotton1.Enabled = false;
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -167,6 +168,11 @@ namespace BuenViaje.Sesion
                 this.Close();
             }
             
+        }
+
+        private void IdiomaComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IdiomaBotton1.Enabled = true;
         }
     }
 }

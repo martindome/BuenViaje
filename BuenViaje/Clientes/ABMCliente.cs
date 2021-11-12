@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using BE;
 using BL;
 
@@ -132,6 +133,7 @@ namespace BuenViaje.Clientes
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMClientes-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             CargarCampos();
             SetToolTips();
+            ABMClientesBotton1.Enabled = false;
         }
 
         private void CargarCampos()
@@ -278,9 +280,6 @@ namespace BuenViaje.Clientes
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMClientes-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
                 this.Close();
             }
         }
@@ -288,6 +287,54 @@ namespace BuenViaje.Clientes
         private void ABMClientesBotton2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ABMClientesTexto1_TextChanged(object sender, EventArgs e)
+        {
+            if(ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")) 
+            {
+                ABMClientesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMClientesBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMClientesTexto2_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+            {
+                ABMClientesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMClientesBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMClientesTexto3_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+            {
+                ABMClientesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMClientesBotton1.Enabled = false;
+            }
+        }
+
+        private void ABMClientesTexto4_TextChanged(object sender, EventArgs e)
+        {
+            if (ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+            {
+                ABMClientesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMClientesBotton1.Enabled = false;
+            }
         }
     }
 }

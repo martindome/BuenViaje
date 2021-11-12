@@ -78,6 +78,7 @@ namespace BuenViaje.Viajes
             }
             CargarCampos();
             SetToolTips();
+            ViajeABMButton1.Enabled = false;
         }
 
         private void CargarCampos()
@@ -454,6 +455,39 @@ namespace BuenViaje.Viajes
             else
             {
                 this.ViajeABMDatePickerHasta.Enabled = true;
+            }
+
+            if (ViajeABMCombo3.SelectedItem.ToString().Length >0 && ViajeABMCombo1.SelectedItem.ToString().Length > 0 && ViajeABMCombo2.SelectedItem.ToString().Length > 0)
+            {
+                ViajeABMButton1.Enabled = true;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = false;
+            }
+        }
+
+        private void ViajeABMCombo1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ViajeABMCombo3.SelectedItem.ToString().Length > 0 && ViajeABMCombo1.SelectedItem.ToString().Length > 0 && ViajeABMCombo2.SelectedItem.ToString().Length > 0)
+            {
+                ViajeABMButton1.Enabled = true;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = false;
+            }
+        }
+
+        private void ViajeABMCombo2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ViajeABMCombo3.SelectedItem.ToString().Length > 0 && ViajeABMCombo1.SelectedItem.ToString().Length > 0 && ViajeABMCombo2.SelectedItem.ToString().Length > 0)
+            {
+                ViajeABMButton1.Enabled = true;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = false;
             }
         }
     }

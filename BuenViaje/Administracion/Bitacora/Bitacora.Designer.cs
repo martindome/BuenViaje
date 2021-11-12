@@ -168,6 +168,7 @@
             this.BitacoraComboUsuario.Name = "BitacoraComboUsuario";
             this.BitacoraComboUsuario.Size = new System.Drawing.Size(150, 20);
             this.BitacoraComboUsuario.TabIndex = 26;
+            this.BitacoraComboUsuario.TextChanged += new System.EventHandler(this.BitacoraComboUsuario_TextChanged);
             // 
             // Bitacora
             // 

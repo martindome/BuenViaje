@@ -79,6 +79,7 @@
             this.ABMClientesTexto3.Name = "ABMClientesTexto3";
             this.ABMClientesTexto3.Size = new System.Drawing.Size(212, 20);
             this.ABMClientesTexto3.TabIndex = 38;
+            this.ABMClientesTexto3.TextChanged += new System.EventHandler(this.ABMClientesTexto3_TextChanged);
             // 
             // ABMClientesLabel3
             // 
@@ -97,6 +98,7 @@
             this.ABMClientesTexto2.Name = "ABMClientesTexto2";
             this.ABMClientesTexto2.Size = new System.Drawing.Size(212, 20);
             this.ABMClientesTexto2.TabIndex = 36;
+            this.ABMClientesTexto2.TextChanged += new System.EventHandler(this.ABMClientesTexto2_TextChanged);
             // 
             // ABMClientesTexto1
             // 
@@ -105,6 +107,7 @@
             this.ABMClientesTexto1.Name = "ABMClientesTexto1";
             this.ABMClientesTexto1.Size = new System.Drawing.Size(212, 20);
             this.ABMClientesTexto1.TabIndex = 35;
+            this.ABMClientesTexto1.TextChanged += new System.EventHandler(this.ABMClientesTexto1_TextChanged);
             // 
             // ABMClientesLabel2
             // 
@@ -123,6 +126,7 @@
             this.ABMClientesTexto4.Name = "ABMClientesTexto4";
             this.ABMClientesTexto4.Size = new System.Drawing.Size(212, 20);
             this.ABMClientesTexto4.TabIndex = 43;
+            this.ABMClientesTexto4.TextChanged += new System.EventHandler(this.ABMClientesTexto4_TextChanged);
             // 
             // ABMClientesLabel4
             // 

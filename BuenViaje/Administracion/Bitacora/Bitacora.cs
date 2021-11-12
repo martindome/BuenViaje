@@ -178,6 +178,8 @@ namespace BuenViaje.Administracion
             BitacoraComboCriticidad.DropDownStyle = ComboBoxStyle.DropDownList;
             BitacoraComboCriticidad.SelectedIndex = 0;
 
+            BitacoraComboUsuario.Text = "*";
+
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("Bitacora-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             SetToolTips();
@@ -238,6 +240,14 @@ namespace BuenViaje.Administracion
             //}
             //ActualizarGrilla(RegistrosAux);
             ActualizarGrillaBitacora();
+            if (this.BitacoraDataGrid1.Rows.Count > 0)
+            {
+                BitacoraBottonExportToPDF.Enabled = true;
+            }
+            else
+            {
+                BitacoraBottonExportToPDF.Enabled = false;
+            }
         }
 
 
@@ -298,13 +308,13 @@ namespace BuenViaje.Administracion
                 //Title.Format.Font.Color = Colors.DarkBlue;
                 Title.Format.Alignment = ParagraphAlignment.Center;
 
-                Paragraph Date = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Date", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\nn", "Heading1");
+                Paragraph Date = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Date", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n\n", "Heading1");
                 Date.AddBookmark("Date");
                 Date.Format.Font.Size = 15;
                 //Date.Format.Font.Color = Colors.DarkBlue;
                 Date.Format.Alignment = ParagraphAlignment.Left;
 
-                Paragraph Requested = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Requested", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) +": " +  SingletonSesion.Instancia.Usuario.Nombre_Usuario + "\nn", "Heading1");
+                Paragraph Requested = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Requested", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) +": " +  SingletonSesion.Instancia.Usuario.Nombre_Usuario + "\n\n", "Heading1");
                 Requested.AddBookmark("Requested");
                 Requested.Format.Font.Size = 15;
                 //Requested.Format.Font.Color = Colors.DarkBlue;
@@ -392,9 +402,16 @@ namespace BuenViaje.Administracion
             document.LastSection.Add(table);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BitacoraComboUsuario_TextChanged(object sender, EventArgs e)
         {
-
+            if (this.BitacoraComboUsuario.Text == "")
+            {
+                BitacoraBotonConsultar.Enabled = false;
+            }
+            else
+            {
+                BitacoraBotonConsultar.Enabled = true;
+            }
         }
     }
 }

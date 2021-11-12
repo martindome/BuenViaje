@@ -178,15 +178,15 @@ namespace BuenViaje.Administracion.Usuarios
             foreach (UsuarioBE usuariobe in usuariobl.Listar())
             {
                 bool flag = true;
-                if (this.UsuarioPrinciplaText1.Text != "" && this.UsuarioPrinciplaText1.Text != usuariobe.Nombre)
+                if (this.UsuarioPrinciplaText1.Text != "" && !usuariobe.Nombre.Contains(this.UsuarioPrinciplaText1.Text))
                 {
                     flag = false;
                 }
-                if (this.UsuarioPrinciplaText2.Text != "" && this.UsuarioPrinciplaText2.Text != usuariobe.Apellido)
+                if (this.UsuarioPrinciplaText2.Text != "" && !usuariobe.Apellido.Contains(this.UsuarioPrinciplaText2.Text))
                 {
                     flag = false;
                 }
-                if (this.UsuarioPrinciplaText3.Text != "" && this.UsuarioPrinciplaText3.Text != usuariobe.Nombre_Usuario)
+                if (this.UsuarioPrinciplaText3.Text != "" && !usuariobe.Nombre_Usuario.Contains(this.UsuarioPrinciplaText3.Text))
                 {
                     flag = false;
                 }
@@ -194,7 +194,7 @@ namespace BuenViaje.Administracion.Usuarios
                 {
                     flag = false;
                 }
-                if (this.UsuarioPrinciplaText5.Text != "" && this.UsuarioPrinciplaText5.Text != usuariobe.Idioma_Descripcion)
+                if (this.UsuarioPrinciplaText5.Text != "" && !usuariobe.Idioma_Descripcion.Contains(this.UsuarioPrinciplaText5.Text))
                 {
                     flag = false;
                 }

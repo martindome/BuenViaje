@@ -79,6 +79,7 @@
             this.RutasText2.Name = "RutasText2";
             this.RutasText2.Size = new System.Drawing.Size(212, 20);
             this.RutasText2.TabIndex = 38;
+            this.RutasText2.TextChanged += new System.EventHandler(this.RutasText2_TextChanged);
             // 
             // RutasLabel3
             // 
@@ -107,6 +108,7 @@
             this.rutasCombo1.Name = "rutasCombo1";
             this.rutasCombo1.Size = new System.Drawing.Size(212, 21);
             this.rutasCombo1.TabIndex = 42;
+            this.rutasCombo1.SelectedIndexChanged += new System.EventHandler(this.rutasCombo1_SelectedIndexChanged);
             // 
             // rutasCombo2
             // 
@@ -115,6 +117,7 @@
             this.rutasCombo2.Name = "rutasCombo2";
             this.rutasCombo2.Size = new System.Drawing.Size(212, 21);
             this.rutasCombo2.TabIndex = 43;
+            this.rutasCombo2.SelectedIndexChanged += new System.EventHandler(this.rutasCombo2_SelectedIndexChanged);
             // 
             // RutasText3
             // 
@@ -123,6 +126,7 @@
             this.RutasText3.Name = "RutasText3";
             this.RutasText3.Size = new System.Drawing.Size(212, 20);
             this.RutasText3.TabIndex = 45;
+            this.RutasText3.TextChanged += new System.EventHandler(this.RutasText3_TextChanged);
             // 
             // RutasLabel4
             // 

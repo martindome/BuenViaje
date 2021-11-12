@@ -75,7 +75,7 @@ namespace BuenViaje
             }
             LoginComboBox1.SelectedIndex = 1;
             SetToolTips();
-            
+            this.LoginButton1.Enabled = false;
         }
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -163,6 +163,30 @@ namespace BuenViaje
             mIdioma = LoginComboBox1.SelectedItem.ToString();
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
             SetToolTips();
+        }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtUser.Text != "" && this.txtPass.Text != "")
+            {
+                this.LoginButton1.Enabled = true;
+            }
+            else
+            {
+                this.LoginButton1.Enabled = false;
+            }
+        }
+
+        private void txtPass_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtUser.Text != "" && this.txtPass.Text != "")
+            {
+                this.LoginButton1.Enabled = true;
+            }
+            else
+            {
+                this.LoginButton1.Enabled = false;
+            }
         }
     }
 }
