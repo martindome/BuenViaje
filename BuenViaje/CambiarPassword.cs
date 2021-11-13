@@ -87,6 +87,7 @@ namespace BuenViaje
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
             SetToolTips();
             this.CambiarPasswordButton1.Enabled = false;
+            this.Text = IdiomaBL.ObtenerMensajeTextos("CambiarPassword-Form", mIdioma);
 
         }
 
@@ -117,7 +118,7 @@ namespace BuenViaje
             foreach (Control c in this.Controls)
             {
                 ToolTip toolTip;
-                string tooltipMessaje = IdiomaBL.ObtenerMensajeTextos(c.Name, SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
+                string tooltipMessaje = IdiomaBL.ObtenerMensajeTextos(c.Name, mIdioma);
                 if (tooltipMessaje != "")
                 {
                     if (tooltips.Keys.Contains(c.Name))

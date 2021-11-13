@@ -133,7 +133,14 @@ namespace BuenViaje.Clientes
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMClientes-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             CargarCampos();
             SetToolTips();
-            ABMClientesBotton1.Enabled = false;
+            if (operacion != Operacion.Baja)
+            {
+                ABMClientesBotton1.Enabled = false;
+            }
+            else
+            {
+                ABMClientesBotton1.Enabled = true;
+            }
         }
 
         private void CargarCampos()

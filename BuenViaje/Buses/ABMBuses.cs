@@ -36,7 +36,15 @@ namespace BuenViaje.Buses
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMBuses-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             CargarCampos();
             SetToolTips();
-            ABMBusesBotton1.Enabled = false;
+            if(operacion == Operacion.Baja)
+            {
+                ABMBusesBotton1.Enabled = true;
+            }
+            else
+            {
+                ABMBusesBotton1.Enabled = false;
+            }
+            
         }
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -156,6 +164,7 @@ namespace BuenViaje.Buses
                     this.ABMBusesTexto2.Text = this.busbe.Marca;
                     this.ABMBusesTexto3.Text = this.busbe.Asientos.ToString();
                     DeshabilitarBotones();
+
                     break;
             }
         }
@@ -297,7 +306,7 @@ namespace BuenViaje.Buses
 
         private void ABMBusesTexto1_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMBusesTexto1.Text.Length >0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$")  )
+            if (operacion != Operacion.Baja && this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z\s]+$") && Regex.IsMatch(this.ABMBusesTexto1.Text, @"^[A-Za-z\d]+$"))
             {
                 ABMBusesBotton1.Enabled = true;
             }
@@ -309,7 +318,7 @@ namespace BuenViaje.Buses
 
         private void ABMBusesTexto2_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
+            if (operacion != Operacion.Baja && this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z\s]+$") && Regex.IsMatch(this.ABMBusesTexto1.Text, @"^[A-Za-z\d]+$"))
             {
                 ABMBusesBotton1.Enabled = true;
             }
@@ -321,7 +330,7 @@ namespace BuenViaje.Buses
 
         private void ABMBusesTexto3_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
+            if (operacion != Operacion.Baja && this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z\s]+$") && Regex.IsMatch(this.ABMBusesTexto1.Text, @"^[A-Za-z\d]+$"))
             {
                 ABMBusesBotton1.Enabled = true;
             }

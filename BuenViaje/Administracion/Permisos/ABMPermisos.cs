@@ -128,6 +128,8 @@ namespace BuenViaje.Administracion.Permisos
             }
         }
 
+        
+
         private void ABMPermisos_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -173,6 +175,15 @@ namespace BuenViaje.Administracion.Permisos
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMPermisos-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             SetToolTips();
+
+            if (operacion != Operacion.Baja)
+            {
+                ABMPermisoBotton1.Enabled = false;
+            }
+            else
+            {
+                ABMPermisoBotton1.Enabled = true;
+            }
         }
 
 

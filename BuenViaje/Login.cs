@@ -76,6 +76,7 @@ namespace BuenViaje
             LoginComboBox1.SelectedIndex = 1;
             SetToolTips();
             this.LoginButton1.Enabled = false;
+            this.Text = IdiomaBL.ObtenerMensajeTextos("Login-Form", mIdioma);
         }
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)

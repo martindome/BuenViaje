@@ -31,6 +31,16 @@ namespace BL
 
         public void Eliminar(BusBE pBus)
         {
+            ViajeBL viajebl = new ViajeBL();
+            DateTime Desde = DateTime.Today.Date + DateTime.Today.TimeOfDay;
+            DateTime Hasta = Desde.AddYears(100);
+            foreach (ViajeBE viaje in viajebl.Listar(Desde, Hasta))
+            {
+                if (viaje.ID_Bus == pBus.ID_Bus && !viaje.Cancelado)
+                {
+                    throw new Exception(IdiomaBL.ObtenerMensajeTextos("BusEnUso", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+                }
+            }
             BusDAL.Eliminar(pBus);
         }
     }

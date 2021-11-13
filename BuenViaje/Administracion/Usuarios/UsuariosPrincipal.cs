@@ -248,6 +248,20 @@ namespace BuenViaje.Administracion.Usuarios
         private void UsuarioPrincipalBotton5_Click(object sender, EventArgs e)
         {
             ActualizarGrilla();
+            if (grillaUsuarios.Rows.Count == 0)
+            {
+                this.UsuarioPrincipalBotton1.Enabled = false;
+                this.UsuarioPrincipalBotton3.Enabled = false;
+                this.UsuarioPrincipalBotton4.Enabled = false;
+                this.UsuarioPrincipalBotton7.Enabled = false;
+            }
+            else
+            {
+                this.UsuarioPrincipalBotton1.Enabled = true;
+                this.UsuarioPrincipalBotton3.Enabled = true;
+                this.UsuarioPrincipalBotton4.Enabled = true;
+                this.UsuarioPrincipalBotton7.Enabled = true;
+            }
         }
 
         private void UsuarioPrincipalBotton6_Click(object sender, EventArgs e)
@@ -258,6 +272,20 @@ namespace BuenViaje.Administracion.Usuarios
             this.UsuarioPrinciplaText4.Text = "";
             this.UsuarioPrinciplaText5.Text = "";
             ActualizarGrilla();
+            if (grillaUsuarios.Rows.Count == 0)
+            {
+                this.UsuarioPrincipalBotton1.Enabled = false;
+                this.UsuarioPrincipalBotton3.Enabled = false;
+                this.UsuarioPrincipalBotton4.Enabled = false;
+                this.UsuarioPrincipalBotton7.Enabled = false;
+            }
+            else
+            {
+                this.UsuarioPrincipalBotton1.Enabled = true;
+                this.UsuarioPrincipalBotton3.Enabled = true;
+                this.UsuarioPrincipalBotton4.Enabled = true;
+                this.UsuarioPrincipalBotton7.Enabled = true;
+            }
         }
 
         private void UsuarioPrincipalBotton2_Click(object sender, EventArgs e)
@@ -318,7 +346,7 @@ namespace BuenViaje.Administracion.Usuarios
                 BitacoraBL Bitacorabl = new BitacoraBL();
                 UsuarioBE usuariobe = usuarioBl.Obtener(grillaUsuarios.SelectedRows[0].Cells[3].Value.ToString());
                 usuariobe.Permisos = usuarioBl.ObtenerPermisos(usuariobe);
-                DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Resetear", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                DialogResult result = MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Resetear", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     usuarioBl.ResetarConstrasenia(usuariobe);

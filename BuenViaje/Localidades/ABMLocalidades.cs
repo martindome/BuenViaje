@@ -133,7 +133,14 @@ namespace BuenViaje.Localidades
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMLocalidades-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             CargarCampos();
             SetToolTips();
-            ABMLocalidadesBotton1.Enabled = false;
+            if (operacion != Operacion.Baja)
+            {
+                ABMLocalidadesBotton1.Enabled = false;
+            }
+            else
+            {
+                ABMLocalidadesBotton1.Enabled = true;
+            }
         }
 
         private void CargarCampos()

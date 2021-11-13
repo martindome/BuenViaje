@@ -28,6 +28,14 @@ namespace BL
 
         public void Eliminar(LocalidadBE pLocalidad)
         {
+            RutaBL rutabl = new RutaBL();
+            foreach (RutaBE ruta  in rutabl.Listar())
+            {
+                if (ruta.Destino.ID_Localidad == pLocalidad.ID_Localidad || ruta.Origen.ID_Localidad == pLocalidad.ID_Localidad)
+                {
+                    throw new Exception(IdiomaBL.ObtenerMensajeTextos("LocalidadEnUso", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+                }
+            }
             LocalidadDAL.Eliminar(pLocalidad);
         }
 

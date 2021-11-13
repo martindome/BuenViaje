@@ -44,6 +44,8 @@ namespace BuenViaje.Viajes
         }
         private void ViajesABM_Load(object sender, EventArgs e)
         {
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.ViajeABMDatePickerDesde.CustomFormat = "MM-dd-yyyy";
             this.ViajeABMDatePickerDesde.Format = DateTimePickerFormat.Custom;
 
@@ -80,7 +82,14 @@ namespace BuenViaje.Viajes
             ViajeABMCombo2.SelectedIndex = 0;
             CargarCampos();
             SetToolTips();
-            ViajeABMButton1.Enabled = false;
+            if(operacion != Operacion.Baja)
+            {
+                ViajeABMButton1.Enabled = false;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = true;
+            }
         }
 
         private void CargarCampos()
@@ -105,11 +114,9 @@ namespace BuenViaje.Viajes
                     this.ViajeABMCombo3.Enabled = false;
                     this.ViajeABMCombo3.SelectedIndex = 3;
                     this.ViajeABMCheckBox1.Enabled = true;
-                    this.ViajeABMDatePickerHasta.Enabled = false;
-                    this.ViajeABMDatePickerHasta.Visible = false;
+                    this.ViajeABMDatePickerDesde.Enabled = true;
+                    this.ViajeABMDatePickerDesdeHora.Enabled = true;
                     this.ViajeABMLabel5.Visible = false;
-                    this.ViajeABMDatePickerDesde.Enabled = false;
-                    this.ViajeABMDatePickerDesdeHora.Enabled = false;
                     this.ViajeABMDatePickerHasta.Enabled = false;
                     this.ViajeABMDatePickerHasta.Visible = false;
                     this.ViajeABMDatePickerHasta.Visible = false;
@@ -145,6 +152,7 @@ namespace BuenViaje.Viajes
                     DeshabilitarBotones();
                     break;
             }
+            ViajeABMCheckBox1.Visible = false;
         }
 
         private void Limpiar()
@@ -508,6 +516,54 @@ namespace BuenViaje.Viajes
         }
 
         private void ViajeABMCombo2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ViajeABMCombo3 != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
+            {
+                ViajeABMButton1.Enabled = true;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = false;
+            }
+        }
+
+        private void ViajeABMDatePickerDesde_ValueChanged(object sender, EventArgs e)
+        {
+            if (ViajeABMCombo3 != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
+            {
+                ViajeABMButton1.Enabled = true;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = false;
+            }
+        }
+
+        private void ViajeABMDatePickerDesdeHora_ValueChanged(object sender, EventArgs e)
+        {
+            if (ViajeABMCombo3 != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
+            {
+                ViajeABMButton1.Enabled = true;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = false;
+            }
+        }
+
+        private void ViajeABMDatePickerHasta_ValueChanged(object sender, EventArgs e)
+        {
+            if (ViajeABMCombo3 != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
+            {
+                ViajeABMButton1.Enabled = true;
+            }
+            else
+            {
+                ViajeABMButton1.Enabled = false;
+            }
+        }
+
+        private void ViajeABMCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (ViajeABMCombo3 != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
             {

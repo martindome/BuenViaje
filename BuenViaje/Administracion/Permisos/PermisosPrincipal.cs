@@ -235,6 +235,19 @@ namespace BuenViaje.Administracion.Permisos
         private void PermisosPrincipalBotton5_Click(object sender, EventArgs e)
         {
             ActualizarGrilla();
+            if (grillaFamilias.Rows.Count == 0)
+            {
+                PermisosPrincipalBotton1.Enabled = false;
+                PermisosPrincipalBotton3.Enabled = false;
+                PermisosPrincipalBotton4.Enabled = false;
+            }
+            else
+            {
+                PermisosPrincipalBotton1.Enabled = true;
+                PermisosPrincipalBotton3.Enabled = true;
+                PermisosPrincipalBotton4.Enabled = true;
+            }
+            
         }
 
         private void PermisosPrincipalBotton6_Click(object sender, EventArgs e)

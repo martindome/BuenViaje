@@ -277,12 +277,10 @@ namespace BL
             if (pUsuario.Contrasenia != contraseniaActual)
             {
                 throw new Exception(IdiomaBL.ObtenerMensajeTextos("Clave actual incorrecta", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
-                throw new Exception("Clave actual incorrecta");
             }
             if (pUsuario.Contrasenia == NuevaContrasenia)
             {
                 throw new Exception(IdiomaBL.ObtenerMensajeTextos("La clave anterior y nueva son iguales", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
-                throw new Exception("La clave anterior y nueva son iguales");
             }
             //BitacoraBE mBitacora = new BitacoraBE();
             //BitacoraBL Bitacorabl = new BitacoraBL();

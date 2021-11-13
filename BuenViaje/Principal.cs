@@ -599,6 +599,16 @@ namespace BuenViaje
                     grillaLocalidad.Rows.Add(localidad.ID_Localidad, localidad.Nombre, localidad.Provincia, localidad.Pais);
                 }
             }
+            if (grillaLocalidad.Rows.Count == 0)
+            {
+                LocalidadBotton3.Enabled = false;
+                LocalidadBotton4.Enabled = false;
+            }
+            else
+            {
+                LocalidadBotton3.Enabled = true;
+                LocalidadBotton4.Enabled = true;
+            }
         }
 
         private void LocalidadBotton5_Click(object sender, EventArgs e)
@@ -736,6 +746,16 @@ namespace BuenViaje
                 {
                     grillaBuses.Rows.Add(localidad.ID_Bus, localidad.Patente, localidad.Marca, localidad.Asientos);
                 }
+            }
+            if (grillaBuses.Rows.Count == 0)
+            {
+                busesButton3.Enabled = false;
+                busesButton4.Enabled = false;
+            }
+            else
+            {
+                busesButton3.Enabled = true;
+                busesButton4.Enabled = true;
             }
         }
 
@@ -974,6 +994,16 @@ namespace BuenViaje
                     grillaClientes.Rows.Add(clientebe.ID_Cliente, clientebe.Nombre, clientebe.Apellido, clientebe.DNI, clientebe.Email);
                 }
             }
+            if (grillaClientes.Rows.Count == 0)
+            {
+                ClientesBotton4.Enabled = false;
+                ClientesBotton3.Enabled = false;
+            }
+            else
+            {
+                ClientesBotton4.Enabled = true;
+                ClientesBotton3.Enabled = true;
+            }
         }
 
         private void tabPageClientes_Click(object sender, EventArgs e)
@@ -1114,6 +1144,16 @@ namespace BuenViaje
                 {
                    dataGridRutas.Rows.Add(rutabe.ID_Ruta, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, rutabe.Nombre, rutabe.Duracion.ToString());
                 }
+            }
+            if (dataGridRutas.Rows.Count == 0)
+            {
+                RutasButton3.Enabled = false;
+                RutasButton4.Enabled = false;
+            }
+            else
+            {
+                RutasButton3.Enabled = true;
+                RutasButton4.Enabled = true;
             }
         }
 
@@ -1281,6 +1321,17 @@ namespace BuenViaje
                     }
                     ViajesPrincipalDataGrid.Rows.Add(viaje.ID_Viaje, viaje.ID_Ruta, viaje.ID_Bus, rutabl.Obtener(viaje.ID_Ruta).Nombre, busbl.Obtener(viaje.ID_Bus).Patente, viaje.Fecha, cancelado);
                 }
+            }
+
+            if (ViajesPrincipalDataGrid.Rows.Count == 0)
+            {
+                ViajesPrincipalButton3.Enabled = false;
+                ViajesPrincipalButton4.Enabled = false;
+            }
+            else
+            {
+                ViajesPrincipalButton3.Enabled = true;
+                ViajesPrincipalButton4.Enabled = true;
             }
         }
         private void ViajesPrincipalButton5_Click(object sender, EventArgs e)
@@ -1586,6 +1637,14 @@ namespace BuenViaje
                 {
                     pasajesPrincipalDataGridViajes.Rows.Add(viaje.ID_Viaje, viaje.ID_Ruta, viaje.ID_Bus, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, viaje.Fecha, Disponibles);
                 }
+            }
+            if (pasajesPrincipalDataGridClientes.Rows.Count == 0 || pasajesPrincipalDataGridViajes.Rows.Count == 0)
+            {
+                pasajesPrincipalButton4.Enabled = false;
+            }
+            else
+            {
+                pasajesPrincipalButton4.Enabled = true;
             }
         }
         private void ActualizarGrillasPasajeCliente()

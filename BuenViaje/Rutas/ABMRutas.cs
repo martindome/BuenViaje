@@ -147,6 +147,14 @@ namespace BuenViaje.Rutas
             CargarCampos();
             SetToolTips();
             ABMRutasButton1.Enabled = false;
+            if (operacion != Operacion.Baja)
+            {
+                ABMRutasButton1.Enabled = false;
+            }
+            else
+            {
+                ABMRutasButton1.Enabled = true;
+            }
         }
 
         private void CargarCampos()
@@ -159,15 +167,21 @@ namespace BuenViaje.Rutas
                 case Operacion.Modificacion:
                     Limpiar();
                     this.RutasText2.Text = this.rutabe.Duracion.ToString();
+                    this.RutasText3.Text = this.rutabe.Nombre;
                     this.rutasCombo1.SelectedItem = rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre;
                     this.rutasCombo2.SelectedItem = rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre;
-                    
+                    this.rutasCombo1.Enabled = false;
+                    this.rutasCombo2.Enabled = false;
+
                     break;
                 case Operacion.Baja:
                     Limpiar();
                     this.RutasText2.Text = this.rutabe.Duracion.ToString();
+                    this.RutasText3.Text = this.rutabe.Nombre;
                     this.rutasCombo1.SelectedItem = rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre;
                     this.rutasCombo2.SelectedItem = rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre;
+                    this.rutasCombo1.Enabled = false;
+                    this.rutasCombo2.Enabled = false;
                     DeshabilitarBotones();
                     break;
             }
@@ -188,7 +202,7 @@ namespace BuenViaje.Rutas
         {
             this.RutasText2.Enabled = false;
             this.rutasCombo1.Enabled = false;
-            this.rutasCombo1.Enabled = false;
+            this.rutasCombo2.Enabled = false;
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -227,7 +241,7 @@ namespace BuenViaje.Rutas
             List<LocalidadBE> Localidades = localidadbl.Listar();
             foreach (RutaBE ruta in rutabl.Listar())
             {
-                if (ruta.Destino.ID_Localidad == Origen.ID_Localidad && ruta.Origen.ID_Localidad == Destino.ID_Localidad)
+                if (ruta.Origen.ID_Localidad == Origen.ID_Localidad && ruta.Destino.ID_Localidad == Destino.ID_Localidad)
                 {
                     return false;
                 }
@@ -285,16 +299,16 @@ namespace BuenViaje.Rutas
                         flag = true;
                         break;
                     case Operacion.Modificacion:
-                        if (!ValidarRutaMisma())
-                        {
-                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Misma", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }
-                        if (!ValidarRutaIgual())
-                        {
-                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Igual", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }
+                        //if (!ValidarRutaMisma())
+                        //{
+                        //    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Misma", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    break;
+                        //}
+                        //if (!ValidarRutaIgual())
+                        //{
+                        //    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMRuta-Validacion-Igual", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    break;
+                        //}
                         this.rutabe.Origen = localidadbl.Obtener(rutasCombo1.SelectedIndex + 1);
                         this.rutabe.Destino = localidadbl.Obtener(rutasCombo2.SelectedIndex + 1);
                         this.rutabe.Duracion = int.Parse(this.RutasText2.Text);
@@ -350,7 +364,7 @@ namespace BuenViaje.Rutas
 
         private void rutasCombo1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s-]+$") && RutasText3.Text.Length < 40)
             {
                 ABMRutasButton1.Enabled = true;
             }
@@ -362,7 +376,7 @@ namespace BuenViaje.Rutas
 
         private void rutasCombo2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$") && RutasText3.Text.Length < 40)
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s-]+$") && RutasText3.Text.Length < 40)
             {
                 ABMRutasButton1.Enabled = true;
             }
@@ -374,7 +388,7 @@ namespace BuenViaje.Rutas
 
         private void RutasText2_TextChanged(object sender, EventArgs e)
         {
-            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 &&  RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$") && RutasText3.Text.Length < 40)
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s-]+$") && RutasText3.Text.Length < 40)
             {
                 ABMRutasButton1.Enabled = true;
             }
@@ -386,7 +400,7 @@ namespace BuenViaje.Rutas
 
         private void RutasText3_TextChanged(object sender, EventArgs e)
         {
-            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$") && RutasText3.Text.Length < 40)
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s-]+$") && RutasText3.Text.Length < 40)
             {
                 ABMRutasButton1.Enabled = true;
             }

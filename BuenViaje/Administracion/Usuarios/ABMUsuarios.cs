@@ -217,7 +217,15 @@ namespace BuenViaje.Administracion.Usuarios
                 patentesUsuario = usuarioBl.ObtenerPatentes(this.usuariobe);
             }
             #endregion
-            ABMUsuariosBotton1.Enabled = false;
+            if (this.operacion != Operacion.Baja)
+            {
+                ABMUsuariosBotton1.Enabled = false;
+            }
+            else
+            {
+                ABMUsuariosBotton1.Enabled = true;
+            }
+            
             CargarGrillas();
     
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
@@ -303,6 +311,7 @@ namespace BuenViaje.Administracion.Usuarios
                     this.ABMUsuariosTextoNombre.Text = this.usuariobe.Nombre;
                     this.ABMUsuariosTextoApellido.Text = this.usuariobe.Apellido;
                     this.ABMUsuariosTextoUsuario.Text = this.usuariobe.Nombre_Usuario;
+                    this.ABMUsuariosTextoClave.Enabled = false;
                     break;
                 case Operacion.Baja:
                     Limpiar();
@@ -312,6 +321,7 @@ namespace BuenViaje.Administracion.Usuarios
                     this.ABMUsuariosTextoNombre.Text = this.usuariobe.Nombre;
                     this.ABMUsuariosTextoApellido.Text = this.usuariobe.Apellido;
                     this.ABMUsuariosTextoUsuario.Text = this.usuariobe.Nombre_Usuario;
+                    ABMUsuariosBotton1.Enabled = true;
                     DeshabilitarBotones();
                     break;
             }
@@ -376,15 +386,6 @@ namespace BuenViaje.Administracion.Usuarios
                         flag = true;
                         break;
                     case Operacion.Modificacion:
-                        if (this.ABMUsuariosTextoClave.Text.Length != 0)
-                        {
-                            if (!ValidarClave())
-                            {
-                                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-Clave", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                break;
-                            }
-                            this.usuariobe.Contrasenia = this.ABMUsuariosTextoClave.Text;
-                        }
                         if (!ValidarUsuarioUnico())
                         {
                             MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMUsuarios-Validacion-UsuarioUnico", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -707,7 +708,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosTextoUsuario_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.operacion != Operacion.Baja && this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }
@@ -719,7 +720,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosTextoClave_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.operacion != Operacion.Baja && this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }
@@ -731,7 +732,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosComboIdioma_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.operacion != Operacion.Baja && this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }

@@ -19,7 +19,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Login
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Login-Error-InicioSesion', 'Error while login in'),
-(1, 'Login-Error-cambiarClave', 'Error while changing password') 
+(1, 'Login-Error-cambiarClave', 'Error while changing password'),
+(1, 'Login-Form', 'Login'),
+(1, 'CambiarPassword-Form', 'Reset Password')
+
 ----Principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Principal-Confirmar-CerrarSesion', 'Are you sure you want to close the session?'),
@@ -245,7 +248,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ----Login
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Login-Error-InicioSesion', 'Error al iniciar sesion'),
-(2, 'Login-Error-cambiarClave', 'Error al cambiar la clave') 
+(2, 'Login-Error-cambiarClave', 'Error al cambiar la clave') ,
+(2, 'Login-Form', 'Iniciar Sesion'),
+(2, 'CambiarPassword-Form', 'Reestablcer clave')
+
 ----Principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Principal-Confirmar-CerrarSesion', 'Esta seguro de cerrar la sesion?'),
@@ -294,7 +300,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMUsuarios-Validacion-UsuarioMail', 'El nombre de usuario no es una casilla de mail'),
 (2, 'ABMUsuarios-Validacion-Nombre', 'Nombre o apellido no valido'),
 (2, 'ABMUsuarios-Confirmacion-Baja', 'Esta seguro de borrar el usuario?'),
-(2, 'ABMUsuarios-Validacion-Resetear', 'Esta seguro de resetear clave?'),
+(2, 'ABMUsuarios-Validacion-Resetear', 'Esta seguro de reestablecer clave?'),
 (2, 'ABMUsuario-Error-Aplicar', 'Error al operar con usuarios')
 
 ----Permisos principal
@@ -362,7 +368,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMBuses-Form', 'Buses'),
 (2, 'ABMBuses-Validacion-Bus','Bus ya existente'),
 (2, 'ABMBuses-ValidacionPatente-Bus','Patente solo contiene numeros y letras'),
-(2, 'ABMBuses-Confirmacion-Baja','Esta seguro de elimianr el bus?'),
+(2, 'ABMBuses-Confirmacion-Baja','Esta seguro de eliminar  el bus?'),
 (2, 'ABMBuses-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
 ----Clientes Principal
@@ -378,7 +384,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMClientes-Form', 'Clientes'),
 (2, 'ABMClientes-Validacion-Cliente','Cliente ya existente'),
-(2, 'ABMClientes-Confirmacion-Baja','Esta seguro de elimianar el cliente?'),
+(2, 'ABMClientes-Confirmacion-Baja','Esta seguro de eleminar el cliente?'),
 (2, 'ABMClientes-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
 ----Rutas Principal
@@ -804,7 +810,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'UsuarioPrincipalBotton2', 'Crear un nuevo usuario'),
 (2, 'UsuarioPrincipalBotton3', 'Modificar el usuario seleccionado'),
 (2, 'UsuarioPrincipalBotton4', 'Borrar el usuario seleccionado'),
-(2, 'UsuarioPrincipalBotton7', 'Resetear la clave del usuario seleccionado')
+(2, 'UsuarioPrincipalBotton7', 'Reestablecer la clave del usuario seleccionado')
 
 -------------------ABM Permisos
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -840,7 +846,6 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'BitacoraBotonConsultar', 'Aplicar filtros'),
 (2, 'BitacoraBottonExportToPDF', 'Crear un reporte pdf')
 
-
 -------------------Backup
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'BackupButton1', 'Search path for the destination backup files'),
@@ -860,6 +865,17 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'RestoreButton1', 'Buscar ruta a los archivos de backup'),
 (2, 'RestoreButton2', 'Restaurar base de datos')
+
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'BusEnUso', 'Bus is in use'),
+(1, 'RutaEnUso', 'Route is in use'),
+(1, 'LocalidadEnUso', 'City is in use')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'BusEnUso', 'Bus esta en uso'),
+(2, 'RutaEnUso', 'Ruta esta en uso'),
+(2, 'LocalidadEnUso', 'Localidad esta en uso')
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Control
@@ -1074,7 +1090,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'ViajesPrincipalButton1', 'Read'),
 (1, 'ViajesPrincipalButton2', 'New'),
 (1, 'ViajesPrincipalButton3', 'Modify'),
-(1, 'ViajesPrincipalButton4', 'Delete'),
+(1, 'ViajesPrincipalButton4', 'Cancel'),
 (1, 'ViajesPrincipalButton5', 'Apply'),
 (1, 'ViajesPrincipalButton6', 'Clear'),
 (1, 'ViajePrincipalLabel1', 'Bus'),
@@ -1118,6 +1134,42 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'DevolucionText1', 'Return'),
 (1, 'DevolucionText2', 'Exit')
+
+
+-------------------ABM Permisos
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'ABMPermisoGroupboxUsuario', 'Family'),
+(1, 'ABMPermisoGroupboxPermisos', 'Permits'),
+(1, 'ABMPermisoGroupboxPatentes', 'Access'),
+(1, 'ABMPermisoLabel1', 'Name'),
+(1, 'ABMPermisoLabel2', 'Description'),
+(1, 'ABMPermisoLabel3', 'Available'),
+(1, 'ABMPermisoLabel4', 'Owned'),
+(1, 'ABMPermisoBotton3', 'Add'),
+(1, 'ABMPermisoBotton4', 'Remove'),
+(1, 'ABMPermisoBotton1', 'Apply'),
+(1, 'ABMPermisoBotton2', 'Exit')
+
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'ABMPermisoGroupboxUsuario', 'Familia'),
+(2, 'ABMPermisoGroupboxPermisos', 'Permisos'),
+(2, 'ABMPermisoGroupboxPatentes', 'Patentes'),
+(2, 'ABMPermisoLabel3', 'Disponibles'),
+(2, 'ABMPermisoLabel1', 'Nombre'),
+(2, 'ABMPermisoLabel2', 'Descripcion'),
+(2, 'ABMPermisoLabel4', 'Asignadas'),
+(2, 'ABMPermisoBotton3', 'Agregar'),
+(2, 'ABMPermisoBotton4', 'Remover'),
+(2, 'ABMPermisoBotton1', 'Aplicar'),
+(2, 'ABMPermisoBotton2', 'Salir')
+
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'LoginLabel1', 'Nombre de Usuario'),  
+(2, 'LoginLabel2', 'Clave'), 
+(2, 'LoginLabel3', 'Idioma'), 
+(2, 'LoginButton1', 'Iniciar Sesion'), 
+(2, 'LoginBotton2', 'Salir'),
+(2, 'LoginButton3', 'Reestablecer Clave')
 
 ----ResetPasswrd
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -1179,7 +1231,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'UsuarioPrincipalBotton4', 'Borrar'),
 (2, 'UsuarioPrincipalBotton5', 'Aplicar'),
 (2, 'UsuarioPrincipalBotton6', 'Limpiar'),
-(2, 'UsuarioPrincipalBotton7', 'Resetear Clave'),
+(2, 'UsuarioPrincipalBotton7', 'Reestablecer Clave'),
 (2, 'UsuarioPrincipalLabel1', 'Nombre'),
 (2, 'UsuarioPrincipalLabel2', 'Apellido'),
 (2, 'UsuarioPrincipalLabel3', 'Usuario'),
@@ -1220,15 +1272,15 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 
 ---Restore
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
-(2, 'BackupLabel1', 'Destination'),
-(2, 'BackupLabel2', 'Parts'),
-(2, 'BackupButton1', 'Search'),
-(2, 'BackupButton2', 'Create')
+(2, 'BackupLabel1', 'Destino'),
+(2, 'BackupLabel2', 'Cantidad de partes'),
+(2, 'BackupButton1', 'Buscar'),
+(2, 'BackupButton2', 'Crear')
 
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 ----
-(2, 'RestoreButton1', 'Search'), 
-(2, 'RestoreButton2', 'Restore')
+(2, 'RestoreButton1', 'Buscar'), 
+(2, 'RestoreButton2', 'Restaurar')
 
 ---Localidades Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -1325,7 +1377,7 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'ViajesPrincipalButton1', 'Ver'),
 (2, 'ViajesPrincipalButton2', 'Alta'),
 (2, 'ViajesPrincipalButton3', 'Modificar'),
-(2, 'ViajesPrincipalButton4', 'Borrar'),
+(2, 'ViajesPrincipalButton4', 'Cancelar'),
 (2, 'ViajesPrincipalButton5', 'Aplicar'),
 (2, 'ViajesPrincipalButton6', 'Limpiar'),
 (2, 'ViajePrincipalLabel1', 'Bus'),

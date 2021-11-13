@@ -47,7 +47,7 @@
             // ViajeABMCombo1
             // 
             this.ViajeABMCombo1.FormattingEnabled = true;
-            this.ViajeABMCombo1.Location = new System.Drawing.Point(17, 25);
+            this.ViajeABMCombo1.Location = new System.Drawing.Point(12, 25);
             this.ViajeABMCombo1.Name = "ViajeABMCombo1";
             this.ViajeABMCombo1.Size = new System.Drawing.Size(212, 21);
             this.ViajeABMCombo1.TabIndex = 52;
@@ -55,7 +55,7 @@
             // 
             // ViajeABMButton2
             // 
-            this.ViajeABMButton2.Location = new System.Drawing.Point(89, 244);
+            this.ViajeABMButton2.Location = new System.Drawing.Point(83, 218);
             this.ViajeABMButton2.Margin = new System.Windows.Forms.Padding(2);
             this.ViajeABMButton2.Name = "ViajeABMButton2";
             this.ViajeABMButton2.Size = new System.Drawing.Size(66, 21);
@@ -66,7 +66,7 @@
             // 
             // ViajeABMButton1
             // 
-            this.ViajeABMButton1.Location = new System.Drawing.Point(19, 244);
+            this.ViajeABMButton1.Location = new System.Drawing.Point(13, 218);
             this.ViajeABMButton1.Margin = new System.Windows.Forms.Padding(2);
             this.ViajeABMButton1.Name = "ViajeABMButton1";
             this.ViajeABMButton1.Size = new System.Drawing.Size(66, 21);
@@ -102,6 +102,7 @@
             this.ViajeABMDatePickerDesdeHora.Name = "ViajeABMDatePickerDesdeHora";
             this.ViajeABMDatePickerDesdeHora.Size = new System.Drawing.Size(98, 20);
             this.ViajeABMDatePickerDesdeHora.TabIndex = 57;
+            this.ViajeABMDatePickerDesdeHora.ValueChanged += new System.EventHandler(this.ViajeABMDatePickerDesdeHora_ValueChanged);
             // 
             // ViajeABMDatePickerDesde
             // 
@@ -110,21 +111,23 @@
             this.ViajeABMDatePickerDesde.Name = "ViajeABMDatePickerDesde";
             this.ViajeABMDatePickerDesde.Size = new System.Drawing.Size(212, 20);
             this.ViajeABMDatePickerDesde.TabIndex = 56;
+            this.ViajeABMDatePickerDesde.ValueChanged += new System.EventHandler(this.ViajeABMDatePickerDesde_ValueChanged);
             // 
             // ViajeABMCheckBox1
             // 
             this.ViajeABMCheckBox1.AutoSize = true;
-            this.ViajeABMCheckBox1.Location = new System.Drawing.Point(17, 221);
+            this.ViajeABMCheckBox1.Location = new System.Drawing.Point(17, 283);
             this.ViajeABMCheckBox1.Name = "ViajeABMCheckBox1";
             this.ViajeABMCheckBox1.Size = new System.Drawing.Size(68, 17);
             this.ViajeABMCheckBox1.TabIndex = 59;
             this.ViajeABMCheckBox1.Text = "Cancelar";
             this.ViajeABMCheckBox1.UseVisualStyleBackColor = true;
+            this.ViajeABMCheckBox1.CheckedChanged += new System.EventHandler(this.ViajeABMCheckBox1_CheckedChanged);
             // 
             // ViajeABMCombo2
             // 
             this.ViajeABMCombo2.FormattingEnabled = true;
-            this.ViajeABMCombo2.Location = new System.Drawing.Point(17, 66);
+            this.ViajeABMCombo2.Location = new System.Drawing.Point(12, 66);
             this.ViajeABMCombo2.Name = "ViajeABMCombo2";
             this.ViajeABMCombo2.Size = new System.Drawing.Size(212, 21);
             this.ViajeABMCombo2.TabIndex = 61;
@@ -143,7 +146,7 @@
             // ViajeABMCombo3
             // 
             this.ViajeABMCombo3.FormattingEnabled = true;
-            this.ViajeABMCombo3.Location = new System.Drawing.Point(17, 107);
+            this.ViajeABMCombo3.Location = new System.Drawing.Point(12, 107);
             this.ViajeABMCombo3.Name = "ViajeABMCombo3";
             this.ViajeABMCombo3.Size = new System.Drawing.Size(212, 21);
             this.ViajeABMCombo3.TabIndex = 63;
@@ -166,6 +169,7 @@
             this.ViajeABMDatePickerHasta.Name = "ViajeABMDatePickerHasta";
             this.ViajeABMDatePickerHasta.Size = new System.Drawing.Size(212, 20);
             this.ViajeABMDatePickerHasta.TabIndex = 65;
+            this.ViajeABMDatePickerHasta.ValueChanged += new System.EventHandler(this.ViajeABMDatePickerHasta_ValueChanged);
             // 
             // ViajeABMLabel5
             // 

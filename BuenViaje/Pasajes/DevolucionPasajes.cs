@@ -204,6 +204,14 @@ namespace BuenViaje.Pasajes
                     }
                 }
             }
+            if (pasajesDevolucionDataGridViajes.Rows.Count == 0)
+            {
+                DevolucionText1.Enabled = false;
+            }
+            else
+            {
+                DevolucionText1.Enabled = true;
+            }
         }
 
         private void Limpiar()

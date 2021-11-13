@@ -135,36 +135,36 @@ Create table Ruta(
     ID_Ruta bigint not null,
     Nombre varchar (MAX),
     Origen bigint not null,
-    Destino bigint not null,
-    Duracion int not null,
+    Destino bigint,
+    Duracion int,
     DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED(ID_Ruta),
-    FOREIGN KEY (Destino) REFERENCES Localidad (ID_Localidad) on delete no action,
-    FOREIGN KEY (Origen) REFERENCES Localidad (ID_Localidad) on delete no action
+    FOREIGN KEY (Destino) REFERENCES Localidad (ID_Localidad) on delete set null,
+    FOREIGN KEY (Origen) REFERENCES Localidad (ID_Localidad) on delete set null
 );
 
 Create Table Viaje(
     ID_Viaje bigint not null,
-    ID_Ruta bigint not null,
-    ID_Bus bigint not null,
+    ID_Ruta bigint,
+    ID_Bus bigint,
     Fecha Datetime not null,
     Cancelado bit not null,
     DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED(ID_Viaje),
-    FOREIGN KEY (ID_Ruta) REFERENCES Ruta (ID_Ruta) on delete no action,
-    FOREIGN KEY (ID_Bus) REFERENCES Bus (ID_Bus) on delete no action
+    FOREIGN KEY (ID_Ruta) REFERENCES Ruta (ID_Ruta) on delete set null,
+    FOREIGN KEY (ID_Bus) REFERENCES Bus (ID_Bus) on delete set null
 );
 
 Create Table Pasaje(
     ID_Pasaje bigint not null,
     ID_Viaje bigint not null,
-    ID_Cliente bigint not null, 
+    ID_Cliente bigint, 
     Fecha datetime not null,
     Devuelto bit not null,
     DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Pasaje),
     FOREIGN KEY (ID_Viaje) REFERENCES Viaje (ID_Viaje) on delete no action,
-    FOREIGN KEY (ID_Cliente) REFERENCES Cliente (ID_Cliente) on delete no action
+    FOREIGN KEY (ID_Cliente) REFERENCES Cliente (ID_Cliente) on delete set null
 );
 
 Create Table Digito_Verificador(
