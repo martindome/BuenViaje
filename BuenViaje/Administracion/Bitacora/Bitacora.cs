@@ -29,7 +29,7 @@ namespace BuenViaje.Administracion
         public Bitacora()
         {
             InitializeComponent();
-            BitacoraComboUsuario.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
+            BitacoraTextoUsuario.HelpRequested += new HelpEventHandler(textBox_HelpRequested);
         }
 
         public Bitacora(Principal fPrincipal)
@@ -178,7 +178,7 @@ namespace BuenViaje.Administracion
             BitacoraComboCriticidad.DropDownStyle = ComboBoxStyle.DropDownList;
             BitacoraComboCriticidad.SelectedIndex = 0;
 
-            BitacoraComboUsuario.Text = "*";
+            BitacoraTextoUsuario.Text = "*";
 
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("Bitacora-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
@@ -261,7 +261,7 @@ namespace BuenViaje.Administracion
             {
                 bool flag = true;
                 //if (this.RutasPrincipalText2.Text != "" && this.RutasPrincipalText2.Text != rutabe.Origen.Nombre)
-                if (this.BitacoraComboUsuario.Text != "" && !(bitacorabe).Nombre_Usuario.Contains(this.BitacoraComboUsuario.Text) && this.BitacoraComboUsuario.Text != "*")
+                if (this.BitacoraTextoUsuario.Text != "" && !(bitacorabe).Nombre_Usuario.Contains(this.BitacoraTextoUsuario.Text) && this.BitacoraTextoUsuario.Text != "*")
                 {
                     flag = false;
                 }
@@ -404,7 +404,19 @@ namespace BuenViaje.Administracion
 
         private void BitacoraComboUsuario_TextChanged(object sender, EventArgs e)
         {
-            if (this.BitacoraComboUsuario.Text == "")
+            if (this.BitacoraTextoUsuario.Text == "")
+            {
+                BitacoraBotonConsultar.Enabled = false;
+            }
+            else
+            {
+                BitacoraBotonConsultar.Enabled = true;
+            }
+        }
+
+        private void BitacoraTextoUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (this.BitacoraTextoUsuario.Text == "")
             {
                 BitacoraBotonConsultar.Enabled = false;
             }

@@ -683,7 +683,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosTextoNombre_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length >0 && this.ABMUsuariosTextoClave.Text.Length >0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length >0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length >0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }
@@ -695,7 +695,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosTextoApellido_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }
@@ -707,7 +707,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosTextoUsuario_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }
@@ -719,7 +719,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosTextoClave_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }
@@ -731,7 +731,7 @@ namespace BuenViaje.Administracion.Usuarios
 
         private void ABMUsuariosComboIdioma_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
+            if (this.ABMUsuariosTextoNombre.Text.Length > 0 && this.ABMUsuariosTextoNombre.Text.Length < 50 && this.ABMUsuariosTextoApellido.Text.Length > 0 && this.ABMUsuariosTextoApellido.Text.Length < 50 && this.ABMUsuariosTextoUsuario.Text.Length > 0 && this.ABMUsuariosTextoUsuario.Text.Length < 50 && this.ABMUsuariosTextoClave.Text.Length > 0 && this.ABMUsuariosTextoClave.Text.Length < 50 && this.ABMUsuariosComboIdioma.SelectedItem.ToString().Length > 0)
             {
                 ABMUsuariosBotton1.Enabled = true;
             }

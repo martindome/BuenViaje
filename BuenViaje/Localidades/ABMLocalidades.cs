@@ -290,7 +290,7 @@ namespace BuenViaje.Localidades
 
         private void ABMLocalidadesTexto1_TextChanged(object sender, EventArgs e)
         {
-            if (ABMLocalidadesTexto1.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
+            if (ABMLocalidadesTexto1.Text.Length > 0 && ABMLocalidadesTexto1.Text.Length < 50 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && ABMLocalidadesTexto2.Text.Length < 50 &&Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && ABMLocalidadesTexto3.Text.Length < 45 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
             {
                 ABMLocalidadesBotton1.Enabled = true;
             }
@@ -302,7 +302,7 @@ namespace BuenViaje.Localidades
 
         private void ABMLocalidadesTexto2_TextChanged(object sender, EventArgs e)
         {
-            if (ABMLocalidadesTexto1.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
+            if (ABMLocalidadesTexto1.Text.Length > 0 && ABMLocalidadesTexto1.Text.Length < 50 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && ABMLocalidadesTexto2.Text.Length < 50 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && ABMLocalidadesTexto3.Text.Length < 45 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
             {
                 ABMLocalidadesBotton1.Enabled = true;
             }
@@ -314,7 +314,7 @@ namespace BuenViaje.Localidades
 
         private void ABMLocalidadesTexto3_TextChanged(object sender, EventArgs e)
         {
-            if (ABMLocalidadesTexto1.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
+            if (ABMLocalidadesTexto1.Text.Length > 0 && ABMLocalidadesTexto1.Text.Length < 50 && Regex.IsMatch(ABMLocalidadesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto2.Text.Length > 0 && ABMLocalidadesTexto2.Text.Length < 50 && Regex.IsMatch(ABMLocalidadesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMLocalidadesTexto3.Text.Length > 0 && ABMLocalidadesTexto3.Text.Length < 45 && Regex.IsMatch(ABMLocalidadesTexto3.Text, @"^[a-zA-Z\s]+$"))
             {
                 ABMLocalidadesBotton1.Enabled = true;
             }

@@ -291,7 +291,7 @@ namespace BuenViaje.Clientes
 
         private void ABMClientesTexto1_TextChanged(object sender, EventArgs e)
         {
-            if(ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")) 
+            if (ABMClientesTexto1.Text.Length > 0 && ABMClientesTexto1.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && ABMClientesTexto2.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && ABMClientesTexto3.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && ABMClientesTexto4.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 ABMClientesBotton1.Enabled = true;
             }
@@ -303,7 +303,7 @@ namespace BuenViaje.Clientes
 
         private void ABMClientesTexto2_TextChanged(object sender, EventArgs e)
         {
-            if (ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+            if (ABMClientesTexto1.Text.Length > 0 && ABMClientesTexto1.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && ABMClientesTexto2.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && ABMClientesTexto3.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && ABMClientesTexto4.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 ABMClientesBotton1.Enabled = true;
             }
@@ -315,7 +315,7 @@ namespace BuenViaje.Clientes
 
         private void ABMClientesTexto3_TextChanged(object sender, EventArgs e)
         {
-            if (ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+            if (ABMClientesTexto1.Text.Length > 0 && ABMClientesTexto1.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && ABMClientesTexto2.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && ABMClientesTexto3.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && ABMClientesTexto4.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 ABMClientesBotton1.Enabled = true;
             }
@@ -327,7 +327,7 @@ namespace BuenViaje.Clientes
 
         private void ABMClientesTexto4_TextChanged(object sender, EventArgs e)
         {
-            if (ABMClientesTexto1.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
+            if (ABMClientesTexto1.Text.Length > 0 && ABMClientesTexto1.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto1.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto2.Text.Length > 0 && ABMClientesTexto2.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto2.Text, @"^[a-zA-Z\s]+$") && ABMClientesTexto3.Text.Length > 0 && ABMClientesTexto3.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto3.Text, @"^[a-zA-Z0-9]+$") && ABMClientesTexto4.Text.Length > 0 && ABMClientesTexto4.Text.Length < 50 && Regex.IsMatch(ABMClientesTexto4.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 ABMClientesBotton1.Enabled = true;
             }

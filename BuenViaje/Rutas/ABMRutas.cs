@@ -362,7 +362,7 @@ namespace BuenViaje.Rutas
 
         private void rutasCombo2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$") && RutasText3.Text.Length < 40)
             {
                 ABMRutasButton1.Enabled = true;
             }
@@ -374,7 +374,7 @@ namespace BuenViaje.Rutas
 
         private void RutasText2_TextChanged(object sender, EventArgs e)
         {
-            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 &&  RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$") && RutasText3.Text.Length < 40)
             {
                 ABMRutasButton1.Enabled = true;
             }
@@ -386,7 +386,7 @@ namespace BuenViaje.Rutas
 
         private void RutasText3_TextChanged(object sender, EventArgs e)
         {
-            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$"))
+            if (rutasCombo1.SelectedItem != null && rutasCombo2.SelectedItem != null && RutasText2.Text.Length > 0 && RutasText2.Text.Length < 4 && Regex.IsMatch(RutasText2.Text, @"^\d+$") && RutasText3.Text.Length > 0 && Regex.IsMatch(RutasText3.Text, @"^[a-zA-Z\s]+$") && RutasText3.Text.Length < 40)
             {
                 ABMRutasButton1.Enabled = true;
             }

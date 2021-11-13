@@ -217,6 +217,20 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Devolucion-Info-Correcta', 'Ticket returned correctly'),
 (1, 'Devolucion-Error-Exception', 'An error occured while returning the ticket')
 
+--EXCEPTIONS
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'No todas las patentes estan asignadas a un usuario', 'Not all pemissions are assigned to an user'),
+(2, 'No todas las patentes estan asignadas a un usuario', 'No todas las patentes estan asignadas a un usuario'),
+
+(1, '"Un usuario no se puede eliminar a si mismo"', 'The user cannot delete itself'),
+(2, '"Un usuario no se puede eliminar a si mismo"', 'Un usuario no se puede eliminar a si mismo'),
+
+(1, 'Clave actual incorrecta"', 'Current password is incorrect'),
+(2, '"Clave actual incorrecta"', 'Clave actual incorrecta'),
+
+(1, '"La clave anterior y nueva son iguales"', 'Old password and new password are equal'),
+(2, '"La clave anterior y nueva son iguales"', 'La clave anterior y nueva son iguales')
+
 ---------- ESPANIOL
 
 ----Inicio
@@ -430,16 +444,16 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 ---TOOL TIPS___________________
 ------------------- Login
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'txtUser', 'Email of the user'),
-(1, 'txtPass', 'Password of the user'),
+(1, 'txtUser', 'Email of the user. Must be a valid email address'),
+(1, 'txtPass', 'Password of the user. Must have 8 characters, 1 number, 1 UpperCasse at least'),
 (1, 'LoginButton1', 'Login suing username and password'),
 (1, 'LoginBotton2', 'Exit the aplication'),
 (1, 'LoginComboBox1', 'Change the languaje of the login screen'),
 (1, 'LoginButton3', 'Reset a password for a system user')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'txtUser', 'Email del usuario'),
-(2, 'txtPass', 'Contraseña del usuario'),
+(2, 'txtUser', 'Email del usuario. Debe ser una direccion de email valida'),
+(2, 'txtPass', 'Contraseña del usuario. La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
 (2, 'LoginButton1', 'Entrar al sistema usando nombre de usaurio y contraseña'),
 (2, 'LoginBotton2', 'Salir de la aplicacion'),
 (2, 'LoginComboBox1', 'Cambiar el lenguaje de la pantalla de login'),
@@ -448,29 +462,29 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- Principal Pasajes
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'pasajesPrincipalTextBox1', 'Name of the client'),
-(1, 'pasajesPrincipalTextBox2', 'Surname of the client'),
-(1, 'pasajesPrincipalTextBox3', 'ID of the client'),
-(1, 'pasajesPrincipalTextBox4', 'Origin city'),
-(1, 'pasajesPrincipalTextBox5', 'Destintaion city'),
+(1, 'pasajesPrincipalTextBox1', 'Name of the client. Only letters and spaces'),
+(1, 'pasajesPrincipalTextBox2', 'Surname of the client. Only letters and spaces'),
+(1, 'pasajesPrincipalTextBox3', 'ID of the client. Only numbers and letters'),
+(1, 'pasajesPrincipalTextBox4', 'Origin city. Only letters and spaces'),
+(1, 'pasajesPrincipalTextBox5', 'Destintaion city. Only letters and spaces'),
 (1, 'pasajeDateTimePicker1', 'Earliest date to search tickets'),
 (1, 'pasajeDateTimePicker2', 'Latest date to search tickets'),
-(1, 'pasajesPrincipalTextBox6', 'Amount of tickets to sell'),
-(1, 'pasajesPrincipalButton1', 'Filter the clients with teh dates indicated'),
+(1, 'pasajesPrincipalTextBox6', 'Amount of tickets to sell. Only numbers'),
+(1, 'pasajesPrincipalButton1', 'Filter the clients with the dates indicated'),
 (1, 'pasajesPrincipalButton2', 'Filter the trip on the dates indicated'),
 (1, 'pasajesPrincipalButton3', 'Create a new Client'),
 (1, 'pasajesPrincipalButton5', 'Return tickets to the selected client'),
 (1, 'pasajesPrincipalButton4', 'Sell selected ticket to the selected client the amount indicated')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'pasajesPrincipalTextBox1', 'Nombre del client'),
-(2, 'pasajesPrincipalTextBox2', 'Apellido del cliente'),
-(2, 'pasajesPrincipalTextBox3', 'Documento de identidad del client'),
-(2, 'pasajesPrincipalTextBox4', 'Ciudad de origen'),
-(2, 'pasajesPrincipalTextBox5', 'Ciudad de destino'),
+(2, 'pasajesPrincipalTextBox1', 'Nombre del cliente. Solo letras y espacios'),
+(2, 'pasajesPrincipalTextBox2', 'Apellido del cliente. Solo letras y espacios'),
+(2, 'pasajesPrincipalTextBox3', 'Documento de identidad del client. Solo letras y numeros'),
+(2, 'pasajesPrincipalTextBox4', 'Ciudad de origen. Solo letras y espacios'),
+(2, 'pasajesPrincipalTextBox5', 'Ciudad de destino. Solo letras y espacios'),
 (2, 'pasajeDateTimePicker1', 'Fecha mas temprano par buscar tickets'),
 (2, 'pasajeDateTimePicker2', 'Fecha mas tarde para buscar tickets'),
-(2, 'pasajesPrincipalTextBox6', 'Cantidad de tickets para vender'),
+(2, 'pasajesPrincipalTextBox6', 'Cantidad de tickets para vender. Solo numeros'),
 (2, 'pasajesPrincipalButton1', 'Buscar clientes con la informacion indicada'),
 (2, 'pasajesPrincipalButton2', 'Buscar viajes con la informacion indicada'),
 (2, 'pasajesPrincipalButton3', 'Ingresar un nuevo cliente'),
@@ -480,10 +494,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- Principal Clientes
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'ClientesTextBox1', 'Name of the client'),
-(1, 'ClientesTextBox2', 'Surname of the client'),
-(1, 'ClientesTextBox3', 'ID of the client'),
-(1, 'ClientesTextBox4', 'Email of the client'),
+(1, 'ClientesTextBox1', 'Name of the client. Only letters and spaces'),
+(1, 'ClientesTextBox2', 'Surname of the client. Only letters and spaces'),
+(1, 'ClientesTextBox3', 'ID of the client. Only numbers and letters'),
+(1, 'ClientesTextBox4', 'Email of the client. Must be a valid email address'),
 (1, 'ClientesBotton5', 'Filter the clients'),
 (1, 'ClientesBotton6', 'Clean the filters'),
 (1, 'ClientesBotton1', 'Read the client'),
@@ -492,10 +506,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ClientesBotton4', 'Delete the selected client')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'ClientesTextBox1', 'Nombre del cliente'),
-(2, 'ClientesTextBox2', 'Apellido del cliente'),
-(2, 'ClientesTextBox3', 'Documento de identidad del client'),
-(2, 'ClientesTextBox4', 'Email del cliente'),
+(2, 'ClientesTextBox1', 'Nombre del cliente. Solo letras y espacios'),
+(2, 'ClientesTextBox2', 'Apellido del cliente. Solo letras y espacios'),
+(2, 'ClientesTextBox3', 'Documento de identidad del client. Solo numeros y letras'),
+(2, 'ClientesTextBox4', 'Email del cliente. Debe ser una direccion de email valida'),
 (2, 'ClientesBotton5', 'Filtrar clientes'),
 (2, 'ClientesBotton6', 'Limpiar los filtros'),
 (2, 'ClientesBotton1', 'Ver cliente'),
@@ -505,8 +519,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- Principal Viajes
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'ViajesPrincipalText1', 'Bus Identifiaction'),
-(1, 'ViajesPrincipalText2', 'Route name'),
+(1, 'ViajesPrincipalText1', 'Bus Identifiaction. Only Upper Case letters and numbers'),
+(1, 'ViajesPrincipalText2', 'Route name. Only letters'),
 (1, 'ViajesPrincipalCheckBox', 'Check to search for canceled trips'),
 (1, 'ViajeDatePickerDesde', 'First date to filter trips'),
 (1, 'ViajeDatePickerHasta', 'Last date to filter trips'),
@@ -518,8 +532,8 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ViajesPrincipalButton4', 'Cancel the selected trip')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'ViajesPrincipalText1', 'Patente del bus'),
-(2, 'ViajesPrincipalText2', 'Nombre de la ruta'),
+(2, 'ViajesPrincipalText1', 'Patente del bus. Solo mayusculas y numeros'),
+(2, 'ViajesPrincipalText2', 'Nombre de la ruta. Solo letras'),
 (2, 'ViajesPrincipalCheckBox', 'Prender para buscar viajes cancelados'),
 (2, 'ViajeDatePickerDesde', 'Primer fecha para filtrar viajes'),
 (2, 'ViajeDatePickerHasta', 'Ultima fecha para filtrar viajes'),
@@ -603,26 +617,26 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- Reset Password
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'CambiarPasswordText1', 'Email of the user'),
-(1, 'CambiarPasswordButton1', 'Reset the password of the user specified')
+(1, 'CambiarPasswordText1', 'Email of the user. Must be a valid email address'),
+(1, 'CambiarPasswordButton1', 'Reset the password of the user specified.')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'CambiarPasswordText1', 'Email del usuario'),
+(2, 'CambiarPasswordText1', 'Email del usuario. Debe ser una direccion de email valida'),
 (2, 'CambiarPasswordButton1', 'Restaurar la clave del usuario especificado')
 
 
 ------------------- Cambiar clave
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'CambiarContraseniaTextBox1', 'Current password of the user'),
-(1, 'CambiarContraseniaTextBox2', 'New password to be assigned to the user'),
-(1, 'CambiarContraseniaTextBox3', 'Confirm the new password for the user'),
+(1, 'CambiarContraseniaTextBox1', 'Current password of the user. Only letters and numbers'),
+(1, 'CambiarContraseniaTextBox2', 'New password to be assigned to the user. Must have 8 characters, 1 number, 1 UpperCasse at least'),
+(1, 'CambiarContraseniaTextBox3', 'Confirm the new password for the user. Must have 8 characters, 1 number, 1 UpperCasse at least'),
 (1, 'Confirmar', 'Change the password of the user'),
 (1, 'Cancelar', 'Exit')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'CambiarContraseniaTextBox1', 'Actual clave del usuario'),
-(2, 'CambiarContraseniaTextBox2', 'Nueva clave para asignar al usuario'),
-(2, 'CambiarContraseniaTextBox3', 'Confirmar la nueva clave'),
+(2, 'CambiarContraseniaTextBox1', 'Actual clave del usuario. Solo letras y numeros'),
+(2, 'CambiarContraseniaTextBox2', 'Nueva clave para asignar al usuario. La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
+(2, 'CambiarContraseniaTextBox3', 'Confirmar la nueva clave. La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
 (2, 'Confirmar', 'Cambiar la clave del usuario'),
 (2, 'Cancelar', 'Salir')
 
@@ -639,17 +653,17 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- ABM Rutas
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'rutasCombo1', 'City of origin'),
+(1, 'rutasCombo1', 'City of origin.'),
 (1, 'rutasCombo2', 'City of destination'),
-(1, 'RutasText2', 'Duration of the trip (in minutes)'),
-(1, 'RutasText3', 'Mame of the route'),
+(1, 'RutasText2', 'Duration of the trip (in minutes). Only numbers'),
+(1, 'RutasText3', 'Mame of the route. Only letters'),
 (1, 'ABMRutasButton1', 'Apply the changes'),
 (1, 'ABMRutasButton2', 'Exit the form')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'rutasCombo1', 'Ciudad de origin'),
 (2, 'rutasCombo2', 'Ciudad de destino'),
-(2, 'RutasText2', 'Duracion del viaje (en minutos)'),
+(2, 'RutasText2', 'Duracion del viaje (en minutos). Solo numeros'),
 (2, 'RutasText3', 'Nombre de la ruta'),
 (2, 'ABMRutasButton1', 'Aplicar los cambios'),
 (2, 'ABMRutasButton2', 'Salir del formulario')
@@ -683,59 +697,59 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 ------------------- ABM Localidades
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'ABMLocalidadesTexto1', 'Name of the city'),
-(1, 'ABMLocalidadesTexto2', 'Province of the city'),
-(1, 'ABMLocalidadesTexto3', 'Country of the city'),
+(1, 'ABMLocalidadesTexto1', 'Name of the city. Only letters and spaces'),
+(1, 'ABMLocalidadesTexto2', 'Province of the city. Only letters and spaces'),
+(1, 'ABMLocalidadesTexto3', 'Country of the city. Only letters and spaces'),
 (1, 'ABMLocalidadesBotton1', 'Apply the changes'),
 (1, 'ABMLocalidadesBotton2', 'Exit the form')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'ABMLocalidadesTexto1', 'Nombre de la ciudad'),
-(2, 'ABMLocalidadesTexto2', 'Provincia de la ciudad'),
-(2, 'ABMLocalidadesTexto3', 'Pais de la ciudad'),
+(2, 'ABMLocalidadesTexto1', 'Nombre de la ciudad. Solo letras y espacios'),
+(2, 'ABMLocalidadesTexto2', 'Provincia de la ciudad. Solo letras y espacios'),
+(2, 'ABMLocalidadesTexto3', 'Pais de la ciudad. Solo letras y espacios'),
 (2, 'ABMLocalidadesBotton1', 'Aplicar los cambios'),
 (2, 'ABMLocalidadesBotton2', 'Salir del formulario')
 
 ------------------- ABM Clientes
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'ABMClientesTexto1', 'Name of the client'),
-(1, 'ABMClientesTexto2', 'Surname of the client'),
-(1, 'ABMClientesTexto3', 'ID of the client'),
-(1, 'ABMClientesTexto4', 'Email of the client'),
+(1, 'ABMClientesTexto1', 'Name of the client. Only letters and spaces'),
+(1, 'ABMClientesTexto2', 'Surname of the client. Only letters and spaces'),
+(1, 'ABMClientesTexto3', 'ID of the client. Only letters and numbers'),
+(1, 'ABMClientesTexto4', 'Email of the client. Must be a valid email address'),
 (1, 'ABMClientesBotton1', 'Apply the changes'),
 (1, 'ABMClientesBotton2', 'Exit the form')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'ABMClientesTexto1', 'Nombre del cliente'),
-(2, 'ABMClientesTexto2', 'Apellido del cliente'),
-(2, 'ABMClientesTexto3', 'DNI del cliente'),
-(2, 'ABMClientesTexto4', 'Email del cliente'),
+(2, 'ABMClientesTexto1', 'Nombre del cliente. Solo letras y espacios'),
+(2, 'ABMClientesTexto2', 'Apellido del cliente. Solo letras y espacios'),
+(2, 'ABMClientesTexto3', 'DNI del cliente. Solo letras y numeros'),
+(2, 'ABMClientesTexto4', 'Email del cliente. Debe ser una direccion de email valida'),
 (2, 'ABMClientesBotton1', 'Aplicar los cambios'),
 (2, 'ABMClientesBotton2', 'Salir del formulario')
 
 ------------------- ABM Buses
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'ABMBusesTexto1', 'ID of the bus'),
-(1, 'ABMBusesTexto2', 'Brand of the bus'),
-(1, 'ABMBusesTexto3', 'Amount of seats of the bus'),
+(1, 'ABMBusesTexto1', 'ID of the bus. Only letters and numbers'),
+(1, 'ABMBusesTexto2', 'Brand of the bus. Only letters and spaces'),
+(1, 'ABMBusesTexto3', 'Amount of seats of the bus. Only numbers'),
 (1, 'ABMBusesBotton1', 'Apply the changes'),
 (1, 'ABMBusessBotton2', 'Exit the form')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'ABMBusesTexto1', 'Patente del bus'),
-(2, 'ABMBusesTexto2', 'Marca del bus'),
-(2, 'ABMBusesTexto3', 'Cantidad de asientos del bus'),
+(2, 'ABMBusesTexto1', 'Patente del bus. Solo numeros y letras'),
+(2, 'ABMBusesTexto2', 'Marca del bus. Solo letras y espacios'),
+(2, 'ABMBusesTexto3', 'Cantidad de asientos del bus. Solo numeros'),
 (2, 'ABMBusesBotton1', 'Aplicar los cambios'),
 (2, 'ABMBusessBotton2', 'Salir del formulario')
 
 
 -------------------ABM Usuarios
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'ABMUsuariosTextoNombre', 'Name of the user'),
-(1, 'ABMUsuariosTextoApellido', 'Surname of the user'),
-(1, 'ABMUsuariosTextoUsuario', 'Username of the user'),
-(1, 'ABMUsuariosTextoClave', 'Password of the user'),
-(1, 'ABMUsuariosComboIdioma', 'Languaje for the users application'),
+(1, 'ABMUsuariosTextoNombre', 'Name of the user. Only letters and spaces'),
+(1, 'ABMUsuariosTextoApellido', 'Surname of the user. Only letters and spaces'),
+(1, 'ABMUsuariosTextoUsuario', 'Username of the user. Must be a valid email address'),
+(1, 'ABMUsuariosTextoClave', 'Password of the user. Must have 8 characters, 1 number, 1 UpperCasse at least'),
+(1, 'ABMUsuariosComboIdioma', 'Languaje for the users application.'),
 (1, 'ABMUsuariosBotton3', 'Add user to selected family'),
 (1, 'ABMUsuariosBotton4', 'Remove user from selected family'),
 (1, 'ABMUsuariosBotton5', 'Add user to selected permission'),
@@ -744,10 +758,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ABMUsuariosBotton2', 'Exit the form')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'ABMUsuariosTextoNombre', 'Nombre del usuario'),
-(2, 'ABMUsuariosTextoApellido', 'Apellido del usuario'),
-(2, 'ABMUsuariosTextoUsuario', 'Username del usuario'),
-(2, 'ABMUsuariosTextoClave', 'Clave del usuario'),
+(2, 'ABMUsuariosTextoNombre', 'Nombre del usuario. Solo letras y espacios'),
+(2, 'ABMUsuariosTextoApellido', 'Apellido del usuario. Solo letras y espacios'),
+(2, 'ABMUsuariosTextoUsuario', 'Username del usuario. Debe ser una direccion de email valida.'),
+(2, 'ABMUsuariosTextoClave', 'Clave del usuario. La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
 (2, 'ABMUsuariosComboIdioma', 'Idioma para la aplicacion del usuario'),
 (2, 'ABMUsuariosBotton3', 'Asignar usuario a la familia seleccionada'),
 (2, 'ABMUsuariosBotton4', 'Remover usuario de la familia seleccionada'),
@@ -759,11 +773,11 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 -------------------Usuarios principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'UsuarioPrinciplaText1', 'Name of the user'),
-(1, 'UsuarioPrinciplaText2', 'Surname of the user'),
-(1, 'UsuarioPrinciplaText3', 'Username of the user'),
-(1, 'UsuarioPrinciplaText4', 'Amount of failed logins'),
-(1, 'UsuarioPrinciplaText5', 'Languaje for the users application'),
+(1, 'UsuarioPrinciplaText1', 'Name of the user. Only letters and spaces'),
+(1, 'UsuarioPrinciplaText2', 'Surname of the user. Only letters and spaces'),
+(1, 'UsuarioPrinciplaText3', 'Username of the user. Must be a valid email address'),
+(1, 'UsuarioPrinciplaText4', 'Amount of failed logins. Only numbers'),
+(1, 'UsuarioPrinciplaText5', 'Languaje for the users application. only letters'),
 (1, 'UsuarioPrincipalBotton5', 'Search users with the provided filters'),
 (1, 'UsuarioPrincipalBotton6', 'Clean the filters'),
 (1, 'UsuarioPrincipalBotton1', 'Read user'),
@@ -773,11 +787,11 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'UsuarioPrincipalBotton7', 'Reset the selected users password')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'UsuarioPrinciplaText1', 'Nombre del usuario'),
-(2, 'UsuarioPrinciplaText2', 'Apellido del usuario'),
-(2, 'UsuarioPrinciplaText3', 'Username del usuario'),
-(2, 'UsuarioPrinciplaText4', 'Cantidad de logins fallidos'),
-(2, 'UsuarioPrinciplaText5', 'Idioma aplicado por el usuario'),
+(2, 'UsuarioPrinciplaText1', 'Nombre del usuario. Solo letras y espacios'),
+(2, 'UsuarioPrinciplaText2', 'Apellido del usuario. Solo letras y espacios'),
+(2, 'UsuarioPrinciplaText3', 'Username del usuario. Debe ser una direccion de email valida'),
+(2, 'UsuarioPrinciplaText4', 'Cantidad de logins fallidos. Solo numeros'),
+(2, 'UsuarioPrinciplaText5', 'Idioma aplicado por el usuario. Solo letras'),
 (2, 'UsuarioPrincipalBotton5', 'Buscar usuarios con los filtros aplicados'),
 (2, 'UsuarioPrincipalBotton6', 'Limpiar los filtros'),
 (2, 'UsuarioPrincipalBotton1', 'Ver el usuario'),
@@ -788,18 +802,18 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 -------------------ABM Permisos
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'ABMPermisoTextoNombre', 'Name of the family'),
+(1, 'ABMPermisoTextoNombre', 'Name of the family. Only letters and spaces'),
 (1, 'ABMPermisoLabel3', 'Available'),
 (1, 'ABMPermisoLabel4', 'Owned'),
-(1, 'ABMPermisoTextoDescripcion', 'Description of the family'),
+(1, 'ABMPermisoTextoDescripcion', 'Description of the family. Only letters and spaces'),
 (1, 'ABMPermisoBotton3', 'Add permission to teh family'),
 (1, 'ABMPermisoBotton4', 'Remove permission from the family'),
 (1, 'ABMPermisoBotton1', 'Apply the changes'),
 (1, 'ABMPermisoBotton2', 'Exit the form')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'ABMPermisoTextoNombre', 'Nombre de la familia'),
-(2, 'ABMPermisoTextoDescripcion', 'Descripcion de la familia'),
+(2, 'ABMPermisoTextoNombre', 'Nombre de la familia. Solo letras y espacios'),
+(2, 'ABMPermisoTextoDescripcion', 'Descripcion de la familia. Only letters and spaces'),
 (2, 'ABMPermisoLabel3', 'Disponibles'),
 (2, 'ABMPermisoLabel4', 'Asignadas'),
 (2, 'ABMPermisoBotton3', 'Agregar permiso a la familia'),
@@ -809,13 +823,13 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 
 -------------------Bitacora
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(1, 'BitacoraComboUsuario', 'Search for and especific user'),
+(1, 'BitacoraTextoUsuario', 'Search for and especific user. Must be a valid email address'),
 (1, 'BitacoraComboCriticidad', 'Search for an specific level'),
 (1, 'BitacoraBotonConsultar', 'Apply the filters'),
 (1, 'BitacoraBottonExportToPDF', 'Create a pdf report')
 
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
-(2, 'BitacoraComboUsuario', 'Buscar por un usuario en especifico'),
+(2, 'BitacoraTextoUsuario', 'Buscar por un usuario en especifico. Debe ser una direccion de email valida'),
 (2, 'BitacoraComboCriticidad', 'Buscar por un nivel especifico'),
 (2, 'BitacoraBotonConsultar', 'Aplicar filtros'),
 (2, 'BitacoraBottonExportToPDF', 'Crear un reporte pdf')
@@ -886,7 +900,6 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'BitacoraLabelDesde', 'Since'),
 (1, 'BitacoraLabelHasta', 'Until'),
 (1, 'BitacoraLabelUsuario', 'User'),
-(1, 'BitacoraComboUsuario', 'User'),
 (1, 'BitacoraLabelCriticidad', 'Level'),
 (1, 'BitacoraComboCriticidad', 'Level'),
 (1, 'BitacoraBotonConsultar', 'Search'),
@@ -1135,7 +1148,6 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'BitacoraLabelDesde', 'Desde'),
 (2, 'BitacoraLabelHasta', 'Hasta'),
 (2, 'BitacoraLabelUsuario', 'Usuario'),
-(2, 'BitacoraComboUsuario', 'Usuario'),
 (2, 'BitacoraLabelCriticidad', 'Nivel'),
 (2, 'BitacoraComboCriticidad', 'Nivel'),
 (2, 'BitacoraBotonConsultar', 'Buscar'),

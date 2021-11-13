@@ -157,7 +157,6 @@ Create Table Viaje(
 
 Create Table Pasaje(
     ID_Pasaje bigint not null,
-    ID_Usuario bigint not null,
     ID_Viaje bigint not null,
     ID_Cliente bigint not null, 
     Fecha datetime not null,
@@ -165,8 +164,7 @@ Create Table Pasaje(
     DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Pasaje),
     FOREIGN KEY (ID_Viaje) REFERENCES Viaje (ID_Viaje) on delete no action,
-    FOREIGN KEY (ID_Cliente) REFERENCES Cliente (ID_Cliente) on delete no action,
-    FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete no action
+    FOREIGN KEY (ID_Cliente) REFERENCES Cliente (ID_Cliente) on delete no action
 );
 
 Create Table Digito_Verificador(

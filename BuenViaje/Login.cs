@@ -167,7 +167,7 @@ namespace BuenViaje
 
         private void txtUser_TextChanged(object sender, EventArgs e)
         {
-            if (this.txtUser.Text != "" && this.txtPass.Text != "")
+            if (this.txtUser.Text != "" && this.txtPass.Text != "" && this.txtUser.Text.Length < 50 && this.txtPass.Text.Length < 50)
             {
                 this.LoginButton1.Enabled = true;
             }
@@ -179,7 +179,7 @@ namespace BuenViaje
 
         private void txtPass_TextChanged(object sender, EventArgs e)
         {
-            if (this.txtUser.Text != "" && this.txtPass.Text != "")
+            if (this.txtUser.Text != "" && this.txtPass.Text != "" && this.txtUser.Text.Length < 50 && this.txtPass.Text.Length < 50)
             {
                 this.LoginButton1.Enabled = true;
             }

@@ -187,7 +187,7 @@ namespace BuenViaje
 
         private void CambiarPasswordText1_TextChanged(object sender, EventArgs e)
         {
-            if (this.CambiarPasswordText1.Text.Length > 0)
+            if (this.CambiarPasswordText1.Text.Length > 0 && this.CambiarPasswordText1.Text.Length < 50)
             {
                 this.CambiarPasswordButton1.Enabled = true;
             }

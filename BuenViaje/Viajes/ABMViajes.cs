@@ -72,10 +72,12 @@ namespace BuenViaje.Viajes
                 ViajeABMCombo1.Items.Add(mRuta.Nombre);
                 
             }
+            ViajeABMCombo1.SelectedIndex = 0;
             foreach (BusBE mBus in busBL.Listar())
             {
                 ViajeABMCombo2.Items.Add(mBus.Patente);
             }
+            ViajeABMCombo2.SelectedIndex = 0;
             CargarCampos();
             SetToolTips();
             ViajeABMButton1.Enabled = false;
@@ -434,9 +436,6 @@ namespace BuenViaje.Viajes
                 mBitacora.Tipo_Evento = "HIGH";
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("ABMViajes-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
                 this.Close();
             }
         }
@@ -457,7 +456,7 @@ namespace BuenViaje.Viajes
                 this.ViajeABMDatePickerHasta.Enabled = true;
             }
 
-            if (ViajeABMCombo3.SelectedItem.ToString().Length >0 && ViajeABMCombo1.SelectedItem.ToString().Length > 0 && ViajeABMCombo2.SelectedItem.ToString().Length > 0)
+            if (ViajeABMCombo3.SelectedItem != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
             {
                 ViajeABMButton1.Enabled = true;
             }
@@ -469,7 +468,7 @@ namespace BuenViaje.Viajes
 
         private void ViajeABMCombo1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ViajeABMCombo3.SelectedItem.ToString().Length > 0 && ViajeABMCombo1.SelectedItem.ToString().Length > 0 && ViajeABMCombo2.SelectedItem.ToString().Length > 0)
+            if (ViajeABMCombo3 != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
             {
                 ViajeABMButton1.Enabled = true;
             }
@@ -481,7 +480,7 @@ namespace BuenViaje.Viajes
 
         private void ViajeABMCombo2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ViajeABMCombo3.SelectedItem.ToString().Length > 0 && ViajeABMCombo1.SelectedItem.ToString().Length > 0 && ViajeABMCombo2.SelectedItem.ToString().Length > 0)
+            if (ViajeABMCombo3 != null && ViajeABMCombo1.SelectedItem != null && ViajeABMCombo2.SelectedItem != null)
             {
                 ViajeABMButton1.Enabled = true;
             }

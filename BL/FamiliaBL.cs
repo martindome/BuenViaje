@@ -96,7 +96,7 @@ namespace BL
                 TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
                 if (!TodasPatentesFlag)
                 {
-                    throw new Exception("No todas las patentes estan asignadas a un usuario");
+                    throw new Exception(IdiomaBL.ObtenerMensajeTextos("No todas las patentes estan asignadas a un usuario", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
                 }
             }
 
@@ -167,7 +167,7 @@ namespace BL
                 TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
                 if (!TodasPatentesFlag)
                 {
-                    throw new Exception("No todas las patentes estan asignadas a un usuario");
+                    throw new Exception(IdiomaBL.ObtenerMensajeTextos("No todas las patentes estan asignadas a un usuario", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
                 }
             }
             //No se pueden eliminar familias con usuarios asignados

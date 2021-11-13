@@ -101,7 +101,7 @@ namespace BL
                 TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
                 if (!TodasPatentesFlag)
                 {
-                    throw new Exception("No todas las patentes estan asignadas a un usuario");
+                    throw new Exception(IdiomaBL.ObtenerMensajeTextos("No todas las patentes estan asignadas a un usuario", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
                 }
             }
 
@@ -204,7 +204,7 @@ namespace BL
         {
             if (pUsuario.ID_Usuario == SingletonSesion.Instancia.Usuario.ID_Usuario)
             {
-                throw new Exception("Un usuario no se puede eliminar a si mismo");
+                throw new Exception(IdiomaBL.ObtenerMensajeTextos("Un usuario no se puede eliminar a si mismo", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             }
             //Validar que todas las patentes esten asigandas a un usuario por lo menos
             PatenteBL patentebl = new PatenteBL();
@@ -236,7 +236,7 @@ namespace BL
                 TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
                 if (!TodasPatentesFlag)
                 {
-                    throw new Exception("No todas las patentes estan asignadas a un usuario");
+                    throw new Exception(IdiomaBL.ObtenerMensajeTextos("No todas las patentes estan asignadas a un usuario", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
                 }
             }
             //Eliminamos permisos y patentes
@@ -276,10 +276,12 @@ namespace BL
             NuevaContrasenia = DAL.LoginDAL.CalcularHashMD5(NuevaContrasenia);
             if (pUsuario.Contrasenia != contraseniaActual)
             {
+                throw new Exception(IdiomaBL.ObtenerMensajeTextos("Clave actual incorrecta", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
                 throw new Exception("Clave actual incorrecta");
             }
             if (pUsuario.Contrasenia == NuevaContrasenia)
             {
+                throw new Exception(IdiomaBL.ObtenerMensajeTextos("La clave anterior y nueva son iguales", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
                 throw new Exception("La clave anterior y nueva son iguales");
             }
             //BitacoraBE mBitacora = new BitacoraBE();

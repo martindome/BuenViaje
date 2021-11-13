@@ -1411,6 +1411,7 @@ namespace BuenViaje
             pasajesPrincipalDataGridViajes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             pasajesPrincipalDataGridViajes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             pasajesPrincipalDataGridViajes.Rows.Clear();
+            
 
             if (!SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.AdminClientes) && !SingletonSesion.Instancia.VerificarPermiso(BE.Composite.TipoPermiso.VendedorPasajes))
             {
@@ -1431,6 +1432,7 @@ namespace BuenViaje
                 pasajesPrincipalButton4.Enabled= true;
                 pasajesPrincipalButton5.Enabled = true;
             }
+            pasajesPrincipalButton4.Enabled = false;
             //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             ActualizarGrillasPasajeCliente();
             ActualizarGrillasPasajeViajes();
@@ -1517,10 +1519,26 @@ namespace BuenViaje
         private void pasajesPrincipalButton1_Click(object sender, EventArgs e)
         {
             ActualizarGrillasPasajeCliente();
+            if (pasajesPrincipalTextBox6.Text.Length > 0 && pasajesPrincipalTextBox6.Text.Length < 2 && Regex.IsMatch(pasajesPrincipalTextBox6.Text, @"^\d+$") && pasajesPrincipalDataGridViajes.Rows.Count > 0 && pasajesPrincipalDataGridClientes.Rows.Count > 0)
+            {
+                pasajesPrincipalButton4.Enabled = true;
+            }
+            else
+            {
+                pasajesPrincipalButton4.Enabled = false;
+            }
         }
         private void pasajesPrincipalButton2_Click(object sender, EventArgs e)
         {
             ActualizarGrillasPasajeViajes();
+            if (pasajesPrincipalTextBox6.Text.Length > 0 && pasajesPrincipalTextBox6.Text.Length < 2 && Regex.IsMatch(pasajesPrincipalTextBox6.Text, @"^\d+$") && pasajesPrincipalDataGridViajes.Rows.Count > 0 && pasajesPrincipalDataGridClientes.Rows.Count > 0)
+            {
+                pasajesPrincipalButton4.Enabled = true;
+            }
+            else
+            {
+                pasajesPrincipalButton4.Enabled = false;
+            }
         }
 
         private void pasajesPrincipalButton4_Click(object sender, EventArgs e)
@@ -1653,8 +1671,20 @@ namespace BuenViaje
             g.DrawString("-------------------------------", fBody1, sb, 10, SPACE + 175);
         }
 
+        private void pasajesPrincipalTextBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (pasajesPrincipalTextBox6.Text.Length > 0 && pasajesPrincipalTextBox6.Text.Length < 2 && Regex.IsMatch(pasajesPrincipalTextBox6.Text, @"^\d+$") && pasajesPrincipalDataGridViajes.Rows.Count > 0 && pasajesPrincipalDataGridClientes.Rows.Count >0)
+            {
+                pasajesPrincipalButton4.Enabled = true;
+            }
+            else
+            {
+                pasajesPrincipalButton4.Enabled = false;
+            }
+        }
+
+
 
         #endregion Pasajes
-
     }
 }

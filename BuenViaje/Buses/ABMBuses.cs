@@ -297,7 +297,7 @@ namespace BuenViaje.Buses
 
         private void ABMBusesTexto1_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMBusesTexto1.Text.Length >0 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto3.Text.Length > 0 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$")  )
+            if (this.ABMBusesTexto1.Text.Length >0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$")  )
             {
                 ABMBusesBotton1.Enabled = true;
             }
@@ -309,7 +309,7 @@ namespace BuenViaje.Buses
 
         private void ABMBusesTexto2_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto3.Text.Length > 0 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$" ) && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
+            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
             {
                 ABMBusesBotton1.Enabled = true;
             }
@@ -321,7 +321,7 @@ namespace BuenViaje.Buses
 
         private void ABMBusesTexto3_TextChanged(object sender, EventArgs e)
         {
-            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto3.Text.Length > 0 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
+            if (this.ABMBusesTexto1.Text.Length > 0 && this.ABMBusesTexto1.Text.Length < 50 && this.ABMBusesTexto2.Text.Length > 0 && this.ABMBusesTexto2.Text.Length < 50 && this.ABMBusesTexto3.Text.Length > 0 && this.ABMBusesTexto3.Text.Length < 4 && Regex.IsMatch(this.ABMBusesTexto3.Text, @"^\d+$") && Regex.IsMatch(this.ABMBusesTexto2.Text, @"^[A-Za-z]+$"))
             {
                 ABMBusesBotton1.Enabled = true;
             }

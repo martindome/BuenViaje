@@ -464,7 +464,7 @@ namespace BuenViaje.Administracion.Permisos
 
         private void ABMPermisoTextoNombre_TextChanged(object sender, EventArgs e)
         {
-            if (ABMPermisoTextoNombre.Text.Length > 0 && ABMPermisoTextoDescripcion.Text.Length > 0)
+            if (ABMPermisoTextoNombre.Text.Length > 0 && ABMPermisoTextoNombre.Text.Length < 50 && ABMPermisoTextoDescripcion.Text.Length > 0 && ABMPermisoTextoDescripcion.Text.Length < 50)
             {
                 ABMPermisoBotton1.Enabled = true;
             }
@@ -476,7 +476,7 @@ namespace BuenViaje.Administracion.Permisos
 
         private void ABMPermisoTextoDescripcion_TextChanged(object sender, EventArgs e)
         {
-            if (ABMPermisoTextoNombre.Text.Length > 0 && ABMPermisoTextoDescripcion.Text.Length > 0)
+            if (ABMPermisoTextoNombre.Text.Length > 0 && ABMPermisoTextoNombre.Text.Length < 50 && ABMPermisoTextoDescripcion.Text.Length > 0 && ABMPermisoTextoDescripcion.Text.Length < 50)
             {
                 ABMPermisoBotton1.Enabled = true;
             }

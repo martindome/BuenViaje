@@ -321,6 +321,7 @@
             this.pasajesPrincipalTextBox6.Name = "pasajesPrincipalTextBox6";
             this.pasajesPrincipalTextBox6.Size = new System.Drawing.Size(100, 20);
             this.pasajesPrincipalTextBox6.TabIndex = 58;
+            this.pasajesPrincipalTextBox6.TextChanged += new System.EventHandler(this.pasajesPrincipalTextBox6_TextChanged);
             // 
             // pasajesPrincipalLabel8
             // 

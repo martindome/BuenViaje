@@ -129,7 +129,7 @@ namespace DAL
             {
                 pPasaje.ID_Pasaje = ProximoId();
                 string DVH = mIntegridad.CalcularDVH(pPasaje.ID_Pasaje.ToString() + pPasaje.ID_Viaje.ToString() + pPasaje.ID_Cliente.ToString() + pPasaje.Fecha.ToString() + pPasaje.Devuelto.ToString());
-                mCommand = "INSERT INTO Pasaje(ID_Pasaje, ID_Usuario, ID_Viaje, ID_Cliente, Fecha, Devuelto, DVH) VALUES (@Pasaje, @Usuario, @Viaje, @Cliente, @Fecha, @Devuelto, @DVH)";
+                mCommand = "INSERT INTO Pasaje(ID_Pasaje, ID_Viaje, ID_Cliente, Fecha, Devuelto, DVH) VALUES (@Pasaje, @Viaje, @Cliente, @Fecha, @Devuelto, @DVH)";
                 Dictionary<string, Object> parameters = new Dictionary<string, Object>();
                 parameters.Add("@Pasaje", pPasaje.ID_Pasaje);
                 parameters.Add("@Viaje", pPasaje.ID_Viaje);
@@ -142,7 +142,7 @@ namespace DAL
             else
             {
                 string DVH = mIntegridad.CalcularDVH(pPasaje.ID_Pasaje.ToString()+ pPasaje.ID_Viaje.ToString() + pPasaje.ID_Cliente.ToString() + pPasaje.Fecha.ToString() + pPasaje.Devuelto.ToString());
-                mCommand = "UPDATE Pasaje SET ID_Usuario = @Usuario, ID_Viaje = @Viaje, ID_Cliente = @Cliente, Fecha = @Fecha, Devuelto = @Devuelto, DVH = @DVH WHERE ID_Pasaje = @Pasaje";
+                mCommand = "UPDATE Pasaje SET ID_Viaje = @Viaje, ID_Cliente = @Cliente, Fecha = @Fecha, Devuelto = @Devuelto, DVH = @DVH WHERE ID_Pasaje = @Pasaje";
                 Dictionary<string, Object> parameters = new Dictionary<string, Object>();
                 parameters.Add("@Pasaje", pPasaje.ID_Pasaje);
                 parameters.Add("@Viaje", pPasaje.ID_Viaje);

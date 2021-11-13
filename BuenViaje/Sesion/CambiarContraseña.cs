@@ -243,6 +243,14 @@ namespace BuenViaje.Sesion
             //{
             //    this.CambiarContraseniaButton1.Enabled = false;
             //}
+            if (this.CambiarContraseniaTextBox1.Text.Length > 0 && CambiarContraseniaTextBox1.Text.Length < 50 && CambiarContraseniaTextBox2.Text.Length > 0 && CambiarContraseniaTextBox2.Text.Length < 50 && Regex.IsMatch(CambiarContraseniaTextBox2.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$") && CambiarContraseniaTextBox2.Text == CambiarContraseniaTextBox3.Text)
+            {
+                CambiarContraseniaButton1.Enabled = true;
+            }
+            else
+            {
+                CambiarContraseniaButton1.Enabled = false;
+            }
 
         }
 
