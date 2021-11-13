@@ -15,6 +15,7 @@ using MigraDoc.Rendering;
 using MigraDoc.Rendering.ChartMapper;
 using MigraDoc.Rendering.UnitTest;
 using MigraDoc.RtfRendering;
+using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.DocumentObjectModel.Shapes.Charts;
@@ -183,6 +184,7 @@ namespace BuenViaje.Administracion
             CargarIdioma(IdiomaBL.ObtenerMensajeControladores(SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
             this.Text = IdiomaBL.ObtenerMensajeTextos("Bitacora-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             SetToolTips();
+            BitacoraBottonExportToPDF.Enabled = false;
         }
 
         private void CargarIdioma(List<ControlBE> pControles)
@@ -289,7 +291,7 @@ namespace BuenViaje.Administracion
         {
             SaveFileDialog savefile = new SaveFileDialog();
             // set a default file name
-            savefile.FileName = @"report_" + this.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + @".pdf";
+            savefile.FileName = @"report_" + IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + @".pdf";
             // set filters - this can be done in properties as well
             savefile.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
 
@@ -298,8 +300,21 @@ namespace BuenViaje.Administracion
                 Document document = new Document();
                 document.DefaultPageSetup.Orientation = MigraDoc.DocumentObjectModel.Orientation.Portrait;
                 document.DefaultPageSetup.PageFormat = PageFormat.A4;
-                Section section = document.AddSection();
 
+                Section section = document.AddSection();
+                Paragraph Footer = new Paragraph();
+                Footer.AddText("Page ");
+                Footer.AddPageField();
+                Footer.AddText(" of ");
+                Footer.AddNumPagesField();
+                Footer.Format.Alignment = ParagraphAlignment.Right;
+                section.Footers.Primary.Add(Footer);
+                //section.Footers.Primary.Add(paragraph);
+
+                Paragraph Header = new Paragraph();
+                Header.AddText(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+                Header.Format.Alignment = ParagraphAlignment.Left;
+                section.Headers.Primary.Add(Header);
 
                 //Titulo
                 Paragraph Title = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Bitacora-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n\n", "Heading1");

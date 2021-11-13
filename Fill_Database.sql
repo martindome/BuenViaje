@@ -184,7 +184,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'ViajePrincpal-Columna-Cancelado', 'Canceled'),
 (1, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'User does not have enough permissions'),
 (1, 'Cancelado', 'Yes'),
-(1, 'No Cancelado', 'No')
+(1, 'No Cancelado', 'No'),
+(1, 'Viaje-pdf-Title', 'Report of Trips'),
+(1, 'Viaje-pdf-Date', 'Date'),
+(1, 'Viaje-pdf-Requested', 'Requested By')
 
 --- Viajes ABM
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -407,7 +410,10 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ViajePrincpal-Columna-Cancelado', 'Cancelado'),
 (2, 'UsuarioPrincipal-Viajes-AccesoDenegado', 'El usuario no tiene los permisos suficientes'),
 (2, 'Cancelado', 'Si'),
-(2, 'No Cancelado', 'No')
+(2, 'No Cancelado', 'No'),
+(2, 'Viaje-pdf-Title', 'Reporte de Viajes'),
+(2, 'Viaje-pdf-Date', 'Fecha'),
+(2, 'Viaje-pdf-Requested', 'Pedido por')
 
 --- Viajes ABM
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -1076,7 +1082,8 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'ViajePrincipalLabel3', 'Date From'),
 (1, 'ViajePrincipalLabel4', 'Date To'),
 (1, 'ToViajesPrincipalCheckBox', 'Canceled'),
-(1, 'ViajePrincipalGroupBox1', 'Filters')
+(1, 'ViajePrincipalGroupBox1', 'Filters'),
+(1,'ViajesPrincipalButton7', 'Report')
 
 ---ABM Rutas
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
@@ -1326,7 +1333,8 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'ViajePrincipalLabel3', 'Desde'),
 (2, 'ViajePrincipalLabel4', 'Hasta'),
 (2, 'ToViajesPrincipalCheckBox', 'Cancelado'),
-(2, 'ViajePrincipalGroupBox1', 'Filtros')
+(2, 'ViajePrincipalGroupBox1', 'Filtros'),
+(2,'ViajesPrincipalButton7', 'Reporte')
 
 
 ---ABM Rutas

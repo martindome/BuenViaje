@@ -798,7 +798,7 @@ namespace BuenViaje
         {
             SaveFileDialog savefile = new SaveFileDialog();
             // set a default file name
-            savefile.FileName = @"report_" + this.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + @".pdf";
+            savefile.FileName = @"report_" + IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + @".pdf";
             // set filters - this can be done in properties as well
             savefile.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
 
@@ -809,6 +809,20 @@ namespace BuenViaje
                 document.DefaultPageSetup.PageFormat = PageFormat.A4;
                 Section section = document.AddSection();
 
+                Paragraph Footer = new Paragraph();
+                Footer.AddText("Page ");
+                Footer.AddPageField();
+                Footer.AddText(" of ");
+                Footer.AddNumPagesField();
+                Footer.Format.Alignment = ParagraphAlignment.Right;
+                section.Footers.Primary.Add(Footer);
+                //section.Footers.Primary.Add(paragraph);
+
+                Paragraph Header = new Paragraph();
+                Header.AddText(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+                Header.Format.Alignment = ParagraphAlignment.Left;
+                section.Headers.Primary.Add(Header);
+
                 //Titulo
                 Paragraph Title = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n\n", "Heading1");
                 Title.AddBookmark("Title");
@@ -816,13 +830,13 @@ namespace BuenViaje
                 //Title.Format.Font.Color = Colors.DarkBlue;
                 Title.Format.Alignment = ParagraphAlignment.Center;
 
-                Paragraph Date = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Date", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\nn", "Heading1");
+                Paragraph Date = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Date", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n\n", "Heading1");
                 Date.AddBookmark("Date");
                 Date.Format.Font.Size = 15;
                 //Date.Format.Font.Color = Colors.DarkBlue;
                 Date.Format.Alignment = ParagraphAlignment.Left;
 
-                Paragraph Requested = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Requested", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + SingletonSesion.Instancia.Usuario.Nombre_Usuario + "\nn", "Heading1");
+                Paragraph Requested = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Buses-pdf-Requested", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + SingletonSesion.Instancia.Usuario.Nombre_Usuario + "\n\n", "Heading1");
                 Requested.AddBookmark("Requested");
                 Requested.Format.Font.Size = 15;
                 //Requested.Format.Font.Color = Colors.DarkBlue;
@@ -1353,6 +1367,106 @@ namespace BuenViaje
             }
         }
 
+        private void ViajesPrincipalButton7_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            // set a default file name
+            savefile.FileName = @"report_" + IdiomaBL.ObtenerMensajeTextos("Viaje-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + @".pdf";
+            // set filters - this can be done in properties as well
+            savefile.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                Document document = new Document();
+                document.DefaultPageSetup.Orientation = MigraDoc.DocumentObjectModel.Orientation.Portrait;
+                document.DefaultPageSetup.PageFormat = PageFormat.A4;
+
+                Section section = document.AddSection();
+                Paragraph Footer = new Paragraph();
+                Footer.AddText("Page ");
+                Footer.AddPageField();
+                Footer.AddText(" of ");
+                Footer.AddNumPagesField();
+                Footer.Format.Alignment = ParagraphAlignment.Right;
+                section.Footers.Primary.Add(Footer);
+                //section.Footers.Primary.Add(paragraph);
+
+                Paragraph Header = new Paragraph();
+                Header.AddText(IdiomaBL.ObtenerMensajeTextos("Viaje-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion));
+                Header.Format.Alignment = ParagraphAlignment.Left;
+                section.Headers.Primary.Add(Header);
+
+                //Titulo
+                Paragraph Title = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Viaje-pdf-Title", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n\n", "Heading1");
+                Title.AddBookmark("Title");
+                Title.Format.Font.Size = 30;
+                //Title.Format.Font.Color = Colors.DarkBlue;
+                Title.Format.Alignment = ParagraphAlignment.Center;
+
+                Paragraph Date = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Viaje-pdf-Date", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n\n", "Heading1");
+                Date.AddBookmark("Date");
+                Date.Format.Font.Size = 15;
+                //Date.Format.Font.Color = Colors.DarkBlue;
+                Date.Format.Alignment = ParagraphAlignment.Left;
+
+                Paragraph Requested = document.LastSection.AddParagraph(IdiomaBL.ObtenerMensajeTextos("Viaje-pdf-Requested", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + ": " + SingletonSesion.Instancia.Usuario.Nombre_Usuario + "\n\n", "Heading1");
+                Requested.AddBookmark("Requested");
+                Requested.Format.Font.Size = 15;
+                //Requested.Format.Font.Color = Colors.DarkBlue;
+                Requested.Format.Alignment = ParagraphAlignment.Left;
+
+                this.CreateTableViaje(document, savefile.FileName);
+                var renderer = new PdfDocumentRenderer();
+                renderer.Document = document;
+                renderer.RenderDocument();
+
+                renderer.Save(savefile.FileName);
+
+
+            }
+        }
+        private void CreateTableViaje(Document document, string TableName)
+        {
+            //Paragraph paragraph = document.LastSection.AddParagraph(TableName, "Heading2");
+
+            Table table = new Table();
+            table.Borders.Width = 0.75;
+
+            Column column1 = table.AddColumn(Unit.FromCentimeter(2));
+            column1.Format.Alignment = ParagraphAlignment.Center;
+            Column column2 = table.AddColumn(Unit.FromCentimeter(5));
+            column2.Format.Alignment = ParagraphAlignment.Center;
+            Column column3 = table.AddColumn(Unit.FromCentimeter(2));
+            column3.Format.Alignment = ParagraphAlignment.Center;
+            Column column4 = table.AddColumn(Unit.FromCentimeter(8));
+            column4.Format.Alignment = ParagraphAlignment.Center;
+
+            Row row = table.AddRow();
+            Cell cell = row.Cells[0];
+            cell.AddParagraph(ObtenerMensajeColumna("ViajePrincpal-Columna-RutaNombre"));
+            cell = row.Cells[1];
+            cell.AddParagraph((ObtenerMensajeColumna("ViajePrincpal-Columna-BusPatente")));
+            cell = row.Cells[2];
+            cell.AddParagraph((ObtenerMensajeColumna("ViajePrincpal-Columna-Fecha")));
+            cell = row.Cells[3];
+            cell.AddParagraph(ObtenerMensajeColumna("ViajePrincpal-Columna-Cancelado"));
+
+            //BitacoraDataGrid1.Sort(BitacoraDataGrid1.Columns[1], ListSortDirection.Ascending);
+            foreach (DataGridViewRow GridRow in ViajesPrincipalDataGrid.Rows)
+            {
+                row = table.AddRow();
+                cell = row.Cells[0];
+                cell.AddParagraph(GridRow.Cells[3].Value.ToString());
+                cell = row.Cells[1];
+                cell.AddParagraph(GridRow.Cells[4].Value.ToString());
+                cell = row.Cells[2];
+                cell.AddParagraph(GridRow.Cells[5].Value.ToString());
+                cell = row.Cells[3];
+                cell.AddParagraph(GridRow.Cells[6].Value.ToString());
+            }
+            //table.SetEdge(0, 0, 2, 3, Edge.Box, MigraDoc.DocumentObjectModel.BorderStyle.Single, 1.5, Colors.Black);
+            document.LastSection.Add(table);
+        }
 
         #endregion Viajes
 
@@ -1686,5 +1800,7 @@ namespace BuenViaje
 
 
         #endregion Pasajes
+
+       
     }
 }

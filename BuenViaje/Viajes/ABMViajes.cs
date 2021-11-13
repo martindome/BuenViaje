@@ -90,6 +90,8 @@ namespace BuenViaje.Viajes
                 case Operacion.Alta:
                     Limpiar();
                     this.ViajeABMCheckBox1.Enabled = false;
+                    this.ViajeABMDatePickerHasta.Visible = true;
+                    this.ViajeABMLabel5.Visible = true;
                     break;
                 case Operacion.Modificacion:
                     Limpiar();
@@ -104,7 +106,13 @@ namespace BuenViaje.Viajes
                     this.ViajeABMCombo3.SelectedIndex = 3;
                     this.ViajeABMCheckBox1.Enabled = true;
                     this.ViajeABMDatePickerHasta.Enabled = false;
-
+                    this.ViajeABMDatePickerHasta.Visible = false;
+                    this.ViajeABMLabel5.Visible = false;
+                    this.ViajeABMDatePickerDesde.Enabled = false;
+                    this.ViajeABMDatePickerDesdeHora.Enabled = false;
+                    this.ViajeABMDatePickerHasta.Enabled = false;
+                    this.ViajeABMDatePickerHasta.Visible = false;
+                    this.ViajeABMDatePickerHasta.Visible = false;
                     break;
                 case Operacion.Baja:
                     Limpiar();
@@ -113,6 +121,27 @@ namespace BuenViaje.Viajes
                     this.ViajeABMDatePickerDesde.Value = this.viajebe.Fecha;
                     this.ViajeABMDatePickerDesdeHora.Value = this.viajebe.Fecha;
                     this.ViajeABMCheckBox1.Enabled = false;
+                    this.ViajeABMLabel5.Visible = false;
+                    this.ViajeABMDatePickerDesde.Enabled = false;
+                    this.ViajeABMDatePickerDesdeHora.Enabled = false;
+                    this.ViajeABMDatePickerHasta.Enabled = false;
+                    this.ViajeABMDatePickerHasta.Visible = false;
+                    this.ViajeABMDatePickerHasta.Visible = false;
+                    DeshabilitarBotones();
+                    break;
+                case Operacion.Ver:
+                    Limpiar();
+                    this.ViajeABMCombo1.SelectedIndex = this.viajebe.ID_Ruta - 1;
+                    this.ViajeABMCombo2.SelectedIndex = this.viajebe.ID_Bus - 1;
+                    this.ViajeABMDatePickerDesde.Value = this.viajebe.Fecha;
+                    this.ViajeABMDatePickerDesdeHora.Value = this.viajebe.Fecha;
+                    this.ViajeABMCheckBox1.Enabled = false;
+                    this.ViajeABMDatePickerDesde.Enabled = false;
+                    this.ViajeABMDatePickerDesdeHora.Enabled = false;
+                    this.ViajeABMDatePickerHasta.Enabled = false;
+                    this.ViajeABMDatePickerHasta.Visible = false;
+                    this.ViajeABMDatePickerHasta.Visible = false;
+                    this.ViajeABMLabel5.Visible = false;
                     DeshabilitarBotones();
                     break;
             }
