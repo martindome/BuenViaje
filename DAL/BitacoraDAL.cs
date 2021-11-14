@@ -61,7 +61,7 @@ namespace DAL
                 //mCommand = "INSERT INTO Bitacora (ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (" + pBitacora.ID_Bitacora + ", '" + pBitacora.Fecha.ToString() + "', '" + pBitacora.Tipo_Evento + "', '" + pBitacora.Descripcion + "', '" + DVH + "', NULL)";
                 mCommand = "INSERT INTO Bitacora(ID_Bitacora, Fecha, Tipo_Evento, Descripcion, DVH, Nombre_Usuario) VALUES (@ID_Bitacora, @Fecha, @Tipo, @Descripcion, @DVH, @Nombre_Usuario)";
                 parameters.Add("@ID_Bitacora", pBitacora.ID_Bitacora);
-                parameters.Add("@Fecha", pBitacora.Fecha.ToString());
+                parameters.Add("@Fecha", pBitacora.Fecha);
                 parameters.Add("@Tipo", pBitacora.Tipo_Evento);
                 parameters.Add("@Descripcion", pBitacora.Descripcion);
                 parameters.Add("@DVH", DVH);
