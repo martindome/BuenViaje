@@ -1,8 +1,8 @@
 
---https://www.guru99.com/sql-server-create-user.html
-ALTER ROLE [db_owner] ADD MEMBER [buenviajedtblogin]
-ALTER ROLE [db_datareader] ADD MEMBER [buenviajedtblogin]
-ALTER ROLE [db_datawriter] ADD MEMBER [buenviajedtblogin]
+-- --https://www.guru99.com/sql-server-create-user.html
+-- ALTER ROLE [db_owner] ADD MEMBER [buenviajedtblogin]
+-- ALTER ROLE [db_datareader] ADD MEMBER [buenviajedtblogin]
+-- ALTER ROLE [db_datawriter] ADD MEMBER [buenviajedtblogin]
 
 --Idioma
 INSERT INTO dbo.Idioma(ID_Idioma, Descripcion) VALUES
@@ -1427,7 +1427,11 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Usuario
 INSERT INTO dbo.Usuario(ID_Usuario, Nombre, Apellido, Nombre_Usuario, Contrasenia, DVH, Intentos_Login, ID_Idioma) VALUES
-(1, 'Martin', 'Dome', 'bWFydGluZG9tZTk2QGdtYWlsLmNvbQ==', 'CB1338CD67E63B81FC59F8107E76811C','196993', 0, 2) 
+-- (1, 'Martin', 'Dome', 'bWFydGluZG9tZTk2QGdtYWlsLmNvbQ==', 'CB1338CD67E63B81FC59F8107E76811C','196993', 0, 2) 
+(1, 'Admin', 'Sistemas', 'YWRtaW5Ac2lzdGVtYXMuY29t', '13EC044F9C383A55E533F3F8DF98C11A','170264', 0, 2),
+(2, 'Admin', 'Usuarios', 'YWRtaW5AdXN1YXJpb3MuY29t', 'DF3FC1F166DD06B6CD6F1A3FBA2174FC','170618', 0, 2),
+(3, 'Admin', 'Permisos', 'YWRtaW5AcGVybWlzb3MuY29t', '29E43C2CECC623838BD0A90C39AC1C0A','170870', 0, 2),
+(4, 'Admin', 'BuenViaje', 'YWRtaW5AYnVlbnZpYWplLmNvbQ==', '1DCD3306047F02C7DA59EDF362921AF2','198761', 0, 2)
 
 -- --Permisos
 -- INSERT INTO Permiso(ID_Permiso, Nombre, Descripcion, Tipo_Permiso) VALUES 
@@ -1493,15 +1497,41 @@ INSERT INTO Familia(ID_Familia, Nombre, Descripcion) VALUES
 (8, 'QWRtaW5zdHJhZG9yIEJ1c2Vz', 'Permite administrar Buses')
 
 --Usuario_Familia
-INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES
-(1,1,49),
-(1,2,50),
+-- INSERT INTO Usuario_Familia(ID_Usuario, ID_Familia, DVH) VALUES
+-- -- -- (1,1,49),
+-- -- -- (1,2,50),
+-- -- -- (1,3,51),
+-- -- -- (1,4,52),
+-- -- -- (1,5,53),
+-- -- -- (1,6,54),
+-- -- -- (1,7,55),
+-- -- -- (1,8,56)
+-- -- (1,1,49),
+
+INSERT INTO Usuario_Permiso(ID_Usuario, ID_Permiso, DVH) VALUES
+--Admin Sistema
 (1,3,51),
 (1,4,52),
 (1,5,53),
-(1,6,54),
-(1,7,55),
-(1,8,56)
+---Admins Usuarios
+(2,1,49),
+(2,10,145),
+--Admin Permisos
+(3,2,50),
+(3,11,147),
+--Admin BuenViaje
+(4,6,54),
+(4,7,55),
+(4,8,56),
+(4,9,57),
+(4,12,149),
+(4,13,151),
+(4,14,153),
+(4,15,155),
+(4,16,157),
+(4,17,159),
+(4,18,161),
+(4,19,163)
 
 --Permiso_Familia
 INSERT INTO Permiso_Familia(ID_Permiso, ID_Familia, DVH) VALUES
@@ -1546,9 +1576,9 @@ INSERT INTO Permiso_Familia(ID_Permiso, ID_Familia, DVH) VALUES
 (19,8,169) --read buses
 
 Insert INTO dbo.Digito_Verificador(ID_Digito_Verificador, Tabla, DVV) Values 
-(1, 'Usuario', '196993'),
+(1, 'Usuario', '710513'),
 (2, 'Permiso_Familia', '3671'),
-(3, 'Usuario_Familia', '420')
+(3, 'Usuario_Permiso', '2017')
 
 -- Insert INTO Localidad(ID_Localidad, Nombre, Provincia, Pais) VALUES
 -- (1,'El Chalten', 'Santa Cruz', 'Argentina'),
