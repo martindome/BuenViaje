@@ -384,7 +384,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'ABMClientes-Form', 'Clientes'),
 (2, 'ABMClientes-Validacion-Cliente','Cliente ya existente'),
-(2, 'ABMClientes-Confirmacion-Baja','Esta seguro de eleminar el cliente?'),
+(2, 'ABMClientes-Confirmacion-Baja','Esta seguro de eliminar el cliente?'),
 (2, 'ABMClientes-Error-Aplicar','Un error ocurrio al aplicar los cambios')
 
 ----Rutas Principal

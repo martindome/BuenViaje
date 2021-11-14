@@ -21,18 +21,6 @@ namespace BL
                 throw (ex);
             }
         }
-        public bool ChequearArchivoDeConfiguracion(string pPath)
-        {
-            bool result;
-            try
-            {
-                return result = File.Exists(pPath);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
         public void ChequearIntegridad()
         {
             try

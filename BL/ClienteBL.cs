@@ -32,6 +32,11 @@ namespace BL
 
         public void Eliminar(ClienteBE pCliente)
         {
+            PasajeBL pasajebl = new PasajeBL();
+            foreach (PasajeBE pasaje in pasajebl.ListarCliente(pCliente.ID_Cliente))
+            {
+                pasajebl.Borrar(pasaje);
+            }
             ClienteDAL.Eliminar(pCliente);
         }
     }

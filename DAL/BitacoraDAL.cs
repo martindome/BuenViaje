@@ -34,8 +34,6 @@ namespace DAL
             return Lista;
         }
 
-
-
         public static void Guardar(BitacoraBE pBitacora)
         {
             string mCommand = "";

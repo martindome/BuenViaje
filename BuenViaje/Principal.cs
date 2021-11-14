@@ -1253,7 +1253,7 @@ namespace BuenViaje
             ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-RutaID")].Visible = false;
             ViajesPrincipalDataGrid.Columns[ObtenerMensajeColumna("ViajePrincpal-Columna-BusID")].Visible = false;
 
-            ViajesPrincipalDataGrid.MultiSelect = false;
+            ViajesPrincipalDataGrid.MultiSelect = true;
             ViajesPrincipalDataGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
             ViajesPrincipalDataGrid.AllowUserToAddRows = false;
             ViajesPrincipalDataGrid.AllowUserToDeleteRows = false;
@@ -1325,11 +1325,13 @@ namespace BuenViaje
 
             if (ViajesPrincipalDataGrid.Rows.Count == 0)
             {
+                ViajesPrincipalButton1.Enabled = false;
                 ViajesPrincipalButton3.Enabled = false;
                 ViajesPrincipalButton4.Enabled = false;
             }
             else
             {
+                ViajesPrincipalButton1.Enabled = true;
                 ViajesPrincipalButton3.Enabled = true;
                 ViajesPrincipalButton4.Enabled = true;
             }
@@ -1391,9 +1393,13 @@ namespace BuenViaje
                 ViajeBL viajebl = new ViajeBL();
                 ABMViajes abmviajes = new ABMViajes();
                 abmviajes.operacion = Operacion.Baja;
-                abmviajes.viajebe = viajebl.Obtener(int.Parse(this.ViajesPrincipalDataGrid.SelectedRows[0].Cells[0].Value.ToString()));
-                abmviajes.ShowDialog();
-                ActualizarGrillaViajes();
+                foreach(DataGridViewRow row in this.ViajesPrincipalDataGrid.SelectedRows)
+                {
+                    abmviajes.viajebe = viajebl.Obtener(int.Parse(row.Cells[0].Value.ToString()));
+                    abmviajes.ShowDialog();
+                    ActualizarGrillaViajes();
+                }
+                
             }
             else
             {

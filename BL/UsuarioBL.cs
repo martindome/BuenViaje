@@ -162,44 +162,6 @@ namespace BL
             }
         }
 
-        private static bool VerificarTodasPatentes(UsuarioBE pUsuario)
-        {
-            //Validar que todas las patentes esten asigandas a un usuario por lo menos
-            PatenteBL patentebl = new PatenteBL();
-            UsuarioBL usuariobl = new UsuarioBL();
-            List<PatenteBE> patentes = patentebl.Listar();
-            bool TodasPatentesFlag = true;
-            foreach (PatenteBE patente in patentes)
-            {
-                bool PatenteFlag = false;
-                foreach (UsuarioBE user in UsuarioDAL.Listar())
-                {
-                    // Elimino de la lista al usuario que estoy borrando
-                    if (user.ID_Usuario != pUsuario.ID_Usuario)
-                    {
-                        foreach (CompuestoBE permiso in usuariobl.ObtenerPermisos(user))
-                        {
-                            if (permiso is PatenteBE && ((PatenteBE)permiso).Tipo == patente.Tipo)
-                            {
-                                PatenteFlag = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (PatenteFlag)
-                    {
-                        break;
-                    }
-                }
-                TodasPatentesFlag = TodasPatentesFlag && PatenteFlag;
-                if (!TodasPatentesFlag)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
         public void Eliminar(UsuarioBE pUsuario)
         {
             if (pUsuario.ID_Usuario == SingletonSesion.Instancia.Usuario.ID_Usuario)

@@ -134,13 +134,13 @@ Create Table Localidad (
 Create table Ruta(
     ID_Ruta bigint not null,
     Nombre varchar (MAX),
-    Origen bigint not null,
+    Origen bigint,
     Destino bigint,
-    Duracion int,
+    Duracion int not null,
     DVH varchar (MAX) not null,
-    PRIMARY KEY CLUSTERED(ID_Ruta),
-    FOREIGN KEY (Destino) REFERENCES Localidad (ID_Localidad) on delete set null,
-    FOREIGN KEY (Origen) REFERENCES Localidad (ID_Localidad) on delete set null
+    PRIMARY KEY CLUSTERED(ID_Ruta)
+    -- FOREIGN KEY (Destino) REFERENCES Localidad (ID_Localidad) on delete cascade,
+    -- FOREIGN KEY (Origen) REFERENCES Localidad (ID_Localidad) on delete cascade
 );
 
 Create Table Viaje(
@@ -151,8 +151,8 @@ Create Table Viaje(
     Cancelado bit not null,
     DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED(ID_Viaje),
-    FOREIGN KEY (ID_Ruta) REFERENCES Ruta (ID_Ruta) on delete set null,
-    FOREIGN KEY (ID_Bus) REFERENCES Bus (ID_Bus) on delete set null
+    FOREIGN KEY (ID_Ruta) REFERENCES Ruta (ID_Ruta) on delete cascade,
+    FOREIGN KEY (ID_Bus) REFERENCES Bus (ID_Bus) on delete cascade
 );
 
 Create Table Pasaje(
@@ -164,7 +164,7 @@ Create Table Pasaje(
     DVH varchar (MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Pasaje),
     FOREIGN KEY (ID_Viaje) REFERENCES Viaje (ID_Viaje) on delete no action,
-    FOREIGN KEY (ID_Cliente) REFERENCES Cliente (ID_Cliente) on delete set null
+    FOREIGN KEY (ID_Cliente) REFERENCES Cliente (ID_Cliente) on delete no action
 );
 
 Create Table Digito_Verificador(
