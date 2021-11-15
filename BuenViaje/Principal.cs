@@ -1638,7 +1638,10 @@ namespace BuenViaje
                 {
                     flag = false;
                 }
-
+                if (viaje.Cancelado)
+                {
+                    flag = false;
+                }
                 if (flag)
                 {
                     pasajesPrincipalDataGridViajes.Rows.Add(viaje.ID_Viaje, viaje.ID_Ruta, viaje.ID_Bus, rutabe.Origen.Pais + "-" + rutabe.Origen.Provincia + "-" + rutabe.Origen.Nombre, rutabe.Destino.Pais + "-" + rutabe.Destino.Provincia + "-" + rutabe.Destino.Nombre, viaje.Fecha, Disponibles);
