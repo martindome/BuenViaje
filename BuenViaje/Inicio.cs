@@ -77,6 +77,7 @@ namespace BuenViaje
                     mBitacora.Nombre_Usuario = "NULL";
                     bitacoraBL.Guardar(mBitacora);
                     MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-IntegridadBaseDatos", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
                 }
 
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Info-CargaCorrecta", mIdioma), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,8 +95,8 @@ namespace BuenViaje
                 mBitacora.Nombre_Usuario = "NULL";
                 bitacoraBL.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-CargaIncorrecta", mIdioma) + "\n" + ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
-            this.Close();
         }
 
         private bool ChequearConexionBD()

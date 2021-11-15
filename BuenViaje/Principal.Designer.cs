@@ -193,7 +193,7 @@
             this.administracionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1158, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1156, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -291,7 +291,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1158, 433);
+            this.tabControl1.Size = new System.Drawing.Size(1156, 433);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
@@ -308,7 +308,7 @@
             this.tabPagePasajes.Location = new System.Drawing.Point(4, 24);
             this.tabPagePasajes.Name = "tabPagePasajes";
             this.tabPagePasajes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePasajes.Size = new System.Drawing.Size(1150, 405);
+            this.tabPagePasajes.Size = new System.Drawing.Size(1148, 405);
             this.tabPagePasajes.TabIndex = 0;
             this.tabPagePasajes.Text = "Pasajes";
             // 
@@ -1538,7 +1538,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1158, 457);
+            this.ClientSize = new System.Drawing.Size(1156, 457);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

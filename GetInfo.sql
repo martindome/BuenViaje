@@ -24,4 +24,10 @@ UPDATE Localidad SET Patente = 'SURXMjI0', Marca = 'Q2hldnJvbGV0', Asientos = 30
 
 
 
-select * from Viaje
+select * from Usuario
+
+select * from Bitacora
+
+select * from Bus
+
+Select * from Digito_Verificador

@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/0T2w9/j/RsRDFEy1FyHp8JFfjI=</dsig:DigestValue>
+        <dsig:DigestValue>xXuGPKjDW55Wd3pIAFDBhspdlfw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -245,13 +245,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="BuenViaje.exe.config" size="1302">
+  <file name="BuenViaje.exe.config" size="1218">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>OpGIhel4PIuM+ItBHavfNO57EFo=</dsig:DigestValue>
+      <dsig:DigestValue>FioYRBBPB8UqAM6DtyhRTA9U1tQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="BuenViaje.mdf" size="8388608" writeableType="applicationData">
