@@ -99,6 +99,19 @@ namespace BL
 
         }
 
+        public static void CambiarConnectionString(string newConnString)
+        {
+            try
+            {
+                LoginDAL.CambiarConnectionString(newConnString);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            
+        }
+
         //public void Logout(UsuarioBE pUsuario)
         //{
         //    if (!SingletonSesion.Instancia.EstaLogueado())

@@ -3,9 +3,10 @@
 -- ALTER ROLE [db_owner] ADD MEMBER [buenviajedtblogin]
 -- ALTER ROLE [db_datareader] ADD MEMBER [buenviajedtblogin]
 -- ALTER ROLE [db_datawriter] ADD MEMBER [buenviajedtblogin]
+USE BuenViaje
 
 --Idioma
-INSERT INTO dbo.Idioma(ID_Idioma, Descripcion) VALUES
+INSERT INTO Idioma(ID_Idioma, Descripcion) VALUES
 (1, 'English'),  
 (2, 'Español')
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -49,6 +50,12 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'CambiarContrasenia-Form', 'Change Password'),
 (1, 'CambiarContrasenia-Info-CambioCorrecto', 'Password changed successfully'),
 (1, 'CambiarContrasenia-Error-CambioClave', 'Error while changing password')
+
+----Cambiar Connection string
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'CambiarConString-Form', 'Change connection string'),
+(1, 'CambiarConString-Info-CambioCorrecto', 'Connection string changed successfully'),
+(1, 'CambiarConString-Error-CambioClave', 'Error while changing connection string')
 ----Usuario principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'UsuarioPrincipal-Form', 'Users'),
@@ -278,6 +285,13 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'CambiarContrasenia-Form', 'Cambiar Contraseña'),
 (2, 'CambiarContrasenia-Info-CambioCorrecto', 'Clave cambiada satisfactoriamente'),
 (2, 'CambiarContrasenia-Error-CambioClave', 'Error al cambiar clave')
+
+----Cambiar Connection string
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'CambiarConString-Form', 'Cambiar String de Conexion'),
+(2, 'CambiarConString-Info-CambioCorrecto', 'String de conexion cambiado satisfactoriamente'),
+(2, 'CambiarConString-Error-CambioClave', 'Error al cambiar string de conexion')
+
 ----Usuario principal
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'UsuarioPrincipal-Form', 'Usuarios'),
@@ -636,6 +650,15 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'CambiarPasswordText1', 'Email del usuario. Debe ser una direccion de email valida'),
 (2, 'CambiarPasswordButton1', 'Restaurar la clave del usuario especificado')
 
+------------------- Cmabiar string connexion
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(1, 'CambiarConStringText1', 'Connections tring for a SQL Database with the Database BuenViaje'),
+(1, 'CambiarConStringButton1', 'Change connection string')
+
+INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
+(2, 'CambiarConStringText1', 'String de conexion a base de datos SQL'),
+(2, 'CambiarConStringButton1', 'Cambiar string de conexion')
+
 
 ------------------- Cambiar clave
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
@@ -890,6 +913,10 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'CambiarPasswordLabel1', 'Username'),
 (1, 'CambiarPasswordButton1', 'Reset Password')
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'CambiarConStringLabel1', 'Connection string'),
+(1, 'CambiarConStringButton1', 'Change')
+
 ----Principal
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (1, 'sesionToolStripMenuItem', 'Session'),
@@ -1422,6 +1449,9 @@ INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
 (2, 'DevolucionText1', 'Devolver'),
 (2, 'DevolucionText2', 'Salir')
+INSERT INTO dbo.Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(2, 'CambiarConStringLabel1', 'Cadena de conexion'),
+(2, 'CambiarConStringButton1', 'Cambiar')
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

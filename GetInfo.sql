@@ -26,8 +26,14 @@ UPDATE Localidad SET Patente = 'SURXMjI0', Marca = 'Q2hldnJvbGV0', Asientos = 30
 
 select * from Usuario
 
+Select * from Pasaje
+
 select * from Bitacora
+
+delete from bitacora where ID_Bitacora = 156
 
 select * from Bus
 
 Select * from Digito_Verificador
+
+SELECT ISNULL(MAX(ID_Bitacora),0) FROM Bitacora

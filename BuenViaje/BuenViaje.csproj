@@ -135,26 +135,17 @@
     <Compile Include="Administracion\Usuarios\UsuariosPrincipal.Designer.cs">
       <DependentUpon>UsuariosPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="BuenViajeDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BuenViajeDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BuenViajeDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BuenViajeDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BuenViajeDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BuenViajeDataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Buses\ABMBuses.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Buses\ABMBuses.Designer.cs">
       <DependentUpon>ABMBuses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CambiarConString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambiarConString.Designer.cs">
+      <DependentUpon>CambiarConString.cs</DependentUpon>
     </Compile>
     <Compile Include="CambiarPassword.cs">
       <SubType>Form</SubType>
@@ -249,6 +240,9 @@
     <EmbeddedResource Include="Buses\ABMBuses.resx">
       <DependentUpon>ABMBuses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CambiarConString.resx">
+      <DependentUpon>CambiarConString.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CambiarPassword.resx">
       <DependentUpon>CambiarPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,40 +286,6 @@
       <DependentUpon>ABMViajes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="BuenViajeDataSet.xsc">
-      <DependentUpon>BuenViajeDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BuenViajeDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BuenViajeDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BuenViajeDataSet.xss">
-      <DependentUpon>BuenViajeDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BuenViajeDataSet1.xsc">
-      <DependentUpon>BuenViajeDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="BuenViajeDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BuenViajeDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BuenViajeDataSet1.xss">
-      <DependentUpon>BuenViajeDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="BuenViajeDataSet2.xsc">
-      <DependentUpon>BuenViajeDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="BuenViajeDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BuenViajeDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BuenViajeDataSet2.xss">
-      <DependentUpon>BuenViajeDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="BuenViaje_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -374,15 +334,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BuenViaje.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BuenViaje_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>BuenViaje.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

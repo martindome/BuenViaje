@@ -39,7 +39,7 @@ namespace DAL
         }
         private static int ProximoId()
         {
-            if (mId == 0)
+            
                 mId = (DAO.Instancia()).ObtenerUltimoId("Usuario");
             mId += 1;
             return mId;
@@ -121,7 +121,6 @@ namespace DAL
             Seguridad.Contrasenia.EnviarNuevaContrasenia(newPassword, pUsuario.Nombre_Usuario);
             return newPassword;
         }
-
         public static List<CompuestoBE> ObtenerPermisos(UsuarioBE pUsuario)
         {
             List<CompuestoBE> permisos = new List<CompuestoBE>();

@@ -39,51 +39,69 @@ namespace BuenViaje
             this.MinimizeBox = false;
             this.CenterToScreen();
             string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
+            bool fallos = false;
             try
             {
                 try
                 {
                     if (!ChequearConexionBD())
                     {
-                        BitacoraBE mBitacora = new BitacoraBE();
-                        BitacoraBL bitacoraBL = new BitacoraBL();
+                        //BitacoraBE mBitacora = new BitacoraBE();
+                        //BitacoraBL bitacoraBL = new BitacoraBL();
 
-                        mBitacora.Descripcion = "Error conexion base de datos";
-                        mBitacora.Tipo_Evento = "HIGH";
-                        mBitacora.Fecha = DateTime.Now;
-                        mBitacora.Nombre_Usuario = "NULL";
-                        bitacoraBL.Guardar(mBitacora);
+                        //mBitacora.Descripcion = "Error conexion base de datos";
+                        //mBitacora.Tipo_Evento = "HIGH";
+                        //mBitacora.Fecha = DateTime.Now;
+                        //mBitacora.Nombre_Usuario = "NULL";
+                        //bitacoraBL.Guardar(mBitacora);
                         MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.Close();
+                        fallos = true;
+                        //this.Close();
                     }
                 }
                 catch (Exception ex) 
-                { 
-                    throw (ex); 
+                {
+                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma) + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fallos = true;
                 }
+                CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
                 try
                 {
-                    ChequearIntegridadBD();
+                    if (ChequearIntegridadBD() && ! fallos)
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Info-CargaCorrecta", mIdioma), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        Login mLogin = new Login();
+                        mLogin.fallos = false;
+                        mLogin.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        fallos = true;
+                    }
+                    //this.Close();
                 }
                 catch (Exception ex)
                 {
                     BitacoraBE mBitacora = new BitacoraBE();
                     BitacoraBL bitacoraBL = new BitacoraBL();
-
                     mBitacora.Descripcion = "Error Integridad base de datos";
                     mBitacora.Tipo_Evento = "HIGH";
                     mBitacora.Fecha = DateTime.Now;
                     mBitacora.Nombre_Usuario = "NULL";
                     bitacoraBL.Guardar(mBitacora);
+                    fallos = true;
                     MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-IntegridadBaseDatos", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //this.Close();
+                }
+                if (fallos)
+                {
+                    Login mLoginFallos = new Login();
+                    mLoginFallos.fallos = true;
+                    mLoginFallos.ShowDialog();
                     this.Close();
                 }
-
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Info-CargaCorrecta", mIdioma), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-                Login mLogin = new Login();
-                mLogin.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -97,6 +115,7 @@ namespace BuenViaje
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-CargaIncorrecta", mIdioma) + "\n" + ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
+         
         }
 
         private bool ChequearConexionBD()

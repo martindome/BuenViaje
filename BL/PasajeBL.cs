@@ -21,7 +21,7 @@ namespace BL
 
         public List<PasajeBE> ListarClienteDevueltos(int pId)
         {
-            return PasajeDAL.ListarClienteDevueltos(pId);
+            return PasajeDAL.ListarClienteNoDevueltos(pId);
         }
 
         public List<PasajeBE> ListarViaje(int pId)

@@ -7,14 +7,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="BuenViaje.exe.manifest" size="15702">
+    <dependentAssembly dependencyType="install" codebase="BuenViaje.exe.manifest" size="14882">
       <assemblyIdentity name="BuenViaje.exe" version="1.0.0.9" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pZu5SID0O2k81BCjV1VPWxar0D4=</dsig:DigestValue>
+        <dsig:DigestValue>7V9LenR/HepfBw3mRwXBeO+VxJg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

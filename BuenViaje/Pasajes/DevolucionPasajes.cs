@@ -148,6 +148,7 @@ namespace BuenViaje.Pasajes
             pasajesDevolucionDataGridViajes.Columns[IdiomaBL.ObtenerMensajeTextos("PasajePrincipal-Columna-ViajeID", SingletonSesion.Instancia.Usuario.Idioma_Descripcion)].Visible = false;
             pasajesDevolucionDataGridViajes.Columns[IdiomaBL.ObtenerMensajeTextos("PasajePrincipal-Columna-RutaID", SingletonSesion.Instancia.Usuario.Idioma_Descripcion)].Visible = false;
             pasajesDevolucionDataGridViajes.Columns[IdiomaBL.ObtenerMensajeTextos("PasajePrincipal-Columna-BusID", SingletonSesion.Instancia.Usuario.Idioma_Descripcion)].Visible = false;
+            pasajesDevolucionDataGridViajes.Columns[IdiomaBL.ObtenerMensajeTextos("PasajePrincipal-Columna-PasajeID", SingletonSesion.Instancia.Usuario.Idioma_Descripcion)].Visible = false;
 
             pasajesDevolucionDataGridViajes.MultiSelect = false;
             pasajesDevolucionDataGridViajes.EditMode = DataGridViewEditMode.EditProgrammatically;

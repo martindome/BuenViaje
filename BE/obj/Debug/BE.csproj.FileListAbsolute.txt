@@ -1,6 +1,5 @@
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\bin\Debug\BE.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\bin\Debug\BE.pdb
-C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\obj\Debug\BE.csprojAssemblyReference.cache
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\obj\Debug\BE.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\obj\Debug\BE.pdb
@@ -24,3 +23,4 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\bin\Debug\DPDFPrintN
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\bin\Debug\DPDFPrintNative_x86.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\bin\Debug\DynamicPDF.Printing.NETFramework40.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\bin\Debug\DynamicPDF.Printing.NETFramework40.xml
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BE\obj\Debug\BE.csprojAssemblyReference.cache

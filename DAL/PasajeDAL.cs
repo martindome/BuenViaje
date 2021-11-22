@@ -49,7 +49,7 @@ namespace DAL
             }
             return Lista;
         }
-        public static List<PasajeBE> ListarClienteDevueltos(int pId)
+        public static List<PasajeBE> ListarClienteNoDevueltos(int pId)
         {
             List<PasajeBE> Lista = new List<PasajeBE>();
             string mCommand = "SELECT b.ID_Pasaje, b.ID_Viaje, b.ID_Cliente, b.Fecha, b.Devuelto FROM Pasaje as b where b.ID_Cliente = " + pId;
@@ -171,7 +171,7 @@ namespace DAL
         }
         private static int ProximoId()
         {
-            if (mId == 0)
+            
                 mId = (DAO.Instancia()).ObtenerUltimoId("Pasaje");
             mId += 1;
             return mId;

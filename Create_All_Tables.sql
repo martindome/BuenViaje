@@ -1,3 +1,9 @@
+-- USE master
+-- IF EXISTS(select * from sys.databases where name='BuenViaje')
+--     DROP DATABASE BuenViaje
+
+-- CREATE DATABASE BuenViaje
+
 Use BuenViaje
 
 Create Table Backups(
@@ -37,13 +43,6 @@ Create Table Cliente(
     PRIMARY KEY CLUSTERED (ID_Cliente)
 );
 
-Create Table Telefono (
-    ID_Telefono Bigint Not null,
-    Numero varchar(50),
-    ID_Cliente bigint not null,
-    PRIMARY KEY CLUSTERED (ID_Telefono),
-    FOREIGN KEY (ID_Cliente) REFERENCES Cliente (ID_Cliente) ON DELETE NO Action 
-);
 
 Create Table Usuario(
     ID_Usuario bigint not null,
@@ -76,7 +75,6 @@ Create Table Familia (
 Create Table Usuario_Permiso(
     ID_Usuario bigint not null,
     ID_Permiso bigint not null,
-    --Descripcion varchar(max) not null,
     DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Permiso),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete cascade,
@@ -86,7 +84,6 @@ Create Table Usuario_Permiso(
 Create Table Usuario_Familia(
     ID_Usuario bigint not null,
     ID_Familia bigint not null,
-    --Descripcion varchar(max) not null,
     DVH varchar(MAX) not null,
     PRIMARY KEY CLUSTERED (ID_Usuario, ID_Familia),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario) on delete CASCADE,

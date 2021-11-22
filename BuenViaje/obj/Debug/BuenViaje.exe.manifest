@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>qqx6/x8btReAoaXzXCDdDR2l4aM=</dsig:DigestValue>
+        <dsig:DigestValue>1Lm71+IMxx0+PbTCcTlSCjFVag0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,26 +78,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BuenViaje.exe" size="924608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BuenViaje.exe" size="219584">
       <assemblyIdentity name="BuenViaje" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>xXuGPKjDW55Wd3pIAFDBhspdlfw=</dsig:DigestValue>
+        <dsig:DigestValue>wWO8qvhjALCF5VaOsJBiE5Q0ChA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DAL.dll" size="49664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DAL.dll" size="49152">
       <assemblyIdentity name="DAL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>GLj0ejITgC96OKbYiPqk9nG/WGs=</dsig:DigestValue>
+        <dsig:DigestValue>y+U48Jt0iXugSklOYqM0UwyR0/0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -252,24 +252,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>FioYRBBPB8UqAM6DtyhRTA9U1tQ=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="BuenViaje.mdf" size="8388608" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>h7F9/RxTUGf6ZMWfcZrdlgT9BVQ=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="BuenViaje_log.ldf" size="8388608" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>/mis1xDJX0wQhdc+Sur+WhsTaHE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="DPDFPrintNative_x64.dll" size="4374312">

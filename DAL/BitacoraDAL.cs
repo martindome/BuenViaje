@@ -105,7 +105,7 @@ namespace DAL
 
         private static int ProximoId()
         {
-            if (mId == 0)
+            
                 mId = (DAO.Instancia()).ObtenerUltimoId("Bitacora");
             mId += 1;
             return mId;

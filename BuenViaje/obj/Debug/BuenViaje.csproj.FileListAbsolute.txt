@@ -60,5 +60,4 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\Bue
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BuenViaje.application
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.exe.manifest
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.application
-C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BuenViaje.mdf
-C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\bin\Debug\BuenViaje_log.ldf
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\BuenViaje\obj\Debug\BuenViaje.CambiarConString.resources

@@ -17,6 +17,7 @@ namespace BuenViaje
         LoginBL Loginbl = new LoginBL();
         UsuarioBL Usuariobl = new UsuarioBL();
         string mIdioma;
+        public bool fallos;
         private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
 
         public Login()
@@ -77,6 +78,17 @@ namespace BuenViaje
             SetToolTips();
             this.LoginButton1.Enabled = false;
             this.Text = IdiomaBL.ObtenerMensajeTextos("Login-Form", mIdioma);
+
+            if (this.fallos)
+            {
+                this.LoginButton1.Enabled = false;
+                this.LoginBotton2.Enabled = false;
+                this.LoginButton3.Enabled = false;
+                this.LoginButton4.Enabled = true;
+                this.txtUser.Enabled = false;
+                this.txtPass.Enabled = false;
+                this.LoginComboBox1.Enabled = false;
+            }
         }
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -187,6 +199,21 @@ namespace BuenViaje
             else
             {
                 this.LoginButton1.Enabled = false;
+            }
+        }
+
+        private void LoginButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CambiarConString cambiarConString = new CambiarConString();
+                cambiarConString.mIdioma = this.mIdioma;
+                cambiarConString.ShowDialog(this);
+                SetToolTips();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarConString-Error-CambioClave", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

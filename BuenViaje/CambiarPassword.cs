@@ -15,6 +15,7 @@ namespace BuenViaje
     public partial class CambiarPassword : Form
     {
         private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
+        public string mIdioma;
         public CambiarPassword()
         {
             InitializeComponent();
@@ -22,8 +23,6 @@ namespace BuenViaje
             
 
         }
-
-        public string mIdioma;
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
         {

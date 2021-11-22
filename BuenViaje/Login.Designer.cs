@@ -38,6 +38,7 @@
             this.LoginComboBox1 = new System.Windows.Forms.ComboBox();
             this.loginLabel3 = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.LoginButton4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LoginLabel1
@@ -107,9 +108,9 @@
             // 
             this.LoginButton3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.LoginButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.LoginButton3.Location = new System.Drawing.Point(304, 86);
+            this.LoginButton3.Location = new System.Drawing.Point(282, 86);
             this.LoginButton3.Name = "LoginButton3";
-            this.LoginButton3.Size = new System.Drawing.Size(118, 23);
+            this.LoginButton3.Size = new System.Drawing.Size(169, 23);
             this.LoginButton3.TabIndex = 7;
             this.LoginButton3.Text = "Resetear Clave";
             this.LoginButton3.UseVisualStyleBackColor = false;
@@ -136,12 +137,25 @@
             this.loginLabel3.Tag = "LoginLabel2";
             this.loginLabel3.Text = "Idioma";
             // 
+            // LoginButton4
+            // 
+            this.LoginButton4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.LoginButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.LoginButton4.Location = new System.Drawing.Point(282, 61);
+            this.LoginButton4.Name = "LoginButton4";
+            this.LoginButton4.Size = new System.Drawing.Size(169, 23);
+            this.LoginButton4.TabIndex = 10;
+            this.LoginButton4.Text = "Cambiar String Conexion";
+            this.LoginButton4.UseVisualStyleBackColor = false;
+            this.LoginButton4.Click += new System.EventHandler(this.LoginButton4_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(457, 129);
+            this.Controls.Add(this.LoginButton4);
             this.Controls.Add(this.loginLabel3);
             this.Controls.Add(this.LoginComboBox1);
             this.Controls.Add(this.LoginButton3);
@@ -172,6 +186,7 @@
         private System.Windows.Forms.ComboBox LoginComboBox1;
         private System.Windows.Forms.Label loginLabel3;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button LoginButton4;
     }
 }
 
