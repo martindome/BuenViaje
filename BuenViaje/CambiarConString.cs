@@ -13,6 +13,7 @@ namespace BuenViaje
 {
     public partial class CambiarConString : Form
     {
+        BL.IniciadorBL mIniciador = new IniciadorBL();
         private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
         public string mIdioma;
 
@@ -139,10 +140,16 @@ namespace BuenViaje
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             //string mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
-            SetToolTips();
+            try
+            {
+                CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
+                SetToolTips();
+                this.Text = IdiomaBL.ObtenerMensajeTextos("CambiarConString-Form", mIdioma);
+            }
+            catch { }
+            
             this.CambiarConStringButton1.Enabled = false;
-            this.Text = IdiomaBL.ObtenerMensajeTextos("CambiarConString-Form", mIdioma);
+            
         }
 
         private void CambiarConStringButton1_Click(object sender, EventArgs e)
@@ -150,26 +157,36 @@ namespace BuenViaje
             try
             {
                 LoginBL.CambiarConnectionString(this.CambiarConStringText1.Text);
-                BitacoraBE mBitacora = new BitacoraBE();
-                BitacoraBL Bitacorabl = new BitacoraBL();
-                mBitacora.Descripcion = "Cambio de connection string";
-                mBitacora.Fecha = DateTime.Now;
-                mBitacora.Nombre_Usuario = "NULL";
-                mBitacora.Tipo_Evento = "HIGH";
-                Bitacorabl.Guardar(mBitacora);
+                if (!ChequearConexionBD())
+                {
+                    MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ((Login)this.Owner).fallos = true;
+                    this.Close();
+                }
+                if (!ChequearIntegridadBD())
+                {
+                    MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ((Login)this.Owner).fallos = true;
+                    this.Close();
+                }
+                //Reset dio ok
+                //BitacoraBE mBitacora = new BitacoraBE();
+                //BitacoraBL Bitacorabl = new BitacoraBL();
+                //mBitacora.Descripcion = "Cambio de connection string";
+                //mBitacora.Fecha = DateTime.Now;
+                //mBitacora.Nombre_Usuario = "NULL";
+                //mBitacora.Tipo_Evento = "HIGH";
+                //Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show("CambiarConString-Info-CambioCorrecto", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ((Login)this.Owner).fallos = false;
                 this.Close();
             }
             catch(Exception ex)
             {
-                BitacoraBL Bitacorabl = new BitacoraBL();
-                BitacoraBE mBitacora = new BitacoraBE();
-                mBitacora.Descripcion = "Error al resetear password";
-                mBitacora.Fecha = DateTime.Now;
-                mBitacora.Nombre_Usuario = "NULL";
-                mBitacora.Tipo_Evento = "HIGH";
-                Bitacorabl.Guardar(mBitacora);
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarConString-Error-CambioClave", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ((Login)this.Owner).fallos = true;
+                this.Close();
             }
         }
 
@@ -184,5 +201,36 @@ namespace BuenViaje
                 this.CambiarConStringButton1.Enabled = false;
             }
         }
+
+        private bool ChequearConexionBD()
+        {
+            try
+            {
+                mIniciador.ConectarBD();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        private bool ChequearIntegridadBD()
+        {
+            try
+            {
+                mIniciador.ChequearIntegridad();
+                return true;
+            }
+            catch (Exception ex) { throw (ex); }
+        }
+
+        private void CambiarConStringLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
+
 }

@@ -69,26 +69,45 @@ namespace BuenViaje
             this.MinimizeBox = false;
             this.CenterToScreen();
             mIdioma = ConfigurationManager.AppSettings.Get("Idioma");
-            CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
-            foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
+            if (!this.fallos)
             {
-                LoginComboBox1.Items.Add(mIdioma.Descripcion);
+                CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
+                foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
+                {
+                    LoginComboBox1.Items.Add(mIdioma.Descripcion);
+                }
+                LoginComboBox1.SelectedIndex = 1;
+                SetToolTips();
+                this.Text = IdiomaBL.ObtenerMensajeTextos("Login-Form", mIdioma);
             }
-            LoginComboBox1.SelectedIndex = 1;
-            SetToolTips();
+            
+            
             this.LoginButton1.Enabled = false;
-            this.Text = IdiomaBL.ObtenerMensajeTextos("Login-Form", mIdioma);
-
             if (this.fallos)
             {
-                this.LoginButton1.Enabled = false;
-                this.LoginBotton2.Enabled = false;
-                this.LoginButton3.Enabled = false;
-                this.LoginButton4.Enabled = true;
-                this.txtUser.Enabled = false;
-                this.txtPass.Enabled = false;
-                this.LoginComboBox1.Enabled = false;
+                DeshabilitarBotones();
             }
+        }
+
+        private void DeshabilitarBotones()
+        {
+            this.LoginButton1.Enabled = false;
+            this.LoginBotton2.Enabled = false;
+            this.LoginButton3.Enabled = false;
+            this.LoginButton4.Enabled = true;
+            this.txtUser.Enabled = false;
+            this.txtPass.Enabled = false;
+            this.LoginComboBox1.Enabled = false;
+        }
+        private void HabilitarBotones()
+        {
+            this.LoginButton1.Enabled = true;
+            this.LoginBotton2.Enabled = true;
+            this.LoginButton3.Enabled = true;
+            this.LoginButton4.Enabled = true;
+            this.txtUser.Enabled = true;
+            this.txtPass.Enabled = true;
+            this.LoginComboBox1.Enabled = true;
         }
 
         private void textBox_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -209,10 +228,29 @@ namespace BuenViaje
                 CambiarConString cambiarConString = new CambiarConString();
                 cambiarConString.mIdioma = this.mIdioma;
                 cambiarConString.ShowDialog(this);
-                SetToolTips();
+                if (this.fallos)
+                {
+                    DeshabilitarBotones();
+                }
+                else
+                {
+                    CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
+                    foreach (IdiomaBE mIdioma in IdiomaBL.ListarIdiomas())
+                    {
+                        if (!LoginComboBox1.Items.Contains(mIdioma.Descripcion))
+                        {
+                            LoginComboBox1.Items.Add(mIdioma.Descripcion);
+                        }
+                    }
+                    LoginComboBox1.SelectedIndex = 1;
+                    SetToolTips();
+                    this.Text = IdiomaBL.ObtenerMensajeTextos("Login-Form", mIdioma);
+                    HabilitarBotones();
+                }
             }
             catch (Exception ex)
             {
+                DeshabilitarBotones();
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("CambiarConString-Error-CambioClave", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -477,6 +477,11 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'LoginComboBox1', 'Change the languaje of the login screen'),
 (1, 'LoginButton3', 'Reset a password for a system user')
 
+Insert into Controles(ID_Idioma, ID_Control, Mensaje) VALUES
+(1, 'LoginButton4', 'Change Connection string'),
+(2, 'LoginButton4', 'Cambiar string de conexion')
+
+
 INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'txtUser', 'Email del usuario. Debe ser una direccion de email valida'),
 (2, 'txtPass', 'Contraseña del usuario. La clave debe tener 8+ characteres, 1 numbero, 1 mayuscula, 1 minuscula por lo menos'),
@@ -484,6 +489,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'LoginBotton2', 'Salir de la aplicacion'),
 (2, 'LoginComboBox1', 'Cambiar el lenguaje de la pantalla de login'),
 (2, 'LoginButton3', 'Cambiar la contraseña de un usuario del sistema')
+
 
 
 ------------------- Principal Pasajes

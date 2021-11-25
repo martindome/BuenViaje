@@ -54,20 +54,34 @@ namespace BuenViaje
                         //mBitacora.Fecha = DateTime.Now;
                         //mBitacora.Nombre_Usuario = "NULL";
                         //bitacoraBL.Guardar(mBitacora);
-                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         fallos = true;
                         //this.Close();
                     }
                 }
                 catch (Exception ex) 
                 {
-                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma) + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-ConexionBaseDatos", mIdioma) + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     fallos = true;
                 }
-                CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
+                //CargarIdioma(IdiomaBL.ObtenerMensajeControladores(mIdioma));
                 try
                 {
-                    if (ChequearIntegridadBD() && ! fallos)
+                    if (ChequearIntegridadBD() && !fallos)
                     {
                         MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Info-CargaCorrecta", mIdioma), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
@@ -84,15 +98,26 @@ namespace BuenViaje
                 }
                 catch (Exception ex)
                 {
-                    BitacoraBE mBitacora = new BitacoraBE();
-                    BitacoraBL bitacoraBL = new BitacoraBL();
-                    mBitacora.Descripcion = "Error Integridad base de datos";
-                    mBitacora.Tipo_Evento = "HIGH";
-                    mBitacora.Fecha = DateTime.Now;
-                    mBitacora.Nombre_Usuario = "NULL";
-                    bitacoraBL.Guardar(mBitacora);
+                    try
+                    {
+                        BitacoraBE mBitacora = new BitacoraBE();
+                        BitacoraBL bitacoraBL = new BitacoraBL();
+                        mBitacora.Descripcion = "Error Integridad base de datos";
+                        mBitacora.Tipo_Evento = "HIGH";
+                        mBitacora.Fecha = DateTime.Now;
+                        mBitacora.Nombre_Usuario = "NULL";
+                        bitacoraBL.Guardar(mBitacora);
+                    }
+                    catch { }  
                     fallos = true;
-                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-IntegridadBaseDatos", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-IntegridadBaseDatos", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     //this.Close();
                 }
                 if (fallos)
@@ -105,17 +130,27 @@ namespace BuenViaje
             }
             catch (Exception ex)
             {
-                BitacoraBE mBitacora = new BitacoraBE();
-                BitacoraBL bitacoraBL = new BitacoraBL();
-                mBitacora.Descripcion = "Error Carga del programa";
-                mBitacora.Tipo_Evento = "HIGH";
-                mBitacora.Fecha = DateTime.Now;
-                mBitacora.Nombre_Usuario = "NULL";
-                bitacoraBL.Guardar(mBitacora);
-                MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-CargaIncorrecta", mIdioma) + "\n" + ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    BitacoraBE mBitacora = new BitacoraBE();
+                    BitacoraBL bitacoraBL = new BitacoraBL();
+                    mBitacora.Descripcion = "Error Carga del programa";
+                    mBitacora.Tipo_Evento = "HIGH";
+                    mBitacora.Fecha = DateTime.Now;
+                    mBitacora.Nombre_Usuario = "NULL";
+                    bitacoraBL.Guardar(mBitacora);
+                }
+                catch { }
+                
+                try
+                {
+                    MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Inicio-Error-CargaIncorrecta", mIdioma) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 this.Close();
             }
-         
         }
 
         private bool ChequearConexionBD()
