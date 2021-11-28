@@ -23,3 +23,4 @@ C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DPDFPrin
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DPDFPrintNative_x86.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DynamicPDF.Printing.NETFramework40.dll
 C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\bin\Debug\DynamicPDF.Printing.NETFramework40.xml
+C:\Users\marti\Desktop\2do Cuatrimestre\Diploma\Solucion\SERV\obj\Debug\SERV.csprojAssemblyReference.cache

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using BL;
 using BE;
+using System.Text.RegularExpressions;
 
 namespace BuenViaje
 {
@@ -199,7 +200,7 @@ namespace BuenViaje
 
         private void txtUser_TextChanged(object sender, EventArgs e)
         {
-            if (this.txtUser.Text != "" && this.txtPass.Text != "" && this.txtUser.Text.Length < 50 && this.txtPass.Text.Length < 50)
+            if (this.txtUser.Text != "" && this.txtPass.Text != "" && this.txtUser.Text.Length < 50 && this.txtPass.Text.Length < 50 && Regex.IsMatch(txtUser.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 this.LoginButton1.Enabled = true;
             }
@@ -211,7 +212,7 @@ namespace BuenViaje
 
         private void txtPass_TextChanged(object sender, EventArgs e)
         {
-            if (this.txtUser.Text != "" && this.txtPass.Text != "" && this.txtUser.Text.Length < 50 && this.txtPass.Text.Length < 50)
+            if (this.txtUser.Text != "" && this.txtPass.Text != "" && this.txtUser.Text.Length < 50 && this.txtPass.Text.Length < 50 && Regex.IsMatch(txtUser.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 this.LoginButton1.Enabled = true;
             }

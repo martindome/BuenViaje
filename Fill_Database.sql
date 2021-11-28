@@ -111,7 +111,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (1, 'Restore-Form', 'Restore'),
 (1, 'Restore-Columna-Volumen', 'Files'),
 (1, 'Restore-Confirmacion-Ejecucion', 'Execute restore?'),
-(1, 'Restore-Confirmacion-Backup', 'The restauration was executed successfully'),
+(1, 'Restore-Confirmacion-Backup', 'The restauration was executed successfully. Restart the application'),
 (1, 'Restore-Validacion-Rutas', 'File was not found'),
 (1, 'Restore-Error-Aplicar', 'Error while restaurating backup')
 
@@ -346,7 +346,7 @@ INSERT INTO dbo.Texto(ID_Idioma, ID_Texto, Mensaje) VALUES
 (2, 'Restore-Form', 'Restauracion'),
 (2, 'Restore-Columna-Volumen', 'Volumenes'),
 (2, 'Restore-Confirmacion-Ejecucion', 'Realizar restauracion de la base de datos?'),
-(2, 'Restore-Confirmacion-Backup', 'La restauracion se realizo exitosamente'),
+(2, 'Restore-Confirmacion-Backup', 'La restauracion se realizo exitosamente. Reinicie la aplicacion.'),
 (2, 'Restore-Validacion-Rutas', 'Volumen no encontrado'),
 (2, 'Restore-Error-Aplicar', 'Error al restaurar copia de seguridad')
 

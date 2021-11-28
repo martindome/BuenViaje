@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using BL;
 using BE;
 using System.IO;
+using BuenViaje;
 
 namespace BuenViaje.Administracion.Backup
 {
@@ -226,6 +227,7 @@ namespace BuenViaje.Administracion.Backup
                         mBitacora.Tipo_Evento = "HIGH";
                         Bitacorabl.Guardar(mBitacora);
                         MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Confirmacion-Backup", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Application.Exit();
                     }
                     catch (Exception ex)
                     {
@@ -248,11 +250,8 @@ namespace BuenViaje.Administracion.Backup
                 Bitacorabl.Guardar(mBitacora);
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Restore-Error-Aplicar", SingletonSesion.Instancia.Usuario.Idioma_Descripcion) + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                this.Close();
-            }
             
+            this.Close();          
         }
 
         private bool ValidarArchivos()

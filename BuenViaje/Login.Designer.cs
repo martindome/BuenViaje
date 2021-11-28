@@ -167,7 +167,7 @@
             this.Controls.Add(this.LoginLabel1);
             this.HelpButton = true;
             this.Name = "Login";
-            this.Text = "Idioma";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

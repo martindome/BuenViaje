@@ -41,6 +41,7 @@ namespace BuenViaje
     {
         #region principal
         internal PasajeBE pasajebe;
+        internal bool BackupError = false;
         private static Dictionary<string, ToolTip> tooltips = new Dictionary<string, ToolTip>();
         public Principal()
         {
@@ -505,6 +506,7 @@ namespace BuenViaje
             {
                 MessageBox.Show(IdiomaBL.ObtenerMensajeTextos("Principal-Permiso-Denegado", SingletonSesion.Instancia.Usuario.Idioma_Descripcion), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private string ObtenerMensajeColumna(string pstring)

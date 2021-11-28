@@ -176,7 +176,7 @@ namespace BuenViaje.Administracion.Permisos
             this.Text = IdiomaBL.ObtenerMensajeTextos("ABMPermisos-Form", SingletonSesion.Instancia.Usuario.Idioma_Descripcion);
             SetToolTips();
 
-            if (operacion != Operacion.Baja)
+            if (operacion == Operacion.Alta)
             {
                 ABMPermisoBotton1.Enabled = false;
             }
